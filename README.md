@@ -1,456 +1,151 @@
-<h2 align="center">تقدیم به حدیث❤️ که منو تو اولین پروژم یاری و تحمل کرد</h2>
-
 # DNS
 
-*[فارسی](README.fa.md)*
+A self-hosted Smart DNS service with user accounts, traffic quotas, service templates and Persian web panels.
 
-A smart DNS service for Iran, in two halves: a relay inside the country and an
-exit node outside it. Sanctioned domains resolve to the relay, which carries
-those connections abroad; everything else resolves normally and goes direct.
+[Repository](https://github.com/DevURANIUM/DNS) · [Report an issue](https://github.com/DevURANIUM/DNS/issues) · [راهنمای فارسی](README.fa.md)
 
-It is a whole service, not just a proxy — per-customer access control, traffic
-accounting, quotas, speed limits, a customer panel and an operator panel, all
-in one install script with no dependencies beyond what Debian ships.
+## How it works
 
-**Alpha.** Help us carry this project forward with your bug reports.
+Deploy a relay in Iran and an exit server abroad. The relay answers selected domain names with its own address and forwards their connections through the exit. Other domains resolve normally. HTTPS routing reads SNI without decrypting TLS traffic.
 
-They are worth more than anything else right now. If something breaks, or a
-service you expected to work does not,
-[open an issue](https://github.com/mehdi047/doctor-dns/issues) — say which
-side it was, what you ran, and what happened. A report of one console failing
-one download is a genuinely useful thing; most of what is in here was learnt
-exactly that way.
-
----
-
-## What it does
-
-```
-   customer            relay (Iran)              exit (abroad)          service
-  ┌────────┐          ┌────────────┐            ┌───────────┐        ┌─────────┐
-  │ PS5    │   DNS    │ dnsmasq    │            │           │        │ Sony    │
-  │ phone  │ ───────► │  answers   │            │  nginx    │        │ Spotify │
-  │ PC     │          │  with self │            │  reads    │        │ …       │
-  │        │   TLS    │ nginx      │ ─────────► │  the SNI  │ ─────► │         │
-  └────────┘ ───────► │  SNI proxy │            │           │        └─────────┘
-                      │ nftables   │            └───────────┘
-                      │  gate +    │
-                      │  counters  │
-                      └────────────┘
+```text
+Client → Relay → Exit → Destination
+           │      │
+     User panel   Admin panel + SQLite
+           └──────┘
+       Sync every 30 seconds
 ```
 
-The relay never terminates TLS. nginx reads the SNI from the handshake and
-opens a plain TCP tunnel to the exit, which does the same and connects to the
-real host. Nothing decrypts anything, and no certificate is presented to the
-client.
+Accounts and usage live in a central database on the exit. Relays send usage and fetch access rules. This is domain-based routing, not a general-purpose VPN.
 
-Port 80 is forwarded rather than redirected, because Sony and Microsoft serve
-game packages over plain HTTP from Akamai edges that answer 443 with a
-certificate naming no console host at all.
+## Features
 
-## What is in it
+- **Administration:** users, fractional quotas, download limits, expiry dates, service templates and domain rules.
+- **User accounts:** signup, login, IP registration, usage, password changes and payment receipt uploads.
+- **Redesigned panels:** Persian RTL layout, responsive pages, local Vazirmatn font and persistent light/dark themes.
+- **Panel tools:** Persian table search, status filters, result counts and an overview of accounts and receipts needing attention.
+- **Connection setup:** DNS copy button, setup guide and password visibility controls.
+- **Access control:** per-IP allowlists and traffic accounting through nftables, quota enforcement and monthly or one-time allowances.
+- **Operations:** host monitoring, logs, backup/restore and TLS certificate provisioning and renewal.
 
-| | |
-|---|---|
-| **Routing** | dnsmasq hijacks a list of ~480 sanctioned domains; AAAA answers are filtered so clients cannot route around the proxy |
-| **Games** | PlayStation, Xbox and Steam storefronts and downloads; EA, Epic; STUN/TURN on the relay so console NAT detection still works |
-| **Access control** | an nftables allowlist keyed on the customer's address, with per-address byte counters in the kernel |
-| **Quotas** | monthly or one-off, with warnings at 80% and 95% and automatic cutoff |
-| **Speed limits** | a per-customer download cap, shaped with htb + fq_codel rather than by dropping packets |
-| **Service templates** | which brands a customer's plan routes, down to individual domains; a few groups ship visible but unticked, because routing them breaks the thing they belong to |
-| **Customer panel** | sign up, register an address, see usage, send a payment receipt |
-| **Operator panel** | customers, templates, domains, host monitoring, backup and restore |
-| **TLS** | certificates obtained and renewed automatically, asking for nothing but a domain name |
+UI assets and fonts are embedded in the installer; the panels do not depend on a CDN. Signup creates a pending account. An operator must save a plan before access is activated. Receipts are reviewed manually; there is no automatic checkout.
 
-## What it looks like
+## Requirements
 
-The operator's panel, on the exit. Customers, what each has used, their
-quota, their speed cap and how long they have left — all editable in the row:
+- Two Debian or Ubuntu servers with public IP addresses: a relay and an exit.
+- Root or sudo access and a working network path between the servers.
+- Access to distribution package repositories.
+- A domain pointing to each server that serves an HTTPS panel, with a valid certificate. Automatic HTTP certificate validation requires reachable port 80.
 
-![The operator's user list](docs/screenshots/admin-users.png)
-
-A template decides which brands a customer's plan carries. Open a service and
-the domains inside it can be picked one at a time; the amber note is a group
-that ships switched off because routing it breaks the thing it belongs to:
-
-![The template editor](docs/screenshots/admin-template.png)
-
-And the machines themselves, reporting in every thirty seconds:
-
-![Host monitoring](docs/screenshots/admin-home.png)
-
-The customer's own page, served by the relay. It shows what is left, the DNS
-address to type into a console, and the button that re-registers their
-address after the ISP has changed it:
-
-<img src="docs/screenshots/user-panel.png" alt="The customer's page" width="360">
-
-*(Made-up customers. Nobody in these pictures is real.)*
+The installer uses distribution packages including Python, nginx, dnsmasq and nftables. No npm, pip or Docker is required to run the service.
 
 ## Install
 
-One script, run once on each machine. It asks which side it is on and the
-address of the other.
+Install the **exit first**, then the **relay**. Run on each server:
 
 ```sh
-curl -fsSLO https://raw.githubusercontent.com/mehdi047/doctor-dns/main/doctor-dns.sh && sudo bash doctor-dns.sh
+curl -fL https://raw.githubusercontent.com/DevURANIUM/DNS/main/doctor-dns.sh -o doctor-dns.sh
+sudo bash doctor-dns.sh
 ```
 
-It downloads rather than pipes on purpose. Every config this installs is
-stored inside the script itself, below `exit 0`, so it has to be able to read
-its own file — and it asks questions, which a pipe would answer with
-end-of-file. Downloading also leaves you a copy to read, to re-run, and to
-uninstall from. It refuses to run if that copy is not whole.
+Choose the server role and follow the prompts. Supply the exit's sync token when configuring the relay. The installer prints connection details and enabled panel addresses when finished.
 
-Run the **exit** first: it prints a pairing token that the relay asks for.
-
-Safe to re-run — configs are backed up, and a step that would change nothing
-does nothing. `sudo bash doctor-dns.sh --uninstall` puts the machine back,
-undoing only what this script did.
-
-### Upgrading
-
-Download the new file and run it. Before it touches anything it compares its
-own version against what the machine has, says which way it is going, and
-waits for an answer:
-
-```
-Version
-
-    installed on this machine:  0.1.0
-    this file:                  0.2.0
-
-    this will upgrade this machine from 0.1.0 to 0.2.0.
-    your customers, settings, certificates and allowlist are kept.
-
-  go ahead? [y]:
-```
-
-The case worth having it for is the other one. Run an old file over a newer
-install — a download still sitting in a home directory, months later — and it
-says so, and the default answer becomes no.
-
-Your customers, their usage, the sync secret, the panel password and any
-certificate all live outside the files the script writes, so an upgrade keeps
-them. A copy of the database is taken into `/var/backups/smart-dns/` first
-anyway, with `VACUUM INTO` rather than `cp`, because the panel keeps a
-write-ahead log beside the database and copying the file alone can miss its
-newest rows. `--version` prints what a file is without installing anything,
-and `ASSUME_YES=1` takes the default — yes for an upgrade, no for a
-downgrade — for anyone scripting it.
-
-### Requirements
-
-Two machines with Debian or Ubuntu and a public address each:
-
-- **relay** — inside Iran, the address customers point their DNS at
-- **exit** — outside, reachable from the relay
-
-No pip, no npm, no containers. Python's standard library, nginx, dnsmasq,
-nftables and coturn, all from the distribution.
-
-### ⚠️Choosing servers⚠️ - ⚠️what we have measured⚠️
-
-How fast the service is, and whether it works at all, depends less on this
-script than on the path between the Iran server and the exit. Iran's filtering
-does not treat every foreign server alike: some it leaves alone, some it slows
-down, and some it effectively shuts off. The results below come from our own
-tests, so that your money does not go on a server that will not work.
-
-| Exit | Result |
-|---|---|
-| AWS Lightsail, Germany | worked without problems |
-| Hetzner (Germany, Finland) | worked without problems, and fast - about 2 MB/s |
-| Linode Frankfurt, OVH France, a netlen host in Turkey | worked well |
-| DigitalOcean | did not work in any of the 8 regions tested; the connection opens, but after a few KB nothing more gets through |
-| OVH (some newer addresses) | the same problem as DigitalOcean |
-| Vultr Miami | works, but very slowly - about 100 KB/s |
-
-A few notes:
-
-- A provider's test file downloading fast from inside Iran does not mean the
-  server you buy from that provider will be fast; we saw exactly this with OVH
-  and Vultr.
-- An exit may work well with one Iran server and not with another.
-- The service did not behave the same on every internet connection: with the
-  same setup it worked well on mobile internet but was very slow on home
-  internet. Test it on the connections your customers actually use.
-
-**Our advice:** if you are buying servers for this script, rent both the Iran
-server and the exit by the hour first. Set the service up, try it on different
-connections, and only renew the servers for longer once you are satisfied.
+Download the file before executing it: the installer reads embedded payloads from itself and expects interactive input. The technical installer filename remains `doctor-dns.sh`.
 
 ### Ports
 
-Everything below is taken by the service. Open them in the firewall, and do
-not give any of them to the admin panel — the installer refuses the ones it
-can see, but a firewall rule you wrote yourself it cannot.
+| Port | Relay | Exit |
+| --- | --- | --- |
+| 53 TCP/UDP | Client DNS | — |
+| 80 TCP | HTTP forwarding and certificate validation | HTTP and certificate validation |
+| 443 TCP | SNI proxy | SNI proxy |
+| 3478 UDP | STUN | — |
+| 8443 TCP | TLS user panel | Sync API |
+| 9443 TCP, default | — | Configurable admin panel |
+| 22 TCP | SSH | SSH |
 
-| | relay (inside Iran) | exit (abroad) |
-|---|---|---|
-| **53** udp + tcp | dnsmasq, the address customers point at | — |
-| **80** tcp | forwarded abroad; also how certificates are proved | the same |
-| **443** tcp | the SNI proxy | the same |
-| **3478** udp | STUN, so a console can work out its own NAT | — |
-| **8443** tcp | the customer panel — TLS only, so a relay without a certificate serves no panel at all | the sync API the relays connect to |
-| **8446** tcp | — | loopback only: the exit's route to Google over IPv6, where it has IPv6 |
-| **22** tcp | ssh — never gated, so a wrong allowlist cannot lock you out | the same |
+Port 8446 on the exit is loopback-only for its Google IPv6 route; it does not need public exposure. Configure both host and provider firewalls for the services used on each machine.
 
-The admin panel is the one port you choose. It defaults to **9443** and can be
-anything free; the installer stops you at 22, 53, 80, 443, 8443 and 8446, and
-`smartdns-access port` applies the same rule later, plus a check that nothing
-else is already listening.
+### First connection
 
-Inbound, the relay is the machine customers reach, so its DNS, proxy, STUN and
-panel ports have to be open to the internet. The exit only ever hears from the
-relay and from you, so 80, 443, 8443 and the panel port are enough there.
+1. Create an account in the user panel.
+2. Save its quota and validity period in the admin panel to activate it.
+3. Open the user panel from the intended internet connection and register its IP.
+4. Set the displayed DNS address on the device. Repeat the same address if a secondary DNS is required.
+5. Register the IP again after changing networks or receiving a new public IP.
 
-### Access control
+A new relay starts open. It automatically enables access enforcement after the first sync containing a registered address. Check with `sudo smartdns-acl enforce status`. SSH is not gated.
 
-A fresh relay answers everyone. That is not a default anybody chose - it is
-that a relay is installed before a single address is registered, and closing
-it against an empty allowlist cuts off every user at once, the operator
-included.
+## Update or uninstall
 
-So the relay closes itself at the first sync that brings a registered
-address, and only registered addresses get DNS, HTTP and HTTPS from then on.
-SSH is never gated, so a wrong allowlist cannot cost anyone access to the
-machine.
+Download the installer again and rerun it. It compares versions and asks before continuing. Existing users and settings are preserved; database backups are stored under `/var/backups/smart-dns/`.
 
 ```sh
-smartdns-acl enforce status   # which it is right now
-smartdns-acl enforce off      # stay open, and cancel the automatic close
-```
+# Print the version without installing
+bash doctor-dns.sh --version
 
-`ENFORCE=no` on the installer's command line opts out from the start.
-
-## After installing
-
-Each side prints what it set up at the end of its install: the relay names the
-DNS address and the customers' panel, the exit names the operator's panel and
-its password, shown once.
-
-The operator's panel is the whole administrative interface — customers, their
-quotas and speeds, service templates, the domain list, host monitoring,
-payment receipts, and backup and restore. Everything below is for the cases a
-web page cannot serve: reading state over ssh, and getting back into a panel
-you can no longer reach.
-
-### On the exit
-
-**`smartdns-access`** — where the admin panel is, and how to change it. Run it
-with no arguments and it prints the full address, read from the config the
-panel actually serves.
-
-```sh
-smartdns-access                  # the URL it answers on - forgot it? start here
-smartdns-access port 9443        # move it, if a firewall is in the way
-smartdns-access path [new]       # change the secret path, or roll a fresh one
-smartdns-access password [new]   # set a new one; the old is not recoverable
-smartdns-access rotate           # new path and new password at once
-```
-
-Of those three, only the password is authentication. The port keeps the panel
-out of the way of casual scanning and nothing more; the path is unguessable
-but travels in every request line and lands in any proxy log on the way. The
-password is never stored — only a salted hash — which is why a forgotten one
-is replaced rather than recovered.
-
-### On the relay
-
-**`smartdns`** — the list of domains that go through the relay.
-
-```sh
-smartdns status                  # what this machine is doing
-smartdns list                    # every domain being routed
-smartdns find spotify            # which ones match
-smartdns add example.com         # route one more
-smartdns del example.com         # stop routing it
-smartdns bypass api.example.com  # never route this one, even though its
-                                 # parent is routed - for services that are
-                                 # not on 443 at all
-smartdns test example.com        # what this relay answers for it
-```
-
-**`smartdns-rules`** — what each template does with a domain, asked of the
-resolvers themselves. Every template with customers gets its own resolver on
-the relay; the default template is the resolver on port 53.
-
-```sh
-smartdns-rules                   # every template: its port, its customers, and
-                                 # how many names it redirects, bypasses and pins
-smartdns-rules show test         # the full lists for one template
-smartdns-rules check gemini.google.com
-                                 # each template's rule for it and what its
-                                 # resolver really answers - flagged if the two
-                                 # disagree
-```
-
-**`smartdns-acl`** — who may use the relay, and what they have used. The panel
-drives this rather than touching nftables itself, so there is one place where
-the rules about what is legal live.
-
-```sh
-smartdns-acl list                # everyone, with usage
-smartdns-acl usage 5.188.44.19   # one address
-smartdns-acl add 5.188.44.19 ali # register one by hand
-smartdns-acl del 5.188.44.19
-smartdns-acl reset <ip>|--all    # zero the counters
-smartdns-acl enforce status      # open, or only registered addresses?
-smartdns-acl enforce on          # close it
-smartdns-acl enforce off         # open it to everyone
-smartdns-acl save                # persist to disk now
-```
-
-`enforce on` refuses when nobody is registered — closing a live relay against
-an empty list cuts off every customer at once, and that is a mistake which
-feels irreversible from the far end of a broken connection. Add
-`--allow-empty` if you mean it. `--json` on `list` or `usage` gives output
-meant for a program.
-
-**`smartdns-shape`** — per-customer download limits, htb + fq_codel.
-
-```sh
-smartdns-shape list              # what is in force
-smartdns-shape off               # remove all shaping
-```
-
-The sync agent applies these from the panel every thirty seconds, so set
-speeds there rather than here.
-
-### On either
-
-**`smartdns-logs`** — what this machine has been doing, every part of it at
-once. It tells a relay from an exit by itself.
-
-```sh
-sudo smartdns-logs               # each part: running or not, and its last 100 lines
-sudo smartdns-logs -e            # only warnings and errors
-sudo smartdns-logs -f            # follow live; -e -f for problems only
-sudo smartdns-logs -n 500        # more lines per part
-sudo smartdns-logs --report      # all of it in one file to send, secrets masked
-```
-
-The panels log one line per request and one per operator action; the relay
-logs each domain that changes route in each template, and each customer that
-moves between templates. Warnings and errors carry a syslog level, which is
-what `-e` reads. Passwords, sessions and tokens are never written. Plain output
-is for your own screen - the admin panel's start-up line includes its address.
-`--report` masks every secret in the machine's config wherever it turns up,
-that address included; it still holds customers' addresses and usernames, so
-send it only to someone you trust.
-
-**`smartdns-restart`** — restart every part of this machine at once, then
-show which came back up. It tells a relay from an exit by itself.
-
-```sh
-sudo smartdns-restart
-```
-
-On a relay, customers' open connections drop for a moment and come straight
-back. If nginx's or dnsmasq's config does not load, that part is left running
-as it was rather than restarted into a failure, and the command says why.
-nftables is never restarted: that would throw away the allowlist and the usage
-counted since the last save.
-
-```sh
-smartdns-cert panel.example.com  # get or renew a certificate for that name
-sudo bash doctor-dns.sh --version
+# Remove the service from this machine
 sudo bash doctor-dns.sh --uninstall
 ```
 
-`smartdns-cert` borrows port 80 for the twenty seconds a challenge takes, so
-console downloads through a relay stall for that long and resume. A timer
-renews on its own once there is something to renew.
-
-## How it is built
-
-`doctor-dns.sh` is generated, not hand-edited. Everything lives in
-`templates/`, `common/` and `domains/`; `tools/installer-logic.sh` is the
-script's logic, and `tools/build-installer.py` staples them together:
+## Useful commands
 
 ```sh
-python3 tools/build-installer.py   # rewrites doctor-dns.sh
-bash -n doctor-dns.sh              # it stays valid bash
-python3 tools/test-websignup.py    # …and so on for the rest
+# Exit: find the admin panel
+sudo smartdns-access
+
+# Relay: inspect service and domain routing
+sudo smartdns status
+sudo smartdns list
+sudo smartdns find spotify
+sudo smartdns-rules check example.com
+sudo smartdns-acl enforce status
+
+# Either server: diagnostics and restart
+sudo smartdns-logs -e
+sudo smartdns-logs -f
+sudo smartdns-logs --report
+sudo smartdns-restart
 ```
 
-Payloads sit below `exit 0` with every line `#`-prefixed, which is what keeps
-the whole file valid bash — so `bash -n` genuinely checks it, and a reviewer
-can read every config they are about to run as root.
+Reports mask configuration secrets but can still contain customer IPs and usernames. Review before sharing. Restarting can briefly interrupt active connections.
 
-## Shape of a deployment
+## Development
 
-One database serves every relay. That is what makes a customer's allowance
-mean one thing across the service rather than one thing per machine.
+| Path | Purpose |
+| --- | --- |
+| `templates/` | Python services, management commands and service configuration |
+| `tools/installer-logic.sh` | Install and upgrade logic |
+| `assets/ui/` | CSS, JavaScript, font and font license |
+| `domains/` | Domain lists and service catalogue |
+| `common/` | Shared network configuration |
+| `tools/` | Builds, previews and tests |
 
+```sh
+# Rebuild panel assets and the standalone installer
+python tools/build-installer.py
+bash -n doctor-dns.sh
+
+# Regression checks for plan validation and fractional quotas
+python tools/test-ui-regressions.py
+
+# Generate sample pages and serve them locally
+python tools/preview-ui.py
+python -m http.server 8765 --bind 127.0.0.1 --directory docs/preview
 ```
-  exit node                          relay(s)
-  ┌──────────────────────┐          ┌──────────────────────┐
-  │ smartdns-panel       │ ◄─────── │ smartdns-sync        │
-  │  sqlite + sync API   │   30s    │  usage up,           │
-  │                      │ ───────► │  allowlist down      │
-  │ smartdns-admin       │          │                      │
-  │  operator's panel    │          │ customer's panel     │
-  └──────────────────────┘          └──────────────────────┘
-```
 
-The relay always dials out. It is the machine in the harder network position,
-and this way it needs no new inbound port.
+Open the local [admin overview](http://127.0.0.1:8765/admin.html), [user management](http://127.0.0.1:8765/users.html) or [customer panel](http://127.0.0.1:8765/user.html). Previews use sample data and do not execute server operations.
 
-The customer's panel lives on the relay because the point of it is to learn
-the customer's address, and only the relay sees the address they actually
-reach the service from.
+Edit source assets and rebuild instead of editing the installer or generated UI blocks directly. See the [UI asset guide](assets/ui/README.md) and [Persian UI change notes](docs/UI-update.fa.md).
 
-## Known limits
+## Limitations and bug reports
 
-- **Upload is not shaped.** Only the download direction is capped. Policing
-  ingress needs an ifb device and drops rather than queues, for a service
-  whose traffic is overwhelmingly inbound.
-- **A relay without a certificate has no customer panel.** That page asks for
-  a password, and nothing here asks for a password over plain HTTP — so it is
-  not served at all rather than served unsafely. Nobody can sign up or
-  register an address on such a relay until it is given a domain.
-- **Selling is not built, and there is no trial.** Signing up gets an account,
-  a password, and somewhere to send a receipt — no traffic. The account waits
-  until an operator opens its row and gives it a plan, which is the moment it
-  becomes able to connect at all.
-- **Xbox downloads stall** regardless of whether they are routed. Measured,
-  not solved.
-- **Traffic costs double.** One customer gigabyte is about two on the relay
-  and two on the exit — measured, and worth knowing before pricing anything.
+This project is alpha software. Connectivity depends on the relay-to-exit path, ISP and destination service. Speed limits apply to downloads only. A relay without a TLS certificate does not serve a user panel. Xbox download stalls were previously reported; this update does not establish that they are fixed.
 
-## Contributors
+Report bugs in [DNS Issues](https://github.com/DevURANIUM/DNS/issues), including server role, OS, version, reproduction steps and relevant output. Do not publish passwords, tokens or private admin panel URLs.
 
-- [Armin Toranj](https://github.com/arminandtoo) — `@arminandtoo`
+## License and contributions
 
----
+The code is distributed under the [MIT License](LICENSE). Vazirmatn is distributed separately under the [SIL Open Font License](assets/ui/OFL.txt). Issues and pull requests belong in [DevURANIUM/DNS](https://github.com/DevURANIUM/DNS).
 
-<div align="center">
-
-## ☕ Support this project
-
-**It is free, and it stays free.**
-
-Support open source softwares❤️<br>
-Long live free software🕊<br>
-Long live free internet🌐
-
-</div>
-
-<div align="center">
-
-| | |
-|:--|:--|
-| **TON** | `UQAh8oTWt8ec-q4I1zxga1sUYmKmvcQKGDYwspDrsGmUlQKI` |
-| **Tether — BEP20** | `0x8aE738721Ca6Fd9a8a375Df3AC4A144ed5695355` |
-| **Tether — TRON (TRC20)** | `TPiyEnb41qTZz8eM6eqnRwXbPXBZCNS1pm` |
-
-</div>
-<a href="https://coffeebede.com/agentmehdi47"><img class="img-fluid" src="https://coffeebede.ir/DashboardTemplateV2/app-assets/images/banner/default-yellow.svg" /></a>
-## Licence
-
-MIT. See [LICENSE](LICENSE).
-
-The domain list is assembled from public sources and from testing; it is not
-exhaustive and will drift as services change.
+Thanks to previous contributors, including [Armin Toranj](https://github.com/arminandtoo).

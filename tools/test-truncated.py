@@ -154,7 +154,7 @@ else:
         txt = open(p, encoding="utf-8").read()
         name = os.path.basename(p)
         check("%s names doctor-dns.sh" % name,
-              "raw.githubusercontent.com/mehdi047/doctor-dns/main/"
+              "raw.githubusercontent.com/DevURANIUM/DNS/main/"
               "doctor-dns.sh" in txt)
         check("%s does not pipe curl into a shell" % name,
               "| sudo sh" not in txt and "| sudo bash" not in txt)
