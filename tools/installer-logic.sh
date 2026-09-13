@@ -10,8 +10,8 @@
 # address of the other. Safe to re-run: configs are backed up, and a step that
 # would change nothing does nothing.
 #
-#   sudo bash doctor-dns.sh              install or update this machine
-#   sudo bash doctor-dns.sh --uninstall  put the machine back as it was
+#   sudo bash dns.sh              install or update this machine
+#   sudo bash dns.sh --uninstall  put the machine back as it was
 #
 # HTTPS for the panels is optional and asks for nothing but a domain name. A
 # certificate is obtained and renewed automatically, proved over port 80 - so
@@ -225,7 +225,7 @@ esac
 # install with twenty configs missing.
 [ "$(tail -n 1 "$SELF")" = "#__DOCTOR_DNS_COMPLETE__" ] || die "this file is incomplete - the
     download stopped early. Fetch it again:
-        curl -fsSLO https://raw.githubusercontent.com/DevURANIUM/DNS/main/doctor-dns.sh"
+        curl -fsSLO https://raw.githubusercontent.com/DevURANIUM/DNS/main/dns.sh"
 command -v apt-get >/dev/null 2>&1 || die "this installer expects Debian or Ubuntu"
 
 # ---------------------------------------------------------------- uninstall

@@ -46,13 +46,12 @@ DNS درخواست دامنه‌های انتخاب‌شده را از طریق 
 ابتدا **سرور خروجی** و سپس **رله** را نصب کنید. روی هر سرور:
 
 ```sh
-curl -fL https://raw.githubusercontent.com/DevURANIUM/DNS/main/doctor-dns.sh -o doctor-dns.sh
-sudo bash doctor-dns.sh
+curl -fsSLO https://raw.githubusercontent.com/DevURANIUM/DNS/main/dns.sh && sudo bash dns.sh
 ```
 
 نصب‌کننده نقش سرور و تنظیمات موردنیاز را می‌پرسد. توکن دریافتی از نصب خروجی را هنگام نصب رله وارد کنید. در پایان، اطلاعات اتصال و آدرس پنل‌های فعال نمایش داده می‌شود.
 
-فایل را ابتدا دانلود کنید و سپس اجرا کنید؛ نصب‌کننده داده‌های لازم را از خود فایل می‌خواند و برای اجرای مستقیم با پایپ طراحی نشده است. نام فنی فایل نصب همچنان `doctor-dns.sh` است.
+فایل را ابتدا دانلود کنید و سپس اجرا کنید؛ نصب‌کننده داده‌های لازم را از خود فایل می‌خواند و برای اجرای مستقیم با پایپ طراحی نشده است. نام فایل نصب `dns.sh` است.
 
 ### پورت‌ها
 
@@ -84,10 +83,10 @@ sudo bash doctor-dns.sh
 
 ```sh
 # نمایش نسخه، بدون نصب
-bash doctor-dns.sh --version
+bash dns.sh --version
 
 # حذف سرویس از همین سرور
-sudo bash doctor-dns.sh --uninstall
+sudo bash dns.sh --uninstall
 ```
 
 ## فرمان‌های کاربردی
@@ -126,7 +125,7 @@ sudo smartdns-restart
 ```sh
 # ساخت پنل‌ها و فایل نصب از منابع
 python tools/build-installer.py
-bash -n doctor-dns.sh
+bash -n dns.sh
 
 # تست اعتبارسنجی فرم و حفظ سهمیه اعشاری
 python tools/test-ui-regressions.py

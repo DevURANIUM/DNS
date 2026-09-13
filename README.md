@@ -44,13 +44,12 @@ The installer uses distribution packages including Python, nginx, dnsmasq and nf
 Install the **exit first**, then the **relay**. Run on each server:
 
 ```sh
-curl -fL https://raw.githubusercontent.com/DevURANIUM/DNS/main/doctor-dns.sh -o doctor-dns.sh
-sudo bash doctor-dns.sh
+curl -fsSLO https://raw.githubusercontent.com/DevURANIUM/DNS/main/dns.sh && sudo bash dns.sh
 ```
 
 Choose the server role and follow the prompts. Supply the exit's sync token when configuring the relay. The installer prints connection details and enabled panel addresses when finished.
 
-Download the file before executing it: the installer reads embedded payloads from itself and expects interactive input. The technical installer filename remains `doctor-dns.sh`.
+Download the file before executing it: the installer reads embedded payloads from itself and expects interactive input. The installer filename is `dns.sh`.
 
 ### Ports
 
@@ -82,10 +81,10 @@ Download the installer again and rerun it. It compares versions and asks before 
 
 ```sh
 # Print the version without installing
-bash doctor-dns.sh --version
+bash dns.sh --version
 
 # Remove the service from this machine
-sudo bash doctor-dns.sh --uninstall
+sudo bash dns.sh --uninstall
 ```
 
 ## Useful commands
@@ -124,7 +123,7 @@ Reports mask configuration secrets but can still contain customer IPs and userna
 ```sh
 # Rebuild panel assets and the standalone installer
 python tools/build-installer.py
-bash -n doctor-dns.sh
+bash -n dns.sh
 
 # Regression checks for plan validation and fractional quotas
 python tools/test-ui-regressions.py

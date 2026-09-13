@@ -26,7 +26,7 @@ except Exception:
     pass
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-BUILT = os.path.join(HERE, "..", "doctor-dns.sh")
+BUILT = os.path.join(HERE, "..", "dns.sh")
 fails = []
 
 

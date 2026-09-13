@@ -2,7 +2,7 @@
 """A half-downloaded installer has to refuse to run.
 
 This is the failure that actually happens - not an attack, a connection that
-dropped. And it is nastier than it looks, because everything doctor-dns.sh
+dropped. And it is nastier than it looks, because everything dns.sh
 writes lives below `exit 0` with every line commented out. Cut the file
 anywhere in that tail and what is left still parses as bash, still passes
 `bash -n`, and still runs. It would install a machine with configs silently
@@ -24,7 +24,7 @@ except Exception:
     pass
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-INSTALLER = os.path.join(HERE, "..", "doctor-dns.sh")
+INSTALLER = os.path.join(HERE, "..", "dns.sh")
 fails = []
 
 
@@ -67,7 +67,7 @@ whole = open(INSTALLER, "rb").read()
 
 
 def run(data, *args, **env):
-    script = os.path.join(tmp, "doctor-dns.sh")
+    script = os.path.join(tmp, "dns.sh")
     open(script, "wb").write(data)
     e = dict(os.environ, PATH=binn + os.pathsep + os.environ["PATH"])
     e.update(env)
@@ -153,9 +153,9 @@ else:
     for p in pair:
         txt = open(p, encoding="utf-8").read()
         name = os.path.basename(p)
-        check("%s names doctor-dns.sh" % name,
+        check("%s names dns.sh" % name,
               "raw.githubusercontent.com/DevURANIUM/DNS/main/"
-              "doctor-dns.sh" in txt)
+              "dns.sh" in txt)
         check("%s does not pipe curl into a shell" % name,
               "| sudo sh" not in txt and "| sudo bash" not in txt)
         check("%s has no get.sh left" % name, "get.sh" not in txt)

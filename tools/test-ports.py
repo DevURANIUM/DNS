@@ -26,7 +26,7 @@ except Exception:
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 LOGIC = os.path.join(HERE, "installer-logic.sh")
-BUILT = os.path.join(HERE, "..", "doctor-dns.sh")
+BUILT = os.path.join(HERE, "..", "dns.sh")
 ACCESS = os.path.join(HERE, "..", "templates", "smartdns-access")
 fails = []
 

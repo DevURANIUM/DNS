@@ -12,7 +12,7 @@ except Exception:
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 TOOL = os.path.join(HERE, "..", "templates", "smartdns-logs")
-BUILT = os.path.join(HERE, "..", "doctor-dns.sh")
+BUILT = os.path.join(HERE, "..", "dns.sh")
 fails = []
 
 
