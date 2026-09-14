@@ -140,7 +140,7 @@
     },
     {
       "key": "blizzard",
-      "label": "Blizzard / Activision",
+      "label": "Call of Duty / Warzone / Blizzard",
       "groups": [
         {
           "key": "main",
@@ -170,7 +170,7 @@
     },
     {
       "key": "riot",
-      "label": "Riot Games",
+      "label": "Riot / Valorant / League of Legends",
       "groups": [
         {
           "key": "main",
@@ -1050,6 +1050,471 @@
           "domains": [
             "core.windows.net"
           ]
+        }
+      ]
+    },
+    {
+      "key": "cs2",
+      "label": "CS2 / Counter-Strike 2",
+      "groups": [
+        {
+          "key": "main",
+          "label": "وب و محتوا",
+          "domains": [
+            "counter-strike.net"
+          ],
+          "note": "مسیریابی وب و محتوا؛ عملکرد کامل برنامه، تماس، UDP و پورت‌های غیر وب تضمین نمی‌شود. برای ورود و دانلود، Steam را هم انتخاب کنید."
+        }
+      ]
+    },
+    {
+      "key": "dota2",
+      "label": "Dota 2",
+      "groups": [
+        {
+          "key": "main",
+          "label": "وب و محتوا",
+          "domains": [
+            "dota2.com"
+          ],
+          "note": "مسیریابی وب و محتوا؛ عملکرد کامل برنامه، تماس، UDP و پورت‌های غیر وب تضمین نمی‌شود. برای ورود و دانلود، Steam را هم انتخاب کنید."
+        }
+      ]
+    },
+    {
+      "key": "marvelrivals",
+      "label": "Marvel Rivals",
+      "groups": [
+        {
+          "key": "main",
+          "label": "وب و محتوا",
+          "domains": [
+            "marvelrivals.com"
+          ],
+          "note": "مسیریابی وب و محتوا؛ عملکرد کامل برنامه، تماس، UDP و پورت‌های غیر وب تضمین نمی‌شود."
+        }
+      ]
+    },
+    {
+      "key": "deltaforce",
+      "label": "Delta Force",
+      "groups": [
+        {
+          "key": "main",
+          "label": "وب و محتوا",
+          "domains": [
+            "playdeltaforce.com"
+          ],
+          "note": "مسیریابی وب و محتوا؛ عملکرد کامل برنامه، تماس، UDP و پورت‌های غیر وب تضمین نمی‌شود."
+        }
+      ]
+    },
+    {
+      "key": "embark",
+      "label": "ARC Raiders / THE FINALS",
+      "groups": [
+        {
+          "key": "main",
+          "label": "وب و محتوا",
+          "domains": [
+            "arcraiders.com",
+            "embark.games",
+            "reachthefinals.com"
+          ],
+          "note": "مسیریابی وب و محتوا؛ عملکرد کامل برنامه، تماس، UDP و پورت‌های غیر وب تضمین نمی‌شود."
+        }
+      ]
+    },
+    {
+      "key": "fortnite",
+      "label": "Fortnite / Rocket League / Fall Guys",
+      "groups": [
+        {
+          "key": "main",
+          "label": "وب و محتوا",
+          "domains": [
+            "fallguys.com",
+            "fortnite.com",
+            "rocketleague.com"
+          ],
+          "note": "مسیریابی وب و محتوا؛ عملکرد کامل برنامه، تماس، UDP و پورت‌های غیر وب تضمین نمی‌شود."
+        }
+      ]
+    },
+    {
+      "key": "poe",
+      "label": "Path of Exile 1 / 2",
+      "groups": [
+        {
+          "key": "main",
+          "label": "وب و محتوا",
+          "domains": [
+            "pathofexile.com",
+            "pathofexile2.com",
+            "poecdn.com"
+          ],
+          "note": "مسیریابی وب و محتوا؛ عملکرد کامل برنامه، تماس، UDP و پورت‌های غیر وب تضمین نمی‌شود."
+        }
+      ]
+    },
+    {
+      "key": "pubgmobile",
+      "label": "PUBG Mobile",
+      "groups": [
+        {
+          "key": "main",
+          "label": "وب و محتوا",
+          "domains": [
+            "pubgmobile.com"
+          ],
+          "note": "مسیریابی وب و محتوا؛ عملکرد کامل برنامه، تماس، UDP و پورت‌های غیر وب تضمین نمی‌شود."
+        }
+      ]
+    },
+    {
+      "key": "hoyolab",
+      "label": "HoYoLAB",
+      "groups": [
+        {
+          "key": "main",
+          "label": "وب و محتوا",
+          "domains": [
+            "hoyolab.com"
+          ],
+          "note": "مسیریابی وب و محتوا؛ عملکرد کامل برنامه، تماس، UDP و پورت‌های غیر وب تضمین نمی‌شود."
+        }
+      ]
+    },
+    {
+      "key": "wuthering",
+      "label": "Wuthering Waves",
+      "groups": [
+        {
+          "key": "main",
+          "label": "وب و محتوا",
+          "domains": [
+            "wutheringwaves.kurogames.com"
+          ],
+          "note": "مسیریابی وب و محتوا؛ عملکرد کامل برنامه، تماس، UDP و پورت‌های غیر وب تضمین نمی‌شود."
+        }
+      ]
+    },
+    {
+      "key": "youtube",
+      "label": "YouTube / YouTube Music",
+      "groups": [
+        {
+          "key": "main",
+          "label": "وب و محتوا",
+          "domains": [
+            "googlevideo.com",
+            "youtu.be",
+            "youtube-nocookie.com",
+            "youtube.com",
+            "ytimg.com"
+          ],
+          "note": "مسیریابی وب و محتوا؛ عملکرد کامل برنامه، تماس، UDP و پورت‌های غیر وب تضمین نمی‌شود. برای ورود به حساب، Google را هم انتخاب کنید؛ ویدیو ترافیک سرورها را مصرف می‌کند."
+        }
+      ]
+    },
+    {
+      "key": "reddit",
+      "label": "Reddit",
+      "groups": [
+        {
+          "key": "main",
+          "label": "وب و محتوا",
+          "domains": [
+            "redd.it",
+            "reddit.com",
+            "redditmedia.com",
+            "redditstatic.com"
+          ],
+          "note": "مسیریابی وب و محتوا؛ عملکرد کامل برنامه، تماس، UDP و پورت‌های غیر وب تضمین نمی‌شود."
+        }
+      ]
+    },
+    {
+      "key": "pinterest",
+      "label": "Pinterest",
+      "groups": [
+        {
+          "key": "main",
+          "label": "وب و محتوا",
+          "domains": [
+            "pinimg.com",
+            "pinterest.com"
+          ],
+          "note": "مسیریابی وب و محتوا؛ عملکرد کامل برنامه، تماس، UDP و پورت‌های غیر وب تضمین نمی‌شود."
+        }
+      ]
+    },
+    {
+      "key": "vimeo",
+      "label": "Vimeo",
+      "groups": [
+        {
+          "key": "main",
+          "label": "وب و محتوا",
+          "domains": [
+            "vimeo.com",
+            "vimeocdn.com"
+          ],
+          "note": "مسیریابی وب و محتوا؛ عملکرد کامل برنامه، تماس، UDP و پورت‌های غیر وب تضمین نمی‌شود."
+        }
+      ]
+    },
+    {
+      "key": "soundcloud",
+      "label": "SoundCloud",
+      "groups": [
+        {
+          "key": "main",
+          "label": "وب و محتوا",
+          "domains": [
+            "sndcdn.com",
+            "soundcloud.com"
+          ],
+          "note": "مسیریابی وب و محتوا؛ عملکرد کامل برنامه، تماس، UDP و پورت‌های غیر وب تضمین نمی‌شود."
+        }
+      ]
+    },
+    {
+      "key": "mozilla",
+      "label": "Firefox / Mozilla",
+      "groups": [
+        {
+          "key": "main",
+          "label": "وب و محتوا",
+          "domains": [
+            "firefox.com",
+            "mozilla.net",
+            "mozilla.org"
+          ],
+          "note": "مسیریابی وب و محتوا؛ عملکرد کامل برنامه، تماس، UDP و پورت‌های غیر وب تضمین نمی‌شود."
+        }
+      ]
+    },
+    {
+      "key": "proton",
+      "label": "Proton Mail / Drive / Pass",
+      "groups": [
+        {
+          "key": "main",
+          "label": "وب و محتوا",
+          "domains": [
+            "proton.me",
+            "protonmail.com"
+          ],
+          "note": "مسیریابی وب و محتوا؛ عملکرد کامل برنامه، تماس، UDP و پورت‌های غیر وب تضمین نمی‌شود."
+        }
+      ]
+    },
+    {
+      "key": "dropbox",
+      "label": "Dropbox",
+      "groups": [
+        {
+          "key": "main",
+          "label": "وب و محتوا",
+          "domains": [
+            "dropbox.com",
+            "dropboxapi.com",
+            "dropboxstatic.com",
+            "dropboxusercontent.com"
+          ],
+          "note": "مسیریابی وب و محتوا؛ عملکرد کامل برنامه، تماس، UDP و پورت‌های غیر وب تضمین نمی‌شود."
+        }
+      ]
+    },
+    {
+      "key": "wikipedia",
+      "label": "Wikipedia / Wikimedia",
+      "groups": [
+        {
+          "key": "main",
+          "label": "وب و محتوا",
+          "domains": [
+            "wikimedia.org",
+            "wikimediafoundation.org",
+            "wikipedia.org"
+          ],
+          "note": "مسیریابی وب و محتوا؛ عملکرد کامل برنامه، تماس، UDP و پورت‌های غیر وب تضمین نمی‌شود."
+        }
+      ]
+    },
+    {
+      "key": "archive",
+      "label": "Internet Archive",
+      "groups": [
+        {
+          "key": "main",
+          "label": "وب و محتوا",
+          "domains": [
+            "archive.org"
+          ],
+          "note": "مسیریابی وب و محتوا؛ عملکرد کامل برنامه، تماس، UDP و پورت‌های غیر وب تضمین نمی‌شود."
+        }
+      ]
+    },
+    {
+      "key": "duolingo",
+      "label": "Duolingo",
+      "groups": [
+        {
+          "key": "main",
+          "label": "وب و محتوا",
+          "domains": [
+            "duolingo.cn",
+            "duolingo.com"
+          ],
+          "note": "مسیریابی وب و محتوا؛ عملکرد کامل برنامه، تماس، UDP و پورت‌های غیر وب تضمین نمی‌شود."
+        }
+      ]
+    },
+    {
+      "key": "deepl",
+      "label": "DeepL",
+      "groups": [
+        {
+          "key": "main",
+          "label": "وب و محتوا",
+          "domains": [
+            "deepl.com"
+          ],
+          "note": "مسیریابی وب و محتوا؛ عملکرد کامل برنامه، تماس، UDP و پورت‌های غیر وب تضمین نمی‌شود."
+        }
+      ]
+    },
+    {
+      "key": "telegramweb",
+      "label": "Telegram Web",
+      "groups": [
+        {
+          "key": "main",
+          "label": "وب و محتوا",
+          "domains": [
+            "t.me",
+            "telegram.org",
+            "web.telegram.org"
+          ],
+          "note": "مسیریابی وب و محتوا؛ عملکرد کامل برنامه، تماس، UDP و پورت‌های غیر وب تضمین نمی‌شود."
+        }
+      ]
+    },
+    {
+      "key": "signalweb",
+      "label": "Signal — وب و دانلود",
+      "groups": [
+        {
+          "key": "main",
+          "label": "وب و محتوا",
+          "domains": [
+            "signal.org"
+          ],
+          "note": "مسیریابی وب و محتوا؛ عملکرد کامل برنامه، تماس، UDP و پورت‌های غیر وب تضمین نمی‌شود."
+        }
+      ]
+    },
+    {
+      "key": "speedtest",
+      "label": "Speedtest",
+      "groups": [
+        {
+          "key": "main",
+          "label": "وب و محتوا",
+          "domains": [
+            "ookla.com",
+            "speedtest.net"
+          ],
+          "note": "مسیریابی وب و محتوا؛ عملکرد کامل برنامه، تماس، UDP و پورت‌های غیر وب تضمین نمی‌شود."
+        }
+      ]
+    },
+    {
+      "key": "gitbook",
+      "label": "GitBook",
+      "groups": [
+        {
+          "key": "main",
+          "label": "وب و محتوا",
+          "domains": [
+            "gitbook.com",
+            "gitbook.io"
+          ],
+          "note": "مسیریابی وب و محتوا؛ عملکرد کامل برنامه، تماس، UDP و پورت‌های غیر وب تضمین نمی‌شود."
+        }
+      ]
+    },
+    {
+      "key": "readthedocs",
+      "label": "Read the Docs",
+      "groups": [
+        {
+          "key": "main",
+          "label": "وب و محتوا",
+          "domains": [
+            "readthedocs.io",
+            "readthedocs.org"
+          ],
+          "note": "مسیریابی وب و محتوا؛ عملکرد کامل برنامه، تماس، UDP و پورت‌های غیر وب تضمین نمی‌شود."
+        }
+      ]
+    },
+    {
+      "key": "blender",
+      "label": "Blender",
+      "groups": [
+        {
+          "key": "main",
+          "label": "وب و محتوا",
+          "domains": [
+            "blender.org"
+          ],
+          "note": "مسیریابی وب و محتوا؛ عملکرد کامل برنامه، تماس، UDP و پورت‌های غیر وب تضمین نمی‌شود."
+        }
+      ]
+    },
+    {
+      "key": "obs",
+      "label": "OBS Studio",
+      "groups": [
+        {
+          "key": "main",
+          "label": "وب و محتوا",
+          "domains": [
+            "obsproject.com"
+          ],
+          "note": "مسیریابی وب و محتوا؛ عملکرد کامل برنامه، تماس، UDP و پورت‌های غیر وب تضمین نمی‌شود."
+        }
+      ]
+    },
+    {
+      "key": "videolan",
+      "label": "VLC / VideoLAN",
+      "groups": [
+        {
+          "key": "main",
+          "label": "وب و محتوا",
+          "domains": [
+            "videolan.org"
+          ],
+          "note": "مسیریابی وب و محتوا؛ عملکرد کامل برنامه، تماس، UDP و پورت‌های غیر وب تضمین نمی‌شود."
+        }
+      ]
+    },
+    {
+      "key": "kdenlive",
+      "label": "Kdenlive / KDE",
+      "groups": [
+        {
+          "key": "main",
+          "label": "وب و محتوا",
+          "domains": [
+            "kde.org",
+            "kdenlive.org"
+          ],
+          "note": "مسیریابی وب و محتوا؛ عملکرد کامل برنامه، تماس، UDP و پورت‌های غیر وب تضمین نمی‌شود."
         }
       ]
     }

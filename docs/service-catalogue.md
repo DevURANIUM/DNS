@@ -1,6 +1,6 @@
 # Game and media catalogue
 
-The catalogue now includes 16 additional service entries and 35 additional
+The catalogue now includes 31 additional service entries and 62 additional
 domains. Existing service/group identifiers are retained so saved plans keep
 their selections. Warzone is explicitly named under the existing Blizzard /
 Activision group; its `callofduty.com` and `activision.com` domains were already
@@ -8,9 +8,10 @@ present. CS2 has its own official-site entry and also names its Steam dependency
 
 New entries: CS2, Dota 2, Fortnite/Rocket League/Fall Guys, Marvel Rivals,
 Delta Force, ARC Raiders/THE FINALS, Path of Exile 1/2, Wuthering Waves,
-PUBG Mobile, HoYoLAB, Clash/Brawl Stars, YouTube/Music, Reddit, Pinterest,
-Vimeo and SoundCloud. Existing labels also expose Valorant, League of Legends,
-FC, Apex, Battlefield, Rainbow Six, GTA, Genshin and Honkai in panel search.
+PUBG Mobile, HoYoLAB, YouTube/Music, Reddit, Pinterest, Vimeo, SoundCloud,
+Mozilla/Firefox, Proton, Dropbox, Wikipedia, Internet Archive, Duolingo, DeepL,
+Telegram Web, Signal, Speedtest, GitBook, Read the Docs, Blender, OBS, VLC
+and Kdenlive. Warzone and Valorant are named in their existing publisher entries.
 
 ## Scope
 
@@ -49,7 +50,7 @@ works through this deployment. Domain notes describe the supported scope.
 ## Maintenance
 
 Edit `domains/services.json` and add ordinary routed domains to
-`domains/domains.txt`. Keep a domain owned by exactly one group. The classifier
-preserves curated ownership, labels and notes when adding unclassified domains.
+`domains/domains.txt`. Keep a domain owned by exactly one group. Do not run `tools/classify-services.py` over the curated catalogue: that
+legacy classifier rebuilds it and can discard manually added services and notes.
 Run `python tools/test-service-catalogue.py`, the template and opt-in tests,
 then `python tools/build-installer.py` to update `dns.sh`.
