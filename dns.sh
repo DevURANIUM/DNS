@@ -38,7 +38,7 @@ STAMP="$(date +%Y%m%d-%H%M%S)"
 # What this file is. Written to the machine once an install finishes, so the
 # next run can tell whether it is an upgrade, a re-run, or somebody about to
 # put an older version over a newer one by accident.
-VERSION="0.3.20"
+VERSION="0.3.21"
 
 # What this install did, so uninstall can undo exactly that and nothing more.
 # Without it, removal would be guesswork: whether dnsmasq was ours or already
@@ -6686,6 +6686,11 @@ exit 0
 #
 #    # -- plumbing ---------------------------------------------------------
 #    def send(self, body, code=200, headers=None):
+#        if isinstance(body, str) and "<form" in body and self.session_ok():
+#            csrf = self.csrf_token()
+#            body = re.sub(r"(<form\b[^>]*\bmethod=['\"]post['\"][^>]*>)",
+#                          lambda m: m.group(1) + "<input type='hidden' name='csrf_token' value='%s'>" % csrf,
+#                          body, flags=re.I)
 #        blob = body.encode("utf-8") if isinstance(body, str) else body
 #        # Start the header buffer clean. Nothing reaches the socket until
 #        # end_headers(), so a send() that raised part-way through leaves a
@@ -6701,7 +6706,7 @@ exit 0
 #        self.send_header("Cache-Control", "no-store")
 #        self.send_header("X-Frame-Options", "DENY")
 #        self.send_header("X-Content-Type-Options", "nosniff")
-#        self.send_header("Referrer-Policy", "no-referrer")
+#        self.send_header("Referrer-Policy", "same-origin")
 #        for k, v in (headers or {}).items():
 #            self.send_header(k, v)
 #        self.end_headers()
@@ -6919,6 +6924,29 @@ exit 0
 #            return False
 #        return True
 #
+#    def csrf_token(self):
+#        return hmac.new(CFG["ADMIN_HASH"].encode(),
+#                        ("admin-form:" + self.session_token()).encode(),
+#                        hashlib.sha256).hexdigest()
+#
+#    def form_origin_ok(self, params):
+#        if self.headers.get("Sec-Fetch-Site") == "cross-site":
+#            return False
+#        origin = self.headers.get("Origin") or self.headers.get("Referer", "")
+#        if origin and origin != "null":
+#            try:
+#                parsed = urllib.parse.urlsplit(origin)
+#                host = urllib.parse.urlsplit("https://" + self.headers.get("Host", ""))
+#                return (parsed.scheme == "https" and parsed.hostname == host.hostname
+#                        and (parsed.port or 443) == (host.port or 443))
+#            except ValueError:
+#                return False
+#        # Referrer policies can suppress Origin/Referer. A session-bound form
+#        # token proves this form came from a page served to this administrator.
+#        token = (params.get("csrf_token") or [""])[0]
+#        return bool(self.session_ok() and token and
+#                    hmac.compare_digest(token, self.csrf_token()))
+#
 #    def locked_out(self):
 #        rec = ATTEMPTS.get(self.client_address[0])
 #        if not rec:
@@ -6993,14 +7021,12 @@ exit 0
 #            self.close_connection = True
 #            return self.send("<h1>413</h1>", 413)
 #        params = self.body_params()
-#        # Browser form submissions must come from this HTTPS origin.
-#        origin = self.headers.get("Origin") or self.headers.get("Referer", "")
-#        parsed_origin = urllib.parse.urlsplit(origin)
-#        if (parsed_origin.scheme != "https" or
-#                parsed_origin.netloc.lower() != self.headers.get("Host", "").lower() or
-#                self.headers.get("Sec-Fetch-Site") == "cross-site"):
+#        if not self.form_origin_ok(params):
 #            self.close_connection = True
-#            return self.send("<h1>403</h1>", 403)
+#            return self.send(page("درخواست نامعتبر",
+#                "<div class='card'><h2>فرم معتبر نیست یا قدیمی شده است</h2>"
+#                "<p>به صفحه کاربران برگردید و فرم را دوباره باز کنید.</p>"
+#                "<a href='/%s/users'>بازگشت به کاربران</a></div>" % html.escape(CFG["ADMIN_PATH"]), CFG), 403)
 #        if not self.session_ok():
 #            if self.locked_out():
 #                log(WARN, "admin login refused from %s: too many failed attempts"
