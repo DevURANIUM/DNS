@@ -38,7 +38,7 @@ STAMP="$(date +%Y%m%d-%H%M%S)"
 # What this file is. Written to the machine once an install finishes, so the
 # next run can tell whether it is an upgrade, a re-run, or somebody about to
 # put an older version over a newer one by accident.
-VERSION="0.3.22"
+VERSION="0.3.23"
 
 # What this install did, so uninstall can undo exactly that and nothing more.
 # Without it, removal would be guesswork: whether dnsmasq was ours or already
@@ -5465,6 +5465,10 @@ exit 0
 #        n /= 1024
 #
 #
+## Short-lived one-use notifications; cookie contains only a random identifier.
+#USER_FLASHES = {}
+#USER_FLASH_LOCK = threading.Lock()
+#
 #class UserPanel(http.server.BaseHTTPRequestHandler):
 #    """The page a customer sees.
 #
@@ -5571,21 +5575,41 @@ exit 0
 #                % (session, 30 * 86400))
 #
 #    def redirect(self, where, message="", bad=False):
+#        headers = {"Location": where}
 #        if message:
-#            where += ("&" if "?" in where else "?") + "m=" + \
-#                urllib.parse.quote(message) + ("&e=1" if bad else "")
-#        return self.send("", 303, {"Location": where})
+#            token = os.urandom(32).hex()
+#            stamp = time.monotonic()
+#            with USER_FLASH_LOCK:
+#                for old in list(USER_FLASHES):
+#                    if USER_FLASHES[old][0] <= stamp:
+#                        del USER_FLASHES[old]
+#                if len(USER_FLASHES) >= 4096:
+#                    del USER_FLASHES[next(iter(USER_FLASHES))]
+#                USER_FLASHES[token] = (stamp + 120, self.session(), str(message)[:2000], bool(bad))
+#            headers["Set-Cookie"] = "sdu_notice=%s; Path=/; Max-Age=120; HttpOnly; Secure; SameSite=Strict" % token
+#        return self.send("", 303, headers)
 #
 #    def banner(self):
-#        q = urllib.parse.parse_qs(urllib.parse.urlparse(self.path).query)
-#        msg = (q.get("m") or [""])[0]
-#        if not msg:
+#        try:
+#            cookies = http.cookies.SimpleCookie(self.headers.get("Cookie", ""))
+#            token = cookies["sdu_notice"].value if "sdu_notice" in cookies else ""
+#        except http.cookies.CookieError:
 #            return ""
+#        with USER_FLASH_LOCK:
+#            record = USER_FLASHES.get(token)
+#            if not record or record[0] <= time.monotonic() or record[1] != self.session():
+#                return ""
+#            del USER_FLASHES[token]
 #        return "<div class='msg %s'>%s</div>" % (
-#            "err" if q.get("e") else "good", html.escape(msg[:200]))
+#            "err" if record[3] else "good", html.escape(record[2]))
 #
 #    def do_GET(self):
-#        path = urllib.parse.urlparse(self.path).path.rstrip("/") or "/"
+#        parsed = urllib.parse.urlparse(self.path)
+#        path = parsed.path.rstrip("/") or "/"
+#        query = urllib.parse.parse_qs(parsed.query)
+#        if "m" in query or "e" in query:
+#            # Discard legacy, externally supplied messages instead of displaying them.
+#            return self.redirect(path)
 #
 #        if path in ("/signup", "/login"):
 #            # Whether a cookie is here decides only whether to offer a way back
