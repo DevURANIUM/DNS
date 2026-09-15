@@ -12,3 +12,7 @@ Distributed under the SIL Open Font License; see `OFL.txt`.
 Run `python tools/preview-ui.py` to generate disposable sample pages, then
 `python -m http.server 8765 --bind 127.0.0.1 --directory docs/preview`.
 The preview is static and uses sample data, not a deployed DNS service.
+
+JetBrains Mono Regular v2.304 is bundled for DNS addresses, IPs and Latin identifiers.
+Source: https://github.com/JetBrains/JetBrainsMono
+License: [SIL OFL](JetBrainsMono-OFL.txt). Both font files are embedded by the build.

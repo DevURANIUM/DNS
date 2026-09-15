@@ -45,7 +45,9 @@ def main():
                                   'status': 'active', 'plan': 'ماهانه',
                                   'quota': 10 * admin.GB, 'used': 3 * admin.GB,
                                   'ip': '198.51.100.2', 'speed_kbps': 20000}
-        pages = {'admin.html': admin.page('نمای کلی', handler.home(), admin.CFG),
+        pages = {'landing.html': sync.user_page(sync.landing()),
+                 'user-login.html': sync.user_page(sync.login_form()),
+                 'admin.html': admin.page('نمای کلی', handler.home(), admin.CFG),
                  'users.html': admin.page('مدیریت کاربران', handler.users(), admin.CFG, 'users'),
                  'login.html': admin.login_page(admin.CFG),
                  'signup.html': sync.user_page(sync.signup_form()),

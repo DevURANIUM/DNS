@@ -13,6 +13,10 @@ def build():
            + '@font-face{font-family:Vazirmatn;font-style:normal;font-weight:100 900;'
            'font-display:swap;src:url(data:font/woff2;base64,' + font + ') format("woff2")}\n'
            + (assets / 'panel.css').read_text(encoding='utf-8'))
+    mono = base64.b64encode((assets / 'JetBrainsMono-Regular.woff2').read_bytes()).decode('ascii')
+    css += ('\n/* ' + (assets / 'JetBrainsMono-OFL.txt').read_text(encoding='utf-8') + '\n*/\n'
+            + '@font-face{font-family:JetBrainsMono;font-style:normal;font-weight:400;'
+            'font-display:swap;src:url(data:font/woff2;base64,' + mono + ') format("woff2")}\n')
     script = '<script>' + (assets / 'panel.js').read_text(encoding='utf-8') + '</script>'
     for name, variable in [('smartdns-admin', 'CSS'), ('smartdns-sync', 'USER_CSS')]:
         path = ROOT / 'templates' / name
