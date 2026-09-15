@@ -5,7 +5,7 @@ try{root.dataset.theme=isCustomer?(localStorage.getItem('dns-theme')||'dark'):'d
 const toast=document.createElement('div');toast.className='toast';toast.setAttribute('role','status');document.body.append(toast);let timer;
 function notify(message){toast.textContent=message;clearTimeout(timer);timer=setTimeout(()=>{toast.textContent='';},3500);}
 const theme=document.createElement('button');theme.type='button';theme.className='ghost theme-toggle';
-function themeLabel(){theme.textContent=root.dataset.theme==='light'?'حالت تاریک ◐':'حالت روشن ◑';theme.setAttribute('aria-label',theme.textContent);}
+function themeLabel(){theme.textContent=root.dataset.theme==='light'?'حالت تاریک':'حالت روشن';theme.setAttribute('aria-label',theme.textContent);}
 themeLabel();theme.onclick=()=>{root.dataset.theme=root.dataset.theme==='light'?'dark':'light';try{localStorage.setItem('dns-theme',root.dataset.theme);}catch(_){}themeLabel();};
 if(isCustomer)(document.querySelector('header')||document.body).append(theme);
 document.querySelectorAll('nav a.on').forEach(a=>a.setAttribute('aria-current','page'));
