@@ -19,6 +19,8 @@ document.querySelectorAll('body.customer input[type=password]').forEach((input,i
 });
 document.querySelectorAll('label').forEach((label,index)=>{if(label.htmlFor||label.querySelector('input,select,textarea'))return;const field=label.nextElementSibling;if(field&&field.matches('input,select,textarea')){if(!field.id)field.id='field-'+index;label.htmlFor=field.id;}});
 const normalize=value=>value.normalize('NFKC').replace(/ي/g,'ی').replace(/ك/g,'ک').replace(/[۰-۹]/g,c=>String('۰۱۲۳۴۵۶۷۸۹'.indexOf(c))).replace(/[٠-٩]/g,c=>String('٠١٢٣٤٥٦٧٨٩'.indexOf(c))).toLocaleLowerCase();
+const serviceCards=Array.from(document.querySelectorAll('details.svc'));
+if(serviceCards.length){const search=document.createElement('input');search.type='search';search.className='service-search';search.placeholder='جست‌وجوی سرویس یا دامنه…';search.setAttribute('aria-label','جست‌وجوی سرویس یا دامنه');const count=document.createElement('p');count.className='muted';count.setAttribute('aria-live','polite');serviceCards[0].before(search,count);function filterServices(){const q=normalize(search.value.trim());let n=0;serviceCards.forEach(card=>{card.hidden=!normalize(card.textContent).includes(q);if(!card.hidden)n++;});count.textContent=n+' از '+serviceCards.length+' گروه';}search.addEventListener('input',filterServices);filterServices();}
 document.querySelectorAll('table').forEach((table,index)=>{
  const wrapper=document.createElement('div');wrapper.className='table-scroll';wrapper.tabIndex=0;wrapper.setAttribute('role','region');wrapper.setAttribute('aria-label','جدول؛ برای دیدن ستون‌ها پیمایش کنید');table.before(wrapper);wrapper.append(table);
  const rows=Array.from(table.rows).filter(row=>row.querySelector('td'));if(rows.length<2)return;

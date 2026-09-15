@@ -72,3 +72,5 @@ body.customer,body.admin-panel,body.admin-login{font-family:Vazirmatn,Tahoma,san
 .customer .password-field .password-toggle{position:absolute;left:4px;top:50%;transform:translateY(-50%);display:inline-flex!important;align-items:center;justify-content:center;width:40px!important;height:40px;min-height:40px;margin:0!important;padding:0!important;border:0;background:transparent;color:var(--muted);border-radius:8px}
 .customer .password-field .password-toggle:hover{color:var(--accent);background:var(--surface);transform:translateY(-50%)}
 .customer .password-toggle svg{display:block;pointer-events:none}
+
+.service-search{display:block;width:100%;margin:12px 0}details.svc[hidden]{display:none!important}

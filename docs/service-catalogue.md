@@ -1,55 +1,64 @@
-# Game and media catalogue
+# Service catalogue — 2026-09-16
 
-The catalogue now includes 31 additional service entries and 62 additional
-domains. Existing service/group identifiers are retained so saved plans keep
-their selections. Warzone is explicitly named under the existing Blizzard /
-Activision group; its `callofduty.com` and `activision.com` domains were already
-present. CS2 has its own official-site entry and also names its Steam dependency.
+The catalogue contains 122 services and 1755 domain entries. This expansion added
+49 service entries and 1188 domains, preserving previous group identifiers and
+ownership. Existing custom templates retain their selections. The default full
+template includes ordinary new groups; existing opt-in exclusions remain intact.
 
-New entries: CS2, Dota 2, Fortnite/Rocket League/Fall Guys, Marvel Rivals,
-Delta Force, ARC Raiders/THE FINALS, Path of Exile 1/2, Wuthering Waves,
-PUBG Mobile, HoYoLAB, YouTube/Music, Reddit, Pinterest, Vimeo, SoundCloud,
-Mozilla/Firefox, Proton, Dropbox, Wikipedia, Internet Archive, Duolingo, DeepL,
-Telegram Web, Signal, Speedtest, GitBook, Read the Docs, Blender, OBS, VLC
-and Kdenlive. Warzone and Valorant are named in their existing publisher entries.
+## Coverage
 
-## Scope
+AI additions include Runway, ElevenLabs, Suno, Udio, Stability, Replicate, fal,
+Cohere, Grok, Qwen, Kling, Luma, HeyGen, Synthesia, You.com, FLUX, SambaNova,
+Cerebras, Midjourney, Leonardo and Ideogram. Existing ChatGPT, Claude, Gemini,
+DeepSeek, Mistral, Perplexity, Hugging Face and coding tools remain available.
 
-These are website/content routing entries, **not a verified complete game
-backend allowlist**. A game's own domain often serves only its website; sign-in
-and downloads can depend on Steam, Epic, console or publisher groups. The panel
-shows these dependencies beside each entry. Live matches, UDP, voice and
-non-HTTP ports are not tunneled by this HTTP/SNI proxy. No lower-ping or NAT
-improvement is promised. Real relay-to-exit testing is still required.
+Game additions include Warframe, Destiny/Bungie, Escape from Tarkov,
+Battlestate, Gaijin, Wargaming, Square Enix, FFXIV, Guild Wars 2, Facepunch,
+Dead by Daylight, Overwolf, Modrinth and FiveM. Steam, Rockstar, PlayStation,
+Xbox, Epic, Warzone and the other existing publisher groups are retained.
 
-YouTube includes youtube.com, youtu.be, youtube-nocookie.com, ytimg.com and
-googlevideo.com. Google sign-in requires the existing Google group. Video
-traffic consumes relay and exit bandwidth. QUIC is not carried by this proxy.
+Windows Update has a separate group for update.microsoft.com, windowsupdate.com
+and adl.windows.com. Delivery Optimization endpoints under mp.microsoft.com
+are already owned by Xbox: select that group as well for these downloads.
 
-The default template includes new ordinary groups automatically. Custom
-templates retain their existing selections; select new entries explicitly.
-Existing Epic/EA/PlayStation opt-in exceptions stay intact. Do not add shared
-UDP game backends (for example Steam Datagram Relay) as HTTP routing domains.
+Linux repositories include Debian, Ubuntu, Fedora, Rocky, AlmaLinux, openSUSE,
+Kali, Raspbian and NixOS. The shared Linux mirror group combines HTTP/HTTPS
+hosts from the official Debian, Ubuntu, Arch and Alpine lists. Arch entries
+must be active with at least 95% completion in the fetched status snapshot.
+Shared hosts are stored once, not once per distribution. Existing parent
+rules may already cover a mirror, so source counts differ from added counts.
 
-## Sources checked on 2026-09-14
+## Domain rules
 
-- [Activision TCP/UDP ports](https://support.activision.com/articles/ports-used-for-call-of-duty-games)
-- [Steam networking requirements](https://help.steampowered.com/en/faqs/view/2EA8-4D75-DA21-31EB)
-- [CS2](https://www.counter-strike.net/cs2), [Dota 2](https://www.dota2.com/)
-- [Warzone](https://www.callofduty.com/warzone), [Marvel Rivals](https://www.marvelrivals.com/)
-- [ARC Raiders](https://arcraiders.com/), [Delta Force](https://www.playdeltaforce.com/)
-- [Fortnite](https://www.fortnite.com/), [Rocket League](https://www.rocketleague.com/)
-- [Path of Exile](https://www.pathofexile.com/), [Path of Exile 2](https://pathofexile2.com/)
-- [Wuthering Waves](https://wutheringwaves.kurogames.com/), [PUBG Mobile](https://www.pubgmobile.com/)
-- [HoYoLAB](https://www.hoyolab.com/), [Supercell](https://supercell.com/en/games/)
-- [Cisco YouTube domain guidance](https://www.cisco.com/c/en/us/support/docs/application-networking-services/wide-area-application-services-waas-software/201014-Configure-Youtube-Traffic-Optimization-w.pdf)
+A domain covers itself and all subdomains at any depth. For example,
+example.com covers api.example.com and a.b.example.com but not fakeexample.com.
+The longest matching domain wins, so explicit subdomain bypass rules remain
+effective. This is already implemented by dnsmasq and smartdns-rules; no broad
+catch-all rule or invented wildcard domains are required.
 
-Official website identification does not establish that every service operation
-works through this deployment. Domain notes describe the supported scope.
+## Verification and limits
 
-## Maintenance
+[The source manifest](../domains/catalogue-sources.json) records a source and
+check date for each added domain, overlaps, and failed website checks that
+were excluded. Official lists establish mirror identity, not continuous health.
+A responding vendor homepage identifies a website, not a complete backend list.
+The catalogue is not a claim that every entry is sanctioned or blocked in Iran.
+No end-to-end relay/exit connectivity or Iranian ISP tests were performed.
 
-Edit `domains/services.json` and add ordinary routed domains to
-`domains/domains.txt`. Keep a domain owned by exactly one group. Do not run `tools/classify-services.py` over the curated catalogue: that
-legacy classifier rebuilds it and can discard manually added services and notes.
-Run `python tools/build-installer.py` to update `dns.sh`, then check it with `bash -n dns.sh`.
+These rules route HTTP/SNI traffic. They do not provide general UDP, rsync, FTP,
+voice, game-server connectivity or guaranteed access to region-restricted accounts.
+Download and mirror traffic consumes relay/exit quota. This is a dated snapshot,
+not an exhaustive list of every service or every Linux mirror worldwide.
+
+## Primary sources
+
+- [OpenAI network guidance](https://help.openai.com/en/articles/9247338-network-recommendations-for-chatgpt-errors-on-web-and-apps)
+- [Microsoft Windows endpoints](https://learn.microsoft.com/en-us/windows/privacy/windows-11-endpoints-non-enterprise-editions)
+- [Debian mirror master list](https://mirror-master.debian.org/status/Mirrors.masterlist)
+- [Ubuntu archive mirrors](https://launchpad.net/ubuntu/+archivemirrors)
+- [Arch mirror status](https://archlinux.org/mirrors/status/json/)
+- [Alpine mirror list](https://dl-cdn.alpinelinux.org/alpine/MIRRORS.txt)
+
+Edit services.json and domains.txt together, preserve group keys and rebuild
+with `python tools/build-installer.py`. The legacy classify-services.py tool
+rebuilds classifications and should not be run over this curated catalogue.

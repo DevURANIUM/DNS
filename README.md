@@ -32,8 +32,8 @@ UI assets and fonts are embedded in the installer; the panels do not depend on a
 
 ## Services and templates
 
-The current catalogue contains **73 service entries and 567 domain entries**.
-The latest expansion adds 31 services and 62 domains while keeping existing
+The current catalogue contains **122 service entries and 1755 domain entries**.
+The September 16 expansion adds 49 service entries and 1188 domains while keeping existing
 service and group identifiers intact.
 
 | Category | Examples |
