@@ -9,7 +9,14 @@ function themeLabel(){theme.textContent=root.dataset.theme==='light'?'حالت �
 themeLabel();theme.onclick=()=>{root.dataset.theme=root.dataset.theme==='light'?'dark':'light';try{localStorage.setItem('dns-theme',root.dataset.theme);}catch(_){}themeLabel();};
 if(isCustomer)(document.querySelector('header')||document.body).append(theme);
 document.querySelectorAll('nav a.on').forEach(a=>a.setAttribute('aria-current','page'));
-document.querySelectorAll('body.customer input[type=password]').forEach((input,index)=>{if(!input.id)input.id='password-'+index;const button=document.createElement('button');button.type='button';button.className='ghost password-toggle';button.textContent='نمایش رمز';button.setAttribute('aria-controls',input.id);button.setAttribute('aria-pressed','false');button.onclick=()=>{const show=input.type==='password';input.type=show?'text':'password';button.textContent=show?'پنهان کردن رمز':'نمایش رمز';button.setAttribute('aria-pressed',String(show));};input.after(button);});
+document.querySelectorAll('body.customer input[type=password]').forEach((input,index)=>{
+ if(!input.id)input.id='password-'+index;
+ const label=input.previousElementSibling;if(label?.tagName==='LABEL'&&!label.htmlFor)label.htmlFor=input.id;
+ const wrapper=document.createElement('div');wrapper.className='password-field';input.before(wrapper);wrapper.append(input);
+ const button=document.createElement('button');button.type='button';button.className='ghost password-toggle';button.setAttribute('aria-controls',input.id);
+ function render(){const show=input.type==='text';const title=show?'پنهان کردن رمز':'نمایش رمز';button.setAttribute('aria-label',title);button.title=title;button.setAttribute('aria-pressed',String(show));button.innerHTML='<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/>'+(show?'<path d="m3 3 18 18"/>':'')+'</svg>';}
+ button.onclick=()=>{input.type=input.type==='password'?'text':'password';render();};render();wrapper.append(button);
+});
 document.querySelectorAll('label').forEach((label,index)=>{if(label.htmlFor||label.querySelector('input,select,textarea'))return;const field=label.nextElementSibling;if(field&&field.matches('input,select,textarea')){if(!field.id)field.id='field-'+index;label.htmlFor=field.id;}});
 const normalize=value=>value.normalize('NFKC').replace(/ي/g,'ی').replace(/ك/g,'ک').replace(/[۰-۹]/g,c=>String('۰۱۲۳۴۵۶۷۸۹'.indexOf(c))).replace(/[٠-٩]/g,c=>String('٠١٢٣٤٥٦٧٨٩'.indexOf(c))).toLocaleLowerCase();
 document.querySelectorAll('table').forEach((table,index)=>{

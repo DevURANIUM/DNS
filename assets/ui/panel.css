@@ -65,3 +65,10 @@ body.customer,body.admin-panel,body.admin-login{font-family:Vazirmatn,Tahoma,san
 .customer .brandline{flex:1}.customer .theme-toggle{flex-shrink:0}.customer .brandline small{white-space:nowrap}
 .customer .dns-address .big{direction:ltr;unicode-bidi:isolate}.customer .account-facts .row{min-width:0}
 @media(max-width:380px){body.customer{padding:16px 10px}.customer-shell.auth-shell>main.card{padding:24px 16px}.customer-shell>header{gap:10px}.customer .brandline>div>span{font-size:12px}.customer .brandmark{width:36px;height:36px}}
+
+/* Inline password visibility control, user forms only. */
+.customer .password-field{position:relative;width:100%;min-width:0}
+.customer .password-field input{display:block;width:100%;margin:0;padding-left:52px;min-height:48px}
+.customer .password-field .password-toggle{position:absolute;left:4px;top:50%;transform:translateY(-50%);display:inline-flex!important;align-items:center;justify-content:center;width:40px!important;height:40px;min-height:40px;margin:0!important;padding:0!important;border:0;background:transparent;color:var(--muted);border-radius:8px}
+.customer .password-field .password-toggle:hover{color:var(--accent);background:var(--surface);transform:translateY(-50%)}
+.customer .password-toggle svg{display:block;pointer-events:none}
