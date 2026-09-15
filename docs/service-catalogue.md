@@ -52,5 +52,4 @@ works through this deployment. Domain notes describe the supported scope.
 Edit `domains/services.json` and add ordinary routed domains to
 `domains/domains.txt`. Keep a domain owned by exactly one group. Do not run `tools/classify-services.py` over the curated catalogue: that
 legacy classifier rebuilds it and can discard manually added services and notes.
-Run `python tools/test-service-catalogue.py`, the template and opt-in tests,
-then `python tools/build-installer.py` to update `dns.sh`.
+Run `python tools/build-installer.py` to update `dns.sh`, then check it with `bash -n dns.sh`.

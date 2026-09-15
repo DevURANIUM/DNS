@@ -21,14 +21,14 @@ Accounts and usage live in a central database on the exit. Relays send usage and
 ## Features
 
 - **Administration:** users, fractional quotas, download limits, expiry dates, service templates and domain rules.
-- **User accounts:** signup, login, IP registration, usage, password changes and payment receipt uploads.
-- **Redesigned panels:** Persian RTL layout, responsive pages, local Vazirmatn font and persistent light/dark themes.
-- **Panel tools:** Persian table search, status filters, result counts and an overview of accounts and receipts needing attention.
+- **User accounts:** signup, login, IP registration, usage, password changes.
+- **Redesigned panels:** Persian RTL layout, responsive pages, local Vazirmatn font and persistent light/dark themes for users.
+- **Panel tools:** Persian table search, status filters, result counts and an overview of accounts needing attention.
 - **Connection setup:** DNS copy button, setup guide and password visibility controls.
 - **Access control:** per-IP allowlists and traffic accounting through nftables, quota enforcement and monthly or one-time allowances.
 - **Operations:** host monitoring, logs, backup/restore and TLS certificate provisioning and renewal.
 
-UI assets and fonts are embedded in the installer; the panels do not depend on a CDN. Signup creates a pending account. An operator must save a plan before access is activated. Receipts are reviewed manually; there is no automatic checkout.
+UI assets and fonts are embedded in the installer; the panels do not depend on a CDN. Signup creates a pending account. An operator must save a plan before access is activated.
 
 ## Services and templates
 
@@ -55,6 +55,13 @@ Entries cover configured website and content domains, not every operation of an
 app or game. CS2 and Dota 2 may also need Steam; YouTube sign-in needs the Google
 group. Game sessions, voice calls and arbitrary UDP traffic are not carried by
 the HTTP/SNI proxy. See the [catalogue guide](docs/service-catalogue.md).
+
+### Player hub redesign
+
+The panels use a gaming-inspired layout with violet accents, clear account cards
+and a compact icon button for copying DNS. Day/night themes and password
+visibility controls are available only in the user panel. Receipt upload and
+review have been removed; administrators activate and renew accounts directly.
 
 ### Recent panel fixes
 
@@ -150,19 +157,12 @@ Reports mask configuration secrets but can still contain customer IPs and userna
 | `assets/ui/` | CSS, JavaScript, font and font license |
 | `domains/` | Domain lists and service catalogue |
 | `common/` | Shared network configuration |
-| `tools/` | Builds, previews and tests |
+| `tools/` | Builds and previews |
 
 ```sh
 # Rebuild panel assets and the standalone installer
 python tools/build-installer.py
 bash -n dns.sh
-
-# Regression checks for plan validation and fractional quotas
-python tools/test-ui-regressions.py
-python tools/test-username-display.py
-python tools/test-service-catalogue.py
-python tools/test-template-domains.py
-python tools/test-optin.py
 
 # Generate sample pages and serve them locally
 python tools/preview-ui.py

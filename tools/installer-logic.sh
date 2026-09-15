@@ -38,7 +38,7 @@ STAMP="$(date +%Y%m%d-%H%M%S)"
 # What this file is. Written to the machine once an install finishes, so the
 # next run can tell whether it is an upgrade, a re-run, or somebody about to
 # put an older version over a newer one by accident.
-VERSION="0.3.13"
+VERSION="0.3.14"
 
 # What this install did, so uninstall can undo exactly that and nothing more.
 # Without it, removal would be guesswork: whether dnsmasq was ours or already
@@ -1411,8 +1411,8 @@ fi
 
 if [ -n "$USER_PANEL_OUT" ]; then
     printf '    %sCustomer panel%s - where people sign up, register the address the
-    service works on, see what is left of their allowance, and send a payment
-    receipt. It also shows them the DNS address to enter.
+    service works on, and see what is left of their allowance.
+    It also shows them the DNS address to copy into network settings.
 
         %s
 

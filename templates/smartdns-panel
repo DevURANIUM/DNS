@@ -1388,8 +1388,6 @@ class API(http.server.BaseHTTPRequestHandler):
             return self.reply(200, self.do_user_signup(body))
         if self.path == "/user-password-login":
             return self.reply(200, self.do_user_password_login(body))
-        if self.path == "/user-receipt":
-            return self.reply(200, self.do_user_receipt(body))
         if self.path == "/user-password":
             return self.reply(200, self.do_user_password(body))
 
@@ -1514,55 +1512,6 @@ class API(http.server.BaseHTTPRequestHandler):
         print("password changed for user %d" % user["id"], flush=True)
         return {"ok": True,
                 "message": "رمز عوض شد. اگر جای دیگری وارد بودید، خارج شدید"}
-
-    def do_user_receipt(self, body):
-        """Store a photograph of a payment slip against the customer.
-
-        The relay reads the upload and passes the bytes here base64-encoded,
-        so the image lands in the same database as everything else and one
-        backup covers it. Nothing about the account changes: this records a
-        claim, and the operator decides what it is worth.
-        """
-        user = self._session_user(body.get("session"))
-        if not user:
-            return {"ok": False, "message": "نشست معتبر نیست"}
-
-        kind = (body.get("content_type") or "").split(";")[0].strip().lower()
-        if kind not in ("image/jpeg", "image/png", "image/webp", "application/pdf"):
-            return {"ok": False,
-                    "message": "فقط عکس (JPG، PNG، WEBP) یا PDF قبول می‌شود"}
-        try:
-            blob = base64.b64decode(body.get("data") or "", validate=True)
-        except Exception:
-            return {"ok": False, "message": "فایل خراب بود، دوباره بفرستید"}
-        if not blob:
-            return {"ok": False, "message": "فایل خالی بود"}
-        if len(blob) > MAX_RECEIPT:
-            return {"ok": False, "message": "فایل بزرگ‌تر از %s است"
-                    % human(MAX_RECEIPT)}
-
-        # One pending receipt per customer. A second one replaces the first
-        # rather than queueing: somebody who sends three photographs of the
-        # same slip means the last one, and the operator should not have to
-        # work out which.
-        self.store.run(
-            "DELETE FROM transactions WHERE user_id = ? AND status = 'pending'",
-            (user["id"],))
-        try:
-            amount = max(0, int(body.get("amount") or 0))
-        except (TypeError, ValueError):
-            amount = 0
-        self.store.run(
-            "INSERT INTO transactions"
-            " (user_id, amount, kind, receipt_blob, receipt_type, note,"
-            "  status, created_at)"
-            " VALUES (?, ?, 'card', ?, ?, ?, 'pending', ?)",
-            (user["id"], amount, blob, kind,
-             (body.get("note") or "").strip()[:200], now()))
-        print("receipt from user %d: %s, %s"
-              % (user["id"], kind, human(len(blob))), flush=True)
-        return {"ok": True,
-                "message": "رسید فرستاده شد. پس از بررسی حسابتان شارژ می‌شود"}
 
     def do_user_claim(self, body):
         """Register the address the browser is coming from, for a user who is
