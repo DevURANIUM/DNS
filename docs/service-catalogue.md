@@ -62,3 +62,12 @@ not an exhaustive list of every service or every Linux mirror worldwide.
 Edit services.json and domains.txt together, preserve group keys and rebuild
 with `python tools/build-installer.py`. The legacy classify-services.py tool
 rebuilds classifications and should not be run over this curated catalogue.
+
+
+## DynX import — 2026-09-21
+
+Current total: 123 services and 6808 domains. Imported 5470 unique domains from
+[DynX](https://github.com/MrDevAnony/DynX-AntiBan-Domains), adding 5053 and preserving 417 existing entries.
+See [the import manifest](../domains/sources/dynx-import.json) for original hashes,
+normalization and group assignments. Source entries are not independently verified.
+Existing opt-in subdomains remain excluded by default.

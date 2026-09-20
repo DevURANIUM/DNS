@@ -34,7 +34,7 @@ DNS درخواست دامنه‌های انتخاب‌شده را از طریق 
 
 ## سرویس‌ها و قالب‌ها
 
-فهرست فعلی شامل **۱۲۲ سرویس و ۱۷۵۵ ورودی دامنه** است. در گسترش اخیر، ۴۹ سرویس و ۱۱۸۸ دامنه اضافه شده و شناسه سرویس‌ها و گروه‌های قبلی حفظ شده است.
+فهرست فعلی شامل **۱۲۳ سرویس و ۶۸۰۸ ورودی دامنه** است. در گسترش اخیر، ۴۹ سرویس و ۱۱۸۸ دامنه اضافه شده و شناسه سرویس‌ها و گروه‌های قبلی حفظ شده است.
 
 | دسته | نمونه‌ها |
 | --- | --- |
@@ -173,3 +173,14 @@ python -m http.server 8765 --bind 127.0.0.1 --directory docs/preview
 کد پروژه تحت [مجوز MIT](LICENSE) منتشر می‌شود. وزیرمتن مجوز مستقل [SIL Open Font License](assets/ui/OFL.txt) دارد. مشارکت از طریق Issue و Pull Request در [DevURANIUM/DNS](https://github.com/DevURANIUM/DNS) انجام می‌شود.
 
 از مشارکت‌کنندگان پیشین، از جمله [Armin Toranj](https://github.com/arminandtoo)، سپاسگزاریم.
+
+
+## DynX — 2026-09-21
+
+Imported all 5470 unique domain names from the three user-selected DynX lists;
+5053 were new and 417 already existed. Original downloads are retained in
+`domains/sources/dynx/`; [import report](domains/sources/dynx-import.json).
+Nginx map files were parsed as data, not installed as executable configuration.
+Existing opt-in exceptions retain their behavior. Custom templates must enable
+the new DynX groups explicitly; the full default template includes ordinary new domains.
+These third-party lists have not been independently verified for ownership or connectivity.

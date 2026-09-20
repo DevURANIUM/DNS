@@ -38,7 +38,7 @@ STAMP="$(date +%Y%m%d-%H%M%S)"
 # What this file is. Written to the machine once an install finishes, so the
 # next run can tell whether it is an upgrade, a re-run, or somebody about to
 # put an older version over a newer one by accident.
-VERSION="0.3.23"
+VERSION="0.3.24"
 
 # What this install did, so uninstall can undo exactly that and nothing more.
 # Without it, removal would be guesswork: whether dnsmasq was ours or already
@@ -10760,6 +10760,5059 @@ exit 0
 #za.mirrors.cicku.me
 #ziply.mm.fcix.net
 #zxcvfdsa.com
+#
+## DynX import 2026-09-21 (opt-in exceptions kept in catalogue only)
+#000webhost.com
+#01.org
+#1-go-casino.kz
+#123bclub66.com
+#13deals.com
+#180smoke.ca
+#18590.com
+#1win-apk-azerbaycan-yukle.com
+#1win-giris-tr.com
+#1win-kz-casino.kz
+#1wins-ar.net
+#1winstr.com
+#2-clicks-coins.com
+#24hourcampfire.com
+#27.ua
+#2k.com
+#360medicalcenters.com
+#3dconnexion.com
+#3dwarehouse.sketchup.com
+#4x4at.com
+#5sim.net
+#6sense.com
+#78winlogin.com
+#7uu.net
+#8xr.io
+#959watd.com
+#a-series.net
+#a.rsg.sc
+#a.slack-edge.com
+#a.softaculous.com
+#a2z.com
+#a2zupload.com
+#a4m.com
+#aaa.com
+#aabany.org
+#aadibook.com
+#aapanel.com
+#aappublications.org
+#aaprco.com
+#abcprom.com
+#aboutthedata.com
+#abracon.com
+#absolutelykona.com
+#abuse.ch
+#academicstudiespress.com
+#acaia.co
+#acam.org
+#acate.com.br
+#accessory.auth.dnet.xboxlive.com
+#accessory.auth.xboxlive.com
+#account.adobe.com
+#account.live.com
+#account.microsoft.com
+#account.ubisoft.com
+#account.wbgames.com
+#account.wpmet.com
+#account.xbox.com
+#accounts-origin.xboxlive.com
+#accounts-partner-ppe.xboxlive.com
+#accounts-partner.dnet.xboxlive.com
+#accounts-partner.xboxlive.com
+#accounts.2k.com
+#accounts.dnet.xboxlive.com
+#accounts.ea.com
+#accounts.epicgames.com
+#accounts.wbgames.com
+#accounts.xboxlive.com
+#accountsexternaltest.xboxlive.com
+#accountsexternaltestppe.xboxlive.com
+#accountsppe.xboxlive.com
+#accountstest.dnet.xboxlive.com
+#accountstroubleshooter-origin.xboxlive.com
+#accountstroubleshooter.dnet.xboxlive.com
+#accountstroubleshooter.xboxlive.com
+#accountstroubleshooterppe.xboxlive.com
+#accp.com
+#accuplacer.org
+#accutane.one
+#aceplugins.com
+#acf-extended.com
+#aclanthology.org
+#acloud.guru
+#acloudguru.com
+#acme-v02.api.letsencrypt.org
+#acme.sh
+#activeauth.xboxlive.com
+#activejeremy.com
+#activestate.com
+#activity.family.dnet.xboxlive.com
+#activity.windows.com
+#activityconnection.com
+#adams-music.com
+#adaskor.fun
+#adata.com
+#adcn.org
+#addtelegrammember.com
+#addthis.com
+#adept-server-prod-uodmhebufa-ue.a.run.app
+#adjusterpro.com
+#adkad.com
+#adminmenueditor.com
+#admob.com
+#adnxs.com
+#adobe.io
+#adobecc.com
+#adobeexchange.com
+#adobess.com
+#adobike.nl
+#adolfodominguez.com
+#adsrvr.org
+#adsymptotic.com
+#adventisthealthcare.com
+#advocatehealth.com
+#advocatehealth.org
+#adwords.google.com
+#aedo.org.br
+#aeraenergy.com
+#aesociety.org
+#aetnaseniorproducts.com
+#afdverifyavatarservices.xboxlive.com
+#affclicker.com
+#affini-tech.com
+#affordabledentures.com
+#afya.com.br
+#agbrief.com
+#agrian.com
+#ai-chat.bsg.brave.com
+#ai.google.com
+#aicr.org
+#aiha.org
+#aip2023.com
+#airandgracelondon.com
+#airbnb.com
+#airbnb.it
+#airmeet.com
+#airzena.com
+#ajemjournal.com
+#ajo.com
+#akaislotplay.org
+#akismet.com
+#aksimet.com
+#akuratgacor.online
+#aleluyabcn.com
+#alerts.xbox.com
+#alexa-apis.amazon.com
+#alexa-comms-mobile-service.amazon.com
+#alexa-eu.amazon.com
+#alexa-fe.amazon.com
+#alexa-na.amazon.com
+#alexa-skills.amazon.com
+#alexa.a2z.com
+#alexa.amazon.ae
+#alexa.amazon.ca
+#alexa.amazon.cn
+#alexa.amazon.co.jp
+#alexa.amazon.com
+#alexa.amazon.com.ag
+#alexa.amazon.com.ai
+#alexa.amazon.com.ar
+#alexa.amazon.com.au
+#alexa.amazon.com.aw
+#alexa.amazon.com.bb
+#alexa.amazon.com.bl
+#alexa.amazon.com.bm
+#alexa.amazon.com.bo
+#alexa.amazon.com.br
+#alexa.amazon.com.bs
+#alexa.amazon.com.bz
+#alexa.amazon.com.cl
+#alexa.amazon.com.co
+#alexa.amazon.com.cr
+#alexa.amazon.com.cu
+#alexa.amazon.com.cw
+#alexa.amazon.com.dm
+#alexa.amazon.com.do
+#alexa.amazon.com.ec
+#alexa.amazon.com.eg
+#alexa.amazon.com.gd
+#alexa.amazon.com.gp
+#alexa.amazon.com.gt
+#alexa.amazon.com.gy
+#alexa.amazon.com.hn
+#alexa.amazon.com.ht
+#alexa.amazon.com.jm
+#alexa.amazon.com.kn
+#alexa.amazon.com.lc
+#alexa.amazon.com.mf
+#alexa.amazon.com.mq
+#alexa.amazon.com.ms
+#alexa.amazon.com.mx
+#alexa.amazon.com.ni
+#alexa.amazon.com.pa
+#alexa.amazon.com.pe
+#alexa.amazon.com.pl
+#alexa.amazon.com.pr
+#alexa.amazon.com.py
+#alexa.amazon.com.sr
+#alexa.amazon.com.sv
+#alexa.amazon.com.sx
+#alexa.amazon.com.tc
+#alexa.amazon.com.tr
+#alexa.amazon.com.tt
+#alexa.amazon.com.uy
+#alexa.amazon.com.vc
+#alexa.amazon.com.ve
+#alexa.amazon.com.vg
+#alexa.amazon.com.vi
+#alexa.amazon.com.za
+#alexa.amazon.es
+#alexa.amazon.fr
+#alexa.amazon.in
+#alexa.amazon.it
+#alexa.amazon.nl
+#alexa.amazon.sa
+#alexa.amazon.se
+#alexa.amazon.sg
+#alexa.com
+#alfahost.me
+#algolianet.com
+#alhoot-palace.com
+#alibaba.com
+#aliexpress.com
+#alisadofrancesfrenchsgold.com
+#alkaidvision.com
+#alldatasheet.com
+#alldebrid.com
+#alldiamond.co.uk
+#allensboots.com
+#allfreecrochet.com
+#alliedcycleworks.com
+#alloddsbook.com
+#alltheanime.com
+#almalinux.mirror.liteserver.nl
+#almalinux.mirror.wearetriple.com
+#almalinux.org
+#alpakagear.com
+#alpinelinux.org
+#alrugaibfurniture.com
+#alt-keys-accessory.auth.dnet.xboxlive.com
+#alt8-mtalk.google.com
+#altaro.com
+#altiusdirectory.com
+#altn.com
+#amadeus.com
+#amaranth-staging.xboxservices.com
+#amazon-adsystem.com
+#amazon.co.uk
+#amazon.com
+#amazon.de
+#amazonalexa.com
+#amazonaws.com
+#amazonaws.com.cn
+#amazontrust.com
+#amazonvideo.com
+#amazoon.com
+#amber-staging.xboxservices.com
+#amber.xboxservices.com
+#ambev.com.br
+#americanbank.com
+#americandreamnutbutter.com
+#americanexpress.com
+#americanfarriers.org
+#americas.gssv-auth-int.xboxlive.com
+#americas.gssv-auth-intxhome.xboxlive.com
+#americas.gssv-auth-prod.xboxlive.com
+#americas.gssv-auth-prodxhome.xboxlive.com
+#americas.gssv-auth-test.xboxlive.com
+#americas.gssv-auth-testxhome.xboxlive.com
+#americas.gssv-cmdrelay-int.xboxlive.com
+#americas.gssv-cmdrelay-intxhome.xboxlive.com
+#americas.gssv-cmdrelay-prod.xboxlive.com
+#americas.gssv-cmdrelay-prodxhome.xboxlive.com
+#americas.gssv-cmdrelay-test.xboxlive.com
+#americas.gssv-cmdrelay-testxhome.xboxlive.com
+#americas.gssv-cnry-int.xboxlive.com
+#americas.gssv-cnry-prod.xboxlive.com
+#americas.gssv-cnry-test.xboxlive.com
+#americas.gssv-dev-int.xboxlive.com
+#americas.gssv-dev-intxhome.xboxlive.com
+#americas.gssv-dev-prod.xboxlive.com
+#americas.gssv-dev-prodxhome.xboxlive.com
+#americas.gssv-dev-test.xboxlive.com
+#americas.gssv-dev-testxhome.xboxlive.com
+#americas.gssv-play-int.xboxlive.com
+#americas.gssv-play-intxhome.xboxlive.com
+#americas.gssv-play-prod.xboxlive.com
+#americas.gssv-play-prodxhome.xboxlive.com
+#americas.gssv-play-test.xboxlive.com
+#americas.gssv-play-testxhome.xboxlive.com
+#americas.gssv-registration-int.xboxlive.com
+#americas.gssv-registration-prod.xboxlive.com
+#americas.gssv-registration-test.xboxlive.com
+#americas.gssv-sage-int.xboxlive.com
+#americas.gssv-sage-intxhome.xboxlive.com
+#americas.gssv-sage-prod.xboxlive.com
+#americas.gssv-sage-prodxhome.xboxlive.com
+#americas.gssv-sage-test.xboxlive.com
+#americas.gssv-sage-testxhome.xboxlive.com
+#americas.gssv-vmcm-int.xboxlive.com
+#americas.gssv-vmcm-prod.xboxlive.com
+#americas.gssv-vmcm-test.xboxlive.com
+#americas.int.gamingai.ppe.exp.xboxservices.com
+#americas.int.gplt.fnch.xboxlive.com
+#americas.int.gplt.sage.xboxlive.com
+#americas.int.gssv.fnch.xboxlive.com
+#americas.int.gssv.sage.xboxlive.com
+#americas.int.play.xbox.com
+#americas.int.portal.interceptor.xboxlive.com
+#americas.int.shaders.xboxlive.com
+#americas.int.xccs.xboxlive.com
+#americas.int.xplt.fnch.xboxlive.com
+#americas.pairing.accs-int.xboxlive.com
+#americas.pairing.accs-prod.xboxlive.com
+#americas.pairing.accs-test.xboxlive.com
+#americas.prod.gamingai.exp.xboxservices.com
+#americas.prod.gplt.fnch.xboxlive.com
+#americas.prod.gplt.sage.xboxlive.com
+#americas.prod.gssv.fnch.xboxlive.com
+#americas.prod.gssv.sage.xboxlive.com
+#americas.prod.shaders.xboxlive.com
+#americas.prod.xccs.xboxlive.com
+#americas.prod.xplt.fnch.xboxlive.com
+#americas.test.gamingai.ppe.exp.xboxservices.com
+#americas.test.gplt.fnch.xboxlive.com
+#americas.test.gplt.sage.xboxlive.com
+#americas.test.gssv.fnch.xboxlive.com
+#americas.test.gssv.sage.xboxlive.com
+#americas.test.play.xbox.com
+#americas.test.portal.interceptor.xboxlive.com
+#americas.test.shaders.xboxlive.com
+#americas.test.xccs.xboxlive.com
+#americas.test.xplt.fnch.xboxlive.com
+#americas.xplt-cnry-int.xboxlive.com
+#americas.xplt-cnry-test.xboxlive.com
+#americas.xplt-xcad-int.xboxlive.com
+#americas.xplt-xcad-prod.xboxlive.com
+#americas.xplt-xcad-test.xboxlive.com
+#amerigo.net
+#amorequi.net
+#ampcid.google.com
+#amplenote.com
+#amplitude.com
+#amsoveasea.com
+#amsshop-stage.xbox.com
+#amsshop-stage2.xbox.com
+#amsshop.xbox.com
+#amuse.com
+#anaconda.com
+#anaconda.org
+#analytify.io
+#anchor.fm
+#and.co
+#androidexperiments.com
+#androidstudio.googleblog.com
+#anerdcooks.com
+#angelrox.com
+#angrybirds.com
+#angular.dev
+#angular.io
+#angularjs.org
+#angusrobertson.com.au
+#anker.com
+#annetouraine.com
+#anniemos.com
+#anphoblacht.com
+#ansaldo.cl
+#ansible.com
+#antal.ai
+#anticafarmacista.com
+#ap.canary.xccs.xboxlive.com
+#ap.ign.com
+#ap.packages.xboxlive.com
+#ap.packagespc.xboxlive.com
+#ap.xccs.xboxlive.com
+#apartments.com
+#apextactical.com
+#api-iam.intercom.io
+#api-js.mixpanel.com
+#api.admincolumns.com
+#api.akismet.com
+#api.amadeus.com
+#api.appsero.com
+#api.areama.net
+#api.bitbucket.org
+#api.cisco.com
+#api.cm-wp.com
+#api.coincap.io
+#api.coinex.com
+#api.crocoblock.com
+#api.daily.dev
+#api.envato.com
+#api.eu.mailgun.net
+#api.exactmetrics.com
+#api.fontawesome.com
+#api.freemius.com
+#api.getbeamer.com
+#api.github.com
+#api.gog.com
+#api.google.com
+#api.hogwartslegacy.com
+#api.ipify.org
+#api.mailgun.net
+#api.monsterinsights.com
+#api.onesignal.com
+#api.openprovider.eu
+#api.resmush.it
+#api.sendinblue.com
+#api.snapcraft.io
+#api.softaculous.com
+#api.test.soteria.xboxlive.com
+#api.thesslstore.com
+#api.tinify.com
+#api.treepodia.com
+#api.ubi.com
+#api.unlimited-elements.com
+#api.us.mailgun.net
+#api.virtualizor.com
+#api.wordpress.org
+#api.wpfastestcache.net
+#api.wpmet.com
+#apkpure.com
+#apoteket-online.dk
+#apothic.com
+#app-gateway.creativemail.com
+#app.clickup.com
+#app.cline.bot
+#app.imagify.io
+#app.netdata.cloud
+#appintheair.mobi
+#apps.microsoft.com
+#appsflyer.com
+#appsflyersdk.com
+#apqc.org
+#apricotonline.com
+#apt.kubernetes.io
+#aqua-staging.xboxservices.com
+#aqua.xboxservices.com
+#aramco.com
+#arc.msn.com
+#arcadecontest.xbox.com
+#arcadianews.com
+#arcanefox.com
+#arcgisonline.com
+#archdpdx.org
+#archive.mariadb.org
+#arcticgardens.ca
+#areama.net
+#arenanetworks.com
+#ariadneathome.nl
+#ark.intel.com
+#arkansasonline.com
+#arkopharma.com
+#arkoselabs.com
+#arkwildlife.co.uk
+#aromaexclusive.com
+#aromas.es
+#arpriceplugin.com
+#artbees.net
+#artglasssupplies.com
+#artifacts.elastic.co
+#artradarjournal.com
+#arval.com
+#asap-supplies.com
+#asaucykitchen.com
+#asdowns.com
+#asiapacific.gssv-auth-prod.xboxlive.com
+#asiapacific.gssv-cmdrelay-prod.xboxlive.com
+#asiapacific.gssv-dev-prod.xboxlive.com
+#asiapacific.gssv-play-prod.xboxlive.com
+#asiapacific.gssv-registration-prod.xboxlive.com
+#asiapacific.gssv-sage-prod.xboxlive.com
+#asiapacific.gssv-vmcm-prod.xboxlive.com
+#asiapacific.prod.gssv.fnch.xboxlive.com
+#asiapacific.prod.gssv.sage.xboxlive.com
+#askubuntu.com
+#asromafansclub.com
+#astctjournal.org
+#asthma.com
+#astrogallery.com
+#asus.com
+#asus.com.cn
+#aswpsdkus.com
+#atfbank.kz
+#atgdash-ppe.xboxlive.com
+#atgdash.xboxlive.com
+#atgp.jp
+#athletic-club.eus
+#atitus.edu.br
+#atlantathrashers.com
+#atlantic-cable.com
+#atlantic.fo
+#atolyestone.com
+#atreyurock.com
+#att.com
+#attachments-origin.xboxlive.com
+#attachments.xboxlive.com
+#attacmadrid.org
+#au.ign.com
+#aubinandwills.com
+#audiobooks.co.uk
+#audiojungle.net
+#audiorelay.net
+#aumfidelity.com
+#auroragov.org
+#austinprintings.com
+#auth-xg.xboxlive.com
+#auth.docker.io
+#auth.gog.com
+#auth.services.adobe.com
+#auth.uber.com
+#auth.wbgames.com
+#auth.wincher.com
+#auth.xbox.com
+#auth.xboxlive.com
+#auth0.com
+#auth2.xboxlive.com
+#authenticate.scriptsbundle.com
+#author-xnotify.xboxlive.com
+#authoring-ppe.xbox.com
+#authoring.dnet.xbox.com
+#authoring.xbox.com
+#autobarn.com.au
+#autodesk.com
+#autodeskplm360.com
+#autods.com
+#autom8n.com
+#autopawnohio.com
+#autopunditz.com
+#autorenwelt.de
+#autossegredos.com.br
+#autosuggest.support.xboxlive.com
+#avacon.de
+#avada.ir
+#avalonbreads.net
+#avast.com
+#avatar-ssl.xboxlive.com
+#avatar.xboxlive.com
+#avatarservices-origin.xboxlive.com
+#avatarservices.xboxlive.com
+#avatarv3-ppe.xboxlive.com
+#avatarv3.xboxlive.com
+#avec.fr
+#avendrealouer.fr
+#avery.nl
+#aviator.co
+#avty-origin.xboxlive.com
+#avty-ppe.xboxlive.com
+#avty.xboxlive.com
+#awsstatic.com
+#axocdn.com
+#azdigi.com
+#azucaricecream.com
+#azul.com
+#azure.com
+#babyonline.co.nz
+#bacakoran.co
+#bachelorarbeit-schreiben-lassen.com
+#backbonebmx.com
+#backstageoriginals.com
+#backup.ninja
+#badssl.com
+#baixxar.com.br
+#bajulrowo.one
+#bakhtarnews.af
+#balanceone.com
+#balancepro.org
+#balena.io
+#ballotbox-ppe.xboxlive.com
+#ballotbox.xboxlive.com
+#baltimorejewishlife.com
+#bam.nr-data.net
+#bambuhome.com
+#barcodediscount.com
+#bard.google.com
+#bareknuckletattooandbarbershop.com
+#barniescoffee.com
+#barokafunerals.co.za
+#baronionline.it
+#barrett-jackson.com
+#bas-ip.ru
+#basicslife.com
+#basil.nl
+#bastrucks.com
+#bathtubginnyc.com
+#battlefieldtracker.com
+#battleye.com
+#bazel.build
+#bcscschools.org
+#bdthemes.com
+#be-inventory-x360.xboxlive.com
+#be-licensing-x360.xboxlive.com
+#beacons-origin.xboxlive.com
+#beacons.xboxlive.com
+#beaconsandactivity.xboxlive.com
+#beamtx.com
+#beatboxbeverages.com
+#beatport.com
+#bebemoda.co.uk
+#beconscioustravels.com
+#bedavabahis.net
+#bedavaslotoyunlarioyna1.com
+#beige-staging.xboxservices.com
+#beige.xboxservices.com
+#beinsportsconnect.net
+#beinsportsconnect.tv
+#belindainternational.com
+#bellaallnatural.com
+#bellahijabs.com
+#bellpal.com
+#bemaraki.com
+#benzara.com
+#bernco.gov
+#bernhelmets.com
+#bertheauxgrandspieds.com
+#bestbusinesscoachindia.com
+#bestbuy.com
+#bestforandroid.com
+#besthealthmag.ca
+#bestjobs.eu
+#bestmaterials.com
+#bestofai.com
+#bestvalueschools.org
+#beta-accessory.auth.xboxlive.com
+#beta-aks-accessory.auth.dnet.xboxlive.com
+#beta-aks-accessory.auth.xboxlive.com
+#beta-borg.dnet.xboxlive.com
+#beta-borg.xboxlive.com
+#beta-cert.mgt.dnet.xboxlive.com
+#beta-cert.mgt.xboxlive.com
+#beta-certrevo.mgt.dnet.xboxlive.com
+#beta-certrevo.mgt.xboxlive.com
+#beta-config2.mgt.dnet.xboxlive.com
+#beta-config2.mgt.xboxlive.com
+#beta-device.auth.dnet.xboxlive.com
+#beta-device.auth.xboxlive.com
+#beta-faux.mgt.dnet.xboxlive.com
+#beta-faux.mgt.xboxlive.com
+#beta-instance.mgt.dnet.xboxlive.com
+#beta-instance.mgt.xboxlive.com
+#beta-keys-accessory.auth.xboxlive.com
+#beta-keys-service.auth.xboxlive.com
+#beta-msaintimation.dnet.xboxlive.com
+#beta-msaintimation.xboxlive.com
+#beta-mxazdata.mgt.xboxlive.com
+#beta-parental.xboxlive.com
+#beta-privileges.xboxlive.com
+#beta-receipts.xboxlive.com
+#beta-revocation-xsts.dnet.xboxlive.com
+#beta-revocation-xsts.xboxlive.com
+#beta-revocation.dnet.xboxlive.com
+#beta-revocation.xboxlive.com
+#beta-service.auth.dnet.xboxlive.com
+#beta-service.auth.xboxlive.com
+#beta-sisu.xboxlive.com
+#beta-sisupassauthext.xboxlive.com
+#beta-title.auth.dnet.xboxlive.com
+#beta-title.auth.xboxlive.com
+#beta-title.mgt.dnet.xboxlive.com
+#beta-title.mgt.xboxlive.com
+#beta-user.auth.dnet.xboxlive.com
+#beta-user.auth.xboxlive.com
+#beta-user.mgt.dnet.xboxlive.com
+#beta-user.mgt.xboxlive.com
+#beta-xach.mgt.dnet.xboxlive.com
+#beta-xach.mgt.xboxlive.com
+#beta-xccs.xboxlive.com
+#beta-xdes.dnet.xboxlive.com
+#beta-xdes.xboxlive.com
+#beta-xdesui.dnet.xboxlive.com
+#beta-xdesui.xboxlive.com
+#beta-xdpq.xboxlive.com
+#beta-xforge.xboxlive.com
+#beta-xforgecdc.xboxlive.com
+#beta-xforgesearch.xboxlive.com
+#beta-xlens-upload.xboxlive.com
+#beta-xmint.xboxlive.com
+#beta-xmod.mgt.dnet.xboxlive.com
+#beta-xmod.mgt.xboxlive.com
+#beta-xmodui.dnet.xboxlive.com
+#beta-xmodui.xboxlive.com
+#beta-xorc.dnet.xboxlive.com
+#beta-xorc.xboxlive.com
+#beta-xsts-keys.auth.xboxlive.com
+#beta-xsts.auth.dnet.xboxlive.com
+#beta-xsts.auth.xboxlive.com
+#beta-xsum.dnet.xboxlive.com
+#beta-xsum.xboxlive.com
+#beta-xtas.dnet.xboxlive.com
+#beta-xtas.xboxlive.com
+#beta.support.xbox.com
+#beta2-sisu.xboxlive.com
+#bfa.com
+#bff.test.soteria.xboxlive.com
+#biciamoreshop.com
+#bidswitch.net
+#bigbluebutton.org
+#bigfeetpjs.com
+#bigfishroofing.com
+#bigrocksupply.com
+#bigwalldecor.com
+#bike-science.com
+#bike-treks.co.uk
+#bikeriser.com
+#bikester.fr
+#bikesterglobal.com
+#binance.com
+#bing.com
+#bipartisanpolicy.org
+#bit.ly
+#bitbucket.io
+#bitchesgirlz.com
+#bitly.com
+#bitscrunch.com
+#bitstamp.net
+#bitvision.app
+#bk-pinco.ru
+#bklyn-genealogy-info.com
+#blablacar.com.br
+#blackbox.ai
+#blackfridaydeals.nu
+#blazemeter.com
+#bleacherbumcollectibles.com
+#blendofbites.com
+#blitz.gg
+#blockchain.com
+#blockchain.info
+#blockstream.info
+#blocktrade.com
+#blog.envoyproxy.io
+#blog.toggl.com
+#blogify.io
+#blogs.vmware.com
+#blondo.com
+#bloomingdales.com
+#blossom.io
+#blue-staging.xboxservices.com
+#blue.xboxservices.com
+#bluecompassrv.com
+#bluecross.org.uk
+#bluehost.com
+#blueprint.com
+#bluestacks.com
+#bmc.com
+#bnetdocs.org
+#boardgamebliss.com
+#boardgamegeek.com
+#boardroomadventures.com
+#boatgurus.io
+#boatsandoutboards.co.uk
+#boattrader.com
+#bocchettaplushtoys.com
+#bola-88.fun
+#bold-themes.com
+#bolvaint.com
+#bombsquadgame.com
+#bonia.com
+#bookatable.co.uk
+#booster.com
+#boosteroid-staging.xboxservices.com
+#boosteroid.xboxservices.com
+#borg.dnet.xboxlive.com
+#borg.xboxlive.com
+#bose.cn
+#boseapac.com
+#bossman.com
+#boucheron.com
+#boulderingcomps.com
+#boulderlocavore.com
+#bountifulbaby.com
+#bowers-wilkins.com
+#boxcloud.com
+#boxerproperty.com
+#br-gameaviator.com
+#bravodeal.com
+#brawn.co
+#breathlessresorts.com
+#bremen-tourism.de
+#brentwoodca.gov
+#bricksbuilder.io
+#brightcove.com
+#brillare.ca
+#bringfido.com
+#britishcornershop.co.uk
+#broadcom.com
+#broadpeak.tv
+#bronto.com
+#bronze-staging.xboxservices.com
+#bronze.xboxservices.com
+#browserstack.com
+#broxap.com
+#brubaker-usa.com
+#bsigroup.com
+#btc-eu.f2pool.com
+#btc-us.f2pool.com
+#btc.f2pool.com
+#btcprivate.org
+#bubbleshare.com
+#budapestmarkethall.com
+#buf.build
+#bugs.hogwartslegacy.com
+#build.envato.com
+#buildertrend.net
+#bulbhead.com
+#bulkbuddy.co
+#bungie.com
+#bungiefoundation.org
+#buplabs.com
+#burnsideproject.org
+#burnt.com
+#burrataandbubbles.com
+#burtonmi.gov
+#busbyandfox.com
+#businesssupporting.com
+#buybrakes.com
+#c.pki.goog
+#c.xbox.com
+#ca.com
+#ca.ign.com
+#cachyos.org
+#caddy.community
+#cafeterosviajeros.es
+#cai.rankmath.com
+#caledonenterprise.com
+#calleapearce.com.au
+#calltothepen.com
+#calottery.com
+#cambridgelms.org
+#camp-california.com
+#campingforfoodies.com
+#campsites.co.uk
+#canadacentral-gamingconsent.xboxlive.com
+#canadianfeedthechildren.ca
+#canadianjournalofophthalmology.ca
+#canadiensboutique.com
+#canary.xccs.xboxlive.com
+#cancersupportcommunity.org
+#cannaraycbd.com
+#canterburytales.org
+#canvas4everyone.com
+#capcut.com
+#capcutapi.com
+#capitalone.com
+#capper-league.ru
+#cardpaymentoptions.com
+#career.org
+#careerreader-cy2.xboxlive.com
+#caribfind.tel
+#carlyna.com
+#carvela.com
+#casaamore-international.com
+#casinolevant.cfd
+#casinoly.com
+#casinos-argentino.com
+#casinoslot.icu
+#casinosonlineslot.fun
+#casper.yithemes.com
+#catalog.gamepass.com
+#catalog.xboxlive.com
+#catalystcase.com
+#catfootwear.com
+#catherines.com
+#catholicexchange.com
+#cavhooah.com
+#cbeci.org
+#cbs.com
+#cc.com
+#ccleaner.com
+#cctech.edu
+#cdf-anon.xboxlive.com
+#cdn-app.minepi.com
+#cdn-download.rocket.chat
+#cdn-pci.optimizely.com
+#cdn.cookielaw.org
+#cdn.ispsystem.com
+#cdn.jsdelivr.net
+#cdn.mouseflow.com
+#cdn.mxpnl.com
+#cdn.oaistatic.com
+#cdn.pdst.fm
+#cdn.pearmill.com
+#cdn.polyfill.io
+#cdn.shortpixel.ai
+#cdn.wootric.com
+#cdn.wpml.org
+#cdprojektred.com
+#cdw.ca
+#ce4less.com
+#cedar-staging.xboxservices.com
+#cedar.xboxservices.com
+#cef.co.uk
+#celadon-staging.xboxservices.com
+#celadon.xboxservices.com
+#cellosolartv.com
+#cens.com
+#centerard.ru
+#centinelafeed.com
+#centos.mirror.liteserver.nl
+#centos.mirror.triple-it.nl
+#centrotecnologico.edu.mx
+#cert.developertokenservice-staging.xboxservices.com
+#cert.developertokenservice.xboxservices.com
+#cert.mgt.dnet.xboxlive.com
+#cert.mgt.xboxlive.com
+#certification.xboxlive.com
+#certrevo.mgt.dnet.xboxlive.com
+#certrevo.mgt.xboxlive.com
+#certservices.xboxlive.com
+#cerulean-staging.xboxservices.com
+#cerulean.xboxservices.com
+#cervejariacolorado.com.br
+#cesufestivals.com
+#cfengine.com
+#cfg.gog.com
+#cfraresearch.com
+#cfrperformance.com
+#cgaxis.com
+#cgtrader.com
+#chabottengineering.com
+#chai-research.com
+#chainsawr.com
+#changwon-ymassage.com
+#channelclassics.com
+#chaquo.com
+#chargriller.com
+#charitypaws.com
+#charlesjencks.com
+#charlotte.com
+#charterhall.com.au
+#charterhouse-aquatics.com
+#chaserbrand.com
+#chat-origin.xboxlive.com
+#chat-partner.xboxlive.com
+#chat-ppe.xboxlive.com
+#chat.google.com
+#chat.openai.com
+#chat.support.xboxlive.com
+#chat.xboxlive.com
+#chatfd-origin.xboxlive.com
+#chatfd-ppe.xboxlive.com
+#chatfd.xboxlive.com
+#chatgot.io
+#chatgptfree.ai
+#chatgptonline.net
+#chattyfeet.com
+#check-host.net
+#checkmk.com
+#checkout-amsshop-stage.xbox.com
+#checkout-xboxdesignlab.xbox.com
+#checks.google.com
+#cheddars.com
+#cheekyrascals.co.uk
+#chelseadogs.com
+#cherishedemblems.com
+#cherishgirl.com
+#cheshuntteamministry.org.uk
+#chessmaxacademy.com
+#chiccoutureonline.com
+#chinacourt.org
+#chinchillanews.com.au
+#chizhouwenhua.com
+#chooseyourvenue.com
+#chordtela.com
+#chrome.com
+#chromeexperiments.com
+#chromium.org
+#ci.support.xbox.com
+#cialisfstdelvri.com
+#cimagecallback-ssl.xboxlive.com
+#circulodecredito.com.mx
+#cirros-cloud.net
+#cisalfasport.it
+#citeworld.com
+#cityofgriffin.com
+#cityofkokomo.org
+#cityofpacificgrove.org
+#clamav.com
+#clarins.ca
+#clarity.ms
+#classywomencollection.com
+#clawhammersupply.com
+#clear.store
+#clementoni.com
+#clevelandgolf.com
+#click.engage.xbox.com
+#click.status.xbox.com
+#clicrdv.com
+#client-auth.xboxlive.com
+#client-party-ppe.xboxlive.com
+#client-party.xboxlive.com
+#client-reputation-origin.xboxlive.com
+#client-reputation.dnet.xboxlive.com
+#client-reputation.xboxlive.com
+#client-services.xboxlive.com
+#client-sessiondirectory-origin.xboxlive.com
+#client-sessiondirectory-ppe.xboxlive.com
+#client-sessiondirectory.xboxlive.com
+#client-strings-origin.xboxlive.com
+#client-strings.dnet.xboxlive.com
+#client-strings.xboxlive.com
+#client.crisp.chat
+#client.sabinserver.com
+#clients1.google.com
+#clients3.google.com
+#clients4.google.com
+#clients5.google.com
+#clinicasantamaria.cl
+#clipchamp.com
+#clkbank.com
+#clksupplies.com
+#closedcasketactivities.com
+#clothedwithtruth.com
+#cloud.digitalocean.com
+#cloud.engage.xbox.com
+#cloud.gog.com
+#cloud.openshift.com
+#cloud.status.xbox.com
+#cloud.withgoogle.com
+#cloudbees.com
+#cloudcollection-ssl.dnet.xboxlive.com
+#cloudcollection-ssl.xboxlive.com
+#cloudcontrolband.com
+#cloudconvert.com
+#cloudflareinsights.com
+#cloudflarestatus.com
+#cloudfunctions.net
+#cloudheadgames.com
+#cloudinary.com
+#cloudlinux.com
+#cloudservepoint.com
+#cloudzonetrk.com
+#clubaccounts-partner.xboxlive.com
+#clubaccounts-ppe-partner.xboxlive.com
+#clubaccounts-ppe.xboxlive.com
+#clubaccounts.xboxlive.com
+#clubanalytics.xboxlive.com
+#clubchatmgmt-ppe.xboxlive.com
+#clubchatmgmt.xboxlive.com
+#clubhub-partner.xboxlive.com
+#clubhub-ppe-partner.xboxlive.com
+#clubhub-ppe-public.xboxlive.com
+#clubhub-ppe.xboxlive.com
+#clubhub-public.xboxlive.com
+#clubhub.xboxlive.com
+#clubmoderation-ppe.xboxlive.com
+#clubmoderation.xboxlive.com
+#clubpresence-ppe.xboxlive.com
+#clubpresence.xboxlive.com
+#clubprofile-partner.xboxlive.com
+#clubprofile-ppe-partner.xboxlive.com
+#clubprofile-ppe.xboxlive.com
+#clubprofile.xboxlive.com
+#clubroster-partner.xboxlive.com
+#clubroster-ppe-partner.xboxlive.com
+#clubroster-ppe.xboxlive.com
+#clubroster.xboxlive.com
+#clubsearch-ppe.xboxlive.com
+#clubsearch.xboxlive.com
+#cmdvn.cn
+#cmf.tech
+#cms.gov
+#cnet.com
+#coccinelle.nl
+#cocoalife.org
+#code.jquery.com
+#code.videolan.org
+#code.vmware.com
+#codeassist.google
+#codecs.fedoraproject.org
+#codedexchange.com
+#codegrepper.com
+#codepal.ai
+#codepen.io
+#codewithmosh.com
+#coeursports.com
+#coffee-staging.xboxservices.com
+#coin360.com
+#coinauctionshelp.com
+#coincap.io
+#cokhinganhin.com
+#colab.google
+#coladaily.com
+#colby.edu
+#colegiodelabici.edu.co
+#coleswindell.com
+#collectui.com
+#collive.com
+#coloriageetdessins.com
+#combohr.com
+#combustibles-gruchy.fr
+#comments-ppe.xboxlive.com
+#comments.xboxlive.com
+#commissionaires.ca
+#commoncrawl.org
+#communications.xboxlive.com
+#community.appian.com
+#community.hpe.com
+#community.spiceworks.com
+#compiles.overleaf.com
+#computernetworkingnotes.com
+#computerwoche.de
+#computerworld.com
+#comsol.com
+#conan.io
+#conda.io
+#coneyislandfunguide.com
+#config2.mgt.dnet.xboxlive.com
+#config2.mgt.xboxlive.com
+#conikal.com
+#connect.redhat.com
+#connect.ubisoft.com
+#connect.wpmailsmtp.com
+#connoisseurusveg.com
+#consent.config.office.com
+#console.cloud.google.com
+#console.firebase.google.com
+#constantcontact.com
+#consuelastore.com
+#consul.io
+#consumer.pearmill.com
+#content.support.xboxlive.com
+#contentaccess.exp-staging.xboxservices.com
+#contentaccess.exp.xboxservices.com
+#contentbuilder-ppe.xboxlive.com
+#contentbuilder.xboxlive.com
+#contextualsearch.xboxlive.com
+#continue.dev
+#controlledchaoshair.com
+#controllers-onerf.ppe.xbox.com
+#controllerwarranty.support.xboxlive.com
+#convertio.co
+#convertio.me
+#cooganlondon.com
+#cookielaw.org
+#cookingchatfood.com
+#coolhorse.com
+#coop.org
+#coopers.com.au
+#copilot.platform.xboxservices.com
+#coracoffeeco.com
+#coral-staging.xboxservices.com
+#coral.xboxservices.com
+#core-online.org
+#core.accs-int.xboxlive.com
+#core.accs-prod.xboxlive.com
+#core.accs-test.xboxlive.com
+#core.gssv-play-int.xboxlive.com
+#core.gssv-play-prod.xboxlive.com
+#coreldraw.com
+#corematch-ppe.xboxlive.com
+#coren-sp.gov.br
+#coronadoleather.com
+#corp.ign.com
+#corpredirect.intel.com
+#corsica-ferries.co.uk
+#cosanti.com
+#cosmos-preview-cf.xbox.com
+#cosmos-preview-ppe.xbox.com
+#cosmos-preview.dnet.xbox.com
+#cosmos-preview.xbox.com
+#cosmosdeli.net
+#cougarpaws.com
+#councilfordisabledchildren.org.uk
+#countrycross.sk
+#countyofriverside.us
+#cover-addict.com
+#coyotecafe.com
+#cpanel.net
+#cppstories.com
+#cpuid.com
+#cracking.org
+#craftandglory.in
+#crazydomains.co.uk
+#crazytime-apk.com
+#creationinfoplus.com
+#creativelab5.com
+#creativemail.com
+#creativemarket.com
+#creg.gov.co
+#crepmovement.com
+#crewbikeco.com
+#crimson-staging.xboxservices.com
+#crimson.xboxservices.com
+#criteo.com
+#crocoblock.com
+#crowboroughlife.com
+#crtv.mk
+#crybit.com
+#cs50.ai
+#cs50.dev
+#cs50.io
+#cs50.me
+#csc.net.cn
+#cscmp.org
+#csp.withgoogle.com
+#ctemploymentlawblog.com
+#ctic.com
+#ctm.co.za
+#cubeslam.com
+#culture21.ru
+#cumminsengines.com
+#curbsidecycle.com
+#curl.haxx.se
+#curl.se
+#cvedetails.com
+#cwtv.com
+#cyan-staging.xboxservices.com
+#cyan-teak-furniture.com
+#cyan.xboxservices.com
+#cybrary.it
+#cyclinic.com.au
+#cyfe.com
+#cygnett.com
+#cyland.org
+#cylex-locale.fr
+#da-staging.xboxservices.com
+#da.vsicloud.com
+#da.xboxservices.com
+#daaz.com
+#dafi.pl
+#daily.dev
+#dankmemer.lol
+#dannyda.com
+#darklithorror.com
+#dart.dev
+#dartpad.dev
+#das.domreg.lt
+#dashboardpack.com
+#dashcontent.xbox.com
+#dashcontentverification.xbox.com
+#data-cdn.mbamupdates.com
+#data-origin.xboxlive.com
+#data-vef-eap.xboxlive.com
+#data-vef-origin.xboxlive.com
+#data-vef-proxy.xboxlive.com
+#data-vef.xboxlive.com
+#data.gingersoftware.com
+#data.xboxlive.com
+#database.clamav.net
+#database.windows.net
+#databreaches.net
+#dataguidance.com
+#datastax.com
+#datastudio.google.com
+#datastudios.org
+#davenportiowa.com
+#davidmiscavige.org
+#daylunalife.com
+#daynoimi.net
+#daypassapp.com
+#daytonastate.edu
+#de.archive.ubuntu.com
+#de.ign.com
+#deb.etcher.io
+#deb.nodesource.com
+#debian.org
+#decathlon.it
+#dedicatedpanel.com
+#deepinfra.com
+#deepmind.com
+#defold.com
+#defu123.com
+#deglingos.com
+#degods.com
+#delas.pt
+#deletedaccounts.dnet.xboxlive.com
+#deletedaccounts.xboxlive.com
+#dellcdn.com
+#dellemc.com
+#delltechnologies.com
+#delta-aggregator-staging.xboxservices.com
+#delta-aggregator.xboxservices.com
+#demdex.net
+#demo.phlox.pro
+#demo.themegrill.com
+#demolay.org
+#demonware.net
+#denimheads.cz
+#deno.com
+#denon.com
+#deployer.org
+#deploymentcode.com
+#design911.com
+#designfesta.com
+#destinythegame.com
+#detiklink.com
+#deutschlandcard.de
+#dev-chat.support.xboxlive.com
+#dev-community.spro.xbox.com
+#dev-content.support.xboxlive.com
+#dev-controllerwarranty.support.xboxlive.com
+#dev-conversation.support.xboxlive.com
+#dev-enrollments.support.xboxlive.com
+#dev-messagefulfillment.support.xboxlive.com
+#dev-next.xair.xboxlive.com
+#dev-notifications.support.xboxlive.com
+#dev-orderhistory.support.xboxlive.com
+#dev-proxy.support.xboxlive.com
+#dev-refunds.support.xboxlive.com
+#dev-search.support.xboxlive.com
+#dev-webforms.support.xboxlive.com
+#dev.copilot.platform.xboxservices.com
+#dev.dynamicsigls.exp.xboxservices.com
+#dev.mysql.com
+#dev.play.xbox.com
+#dev.support-loyalty.xbox.com
+#dev.support-xmf.xbox.com
+#dev.support.xbox.com
+#dev.to
+#dev.xair.xboxlive.com
+#dev.xbox.com
+#developer-staging.xboxservices.com
+#developer.android.com
+#developer.com
+#developer.wordpress.org
+#developer.xboxlive.com
+#developer.xboxservices.com
+#developers.chrome.com
+#developertokenservice-staging.xboxservices.com
+#developertokenservice.xboxservices.com
+#devforumsfeedback.xboxlive.com
+#device-metrics-us.amazon.com
+#device-origin.auth.xboxlive.com
+#device.auth.dnet.xboxlive.com
+#device.auth.xboxlive.com
+#device.mgt.dnet.xboxlive.com
+#device.mgt.xboxlive.com
+#devops.com
+#devs.mx
+#dewacsn889.org
+#dezeenjobs.com
+#dfndusa.com
+#dfsa.ae
+#dhammasukha.org
+#dhem-france.com
+#digicert.com
+#digift.sg
+#digital.nhs.uk
+#digitalattackmap.com
+#digitec.ch
+#dimmakcollection.com
+#dinersdriveinsdiveslocations.com
+#dioceseduluth.org
+#directadmin.com
+#discord.media
+#discourse-cdn.com
+#discover-echo.com
+#dishingdelish.com
+#disney.com
+#disneyinteractive.com
+#disneyjunior.com
+#divinechocolateusa.com
+#divoom.com
+#diymotofix.com
+#djangoproject.com
+#dl.k8s.io
+#dl.trimble.com
+#dl.yarnpkg.com
+#dlang.org
+#dlm.mariadb.com
+#dmww.com
+#dnaplainfield.com
+#dnastack.com
+#dnsdumpster.com
+#dnsv1.com
+#doc.vmware.com
+#dockerflow.com
+#dockerstatic.com
+#docnc.org
+#docs.telerik.com
+#docs.vmware.com
+#doctorly.org
+#dodi-repacks.site
+#dogechain.info
+#dogobooks.com
+#dogsy.co.uk
+#dolcielondon.com
+#domaincheck.auda.org.au
+#domario.ru
+#dominos.co.uk
+#donnaomamma.it
+#donsappliances.com
+#doors.nyc
+#dorianlpg.com
+#dot.tk
+#downduck.com
+#download-2.xyz
+#download-app-pinup.ru
+#download-ssc.cisco.com
+#download.ccleaner.com
+#download.docker.com
+#download.hogwartslegacy.com
+#download.imunify360.com
+#download.maxmind.com
+#download.sunnytoo.com
+#download.unity3d.com
+#download.wordpress.org
+#downloadcenter.intel.com
+#downloads.arduino.cc
+#downloads.joomla.org
+#downloads.mariadb.com
+#downloads.wordpress.org
+#dpm.demdex.net
+#draw.io
+#draytek.com.tw
+#dreamscape.xbox.com
+#dreamstime.com
+#dreamworksdirect.com
+#drewbinsky.com
+#drgreger.org
+#driftt.com
+#drivereasy.com
+#driverguide.com
+#drkellyann.com
+#drleaf.com
+#drops-register.ubi.com
+#ds.ign.com
+#dsfo.de
+#dshield.org
+#dsmedia.ign.com
+#dtek-kem.com.ua
+#dueruote.it
+#dui.xboxlive.com
+#duncker-humblot.de
+#dundalkfc.com
+#dusseldorpbmw.nl
+#dvusd.org
+#dwtn.nl
+#dyn.com
+#dynamicsigls.exp.xboxservices.com
+#dynect.net
+#dynstatus.com
+#e-food.gr
+#earthbits.com
+#earthengine.google.com
+#earthplaza.jp
+#earthythailand.com
+#easternbikes.com
+#eastus-gamingconsent.xboxlive.com
+#eastvaleca.gov
+#easyapplianceparts.com
+#easyjet.com
+#eatbobos.com
+#ebay.at
+#ebay.ca
+#ebay.com
+#ebay.us
+#ebaycdn.net
+#ebayimg.com
+#ebaystatic.co
+#ebaystatic.com
+#ebbo.com
+#eberlestock.com
+#ebora.nl
+#ebrosia.de
+#ebuyer.com
+#echo-api.amazon.com
+#eclipsefoods.com
+#ecomdash.com
+#economiza.com
+#ecoverdirect.com
+#ectorcountyisd.org
+#eddiebauer.com
+#edelmanfinancialengines.com
+#editorafi.org
+#editorial-origin.xboxlive.com
+#editorial-ppe.xboxlive.com
+#editorial.xboxlive.com
+#editorx.com
+#educaciodigital.cat
+#education.github.com
+#eep.io
+#eesystem.com
+#effortlessfoodie.com
+#eggfactorycafe.com
+#eid.gov.mt
+#eigenphi.io
+#einstein.br
+#eio.com
+#ekahau.com
+#ekstraklasa.net
+#elamerican.com
+#elanfinancialservices.com
+#elastic.dev
+#elasticemail.com
+#eldoradofurniture.com
+#eleague.com
+#electioncenter.org
+#electrickicks.com.au
+#electricmirror.com
+#electron.build
+#elegantbridal.com
+#elegantflyer.com
+#elektrika.ua
+#elementor.api.kustomerapp.com
+#elementor.com
+#elements.envato.com
+#elemis.com
+#elevatedfaith.com
+#elitelawyer.com
+#elitesalondayspa.com
+#ellesilk.com
+#elo.com
+#eloqua.com
+#elstc.co
+#emails.xbox.com
+#embed.gog.com
+#ember-staging.xboxservices.com
+#ember.xboxservices.com
+#emc.com
+#emedco.com
+#emerald-staging.xboxservices.com
+#emerald.xboxservices.com
+#emeraldaircleaners.com
+#emersonlakepalmer.com
+#emotiva.com
+#employerlawreport.com
+#en.miui.com
+#energiavirasto.fi
+#energytradeaction.org
+#enforcement-origin.xbox.com
+#enforcement-preview.xbox.com
+#enforcement.spro.xboxlive.com
+#enforcement.xbox.com
+#enforcement.xboxlive.com
+#enforcementfd-preview.xbox.com
+#enforcementfd.xbox.com
+#engadget.com
+#engelslogistiek.nl
+#engineeredtoslide.com
+#engineering.canceriq.com
+#enjoylifefoods.com
+#enjukuracing.com
+#enlineadirecta.info
+#enlisted.net
+#enpi-info.eu
+#enrollments.support.xboxlive.com
+#ensamble.info
+#enter.online
+#entertimeonline.com
+#entitlements-staging.xboxservices.com
+#entitlements-xbox-ppe.xboxlive.com
+#entitlements-xbox.xboxlive.com
+#entitlements.xboxservices.com
+#envanto.com
+#envato.market
+#envatousercontent.com
+#envoyproxy.io
+#enzoclothingstore.com
+#epayments.com
+#epel.mirror.wearetriple.com
+#epicgames.dev
+#epix-origin.xbox.com
+#epix-preview-ssl.xbox.com
+#epix-web-origin.xbox.com
+#epix.xbox.com
+#eplists-origin.xboxlive.com
+#eplists-ppe.xboxlive.com
+#eplists-xg-origin.xboxlive.com
+#eplists-xg.xboxlive.com
+#eplists.xboxlive.com
+#epochtimes.com
+#equaljusticeworks.org
+#equus.co.uk
+#eraser.dnet.xboxlive.com
+#eraser.xboxlive.com
+#erith-6-uk.tlsext.com
+#escortradar.com
+#espacechristianepeugeot.org
+#esportsparra.com
+#esquinanyc.com
+#essexkilns.com
+#esure.com
+#ethernodes.org
+#ethique.co.nz
+#etsy.com
+#ettdnsv.com
+#eu.gear.xbox.com
+#eucasinoutansvensklicens.se
+#europe.gssv-auth-prod.xboxlive.com
+#europe.gssv-auth-prodxhome.xboxlive.com
+#europe.gssv-cmdrelay-prod.xboxlive.com
+#europe.gssv-cmdrelay-prodxhome.xboxlive.com
+#europe.gssv-dev-prod.xboxlive.com
+#europe.gssv-dev-prodxhome.xboxlive.com
+#europe.gssv-play-prod.xboxlive.com
+#europe.gssv-play-prodxhome.xboxlive.com
+#europe.gssv-registration-prod.xboxlive.com
+#europe.gssv-sage-prod.xboxlive.com
+#europe.gssv-sage-prodxhome.xboxlive.com
+#europe.gssv-vmcm-prod.xboxlive.com
+#europe.pairing.accs-prod.xboxlive.com
+#europe.prod.gamingai.exp.xboxservices.com
+#europe.prod.gplt.fnch.xboxlive.com
+#europe.prod.gplt.sage.xboxlive.com
+#europe.prod.gssv.fnch.xboxlive.com
+#europe.prod.gssv.sage.xboxlive.com
+#europe.prod.shaders.xboxlive.com
+#europe.prod.xccs.xboxlive.com
+#europe.prod.xplt.fnch.xboxlive.com
+#europe.xplt-xcad-prod.xboxlive.com
+#eurosiz.ua
+#eus.prod.monolith.experiences.xboxservices.com
+#eus.test.monolith.experiences.xboxservices.com
+#euwest-keys-accessory.auth.xboxlive.com
+#euwest-mxazdata.mgt.xboxlive.com
+#euwest-xcache.xboxlive.com
+#eventbrite.fi
+#eventdove.com
+#ever-eden.com
+#everysaving.ae
+#everythingfor420.com
+#evidenceinvestor.com
+#evolution-house.ru
+#evscschools.com
+#exactmetrics.com
+#exaloop.io
+#exceedlms.com
+#exodus.io
+#exp-tas.com
+#exp.host
+#expedia.co.jp
+#experiences.fanfest.xbox.com
+#explorit.org
+#expo.dev
+#expomap.ru
+#extendify.com
+#extensions.sketchup.com
+#externalstreamingcatalog-staging.xboxservices.com
+#externalstreamingcatalog.xboxservices.com
+#extremeloading.com
+#eyeonearthsummit.org
+#ezclocker.com
+#f-secure.com
+#f2pool.com
+#fa.wordpress.org
+#fab.com
+#fabianomoratoimoveis.com.br
+#facetdermatology.com
+#faceueditor.com
+#factoryofsadness.co
+#familyhomeplans.com
+#famousinreal.life
+#fanatical.com
+#fanbase.com
+#fantasyflightgames.com
+#fanucci.it
+#faradayskitchenstore.com
+#farazserver.net
+#farmgirlflowers.com
+#fashionvibes.net
+#fastapi.tiangolo.com
+#fastly-debug.com
+#fastly-insights.com
+#fastly-status.com
+#fastly.com
+#fastly.io
+#fatboy.com
+#fatemag.com
+#faux.mgt.dnet.xboxlive.com
+#faux.mgt.xboxlive.com
+#favecrafts.com
+#fayetteville-ga.gov
+#fb68.technology
+#fbshare-origin.xboxlive.com
+#fbshare.xboxlive.com
+#fcas.prd.s5.prd.futc-ext.gcp.ea.com
+#federale.be
+#fedora-epel.koyanet.lv
+#fedoramagazine.org
+#fedoraproject.org
+#feedbacklogin.xbox.com
+#feedburner.com
+#feedly.com
+#feedz.com.br
+#feinkost-kaefer.de
+#fern-staging.xboxservices.com
+#fern.xboxservices.com
+#fesselmenfirearms.com
+#fhahoreca.com
+#fifaindex.com
+#filecr.com
+#filehippo.com
+#filehippo.net
+#files.directadmin.com
+#files.pythonhosted.org
+#files.rtl-theme.com
+#files.softaculous.com
+#files.virtualizor.com
+#filmmodu.nl
+#financieraelcorteingles.es
+#findamasters.com
+#findhomesusa.com
+#findinghomefarms.com
+#firebase.io
+#firebaseapp.com
+#firebaseextensions.clients6.google.com
+#firebaseio.com
+#firebaseremoteconfig.com
+#fireflyfriends.com
+#fireworks.com
+#firmware.amazon.com
+#firstdata.com
+#fishersci.se
+#fishing.net.nz
+#fispalfoodservice.com.br
+#fitness.gov
+#fitness.xboxlive.com
+#fitssock.com
+#fivem-mods.com
+#fiverr.com
+#fiverrcdn.com
+#fjallraven.com.au
+#flag-icon-css.lip.is
+#flaticon.com
+#flatmatefinders.com.au
+#flexdog.com
+#flexibleshipping.com
+#flexperks.com
+#flight-chat.support.xboxlive.com
+#flight-content.support.xboxlive.com
+#flight-controllerwarranty.support.xboxlive.com
+#flight-enrollments.support.xboxlive.com
+#flight-messagefulfillment.support.xboxlive.com
+#flight-orderhistory.support.xboxlive.com
+#flight-proxy.support.xboxlive.com
+#flight-refunds.support.xboxlive.com
+#flight-search.support.xboxlive.com
+#flight-webforms.support.xboxlive.com
+#flight.support-loyalty.xbox.com
+#flight.support-refunds.xbox.com
+#flight.support-xmf.xbox.com
+#flightroutes.com
+#fluchos.es
+#fluentd.org
+#flutter-io.cn
+#flux.ai
+#flvetbehavior.com
+#flygresor.se
+#flyhomes.com
+#flymacarthur.com
+#flynn.io
+#fnmgroup.it
+#fol.nl
+#followeran.com
+#fontawesome.com
+#fontkeren.com
+#fonts.com
+#foodbev.cn
+#footedpajamas.com
+#footlocker.ae
+#footlocker.com.eg
+#foreignaffairs.gov.mt
+#formulaswiss.com
+#fortheloveofgrad.com
+#forticlient.com
+#fortinet.com
+#fortnite-storage-live.s3.amazonaws.com
+#fortunetiger-game-slot.com
+#forums-dev.xboxlive.com
+#forums-int.xboxlive.com
+#forums-preview.xbox.com
+#forums-preview.xboxlive.com
+#forums.xbox.com
+#forums.xboxlive.com
+#forums1.xboxlive.com
+#forums2.xboxlive.com
+#forums3.xboxlive.com
+#forums4.xboxlive.com
+#forumsuat.xboxlive.com
+#fourwindsgrowers.com
+#foxdealer.com
+#fpdownload.macromedia.com
+#fpt.xbox.com
+#fpt.xboxlive.com
+#fragosoturismo.com
+#framer.com
+#franklincountync.us
+#franklinplanner.com
+#frankstellanyc.com
+#fraudprotection.support.xbox.com
+#freedesktop.org
+#freelancer.com
+#freemius.com
+#freenas.org
+#freenom.com
+#freepbx.org
+#freepik.com
+#freepikcompany.com
+#freeyabb.com
+#frenchbull.com
+#freshworks.com
+#fridaysforfuturebrasil.org
+#friendfinder-ppe.xboxlive.com
+#friendfinder.xboxlive.com
+#friendlookup.xboxlive.com
+#friendsparodyontour.com
+#frizzoff.com
+#fromanother.ca
+#fryeburgacademy.org
+#ftp.postgresql.org
+#ftpf.org
+#fuchsia-staging.xboxservices.com
+#fuchsia.dev
+#fuchsia.xboxservices.com
+#fullstory.com
+#fully.com
+#fun88kyc.com
+#fundsxpress.com
+#funenokagakukan.or.jp
+#fusioncharts.com
+#g.codefresh.io
+#g.live.com
+#gabyfriedman.com
+#gaijinent.com
+#gaithersburgmd.gov
+#galaxy.gog.com
+#galxe.com
+#game.co.uk
+#gamea.clashofclans.com
+#gameclipsmetadata-origin.xboxlive.com
+#gameclipsmetadata.xboxlive.com
+#gameconfiguration.xboxlive.com
+#gameevents-origin.xboxlive.com
+#gameevents-ppe.xboxlive.com
+#gameevents-stress.xboxlive.com
+#gameevents.xboxlive.com
+#gamekit.com
+#gamemodes.xboxlive.com
+#gamenguide.com
+#gamepass.ubisoft.com
+#gamepassperks-staging.xboxservices.com
+#gamepassperks.xboxservices.com
+#gamepassquests-ppe.xboxlive.com
+#gamepassquests.xboxlive.com
+#gamerpics-origin.xboxlive.com
+#gamerpics.xboxlive.com
+#gamertag-ppe.xboxlive.com
+#gamertag.xboxlive.com
+#gameserverds.dnet.xboxlive.com
+#gameserverds.xboxlive.com
+#gameserverdsvnext01.xboxlive.com
+#gameserverdsvnext01a.xboxlive.com
+#gameserverevents-origin.xboxlive.com
+#gameserverevents-ppe.xboxlive.com
+#gameserverevents-stress.xboxlive.com
+#gameserverevents.xboxlive.com
+#gameserverms.dnet.xboxlive.com
+#gameserverms.xboxlive.com
+#gameservermsvnext01.xboxlive.com
+#gamesplanet.com
+#gamestop.com
+#gamesvcsvnext01.xboxlive.com
+#gamingai.exp.xboxservices.com
+#gamingconsent-staging.xboxlive.com
+#gamingconsent.xboxlive.com
+#gamingcontext-ppe.xboxlive.com
+#gamingcontext.xboxlive.com
+#gamingdata-ppe.xboxlive.com
+#gamingdata.xboxlive.com
+#gamingthelottery.org
+#gamingusertrust-staging.xboxlive.com
+#gamingusertrust.xboxlive.com
+#gamrfirst.ch
+#gander.maelstrom.gameservices.xboxlive.com
+#ganttproject.biz
+#garbagedomain.com
+#gardenforwildlife.com
+#gardensofthesun.com
+#garmin.com
+#gateway-staging.xboxservices.com
+#gavereleather.net
+#gbcass.com
+#gbudb.com
+#gclubauto.net
+#gcping.com
+#gcppodcast.com
+#gcyouthministries.org
+#gdrvowners.com
+#gear.xbox.com
+#gears.exp.xboxservices.com
+#gearsofwar.xbox.com
+#geekglam.net
+#geeksforgeeks.org
+#geforce.co.uk
+#gemini.google
+#generativeai.google
+#geniusdexchange.com
+#genspark.ai
+#genymotion.com
+#georgetownma.gov
+#germany2006.tv
+#get.acme.sh
+#get.docker.ir
+#getambassador.io
+#getcomposer.org
+#getcruise.com
+#getflywheel.com
+#getjackblack.com
+#getliner.com
+#getmdl.io
+#getmerlin.in
+#getpostman.com
+#getsentry.com
+#getwooplugins.com
+#geyanw.com
+#ggpartners.com
+#gifi.fr
+#gifting-online.ca
+#giftr.sg
+#gillcapital.com.sg
+#giro.com
+#gitconnected.com
+#github.dev
+#github.io
+#githubcopilot.com
+#gitlag.com
+#gitman.com
+#gitter.im
+#gladbachlive.de
+#glamagalparty.com
+#glassdoor.nl
+#glitch.com
+#glitch.me
+#global14.com
+#globegazette.com
+#gluonhq.com
+#gmail-smtp-in.l.google.com
+#gmail.com
+#gmktec.com
+#gmtreks.com
+#gnome.org
+#gns3.com
+#go.com
+#go.wbgames.com
+#goeuro.com
+#goforthgoods.com
+#gog-galaxy.com
+#gog-galaxy.gog.com
+#goharbor.io
+#gohugo.io
+#gojerusalem.com
+#gold-staging.xboxservices.com
+#gold.xboxservices.com
+#goldenbearstore.com
+#golfdiscount.com
+#golobos.com
+#goo.gl
+#goo.gle
+#goodnet.gr
+#goodordering.com
+#goodwillfinds.com
+#google.dev
+#google.qualtrics.com
+#googleapps.com
+#googlecode.com
+#googlesciencefair.com
+#gooutside.com.br
+#gopro.com
+#gordiehoweinternationalbridge.com
+#gosca18.ea.com
+#gotomeeting.com
+#governmentresume.org
+#gplt-acms-int.xboxlive.com
+#gplt-acms-test.xboxlive.com
+#gplt-cnry-prod.xboxlive.com
+#gpsessentials.com
+#gpubgm.com
+#gpuopen.com
+#gputechconf.com
+#gradio.app
+#gradle-dn.com
+#grafana.net
+#grafana.org
+#gramfeed.com
+#grammarly.com
+#granite-staging.xboxservices.com
+#granite.xboxservices.com
+#grappleguardsoap.com
+#gravityapi.com
+#gravityforms.com
+#gravitykit.com
+#gravityview.co
+#gravityview.com
+#greatbendpost.com
+#greenlee.com
+#greenmountaindiapers.com
+#greenwichacademy.org
+#grey-staging.xboxservices.com
+#grey.xboxservices.com
+#griiham.in
+#groceriesapparel.com
+#groundworkscompanies.com
+#groupenovatech.com
+#grow.google
+#grundysshoes.com.au
+#gsap.com
+#gssv-auth-int.xboxlive.com
+#gssv-auth-prod.xboxlive.com
+#gssv-auth-test.xboxlive.com
+#gssv-cmdrelay-int.xboxlive.com
+#gssv-cmdrelay-prod.xboxlive.com
+#gssv-cmdrelay-test.xboxlive.com
+#gssv-cnry-int.xboxlive.com
+#gssv-cnry-prod.xboxlive.com
+#gssv-cnry-test.xboxlive.com
+#gssv-dev-int.xboxlive.com
+#gssv-dev-intxhome.xboxlive.com
+#gssv-dev-prod.xboxlive.com
+#gssv-dev-prodxhome.xboxlive.com
+#gssv-dev-test.xboxlive.com
+#gssv-dev-testxhome.xboxlive.com
+#gssv-nodepool-wus2-prod.xboxlive.com
+#gssv-nodepool-wus2-test.xboxlive.com
+#gssv-play-int.xboxlive.com
+#gssv-play-prod.xboxlive.com
+#gssv-play-test.xboxlive.com
+#gssv-play-testxhome.xboxlive.com
+#gssv-registration-int.xboxlive.com
+#gssv-registration-prod.xboxlive.com
+#gssv-registration-test.xboxlive.com
+#gssv-sage-int.xboxlive.com
+#gssv-sage-prod.xboxlive.com
+#gssv-sage-test.xboxlive.com
+#gssv-sigl-prod.xboxlive.com
+#gssv-vmcm-int.xboxlive.com
+#gssv-vmcm-prod.xboxlive.com
+#gssv-vmcm-test.xboxlive.com
+#gssvc-ppe.xboxlive.com
+#gstyleusa.com
+#gta5-gen8.ros.rockstargames.com
+#gta5-gen9.ros.rockstargames.com
+#gtav.com
+#gtmetrix.com
+#gtmoriginal.com
+#gud2know.com
+#gurobi.com
+#gutteridge.com
+#gvb.ch
+#gvt1.com
+#gvt2.com
+#gwtproject.org
+#gymnasium4.ru
+#h-bid.com
+#hackertarget.com
+#hackthebox.com
+#hackthebox.eu
+#halifax.maelstrom.gameservices.xboxlive.com
+#halo.xbox.com
+#halototoslot.foundation
+#haphong.edu.vn
+#happyandpolly.com
+#happypuppy.com
+#happytailpuppies.com
+#hardwareportal.ru
+#harivco.org
+#harleybenton.com
+#harrypotter.com
+#haupcar.com
+#hauteshoes.ca
+#havecamerawilltravel.com
+#hawaiithreads.com
+#hawkfanatic.com
+#haxx.se
+#hayagi.com
+#hbhorsewear.com.au
+#hbogo.com
+#hbonow.com
+#he.net
+#healthrangerstore.com
+#healthybluemedicaid.top
+#heartlanepharmacy.com
+#heatonsstores.com
+#heavym.net
+#hebergtonserv.com
+#heckofalope.com
+#heil-hvac.com
+#heinzketchup.com
+#heldref.org
+#helena-arkansas.com
+#hellofresh.com
+#hellofresh.de
+#helloprenup.com
+#help.one.com
+#help.us-themes.com
+#help.xbox.com
+#helpshift.com
+#helveticalifestyle.com
+#hemnet.se
+#hemptons.co.za
+#henglianmx.com
+#henrymayo.com
+#heraldpalladium.com
+#herbsguide.net
+#heritagestore.com
+#heroturko.net
+#hetzner.cloud
+#hetzner.company
+#hetzner.de
+#hex.pm
+#heyspin.com
+#hgsplyco.com
+#hhs.gov
+#hielscher.com
+#hiexpress.com
+#highcharts.com
+#hippieshop.com
+#historicaldis.ru
+#historicmapworks.com
+#hitraveltales.com
+#hmmyok.com
+#hobiesurfshop.com
+#hogash.com
+#hogwartslegacy.bugs.wbgames.com
+#hogwartslegacy.com
+#hol.vmware.com
+#holabeew.com
+#holidayme.com
+#holloshoe.com
+#homecentre.com
+#homesteadsupplier.com
+#homezonefurniture.com
+#hondaiscoin.com
+#honeyplaybox.com
+#hortonworks.com
+#host.io
+#hostcontrol-backoffice.com
+#hoster.kz
+#hostinger.ae
+#hostinger.com
+#hostinger.nl
+#hostnine.com
+#hotchillys.com
+#hotel-hennef.com
+#hotelbusiness.com
+#hoteliermiddleeast.com
+#hotjar.com
+#hotmatchcollectables.com
+#hotspurhq.com
+#hoturls.info
+#house.pl
+#houseofharlow1960.com
+#housesandparties.com
+#houstonballet.org
+#howgoogleworks.net
+#hp.com
+#hpe.com
+#hqmix.com.br
+#html5rocks.com
+#html5up.net
+#http.app
+#http.codes
+#http.dev
+#httpupdate.cpanel.net
+#huarenjie.net
+#huawei.com
+#hubapi.com
+#huemor.rocks
+#hufworldwide.co.uk
+#hummkombucha.com
+#huntoffice.co.uk
+#hurma.work
+#hydrator.xboxlive.com
+#hyped.sg
+#hypevault.co
+#i-online-casino.org
+#iahsaa.org
+#iampsychiatry.com
+#iask.ai
+#ibankcoin.com
+#icebarrel.com
+#icitech.org
+#icloud.com
+#iconbazaar.com
+#id5-sync.com
+#idagent.com
+#ideal-house.ru
+#identityverification.xboxlive.com
+#idni.org
+#idsi.md
+#idwall.co
+#idx.dev
+#idx.google.com
+#idyllwind.com
+#ie.ign.com
+#ieee.com
+#iev.aero
+#ifconfig.co
+#ifconfig.me
+#iforgot.apple.com
+#ifyousayido.com
+#igamingbrazil.com
+#igbnorthamerica.com
+#igkhair.com
+#ign.com
+#ignimgs.com
+#iid.com
+#ilovepdf.com
+#ilsr.org
+#image-ssl.xboxlive.com
+#image.engage.xbox.com
+#image.status.xbox.com
+#image.xboxlive.com
+#imandra.ai
+#imdb.com
+#img.freepik.com
+#imgix.net
+#imgur.com
+#immortalromanceslots.org
+#immuniweb.com
+#imon.net
+#import.aheto.co
+#impossible.sg
+#impressions-ppe-public.xboxlive.com
+#impressions-ppe.xboxlive.com
+#impressions-public-origin.xboxlive.com
+#impressions-public.xboxlive.com
+#impressions.xboxlive.com
+#imtra.com
+#in.appcenter.ms
+#inapp.gov.it
+#inbox-dev.assist.gameservices.xboxlive.com
+#inbox-int.assist.gameservices.xboxlive.com
+#inbox.assist.gameservices.xboxlive.com
+#incubate-propagate.com
+#independentreserve.com
+#independer.nl
+#inderscienceonline.com
+#indexing.com
+#indianexpress.com
+#indigo-staging.xboxservices.com
+#indigo.xboxservices.com
+#inea.pl
+#inet.vmrp.xboxlive.com
+#inez.com
+#infd.edu.ar
+#infideas.com
+#informaticsjournals.com
+#ingeoexpert.com
+#ingress.com
+#insider.xbox.com
+#insidersport.com
+#insidetracker.com
+#insights-collector.newrelic.com
+#insomnia.rest
+#inspirefitness.com
+#install.avcdn.net
+#instana.com
+#instance.mgt.dnet.xboxlive.com
+#instance.mgt.xboxlive.com
+#instantcard.net
+#institutoidv.org
+#int-chat.support.xboxlive.com
+#int-content.support.xboxlive.com
+#int-controllerwarranty.support.xboxlive.com
+#int-enrollments.support.xboxlive.com
+#int-messagefulfillment.support.xboxlive.com
+#int-notifications.support.xboxlive.com
+#int-orderhistory.support.xboxlive.com
+#int-proxy.support.xboxlive.com
+#int-refunds.support.xboxlive.com
+#int-search.support.xboxlive.com
+#int-webforms.support.xboxlive.com
+#int.copilot.platform.xboxservices.com
+#int.gamingai.ppe.exp.xboxservices.com
+#int.gplt.fnch.xboxlive.com
+#int.gplt.sage.xboxlive.com
+#int.gssv.fnch.xboxlive.com
+#int.gssv.sage.xboxlive.com
+#int.library.exp.xboxservices.com
+#int.licensing.sucu.xboxlive.com
+#int.monolith.experiences.xboxservices.com
+#int.play.xbox.com
+#int.portal.interceptor.xboxlive.com
+#int.productmanagementcore.gamepass.xboxservices.com
+#int.reader.sucu.xboxlive.com
+#int.search.exp.xboxservices.com
+#int.shaders.xboxlive.com
+#int.sucu.xboxlive.com
+#int.support-loyalty.xbox.com
+#int.support-xmf.xbox.com
+#int.support.xbox.com
+#int.writer.sucu.xboxlive.com
+#int.xai.xboxservices.com
+#int.xccs.xboxlive.com
+#int.xoobe.platform.xboxservices.com
+#int.xplt.fnch.xboxlive.com
+#integralgroup.com
+#intel.de
+#intelephense.com
+#intellij.net
+#intellywp.com
+#interiorsonline.com.au
+#intermedia.xboxlive.com
+#internetdownloadmanager.com
+#interstateplastics.com
+#intertech.com
+#interweavetextiles.com
+#intljs.rmtag.com
+#inventory-ppe.xboxlive.com
+#inventory.xboxlive.com
+#investcanada.ca
+#invisionapp.com
+#iographer.com
+#iomtt.com
+#ip.sb
+#ip2location.com
+#ipecho.net
+#ipinfo.io
+#ipsoft.com
+#ipwhois.app
+#iqcent.com
+#ir.archive.ubuntu.com
+#iran-locations-api.vercel.app
+#irdpo.ru
+#irobot.ca
+#ironandresin.com
+#ironphoenix.org
+#ironplanet.com.au
+#isaet.org
+#ispsystem.com
+#issabel.com
+#issabel.org
+#istanbulescortnet.com
+#istio.io
+#itasoftware.com
+#ithemes.com
+#itsfoss.com
+#itsjustwings.com
+#iu7.ru
+#ivans.com
+#ivory-staging.xboxservices.com
+#ivory.xboxservices.com
+#ixsystems.com
+#izhakwood.com
+#jabra.com
+#jack-wolfskin.de
+#jackiepapandrew.com
+#jackpotbob.com
+#jacobandco.shop
+#jade-staging.xboxservices.com
+#jade.xboxservices.com
+#jaegertracing.io
+#janesnyderart.com
+#jansamarth.in
+#jansport.ca
+#japannext.com
+#java.net
+#javascript.com
+#jayboymodz.com
+#jbalvin.com
+#jbs.org
+#jcehepatology.com
+#jcwesternwear.com
+#jeffersoncountywi.gov
+#jenningsbrewery.co.uk
+#jenshansen.com
+#jerseysmadeeasy.com
+#jestbahis.one
+#jetbrains.space
+#jetpack.com
+#jewelove.in
+#jezelle.com
+#jfrog.com
+#jiading.gov.cn
+#jiligame.in
+#jinenstore.com
+#jito.network
+#jiuzhenhao.com
+#joannabuchanan.com
+#jobinplanet.com
+#jobs.toggl.com
+#jobstreet.com.my
+#joe.co.uk
+#johnbellcroyden.co.uk
+#johnboos.com
+#join-xip-int.xboxlive.com
+#join-xip.xboxlive.com
+#joininuk.org
+#joker.com
+#jokerscostumemegastore.com.au
+#jornaldeuberaba.com.br
+#journeycheck.com
+#joyeshop.ru
+#jquery.com
+#js.braintreegateway.com
+#js.intercomcdn.com
+#js.org
+#js.stripe.com
+#jsdelivr.net
+#json.org
+#jules.google
+#jumpsudbury.ca
+#junkbrands.com
+#jupiterbahis.sbs
+#jurysinns.com
+#just-eat.dk
+#justcloud.com
+#justhype.co.uk
+#jwt.io
+#k3s.io
+#kaffe-clothing.com
+#kaggle.io
+#kaidan136.com
+#kairfashion.com
+#kaleidoscopeapp.com
+#kali.download
+#kali.org
+#kaplanpathways.com
+#kappit.com
+#karlkani.com
+#katacoda.com
+#kaufleuten.ch
+#kb.objectrocket.com
+#kb.vmware.com
+#keengamer.com
+#keepersecurity.com
+#keil.com
+#kelashartanah.my
+#kentcasino-slots.ru
+#ker.com
+#kerberos.io
+#kernel.org
+#kero.yachay.pe
+#keypowersports.my
+#keys-accessory.auth.dnet.xboxlive.com
+#keys-accessory.auth.xboxlive.com
+#keys-service.auth.xboxlive.com
+#khronos.org
+#kick.com
+#kidneyregistry.org
+#kidsgrowth.com
+#kievcity.gov.ua
+#killerspin.com
+#killerstartups.com
+#kinderfonds.nl
+#kindredbravely.com
+#kineticskateboarding.com
+#kingcomposer.com
+#kinglouie.nl
+#kingscross.co.uk
+#kinkbmx.com
+#kinsta.com
+#kirikomade.com
+#kitbash3d.com
+#kite.com
+#kleankanteen.co.uk
+#kleinboot.com
+#klrworld.com
+#kmart.com
+#kmplayer.com
+#kncbeauty.com
+#knigoboz.ru
+#knowledge.ca
+#knowyourteam.com
+#kobi5.com
+#kohls.com
+#koio.co
+#kolomna-speed-skating.com
+#komodo.co.uk
+#konami.com
+#konghq.com
+#koop.co.nz
+#kooziegroup.com
+#kosas.com
+#kotogadang-pusako.com
+#kraken.ignimgs.com
+#kreaturamedia.com
+#krincingemaszerofire.com
+#krisp.ai
+#krsouth-keys-accessory.auth.xboxlive.com
+#krsouth-mxazdata.mgt.xboxlive.com
+#ksayerdoula.com
+#ksbar.org
+#ksmetals.com
+#kulfibeauty.com
+#kumioils.com
+#kurand.jp
+#kuwinzhz.com
+#l-t.de
+#labellefoundation.org
+#labs.google.com
+#lacabra.dk
+#lacitysan.org
+#lacoste.sa
+#ladowntownnews.com
+#lagunabeachtextileco.com
+#lakewayresortandspa.com
+#lanakk.com
+#landal.de
+#langchain.com
+#laprensani.com
+#larksuite.com
+#las.ch
+#lastmilepev.com
+#launchdarkly.com
+#launcher.epicgames.com
+#launcher.hogwartslegacy.com
+#launcher.rockstargames.com
+#launcher.rockstargames.net
+#launchpadcontent.net
+#laurageller.com
+#lauriebelles.com
+#lavender-staging.xboxservices.com
+#lavender.xboxservices.com
+#lawdepot.com
+#layawayau.com
+#layla.amazon.com
+#lazybearsf.com
+#lc.org
+#ldplayer.net
+#leaddevelop.net
+#leaderboards-origin.xboxlive.com
+#leaderboards-ppe.xboxlive.com
+#leaderboards.xboxlive.com
+#leaderboardsvnext.xboxlive.com
+#leadinglady.com
+#leafletjs.com
+#league.com
+#leaguelane.com
+#lebanon-express.com
+#lebrusanstudio.com
+#ledlichtdiscounter.nl
+#leech.com
+#leetchi.com
+#leftbank.com
+#legacy.xboxdata.xboxlive.com
+#leket.org
+#lemon-int-pme.xbox.com
+#lemon-pme.xbox.com
+#lemon-staging.xbox.com
+#lemon-staging.xboxservices.com
+#lencr.org
+#lenderhomepage.com
+#lens.google.com
+#leon-greek.com
+#lethato.com
+#letsencrypt.org
+#letsignit.com
+#letsmakeaplan.org
+#leukstetickets.nl
+#level1productions.com
+#level3.com
+#level3.net
+#leveluprn.com
+#lexch.com
+#lg.com
+#lg.he.net
+#lgappstv.com
+#liantis.be
+#licence.yithemes.com
+#license.dynamic.ooo
+#license.opencart-api.com
+#licensepal.com
+#licenses.bdthemes.co
+#licenses.softaculous.com
+#licensing-mpls-ppe.xboxlive.com
+#licensing-mpls.xboxlive.com
+#licensing-ppe.xboxlive.com
+#licensing.xboxlive.com
+#lids.com
+#lifehousemusic.com
+#lifterlms.com
+#lightning.devs.mx
+#lightning.hogwartslegacy.com
+#lilly.es
+#lily-jade.com
+#lilylolo.co.uk
+#lime-staging.xboxservices.com
+#lime.xboxservices.com
+#limetorrents.info
+#link.xbox.com
+#links-stg.xboxlive.com
+#links-svc-stg.xboxlive.com
+#links-svc.xboxlive.com
+#links.xboxlive.com
+#linor.com
+#linuxhostsupport.com
+#linuxquestions.org
+#linuxserver2.dedidata.com
+#lioncountrysafari.com
+#lipsum.com
+#liputan6.com
+#lisasfamilypizzeria.com
+#lit.dev
+#litespeedtech.com
+#littleme.com.my
+#littlewonderandco.com
+#live-preview.xbox.com
+#live.com
+#live.xbox.com
+#liveconnect.xboxlive.com
+#livepopulation.com
+#livesoccertv.com
+#llama.com
+#llamameta.net
+#llrmi.com
+#lnm.lt
+#loadbalancer.org
+#localgirlhookup.org
+#loctote.com
+#login.canceriq.com
+#login.gog.com
+#login.live.com
+#login.microsoftonline.com
+#login.ml.youngjoygame.com
+#login.windows.net
+#logomark.com
+#logrocket.com
+#londonluggage.co.uk
+#loopme.com
+#lorettochapel.com
+#lostgolfballs.com
+#lostrivercave.org
+#loylecarner.com
+#lrmer.com
+#lrss-staging.xboxservices.com
+#lrss.xboxservices.com
+#lstc.com
+#luckyduck-casino-apk.ru
+#luckysmarket.com
+#lundhumphries.com
+#lussocitta.com
+#luxunaire.co.uk
+#luxuryperfume.com
+#m.alerts.xbox.com
+#m.chiltepin.net
+#m.emails.xbox.com
+#m.mails.xbox.com
+#m.notifications.xbox.com
+#m.uber.com
+#maandhan.in
+#machinelearningmastery.com
+#macromedia.com
+#mactools.com
+#macysinc.com
+#maddogsdoc.com
+#madewithcode.com
+#maeree.com
+#mafia.2k.com
+#magestore.com
+#magiccars.com
+#magicsleepsuit.com
+#mail.smtp2go.com
+#mailchimp.com
+#mailenable.com
+#mails.xbox.com
+#maisonmartinmargiela.com
+#maitreyaproject.org
+#makeandtell.com
+#makeliverpool.com
+#makerflocrafts.com
+#makersuite.google.com
+#makerworld.com
+#makeuseof.com
+#malbongolf.com
+#maltajobs.com.mt
+#malwarebytes.com
+#mambiznes.pl
+#mamoriginals.com
+#manage2.cpanel.net
+#management.windows.net
+#mandolinrestaurant.com
+#mandrillapp.com
+#manifest-origin.xboxlive.com
+#manifest-ssl.xboxlive.com
+#manifest.xboxlive.com
+#manitobah.ca
+#manningcartell.com.au
+#mapgenie.io
+#maps.google.com
+#maralex-paris.com
+#mariadb.com
+#maritimeaquarium.org
+#markdownguide.org
+#marketingplatform.google.com
+#marketplace.atlassian.com
+#marketplace.envato.com
+#marketplace.xbox.com
+#markmonitor.com
+#marloushoes.com
+#maroon-staging.xboxservices.com
+#maroon.xboxservices.com
+#martinboot.com
+#martinhajek.com
+#marylandheights.com
+#masoz.net
+#mastercard.it
+#mastermoz.com
+#matadorequipment.com
+#match.adsrvr.org
+#matchmake-ppe.xboxlive.com
+#matchmaking.xboxlive.com
+#mateeno.co.uk
+#materialdesignicons.com
+#matt-thorn.com
+#matthewkeys.net
+#mauidivers.com
+#maxcdn.com
+#maxmind.com
+#mbbank.com.vn
+#mbokmu.one
+#mcadmd.org
+#mcafee.com
+#mcclatchydc.com
+#mcguirearmynavy.com
+#mcwcasino.club
+#mcws-eastus.xbox.com
+#mcws-origin.xbox.com
+#mcws-southeastasia.xbox.com
+#mcws-staging.xbox.com
+#mcws-westeurope.xbox.com
+#mcws-westus.xbox.com
+#mcxindia.com
+#mdma.ch
+#mdn.mozilla.net
+#mdnr-elicense.com
+#mealplanningmommies.com
+#mebiebaby.com
+#media.ign.com
+#media.ignimgs.com
+#mediacc.xboxlive.com
+#mediacontent-ppe.xboxlive.com
+#mediadata.xboxlive.com
+#mediatraits-ppe.xboxlive.com
+#mediatraits.xboxlive.com
+#meditationmount.org
+#medsindoors.com
+#meetfranz.com
+#megamenu.com
+#meganleary.com
+#meghantelpner.com
+#meiman29nr.cn
+#meine-landausfluege.de
+#melrosehoteldc.com
+#memoryhackers.org
+#mendeley.com
+#meninkilts.com
+#menstuxedousa.com
+#mercadoactual.es
+#mercadolivre.com
+#merchantos.com
+#mercieruk.co.uk
+#merigold-staging.xboxservices.com
+#merigold.xboxservices.com
+#messagebird.com
+#messagefulfillment.support.xboxlive.com
+#messages.ide.platform.xboxservices.com
+#messages.ppe.ide.platform.xboxservices.com
+#messages.test.ide.platform.xboxservices.com
+#messaging.xboxlive.com
+#mestergronn.no
+#meta.com
+#metabase.com
+#metalsdepot.com
+#metier.com
+#metrobankonline.co.uk
+#meybod.net
+#meyercanada.ca
+#mgl.lobby.igamecj.com
+#mi.com
+#michelinepitt.com
+#microblink.com
+#micropyramid.com
+#microryza.com
+#microsoft.com
+#microsoftonline.com
+#mila4u.com
+#milano-pro-sport.com
+#milavert.com
+#milimilu.com
+#milka.fr
+#milkandhoneycoffeehouses.com
+#milkshake.app
+#min.io
+#mindtools.com
+#minimadthings.com
+#minio.io
+#mintegral.com
+#mirenesse.com
+#mirror.1000mbps.com
+#mirror.centos.org
+#mirror.nl.datapacket.com
+#mirror.oxilion.nl
+#mirror.prolocation.net
+#mirror.proserve.nl
+#mirror.serverius.net
+#mirror.sitbv.nl
+#mirror.spectraip.net
+#mirror.theory7.net
+#mirror.usenet.farm
+#mirror.wd6.net
+#mirror.widexs.nl
+#mirrorlist.centos.org
+#mirrors.almalinux.org
+#mirrors.fedoraproject.org
+#miui.com
+#mixer.com
+#mixermoney.xboxlive.com
+#mktoresp.com
+#ml.com
+#mmc33.net
+#mmreality.cz
+#mobilbahis.one
+#mobilehomepartsstore.com
+#mockable.io
+#moderation-preview.xbox.com
+#moderation.xbox.com
+#mof.gov.ua
+#mogianahc.net
+#mohitgoyal.co
+#molloyhs.org
+#mollyevelyphotography.com
+#momatch.xboxlive.com
+#momentum.hu
+#mon.vmware.com
+#monaco-chicago.com
+#monarch.tonic.to
+#monkeyleague.io
+#monogramcompany.com
+#monsterinsights.com
+#moonmagic.com
+#moonwell.fi
+#moralis.com
+#morgandetoi.fr
+#mosaicfoods.com
+#moshensk.ru
+#mosinform.ru
+#motionarray.com
+#motorola.com
+#mots-croises.ch
+#mountain-press.com
+#mountainmoverz.com
+#mouser.com
+#mowasalat.com
+#moz.com
+#mrcutout.com
+#mroyun.one
+#mrpennarak.com
+#msa-service.auth.xboxlive.com
+#msac.xboxlive.com
+#msaintimation.dnet.xboxlive.com
+#msaintimation.xboxlive.com
+#msft.vmrp.xboxlive.com
+#msg-origin.xboxlive.com
+#msg.dnet.xboxlive.com
+#msg.xboxlive.com
+#msi.com
+#msn.com
+#msrgear.com
+#msufcu.org
+#mtalk.google.com
+#mtfca.com
+#mtvanhoevenberg.com
+#multi-match-origin.xboxlive.com
+#multiplayer.xboxlive.com
+#multiplayeractivity-ppe.xboxlive.com
+#multiplayeractivity.xboxlive.com
+#mundoplus.tv
+#murdermiletours.com
+#mureandgrand.com
+#museum.xbox.com
+#musicdelivery-ssl-origin.xboxlive.com
+#musicdelivery-ssl.auth.xboxlive.com
+#musicdelivery-ssl.int.xboxlive.com
+#musicdelivery-ssl.xboxlive.com
+#musicdrive-ssl.dnet.xboxlive.com
+#musicdrive-ssl.xboxlive.com
+#musicimage-origin.dnet.xboxlive.com
+#musicimage-origin.xboxlive.com
+#musicimage.dnet.xboxlive.com
+#musicimage.xboxlive.com
+#musicmatch-ssl-origin.xboxlive.com
+#mustangheritagefoundation.org
+#musto.com
+#mutebank.co.uk
+#mvnrepository.com
+#mvp189.net
+#mx-video-player.en.softonic.com
+#mxazdata.mgt.dnet.xboxlive.com
+#mxazdata.mgt.xboxlive.com
+#mxtoolbox.com
+#my-netdata.io
+#my.dogechain.info
+#my.elementor.com
+#my.nic.io
+#my.vmware.com
+#my.yoast.com
+#my918mega.com
+#myaccount.ea.com
+#myaccountaccess.com
+#mycloud.com
+#myconsumers.org
+#myeg.com.my
+#myfamilymobile.com
+#myfonts.com
+#myget.org
+#myiknowchurch.co.uk
+#myip.com
+#myip.nl
+#myislandsubaru.com
+#mykawartha.com
+#mykyivregion.com.ua
+#mymarcopolo.com
+#mymavenrepo.com
+#mymoinfo.com
+#mypamperedlifeseattle.com
+#mypanier.com
+#mypersonaltrainerwebsite.com
+#myservice.xbox.com
+#mysisterscloset.com
+#mysynchrony.com
+#myteamspeak.com
+#mytoque.com
+#nailberry.co.uk
+#namecheap.co
+#namshi.com
+#nana-massage.net
+#naniwatourist.jp
+#nanobox.io
+#nantlisfashion.com
+#naomedical.com
+#naplesplayers.org
+#nativecos.com
+#naturesbakery.com
+#natureworldnews.com
+#navigator.canceriq.com
+#navy-staging.xboxservices.com
+#navy.xboxservices.com
+#navyblue-staging.xboxservices.com
+#navyblue.xboxservices.com
+#nbcuni.com
+#nccaom.org
+#nccwwh.com
+#ncsbn.org
+#ncus.int.monolith.experiences.xboxservices.com
+#ncus.prod.monolith.experiences.xboxservices.com
+#nebula-staging.xboxservices.com
+#nebula.xboxservices.com
+#neighborhoods.com
+#nejm.org
+#nemanet.org
+#nemchuaotdo.com
+#neon-staging.xboxservices.com
+#neon.xboxservices.com
+#neonmama.com
+#nessus.org
+#nestedbean.com
+#nestjs.com
+#nestlearning.com
+#nestlingkids.com
+#netacad.com
+#netbeans.org
+#netdata.cloud
+#netdevgroup.com
+#netdna-ssl.com
+#netify.ai
+#nettiauto.com
+#neu.prod.monolith.experiences.xboxservices.com
+#neustarlocaleze.biz
+#neversummer.com
+#new-line.com
+#new10.com
+#newbalance.eu
+#newmastersounds.com
+#newportvineyards.com
+#news.pn
+#news.xbox.com
+#newsitem.com
+#newteachercenter.org
+#newwavemagazine.com
+#nextcomputers.org
+#nextendweb.com
+#nextgenmemorials.com
+#nextlevelburger.com
+#nexusductservice.com
+#ngrok.com
+#ngrok.io
+#ngxpagespeed.com
+#niceoo.com
+#nicerx.com
+#nicev2.placeit.net
+#nichibei.org
+#nigeriapropertycentre.com
+#nightly-int.support.xbox.com
+#nightly-preview.support.xbox.com
+#nightly.support.xbox.com
+#nightwatch.io
+#nil.store
+#ninjateam.org
+#niod.com
+#njgamblingsites.com
+#nkh.gov.hu
+#nl-casinozondercruks.com
+#nmaam.org
+#nmag.gov
+#nnlightsbookheaven.com
+#noc1.wordfence.com
+#noc2.wordfence.com
+#noc3.wordfence.com
+#noc4.wordfence.com
+#node-binaries.s3.amazonaws.com
+#node.aapanel.com
+#nodesource.com
+#noirfootwear.com
+#nomanssky.com
+#nonprod.corematch-test.xboxlive.com
+#noon.com
+#nopixel.net
+#nordicoil.de
+#northeurope-gamingconsent.xboxlive.com
+#northmyrtlebeachtravel.com
+#northumberlandnews.com
+#norton.com
+#notebooklm.google
+#nothing.tech
+#notificationhubregistration-bn1.xboxlive.com
+#notificationhubregistration-co4.xboxlive.com
+#notificationhubregistration-ppe.xboxlive.com
+#notificationhubregistration.xboxlive.com
+#notificationinbox-ppe.xboxlive.com
+#notificationinbox.xboxlive.com
+#notifications-dev.assist.gameservices.xboxlive.com
+#notifications.assist.gameservices.xboxlive.com
+#notifications.google.com
+#notifications.support.xboxlive.com
+#notifications.xbox.com
+#notifier.xboxlive.com
+#notify-origin.xboxlive.com
+#notify-ppe.xboxlive.com
+#notify.xboxlive.com
+#notion.com
+#nova24tv.si
+#novalia.co.uk
+#novininsta.com
+#novipnoad.net
+#nowpayments.io
+#npg.org.uk
+#npm.org
+#nr-data.net
+#nspower.ca
+#nuads-ssl.xboxlive.com
+#nudieglow.com
+#nuroco.com
+#nursingce.com
+#nuxtjs.org
+#nvcr.io
+#nvgtn.com
+#nvidia-staging.xboxservices.com
+#nvidia.co.uk
+#nvidia.fr
+#nvidia.xboxservices.com
+#nvidiagrid.net
+#nwvault.ign.com
+#nxnews.net
+#nxp.com
+#nyac.org
+#nykaafashion.com
+#oauth.battle.net
+#oauth.rankmath.com
+#oauth2.com
+#objectcache.pro
+#ocalafl.gov
+#oceanwp.org
+#ochre-staging.xboxservices.com
+#ochre.xboxservices.com
+#ocsp.comodoca.com
+#ocsp.digicert.com
+#oddrun.ir
+#odr.mookie1.com
+#oetker.de
+#offerservices.xboxlive.com
+#office365.com
+#offitkurman.com
+#ogslb.com
+#ohea.org
+#ohneoasiscasino-main.com
+#ojrq.net
+#okcoin.com
+#okd.io
+#olark.com
+#olesmoky.com
+#olivemagazine.gr
+#olivierlaudus.com
+#olly.com
+#om.fi
+#omappapi.com
+#omnilife.com
+#omtrdc.net
+#omusa.org
+#on2url.com
+#onbuy.com
+#one.google.com
+#onebid.pl
+#oneblockdown.it
+#onecondoms.com
+#onedrive.com
+#onehoneyboutique.com
+#oneida-nsn.gov
+#onesignal.com
+#onesignal.net
+#onetrust.com
+#onfastspring.com
+#online-fix.me
+#online-sports-shop.co.uk
+#onlinecuteshoes.com
+#onlinesim.ru
+#onpage.org
+#opal-staging.xboxservices.com
+#opal.xboxservices.com
+#opedge.com
+#open-vsx.org
+#open.spotify.com
+#opencontainers.org
+#opencv.org
+#opendev.org
+#openembedded.or
+#openembedded.org
+#opennebula.io
+#openreview.net
+#opensea.io
+#openshift.com
+#openssl.org
+#openstreetmap.org
+#openvpn.net
+#openwrt.org
+#openx.net
+#opera-masada.com
+#opower.com
+#optus.com.au
+#optusnet.com.au
+#oraclecloud.com
+#orange-staging.xboxservices.com
+#orange.xboxservices.com
+#orchid-staging.xboxservices.com
+#orchid.xboxservices.com
+#order.heapsoftware.com
+#orderhistory.support.xboxlive.com
+#origin-int.xbox.com
+#origin-test.xbox.com
+#originalgrain.com
+#orijen.ca
+#oriondemo.solarwinds.com
+#orleanshistoricalsociety.org
+#orlebarbrown.com
+#oroinc.com
+#osde.com.ar
+#ossec.net
+#ostrovfantaziy.ru
+#oteapi.webnic.cc
+#ourmoneymarket.com
+#outdoorworlddirect.co.uk
+#outgo.com.br
+#outlook.office365.com
+#outofthewoods.com
+#overboardcanada.ca
+#overlay.ubisoft.com
+#oxxio.nl
+#oxy.host
+#oxygenbuilder.com
+#oxygenetix.com
+#oystatic.ignimgs.com
+#oyster.ignimgs.com
+#ozelkartepetuanakizyurdu.com
+#ozstraps.com.au
+#p3campus.com
+#packagecloud.io
+#packages-eu.bigbluebutton.org
+#packages-next.xboxlive.com
+#packages-origin.xboxlive.com
+#packages.cloud.google.com
+#packages.dnet.xboxlive.com
+#packages.gitlab.com
+#packages.translationspress.com
+#packages.xboxlive.com
+#packagespc-next.xboxlive.com
+#packagespc.dnet.xboxlive.com
+#packagespc.xboxlive.com
+#packagist.com
+#packer.edu
+#paddle.com
+#paessler.com
+#pafijawatengah.org
+#pages.engage.xbox.com
+#pages.status.xbox.com
+#pagespeedonline.com
+#pagodabox.io
+#pairing.accs-int.xboxlive.com
+#pairing.accs-prod.xboxlive.com
+#pairing.accs-test.xboxlive.com
+#palladiumboots.fr
+#palletsprojects.com
+#palmangels.com
+#paloaltonetworks.com
+#pamelasproducts.com
+#pamperedchef.biz
+#pandasecurity.com
+#pandawin7.com
+#pandora.com
+#panel.preyproject.com
+#paper-hub.com
+#paperpumpkin.com
+#paperspace.com
+#paradigmadigital.com
+#parallel.life
+#paranashop.com.br
+#parceljs.org
+#parental.dnet.xboxlive.com
+#parental.xboxlive.com
+#pari-match-in.com
+#paribus.co
+#parierenbelgique.be
+#parkimeter.com
+#parleecycles.com
+#parthenonfoods.com
+#partidoliberal.org.br
+#partners.tremorhub.com
+#partstown.com
+#party-ppe.xboxlive.com
+#party.xboxlive.com
+#partynow-ppe.xboxlive.com
+#partynow.xboxlive.com
+#pasionaria.com.ar
+#pasionrojagt.com
+#paslaugos.lt
+#passengermusic.com
+#patches.wbgames.com
+#patchi.com
+#patogupirkti.lt
+#patreon.com
+#patrongrill.com
+#paulmilnescycles.com
+#pauwelsconsulting.com
+#pawsomecouture.com
+#pay.google.com
+#paychex.com
+#paydesk.co
+#payettecounty.org
+#payiw.com
+#paymentexpert.com
+#payments-staging.xboxservices.com
+#payments.xboxservices.com
+#paymentwall.com
+#pbr.co.uk
+#pcmedia.ign.com
+#pcsupport.lenovo.com
+#pdafans.com
+#pdf2go.com
+#pdinsurance.co.nz
+#pdlc.xboxlive.com
+#pdlcv2-b2b.xboxlive.com
+#pdlcv2-origin.xboxlive.com
+#pdlcv2.xboxlive.com
+#peaksandpedalsgear.com
+#peaksrecovery.com
+#pecherestaurant.com
+#pecl.php.net
+#pedalclothing.co
+#peelorange.com
+#pelicans.fi
+#pencarrie.com
+#pendo.io
+#penfield.org
+#penguin.com
+#pensionbee.com
+#penza-gorod.ru
+#people.xboxlive.com
+#peoplehub-origin.xboxlive.com
+#peoplehub-ppe-origin.xboxlive.com
+#peoplehub-ppe-public.xboxlive.com
+#peoplehub-ppe.xboxlive.com
+#peoplehub-public.xboxlive.com
+#peoplehub.xboxlive.com
+#peoplelooker.com
+#peoplescaremedicalsupply.shop
+#pepipost.com
+#percona.com
+#perfectloans24.com
+#perfectmoney.com
+#perfmatters.io
+#periwinkle-staging.xboxservices.com
+#periwinkle.xboxservices.com
+#permitsearch.net
+#pertaminafoundation.org
+#perthairport.com.au
+#peru-retail.com
+#pes22-game.cs.konami.net
+#petcube.com
+#peterglenn.com
+#petitpan.com
+#petmeds.com
+#pharmacyonline.foundation
+#philcoulter.com
+#philwood.com
+#phlox.pro
+#phlur.com
+#phoebehealth.com
+#phoenix.maelstrom.gameservices.xboxlive.com
+#photoroom.com
+#picknweight.de
+#pietzoomers.com
+#pifd-client-services.xboxlive.com
+#pifd-gw.xboxlive.com
+#piflc.xboxlive.com
+#piie.com
+#pimwick.com
+#pine-staging.xboxservices.com
+#pine.xboxservices.com
+#pingdom.com
+#pink-staging.xboxservices.com
+#pink.xboxservices.com
+#pinkchicken.com
+#pinkivyshoes.net
+#pinup-casino-24.com
+#pinup-giris-tr.com
+#pipersfarm.com
+#piquetea.com
+#pitangui.amazon.com
+#pitcrew.nz
+#pivotcycles.com.au
+#pkg.dev
+#pkg.jenkins.io
+#pkgs.k8s.io
+#pki.goog
+#pkkb.ac.id
+#placeholder.com
+#placeit.net
+#placonference.org
+#plaid-staging.xboxservices.com
+#plaid.xboxservices.com
+#planet.com
+#planprescriber.com
+#plantbasedonabudget.com
+#plasticsconverters.eu
+#platform9.com
+#play.euw.leagueoflegends.com
+#play.ht
+#play.thewitcher.com
+#play.xbox.com
+#playartifact.com
+#playfab.com
+#playfabapi.com
+#playfabgateway-staging.xboxservices.com
+#playfabgateway.xboxservices.com
+#playground.com
+#playmapscube.com
+#playvalorant.com
+#playvig.com
+#plentyofbikes.com
+#plesk.com
+#plinko-apk.in
+#plinko-online-italy.com
+#plot.ly
+#plotly.com
+#plugin-downloads.elementor.com
+#plugins.svn.wordpress.org
+#plum-staging.xboxservices.com
+#plum.xboxservices.com
+#pluralsight.com
+#pme.gssv-cnry-test.xboxlive.com
+#pmo.gov.bb
+#pnc.com
+#podsights.com
+#pogoplug.com
+#point3gear.com
+#pokemonmasters-game.com
+#policyoverride-ppe.exp.xboxservices.com
+#policyoverride.exp.xboxservices.com
+#polkadot-staging.xboxservices.com
+#polkadot.xboxservices.com
+#polyfill.io
+#polymaker.com
+#pomerium.com
+#poochandmutt.co.uk
+#popcast88.com
+#popfigures.com
+#poppyandsageco.com
+#popternative.com
+#porsche-minvody.ru
+#portal.2k.com
+#portal.interceptor.xboxlive.com
+#portalservices.xboxlive.com
+#portkeygamessupport.wbgames.com
+#portworx.com
+#posh.vip
+#postalannex.com
+#postman.co
+#potatohead.co
+#poundametre.com
+#powerpackelements.com
+#ppa.launchpad.net
+#ppe.dynamicsigls.exp.xboxservices.com
+#ppe.support-refunds.xbox.com
+#ppe.surfaces.ide.platform.xboxservices.com
+#practicalperfectionut.com
+#pravda.com.ua
+#preciouscore.com
+#premierbodyarmor.com
+#premium-akadeule.de
+#premium-hausarbeitschreiben.de
+#prescateamwear.com
+#presence-heartbeat-ppe.xboxlive.com
+#presence-heartbeat.xboxlive.com
+#presence.xboxlive.com
+#presenceevents-origin.xboxlive.com
+#presenceevents.xboxlive.com
+#presidentsalliance.org
+#prestashop.com
+#preview-account.xbox.com
+#preview-community-origin.xbox.com
+#preview-live.xbox.com
+#preview.codecanyon.net
+#preview.support.xbox.com
+#prezi.com
+#pricebaba.com
+#pridesband.com
+#primeinc.org
+#primopdf.com
+#printzone.com.au
+#privacy-ppe.xboxlive.com
+#privacy.xboxlive.com
+#privacyportal.onetrust.com
+#privileges.dnet.xboxlive.com
+#privileges.xboxlive.com
+#proboards100.com
+#probuilds.net
+#prod.corematch.xboxlive.com
+#prod.gplt.fnch.xboxlive.com
+#prod.gplt.sage.xboxlive.com
+#prod.gssv.fnch.xboxlive.com
+#prod.gssv.sage.xboxlive.com
+#prod.licensing.sucu.xboxlive.com
+#prod.monolith.experiences.xboxservices.com
+#prod.reader.sucu.xboxlive.com
+#prod.rgl.rockstargames.com
+#prod.ros.rockstargames.com
+#prod.shaders.xboxlive.com
+#prod.sucu.xboxlive.com
+#prod.writer.sucu.xboxlive.com
+#prod.xair.xboxlive.com
+#prod.xccs.xboxlive.com
+#prod.xplt.fnch.xboxlive.com
+#producer.ai
+#productcatalog-origin.xbox.com
+#productionhub.com
+#productmanagementcore.gamepass.xboxservices.com
+#profile-origin.xboxlive.com
+#profile-ppe.xboxlive.com
+#profile.dnet.xboxlive.com
+#profile.xboxlive.com
+#profitwell.com
+#progearbikes.com.au
+#programiz.com
+#progress-origin.xboxlive.com
+#progress.xboxlive.com
+#progressraritywriter.dnet.xboxlive.com
+#progressraritywritervnext.xboxlive.com
+#progulkipomoskve.ru
+#projectals.org
+#projectrebrief.com
+#prokabaddi.com
+#proofreadingservices.com
+#propertycouncil.com.au
+#proshop.nl
+#proxy.support.xboxlive.com
+#proz.com
+#prtl.pl
+#ps3media.ign.com
+#pscu.com
+#pspl.com
+#pspmedia.ign.com
+#psthc.fr
+#pstmn.io
+#psts-aks-stage-azurefd.xboxlive.com
+#psts-aks-stage.xboxlive.com
+#psts.xboxlive.com
+#psychhub.com
+#psyonix.com
+#pub.dev
+#pub.hostdns.top
+#public.ecr.aws
+#pubmatic.com
+#puckhcky.com
+#purchase-b2b.xboxlive.com
+#purchase-gw-ppe.xboxlive.com
+#purchase-gw.xboxlive.com
+#purchase-origin.xboxlive.com
+#purchase.xboxlive.com
+#purchasecore-staging.xboxservices.com
+#purchasecore.xboxservices.com
+#purchasegw-ppe.xboxlive.com
+#purchasejournal-gw-ppe.xboxlive.com
+#purchasejournal-gw.xboxlive.com
+#purchasesupport.xboxlive.com
+#purchasetvod-gw.xboxlive.com
+#purchasetvodppe-gw.xboxlive.com
+#pure-bike.co.uk
+#purebread.ca
+#pureparima.com
+#puroclean.com
+#purple-staging.xboxservices.com
+#purple.xboxservices.com
+#purplle.com
+#pushbikes.co.nz
+#pushbullet.com
+#pushbulletusercontent.com
+#pvp.net
+#pvz2-prd.popcap.com
+#pwc.ca
+#pxf.io
+#pypa.io
+#pypi.python.org
+#pyramidhill.org
+#pyrex.eu
+#pythonhosted.org
+#pytorch.org
+#pytorchlightning.ai
+#qb-smooth.xboxlive.com
+#qh88wt.com
+#qodana.cloud
+#quadlayers.com
+#qualtrics.com
+#quantockhills.com
+#queens-br.com
+#query.petametrics.com
+#quic.cloud
+#quicklane.com
+#quicksprout.com
+#quidax.io
+#quietlight.com
+#quillbot.com
+#quilljs.com
+#quokka.com
+#quorum.us
+#qvb.com.au
+#r.cpanel.fleetssl.com
+#r.mariadb.com
+#rabbitmq.com
+#radar.cedexis.com
+#radiojavan.com
+#radix-ui.com
+#radk.ru
+#radleychevrolet.com
+#radpowerbikes.com
+#radware.com
+#railsclothing.com
+#rainbowroom.com
+#rallybound.com
+#rangerup.com
+#rankmath.com
+#ransslot88n.com
+#rap-fd-int.xboxlive.com
+#rap-fd.xboxlive.com
+#rapidapi.com
+#rapidtables.com
+#raq.org.au
+#rarespecies.org
+#rayrickburn.com
+#rdale.org
+#rdforum.org
+#rdr2.rockstargames.com
+#react-select.com
+#reactnavigation.org
+#reader.sucu.xboxlive.com
+#readingglasses.com
+#readtoto.org
+#readywise.com
+#realclearenergy.org
+#realdildos.com
+#reality.ai
+#really-simple-ssl.com
+#realpropertymgt.com
+#realty.com
+#rebornrags.co.uk
+#receipts-dev.assist.gameservices.xboxlive.com
+#receipts.assist.gameservices.xboxlive.com
+#receipts.xboxlive.com
+#recipe-diaries.com
+#reclamefolder.nl
+#recruitee.com
+#red-gate.com
+#red.com
+#redaspenlove.com
+#redboxtools.com
+#redcliff-nsn.gov
+#reddeadredemption.com
+#redgold.com
+#redhat.com
+#redhat.io
+#redirect.ign.com
+#redis.com
+#redis.io
+#rediscoveredfamilies.com
+#redkit.cdprojektred.com
+#redux.io
+#reduxframework.com
+#refunds-dev.assist.gameservices.xboxlive.com
+#refunds-flight.assist.gameservices.xboxlive.com
+#refunds-int.assist.gameservices.xboxlive.com
+#refunds.assist.gameservices.xboxlive.com
+#refunds.support.xboxlive.com
+#refundsinternal-dev.assist.gameservices.xboxlive.com
+#refundsinternal-flight.assist.gameservices.xboxlive.com
+#refundsinternal-int.assist.gameservices.xboxlive.com
+#refundsinternal.assist.gameservices.xboxlive.com
+#regalresolutionteam.com
+#register.ubisoft.com
+#registration.fanfest.xbox.com
+#registry-1.docker.io
+#registry.access.redhat.com
+#registry.docker.io
+#registry.npmjs.org
+#registry.redhat.io
+#registry.terraform.io
+#regxa.com
+#rehs.com
+#reinsw.com.au
+#reka.ai
+#relatedargent.co.uk
+#relativewave.com
+#releases.rocket.chat
+#reliablecorporation.com
+#reload.getsentry.net
+#reluctanttrading.com
+#remini.ai
+#remotedesktop.google.com
+#remoteok.io
+#remove.bg
+#renovationreserve.com
+#replicawatches.mx
+#reply.io
+#repo.alt.cloudlinux.com
+#repo.cloudlinux.com
+#repo.imunify360.cloudlinux.com
+#repo.jetlicense.com
+#repo.mongodb.org
+#repo.mysql.com
+#repo.packagist.org
+#repo.percona.com
+#repo.the7.io
+#repo.zabbix.com
+#report.ml.youngjoygame.com
+#reportingservices.xboxlive.com
+#repository.kreaturamedia.com
+#republic.co
+#reputation-origin.xboxlive.com
+#reputation-ppe.xboxlive.com
+#reputation.dnet.xboxlive.com
+#reputation.xboxlive.com
+#res.alerts.xbox.com
+#res.emails.xbox.com
+#res.mails.xbox.com
+#res.notifications.xbox.com
+#rescompros.com
+#rescuefrenchbulldogs.org
+#research.google.com
+#reservesupplycompany.com
+#resmush.it
+#resources.infosecinstitute.com
+#rest.akismet.com
+#retail.xbox.com
+#retailmenot.com
+#retroarch.com
+#retrogamestar.com
+#retrotainmentgames.com
+#reuter.com
+#revalidate.wbgames.com
+#revenuquebec.ca
+#revistaveredas.com.br
+#revocation-xsts.dnet.xboxlive.com
+#revocation-xsts.xboxlive.com
+#revocation.dnet.xboxlive.com
+#revocation.xboxlive.com
+#revvity.com
+#rewards.bing.com
+#rgpub.io
+#richmediagallery.com
+#ricici.com
+#rideoregonride.com
+#ridgeandriver.com
+#rigidhitch.com
+#ringlead.com
+#rinsekit.com
+#riocokidswear.com
+#riotcdn.com
+#riotcdn.net
+#riotgames.es
+#riotgames.info
+#risco.ro
+#riversidehall.org
+#rl-psy.net
+#rlcdn.com
+#rma-trmc.org
+#rnc.org
+#ro-verdecasyno.com
+#roamingprofile.xboxlive.com
+#robaxin.lol
+#robertdyas.co.uk
+#roboflow.com
+#rockaway.com
+#rocket.chat
+#rocketcdn.me
+#rockstar.com
+#rockstaronline.com
+#rocktape.com
+#rockylinux.org
+#rollbar.com
+#romanlabel.com
+#rompetrol.ro
+#roofsquad.com
+#rose-staging.xboxservices.com
+#rose.xboxservices.com
+#rosehosting.com
+#rosieassoulin.com
+#rothschildandco.com
+#routeone.net
+#rover.ebay.com
+#rovio.com
+#royaloffice.th
+#royalroads.ca
+#rpxcorp.com
+#rsg.ms
+#rsg.sc
+#rstudio.com
+#rta.dnet.xboxlive.com
+#rta.xboxlive.com
+#rtings.com
+#rtm.com
+#rubiconproject.com
+#ruby-chen.com
+#rubyscafe.com
+#rumsonnj.gov
+#run.app
+#runi.ac.il
+#runningfactory.com
+#runtherock.com
+#runtime-mediacatalog.xboxlive.com
+#ruspowerman.ru
+#russellathletic.com
+#rxjs.dev
+#ryanhoover.me
+#ryte.com
+#s.ign.com
+#s.rsg.sc
+#s0.softaculous.com
+#s1.softaculous.com
+#s2.softaculous.com
+#s3-us-west-2.amazonaws.com
+#s3.amazonaws.com
+#s3.softaculous.com
+#s3browser.com
+#s3stores.com
+#s4.softaculous.com
+#s5.softaculous.com
+#s6.softaculous.com
+#s7.softaculous.com
+#s8.softaculous.com
+#sabrinascloset.com
+#sactownmag.com
+#sae.digital
+#safaribooksonline.com
+#safebrowsing.google.com
+#safetypoc.gssv-auth-int.xboxlive.com
+#saffron-staging.xboxservices.com
+#saffron.xboxservices.com
+#sahirajewelrydesign.com
+#sailblogs.com
+#sainly.com
+#saintgeorgespreschool.com
+#samacsys.com
+#samsung.com
+#sanctis.fr
+#sandbox-wbapi.thesslstore.com
+#sandbox.google.com
+#sandisk.com
+#sanity.io
+#sanlorenzohawaii.com
+#santafesprings.org
+#santevia.com
+#sapphire-staging.xboxservices.com
+#sapphire.xboxservices.com
+#sarawakjobs.com
+#sas-ppe-origin.xboxlive.com
+#sas.xboxlive.com
+#saudebusiness.com
+#sausalito.gov
+#savantproxy-aks-prod.xboxlive.com
+#savantproxy-aks-stage.xboxlive.com
+#savantproxy.dnet.xboxlive.com
+#savantproxy.xboxlive.com
+#savegyd.com
+#sband.org
+#sc-static.net
+#scalefunder.com
+#scape-dev.xboxlive.com
+#scape-int.xboxlive.com
+#scene7.com
+#schd.ws
+#schreiber-netzwerk.eu
+#schrodinger.com
+#scienceblog.com
+#scnylegislature.us
+#scoompa.com
+#scootle.edu.au
+#scorebar.com
+#scotsmart.com
+#scottycameron.com
+#scr4.co
+#screendigest.com
+#screenshotsmetadata-origin.xboxlive.com
+#screenshotsmetadata.xboxlive.com
+#scribd.com
+#scriptsbundle.com
+#scus.int.monolith.experiences.xboxservices.com
+#scus.prod.monolith.experiences.xboxservices.com
+#sdkells.co.uk
+#sdmo-info.ru
+#sea-ny.com
+#sea.ign.com
+#seagate.com
+#seancroxton.com
+#searates.com
+#search.exp.xboxservices.com
+#search.support.xboxlive.com
+#searchaiplugin-staging.xboxservices.com
+#searchaiplugin.xboxservices.com
+#searchconsole.com
+#searchgpt.com
+#searchwp.com
+#sears.com
+#seatgeek.com
+#seattlegoodwill.org
+#seattlesbest.com
+#secumd.org
+#secure.gravatar.com
+#secure.php.net
+#securedownloads.cpanel.net
+#secureproductswiki.com
+#securitytrails.com
+#sega-dreamcast-info-games-preservation.com
+#segashop.co.uk
+#segment.com
+#segment.io
+#selver.ee
+#semrush.com
+#senat.pl
+#sendinblue.com
+#seniorly.com
+#sentry-cdn.com
+#seo-hacker.com
+#seoab.io
+#seopress.org
+#seoptimer.com
+#seoreviewtools.com
+#sepia-staging.xboxservices.com
+#sepia.xboxservices.com
+#sequelquestpod.com
+#serpent-shop.com
+#server.arcgisonline.com
+#server.softaculous.com
+#serverpilot.io
+#service.auth.dnet.xboxlive.com
+#service.auth.xboxlive.com
+#service.xbox.com
+#servicebus.windows.net
+#services-origin.xboxlive.com
+#services-preview.xbox.com
+#services.adobe.com
+#services.google.com
+#servingclks.com
+#sesame.com
+#sessiondirectory-origin.xboxlive.com
+#sessiondirectory-ppe.xboxlive.com
+#sessiondirectory.xboxlive.com
+#sessions.xboxlive.com
+#setting.family.dnet.xboxlive.com
+#setting.family.xboxlive.com
+#settings-origin.xboxlive.com
+#settings-ssl-origin.xboxlive.com
+#settings-ssl.xboxlive.com
+#settings.xboxlive.com
+#sevalla.com
+#seviercountytn.org
+#sfaa.org
+#sfdc.co
+#sfvbj.com
+#shadowserver.org
+#shamansmarket.com
+#share-mixer.xboxlive.com
+#shareappscrack.com
+#sharepointdiary.com
+#sharethrough.com
+#shaw.ca
+#shebazaar.com
+#sheerid.com
+#sheetmusicplus.com
+#sheetsformarketers.com
+#sheffieldforum.co.uk
+#shefit.com
+#shelfies.com
+#shepherd.com
+#shetlandtimes.co.uk
+#shine-ppe.xboxlive.com
+#shitthatiknit.com
+#shoefad.com
+#shoelace.com
+#shoesfulcrum.com
+#shoethebear.us
+#shoetree.io
+#shooos.ro
+#shopapi.apigift.com
+#shoparteresalynn.com
+#shopdunkin.com
+#shopenzer.com
+#shoplazypants.com
+#shoprollingloud.com
+#shopsector.com
+#shopstartingate.com
+#shorte.st
+#shortpixel.ai
+#shortpixel.com
+#showmecables.com
+#shrimptoncouture.com
+#shubhamdipt.com
+#shudder.com
+#shujinko.io
+#siajewellery.com
+#siftscience.com
+#sightmachine.com
+#signals-feedback.xboxlive.com
+#signals-mediausage.xboxlive.com
+#signals-ratings.xboxlive.com
+#signin-s.rsg.sc
+#signin.ea.com
+#signup.playster.com
+#silklaundry.com
+#silver-staging.xboxservices.com
+#silver.xboxservices.com
+#similarweb.com
+#simplemaps.com
+#simplemodern.com
+#simplyheadsets.com.au
+#simyo.es
+#sip-scootershop.com
+#sisu.dnet.xboxlive.com
+#sisu.xbox.com
+#sisu.xboxlive.com
+#sisueastus.dnet.xboxlive.com
+#sisupassauthext.xboxlive.com
+#site.pro
+#sitefinity.com
+#siteground.com
+#sitekit.withgoogle.com
+#siteminder.com
+#sites.google.com
+#skandia.se
+#sketchfab.com
+#sketchup.com
+#skillfulteaching.com
+#skinpixel.co.uk
+#skoah.com
+#skoll.me
+#skor.nl
+#skrewballwhiskey.com
+#skylink.cz
+#skype.com
+#sleepjunkies.com
+#slidesgo.com
+#sling.com
+#slivoff.com
+#slot777royal.com
+#sloth.gr.jp
+#slsactivity-origin.xboxlive.com
+#slsactivity.xboxlive.com
+#smallseotools.com
+#smalofts.co.uk
+#smartadserver.com
+#smartertools.com
+#smartmatch.xboxlive.com
+#smartmatchsim-origin.xboxlive.com
+#smartmatchsim.dnet.xboxlive.com
+#smartmatchsim.xboxlive.com
+#smartmobilityworld.net
+#smartone-iptv.com
+#smartrike.com
+#smartsheet.com
+#smashingmagazine.com
+#smashinn.com
+#smashtess.com
+#smfgindiacredit.com
+#smilebox.com
+#smoothwall.com
+#smtimes.ru
+#smtp-relay-xdf.xboxlive.com
+#smtp.pepipost.com
+#smtp2go.com
+#smushpro.wpmudev.org
+#snconnect-origin.xboxlive.com
+#snconnect.xboxlive.com
+#snl24.com
+#snoozeeatery.com
+#snort.org
+#snowshoemtn.com
+#socalhomebuyers.com
+#soccermanager.com
+#sociablelabs.com
+#social-origin.xboxlive.com
+#social-ppe.xboxlive.com
+#social.xboxlive.com
+#socialaggregation.xboxlive.com
+#socialchain.app
+#socialclub.rockstargames.com
+#socialprintstudio.com
+#socialrecommendations-ppe.xboxlive.com
+#socialrecommendations.xboxlive.com
+#softaculous.com
+#softether-download.com
+#softperfect.com
+#software.cisco.com
+#software.intel.com
+#sohohouseny.com
+#solarwinds.com
+#solecentral.com.au
+#solid.preyproject.com
+#solinftec.com
+#solocal.com
+#soloyal.co
+#sonos.xbox.com
+#sony.com
+#sony.net
+#soosi.co.in
+#sootthaengball.com
+#sophos.com
+#sora.com
+#souman.nl
+#soundcore.com
+#sourceforge.net
+#sourcegraph.com
+#southelgin.com
+#southernlabware.com
+#southpark.cc.com
+#spamassassin.apache.org
+#spar.hr
+#sparbote.de
+#spark.ru
+#spartaprod.maelstrom.gameservices.xboxlive.com
+#specialist.canceriq.com
+#specsavers.com
+#spectrumlaserlights.com
+#speedtest.tele2.net
+#speedtest.xboxlive.com
+#spelamedspelpaus.org
+#spicekitchenuk.com
+#spigotmc.org
+#spikes.studio
+#split.io
+#sportmaster.dk
+#spoti.fi
+#spotifycdn.com
+#spplus.com
+#springnaturalkitchen.com
+#springstepshoes.com
+#springwise.com
+#squads-ppe.xboxlive.com
+#square.site
+#squarespace.com
+#ssc.vmware.com
+#sslshopper.com
+#sspx.org
+#stable.api.dartpad.dev
+#stackshare.io
+#staging.support.xbox.com
+#starportal.dnet.xboxlive.com
+#starsandtarot.com
+#starwars.com
+#stateline.org
+#stateshare-ppe.xboxlive.com
+#stateshare.xboxlive.com
+#static-origin.xbox.com
+#staticnails.com
+#stats.wp.com
+#stats.xboxlive.com
+#statsread-blu.dnet.xboxlive.com
+#statsread-eap1.dnet.xboxlive.com
+#statsread-eap2.dnet.xboxlive.com
+#statsread-ppe.xboxlive.com
+#statsread.dnet.xboxlive.com
+#statsread.xboxlive.com
+#statswrite-blu.dnet.xboxlive.com
+#statswrite-eap1.dnet.xboxlive.com
+#statswrite-eap2.dnet.xboxlive.com
+#statswrite-ppe.xboxlive.com
+#statswrite.dnet.xboxlive.com
+#statswrite.xboxlive.com
+#statuspage.io
+#stb.ua
+#stealth.com
+#steam-api.com
+#steam-chat.com
+#steam.tv
+#steamgames.com
+#steamserver.net
+#steamstat.us
+#steamunlocked.net
+#steamusercontent.com
+#steroidesafe.com
+#sthb.ac.id
+#stjosephmuseum.org
+#stoegerindustries.com
+#storage.com
+#store.cpanel.net
+#store.steampowered.com
+#store.theplusaddons.com
+#store.ubisoft.com
+#store.xbox.com
+#strava.com
+#straw.page
+#streaming-ppe.xboxlive.com
+#streaming-primary.xboxlive.com
+#streaming-secondary.xboxlive.com
+#streaming.xboxlive.com
+#strengthwarehouseusa.com
+#stringnthread.com
+#stripe.network
+#strongloop.com
+#stroybaza-new.ru
+#sts.xbox.com
+#studiooneeightynine.com
+#stylishtop.com.au
+#stytch.com
+#styxworld.com
+#submissionservices.xboxlive.com
+#subscriptions-ppe.xboxlive.com
+#subscriptions.xboxlive.com
+#sucu.xboxlive.com
+#sugarrush-demotr.com
+#suitechild.com
+#suitedash.com
+#sujajuice.com
+#sultangames.com
+#sundaynews.co.zw
+#sundayswagger.com
+#sundried.com
+#sunlightmtn.com
+#sunnytoo.com
+#suntancity.com
+#suny.edu
+#superday.toggl.com
+#superdry.com
+#superpro.com.au
+#supplychain.mariadb.com
+#supplychaindigital.com
+#supplyhouse.com
+#support-loyalty.xbox.com
+#support-origin.xbox.com
+#support-refunds.xbox.com
+#support-xmf.xbox.com
+#support.brainstormforce.com
+#support.cdprojektred.com
+#support.toggl.com
+#support.wbgames.com
+#support.xbox.com
+#surfaces.ppe.ide.platform.xboxservices.com
+#surfaces.test.ide.platform.xboxservices.com
+#suricata.io
+#survey.g.doubleclick.net
+#surveyjunkie.com
+#sv368.consulting
+#svcmsg.xboxlive.com
+#svgsprit.es
+#sw-soft.com
+#sw-themes.com
+#swagger.io
+#swiftbook.io
+#swiftype.com
+#swisslife.fr
+#switch.co
+#sycamore-staging.xboxservices.com
+#sycamore.xboxservices.com
+#synergyse.com
+#sysdig.com
+#sysinternals.com
+#t.alerts.xbox.com
+#t.emails.xbox.com
+#t.mails.xbox.com
+#t.notifications.xbox.com
+#tableau.com
+#tablesgenerator.com
+#tabnine.com
+#takehomeconsole.gssv-play-prod.xboxlive.com
+#takoutny.com
+#talaera.com
+#talesoftavern.com
+#talosintelligence.com
+#tamankawan.site
+#tanzu.io
+#tappara.fi
+#tarbut.edu.mx
+#target.com
+#tartepink.com
+#taskrabbit.com
+#tasteclusterreco-ppe.xboxlive.com
+#tasteclusterreco.xboxlive.com
+#tatasteel.com
+#tdbank.com
+#teamspeak.com
+#teamvvv.com
+#teapigs.co.uk
+#techspot.com
+#techtarget.com
+#techvibes.com
+#techwatch.co.uk
+#tecmint.com
+#teconce.com
+#teefashionstar.com
+#teemill.com
+#teeoff.com
+#teespring.com
+#teez.in
+#tele2.net
+#telestax.com
+#telummedia.com
+#temeculablogs.com
+#templatemag.com
+#tenable.com
+#tennis-point.nl
+#tennispro.eu
+#terrafootwear.ca
+#territoryfoods.com
+#test-prod.xboxservices.com
+#test-staging.xboxservices.com
+#test.beshkon.ir
+#test.gamingai.ppe.exp.xboxservices.com
+#test.gplt.fnch.xboxlive.com
+#test.gplt.sage.xboxlive.com
+#test.gssv.fnch.xboxlive.com
+#test.gssv.sage.xboxlive.com
+#test.library.exp.xboxservices.com
+#test.licensing.sucu.xboxlive.com
+#test.monolith.experiences.xboxservices.com
+#test.play.xbox.com
+#test.portal.interceptor.xboxlive.com
+#test.portalfrontend.gamepass.xboxservices.com
+#test.productmanagementcore.gamepass.xboxservices.com
+#test.reader.sucu.xboxlive.com
+#test.search.exp.xboxservices.com
+#test.shaders.xboxlive.com
+#test.soteria.xboxlive.com
+#test.sucu.xboxlive.com
+#test.writer.sucu.xboxlive.com
+#test.xai.xboxservices.com
+#test.xccs.xboxlive.com
+#test.xplat.internal.skylab.xboxlive.com
+#test.xplt.fnch.xboxlive.com
+#testbericht.de
+#texashillcountryoliveco.com
+#textmoderation-ppe.xboxlive.com
+#textmoderation.xboxlive.com
+#thaiwatsadu.com
+#thatconference.com
+#the7.io
+#thebabysroom.co
+#thebigdomain.com
+#theboxsf.com
+#thebrunswicknews.com
+#thecheesegeek.com
+#theclashify.com
+#thecliffbarbados.com
+#thefabricator.com
+#thefork.nl
+#thehawaiistore.com
+#thehealthyfoodie.com
+#thehendersonnews.com
+#thehour.com
+#thehouseoflrc.com
+#theinstituteforaddictionstudy.org
+#thejnotes.com
+#theme-fusion.com
+#theme.net.cn
+#themeisle.com
+#themepixels.me
+#themexriver.com
+#themoviedb.org
+#thenewcraftmaker.com
+#thenorthface.de
+#thepharmakonllc.com
+#thepitchkc.com
+#thepixelfarm.co.uk
+#theplatform.com
+#theraband.com
+#theraggedpriest.com
+#theseed.ca
+#thesiskiss.com
+#thestateless.com
+#thestationerystudio.com
+#thetouchx.com
+#theweddingofmydreams.co.uk
+#thewitcher.com
+#thig.com
+#thimpress.com
+#thingworx.com
+#thinkib.net
+#thinkwithgoogle.com
+#thirdpartytokens-ppe.xboxlive.com
+#thirdpartytokens.xboxlive.com
+#this.ne.jp
+#thisibelieve.org
+#thmarinesupplies.com
+#thrombosisadviser.com
+#thuisschoonmaken.nl
+#thwack.solarwinds.com
+#tiara.com.sg
+#ticketland.ru
+#tidelift.com
+#tielabs.com
+#tigren.com
+#tilecloud.com.au
+#tiles.xbox.com
+#time.google.com
+#timedoctor.com
+#timer-tab.com
+#tinify.com
+#tinkerbell.org
+#tinyurl.com
+#title.auth.dnet.xboxlive.com
+#title.auth.xboxlive.com
+#title.mgt.dnet.xboxlive.com
+#title.mgt.xboxlive.com
+#titlehistory-ppe.xboxlive.com
+#titlehistory.dnet.xboxlive.com
+#titlehistory.xboxlive.com
+#titlehub-origin.xboxlive.com
+#titlehub-ppe-origin.xboxlive.com
+#titlehub-ppe.xboxlive.com
+#titlehub.xboxlive.com
+#titleist.co.uk
+#titlereco-ppe.xboxlive.com
+#titlereco.xboxlive.com
+#titlerecords.xboxlive.com
+#titlesfriendsplayed-ppe.xboxlive.com
+#titlesfriendsplayed.xboxlive.com
+#tk88.rodeo
+#tkt.ge
+#tnedi.me
+#tobewornagain.com
+#toccotoscano.com
+#tokei365.org
+#tokenminting-gw.xboxlive.com
+#tokenstate-gw.xboxlive.com
+#tokenstate-gwppe.xboxlive.com
+#tomboyx.com
+#tomtom.com
+#tonercity.com.au
+#toolbox.com
+#tools.google.com
+#tools.xboxlive.com
+#toolsservices.xboxlive.com
+#toolswarehouse.com.au
+#top-australian-casinos.com
+#topaz-staging.xboxservices.com
+#topaz.xboxservices.com
+#topclassactions.com
+#topdoek.nl
+#topeleven.com
+#toptal.com
+#torrentz2.eu
+#totalbattle.com
+#totalmerchantservices.com
+#totohot.net
+#towardsdatascience.com
+#townofdeweybeach.com
+#toy-people.com
+#toys2discover.com
+#toysforbigboys.com
+#toyshine.in
+#tp.tax.gov.ir
+#tp.wpml.org
+#tr-pin-up-casino.com
+#track.customer.io
+#tracktik.com
+#tradera.se
+#trae.ai
+#trailcampro.com
+#trainline.eu
+#translate.wordpress.org
+#transporter-ppe.xboxlive.com
+#transporter.xboxlive.com
+#traversbikes.com
+#travis-ci.com
+#travis-ci.org
+#treatments.cf
+#treesofantiquity.com
+#trellocdn.com
+#trendingtv-acc-ppe.xboxlive.com
+#trendingtv-acc.xboxlive.com
+#tribunedelyon.fr
+#tribuneindia.com
+#tricksinfo.net
+#trifield.com
+#trinket-vendor-assets.trinket.io
+#trotters.co.uk
+#trubrain.com
+#true-vfx.xyz
+#truelicense.java.net
+#truenas.com
+#trueos.org
+#trufflesuite.com
+#truste.com
+#trustnodes.com
+#trycaviar.com
+#tryhackme.com
+#tryruby.org
+#ts.nopixel.net
+#tstindustries.com
+#ttgtmedia.com
+#ttsdschools.org
+#turner.com
+#tutorialspoint.com
+#tv-static.net
+#tvcdn.de
+#twilio.com
+#twimg.com
+#twinbrooksgardens.com
+#twistintwirlintutus.com
+#twohandspaperie.com
+#type.com
+#typekit.com
+#typekit.net
+#typoci.com
+#ubaenseimpressos.com.br
+#uber.com
+#ubereats.com
+#ubisoft-staging.xboxservices.com
+#ubisoft.connect.com
+#ubisoft.xboxservices.com
+#ubuntu.bigbluebutton.org
+#ubuntu.com
+#ucha.se
+#uk.gear.xbox.com
+#uk.ign.com
+#ukrweekly.com
+#uks.prod.monolith.experiences.xboxservices.com
+#ultralytics.com
+#umamimart.com
+#umber-staging.xboxservices.com
+#umber.xboxservices.com
+#undelucram.ro
+#undergroundlighting.com
+#underlords.com
+#unex-tech.com
+#unicureindia.com
+#unionbay.com
+#uniquesmokeshop.com
+#uniquindio.edu.co
+#unlimited-elements.com
+#unltd.ca
+#unothegateway.com
+#unpkg.com
+#unrealtournament.com
+#up.edu.br
+#upd.merkulov.design
+#update.site.pro
+#update.yithemes.com
+#updates.theme-fusion.com
+#updates.themepunch-ext-a.tools
+#updates.themepunch-ext-b.tools
+#updates.themepunch-ext-c.tools
+#updates.themepunch.tools
+#updates.wpbakery.com
+#uplay.com
+#uplay.ubisoft.com
+#upload.preprod.xboxlive.com
+#upload.xboxlive.com
+#uplynk.com
+#upstate.edu
+#urbandictionary.store
+#urbangalaxyonline.com
+#urm.lt
+#usa.visa.com
+#usa10.tavanahost.com
+#usaa.com
+#usakilts.com
+#usalocator.org
+#usbank.com
+#usbank.visabuxx.com
+#usbankconnect.com
+#usbankfocus.com
+#usbankgomobile.com
+#usbconvenientcash.com
+#usbgear.com
+#uscareerinstitute.edu
+#uscentral-keys-accessory.auth.xboxlive.com
+#uscentral-mxazdata.mgt.xboxlive.com
+#uscentral-xcache.xboxlive.com
+#uscentralwest-mxazdata.mgt.xboxlive.com
+#useast-keys-accessory.auth.xboxlive.com
+#useast-mxazdata.mgt.xboxlive.com
+#useast-xcache.xboxlive.com
+#useblackbox.io
+#user.auth.dnet.xboxlive.com
+#user.auth.xboxlive.com
+#user.mgt.dnet.xboxlive.com
+#user.mgt.xboxlive.com
+#usercentrics.eu
+#userconsolestoretitles-ppe.xboxlive.com
+#userconsolestoretitles.xboxlive.com
+#usergamepasspicksforyou-ppe.xboxlive.com
+#usergamepasspicksforyou.xboxlive.com
+#userpresence-ppe.xboxlive.com
+#userpresence.dnet.xboxlive.com
+#userpresence.xboxlive.com
+#usersearch-ppe.xboxlive.com
+#usersearch.xboxlive.com
+#userstats-origin.xboxlive.com
+#userstats-ppe.xboxlive.com
+#userstats-stress.xboxlive.com
+#userstats.xboxlive.com
+#usertesting.com
+#usertitles-origin.xboxlive.com
+#usertitles-ppe.xboxlive.com
+#usertitles.xboxlive.com
+#usharbors.com
+#usserviceanimals.org
+#uswest-keys-accessory.auth.xboxlive.com
+#uswest-mxazdata.mgt.xboxlive.com
+#uswest-xcache.xboxlive.com
+#utahskigear.com
+#utas.prd.s5.prd.futc-ext.gcp.ea.com
+#utrum.io
+#uxcam.com
+#v0.dev
+#v1-gameserverms.xboxlive.com
+#valve.net
+#vapehongkong.com
+#vapo.co.nz
+#vapor.com
+#vaporboss.com
+#vastrachowk.com
+#vatvostudio.vn
+#vault.centos.org
+#vaultproject.io
+#vchapmanstudio.com
+#vendecommerce.com
+#venezianocoffee.com.au
+#veracityglobal.com
+#verdecasinos-hu.com
+#verdemente.com
+#verify.cpanel.net
+#veritas.com
+#verkkokauppa.com
+#vermilion-staging.xboxservices.com
+#vermilion.xboxservices.com
+#verwarminghandel.nl
+#vestacp.com
+#veteranownedbusiness.com
+#via.placeholder.com
+#victoriametrics.com
+#video.spro.xbox.com
+#vidyard.com
+#viedeparents.ca
+#view.engage.xbox.com
+#view.status.xbox.com
+#vikingdirect.ie
+#vince.com
+#vinegarsyndrome.com
+#vinesse.com
+#vinfast.vn
+#vinos.de
+#violet-staging.xboxservices.com
+#violet.xboxservices.com
+#viridianweapontech.com
+#virtual-strategy.com
+#virtualizor.com
+#virtualmin.com
+#virtus.com
+#virtustream.com
+#virustotal.com
+#visa.com
+#visa.de
+#visamiddleeast.com
+#visionlab.es
+#visitcalaveras.org
+#visitcripplecreek.com
+#visitvenezia.eu
+#visser.com.au
+#vistaprint.nl
+#visualping.io
+#visualstudio.com
+#visualwebsiteoptimizer.com
+#vitals.xboxlive.com
+#vivrelejapon.com
+#vjs.zencdn.net
+#vjudge.net
+#vnext.support.xbox.com
+#vonage.co.uk
+#vonvon.me
+#vorticwatches.com
+#vscode-unpkg.net
+#vsd.lt
+#vsphereclient.vmware.com
+#vtwonen.nl
+#vue.com
+#vuemastery.com
+#vulkanvegascasinospiele.com
+#vultr.com
+#vyos.io
+#vysor.io
+#vystarcu.org
+#wakatime.com
+#walkerscelticjewelry.com
+#wallet.google.com
+#wallpaperget.com
+#walnut.xboxservices.com
+#wandb.ai
+#wanderingbearcoffee.com
+#warmrooms.co.uk
+#warnerbros.com
+#warnerbrosgames.com
+#washtimes.com
+#watchaser.com
+#watches.com
+#wattstowers.org
+#waze.com
+#wb.com
+#wbc247-kor.com
+#wbgames.com
+#wbplay.com
+#wd.com
+#wdc.com
+#wdtvlive.com
+#weareams.com
+#web-analytics.engagio.com
+#web-payments-prod.xbox.com
+#web-payments-staging.xbox.com
+#webcatalog.app
+#webcatalog.io
+#webdesign.org
+#webershandwick.co.uk
+#webex.com
+#webforms.support.xboxlive.com
+#webm2.dk
+#webmin.com
+#webnus.net
+#webpay.bahamta.com
+#webrtc.org
+#websitedemos.net
+#websiteforstudents.com
+#websvc.cert.xboxlive.com
+#websvc.xboxlive.com
+#webulk.bio
+#wegift.io
+#welaunch.io
+#wells.pt
+#westchestermagazine.com
+#westerndigital.com
+#westernsoul.com
+#westus-gamingconsent.xboxlive.com
+#westus3.xboxservices.com
+#weu.prod.monolith.experiences.xboxservices.com
+#weui.io
+#whileshesleeps.com
+#white-staging.xboxservices.com
+#white.xboxservices.com
+#whiteflowerfarm.com
+#whmcs.deploymentcode.com
+#whmcsglobalservices.com
+#whollygenes.com
+#widget.intercom.io
+#widgets.ign.com
+#widyatama.ac.id
+#wiimmfi.de
+#wildhornoutfitters.com
+#wildminimalist.com
+#wildone.com
+#williamsondailynews.com
+#willowbayaustralia.com
+#wilsonsautobody.com
+#wincher.com
+#windows.com
+#windowsphone.xbox.com
+#wine-staging.xboxservices.com
+#wine.xboxservices.com
+#wineindustryinsight.com
+#wininformant.com
+#winnerssportswear.com
+#wirelessmedia.ign.com
+#wiroos.com
+#witcher3.cdprojektred.com
+#wix.com
+#wizardingworld.com
+#wiztopic.com
+#wndygc.com
+#womaness.com
+#womenscyberjutsu.org
+#womensecret.mx
+#womentechmakers.com
+#woocomerce.com
+#woocommerce.com
+#woodmart.xtemos.com
+#woodturner.org
+#woosignal.com
+#wopilo.com
+#wopsterscloset.com
+#wordfence.com
+#wordpress.org
+#wordtune.com
+#workboatshow.com
+#workoutforless.co.uk
+#workspace.google.com
+#worldometers.info
+#worldsfamousphotos.com
+#worthavegroup.com
+#wowhead.com
+#wowtv.de
+#wowza.com
+#wp-rocket.me
+#wp-statistics.com
+#wp-toolkit.plesk.com
+#wp.com
+#wpall.club
+#wpapi.quic.cloud
+#wpbakery.com
+#wpforms.com
+#wpmailsmtp.com
+#wpmet.com
+#wpml.org
+#wpmudev.com
+#wpmudev.org
+#wpsheeteditor.com
+#wrappixel.com
+#writer.sucu.xboxlive.com
+#wtaps.com
+#wtfismyip.com
+#wuppertal-total.de
+#wus3.int.monolith.experiences.xboxservices.com
+#wus3.test.monolith.experiences.xboxservices.com
+#www-origin.xbox.com
+#www.a.softaculous.com
+#www.algolia.com
+#www.api.softaculous.com
+#www.api.virtualizor.com
+#www.arpriceplugin.com
+#www.bigbluebutton.org
+#www.bitgo.uk
+#www.codecanyon.net
+#www.com
+#www.directadmin.com
+#www.envato.com
+#www.exactmetrics.com
+#www.files.virtualizor.com
+#www.gog.com
+#www.gt
+#www.ign.com
+#www.ilghera.com
+#www.jetpack.com
+#www.licenses.softaculous.com
+#www.mongodb.org
+#www.nic.pa
+#www.onesignal.com
+#www.origin.com
+#www.preview.themeforest.net
+#www.registration.fanfest.xbox.com
+#www.rockstargames.com
+#www.rtl-theme.com
+#www.s1.softaculous.com
+#www.s2.softaculous.com
+#www.s3.softaculous.com
+#www.s4.softaculous.com
+#www.s5.softaculous.com
+#www.s6.softaculous.com
+#www.s7.softaculous.com
+#www.server.softaculous.com
+#www.softaculous.com
+#www.sunnytoo.com
+#www.support.xbox.com
+#www.teamspeak.com
+#www.themeforest.net
+#www.virtualizor.com
+#www.vmware.com
+#www.warnerbrosgames.com
+#www.wbgames.com
+#www.wonderplugin.com
+#www.wordfence.com
+#www.xbox.com
+#www.xboxlive.com
+#www.yoa.st
+#www.yoast.com
+#wyomingwhiskey.com
+#xach.mgt.dnet.xboxlive.com
+#xach.mgt.xboxlive.com
+#xai.xboxservices.com
+#xap.xboxlive.com
+#xapprove-ppe.xboxlive.com
+#xapprove.xboxlive.com
+#xb1ingestion-next.xboxlive.com
+#xb1ingestion.dnet.xboxlive.com
+#xb1ingestion.xboxlive.com
+#xb1ingestionv1.xboxlive.com
+#xb1ingestionv2.dnet.xboxlive.com
+#xb1ingestionv2.xboxlive.com
+#xbgm-config.xboxlive.com
+#xbgm-event.xboxlive.com
+#xbl-smooth.xboxlive.com
+#xblc-ppe.xboxlive.com
+#xblc-tst.xboxlive.com
+#xblc.xboxlive.com
+#xblcfestamp01.xboxlive.com
+#xblcfestamp02.xboxlive.com
+#xblcfestamp03.xboxlive.com
+#xblcfestamp04.xboxlive.com
+#xblcfestamp05.xboxlive.com
+#xblcfestamp06.xboxlive.com
+#xblcfestamp07.xboxlive.com
+#xblcfestamp08.xboxlive.com
+#xblcfestamp09.xboxlive.com
+#xblcfestamp10.xboxlive.com
+#xblcfestampvnext01.xboxlive.com
+#xblcfestampvnext02.xboxlive.com
+#xblcrepl.xboxlive.com
+#xblcreplvnext01.xboxlive.com
+#xblcresourceprovider.xboxlive.com
+#xblcresourceprovidervnext.xboxlive.com
+#xblgraphql-mini.xboxlive.com
+#xblgraphql-ppe.xboxlive.com
+#xblgraphql.xboxlive.com
+#xblmessaging-ppe.xboxlive.com
+#xblmessaging.xboxlive.com
+#xboing.dnet.xboxlive.com
+#xboing.gtm.xboxlive.com
+#xboing.xboxlive.com
+#xbot.xboxlive.com
+#xbox.ipv6.microsoft.com
+#xbox360media.ign.com
+#xboxdata.xboxlive.com
+#xboxdesignlab.xbox.com
+#xboxexperiencesprod.experimentation.xboxlive.com
+#xboxlive.xbox
+#xboxreporting-ppe.xboxlive.com
+#xboxreporting.xboxlive.com
+#xboxrewards-staging.xboxservices.com
+#xboxrewards.xboxservices.com
+#xboxservices.com
+#xbxweb-origin-int.xbox.com
+#xbxweb-origin-test.xbox.com
+#xcache-beta.xboxlive.com
+#xcache.dnet.xboxlive.com
+#xcache.xboxlive.com
+#xcbk.dnet.xboxlive.com
+#xcbk.xboxlive.com
+#xccs.xboxlive.com
+#xcert.xboxlive.com
+#xchair.com
+#xcp.xboxlive.com
+#xcpppe.xboxlive.com
+#xcrenos.exp.xboxservices.com
+#xda.xboxlive.com
+#xdash-dev.xboxlive.com
+#xdash-int.xboxlive.com
+#xdash.xboxlive.com
+#xdcp-next.xboxlive.com
+#xdcp.xboxlive.com
+#xdes.dnet.xboxlive.com
+#xdes.xboxlive.com
+#xdesui.dnet.xboxlive.com
+#xdesui.xboxlive.com
+#xdi.xboxlive.com
+#xdisc.dnet.xboxlive.com
+#xdisc.xboxlive.com
+#xdp.dnet.xboxlive.com
+#xdp.xboxlive.com
+#xdpq.dnet.xboxlive.com
+#xdpq.xboxlive.com
+#xdsbikeco.com
+#xdts-proxy.xboxlive.com
+#xdts.xboxlive.com
+#xecho-aks-dev.xboxlive.com
+#xero.com
+#xfaas.xboxlive.com
+#xflight-origin.xboxlive.com
+#xflight.xboxlive.com
+#xfocus-next.xboxlive.com
+#xfocus.xboxlive.com
+#xfocusrealtimeingestion-next.xboxlive.com
+#xfs-upload.xboxlive.com
+#xfus.preprod.xboxlive.com
+#xfus.xboxlive.com
+#xg-auth.xboxlive.com
+#xgrant.xboxlive.com
+#xhome.gssv-play-int.xboxlive.com
+#xhome.gssv-play-prod.xboxlive.com
+#xhome.gssv-play-test.xboxlive.com
+#xiaomi.com
+#xip-portal-int.xboxlive.com
+#xip-portal.xboxlive.com
+#xip-registration-next.xboxlive.com
+#xip-registration.xboxlive.com
+#xip-registrationfd.xboxlive.com
+#xip.io
+#xkcd.com
+#xkgl.xboxlive.com
+#xkms-gw.xboxlive.com
+#xkms-origin.xboxlive.com
+#xkms.xbolive.com
+#xkms.xboxlive.com
+#xlens-next.xboxlive.com
+#xlens-odata.xboxlive.com
+#xlens-upload.xboxlive.com
+#xmint.dnet.xboxlive.com
+#xmint.xboxlive.com
+#xmms-ppe.xboxlive.com
+#xmms.xboxlive.com
+#xmod.mgt.dnet.xboxlive.com
+#xmod.mgt.xboxlive.com
+#xmodui.dnet.xboxlive.com
+#xmodui.xboxlive.com
+#xms-pvt.xboxlive.com
+#xms.dnet.xboxlive.com
+#xms.xboxlive.com
+#xmspublishing.dnet.xboxlive.com
+#xmspublishing.xboxlive.com
+#xn---116-93d3ap.xn--p1ai
+#xn--4dbcyzi5a.com
+#xn--80abmambabkk3avmbjkc2qrc.xn--p1ai
+#xn--megsb-l11b.com
+#xncsi.dnet.xboxlive.com
+#xncsi.xboxlive.com
+#xnotify-production-origin.xboxlive.com
+#xnotify.xboxlive.com
+#xoobe.platform.xboxservices.com
+#xorc.dnet.xboxlive.com
+#xorc.xboxlive.com
+#xpack.dnet.xboxlive.com
+#xpack.xboxlive.com
+#xpertcompute.dnet.xboxlive.com
+#xpertcompute.xboxlive.com
+#xpertdata.dnet.xboxlive.com
+#xpertdata.xboxlive.com
+#xpertlogs.dnet.xboxlive.com
+#xplt-cnry-int.xboxlive.com
+#xplt-cnry-prod.xboxlive.com
+#xplt-cnry-test.xboxlive.com
+#xplt-ctlp-int.xboxlive.com
+#xplt-ctlp-prod.xboxlive.com
+#xplt-ctlp-test.xboxlive.com
+#xplt-xcad-int.xboxlive.com
+#xplt-xcad-prod.xboxlive.com
+#xplt-xcad-test.xboxlive.com
+#xpostands.com
+#xpro.dnet.xboxlive.com
+#xpro.xboxlive.com
+#xrap.xboxlive.com
+#xreflect-ppe.xboxlive.com
+#xreflect.xboxlive.com
+#xreflectapi-ppe.xboxlive.com
+#xreflectapi-primary.xboxlive.com
+#xreflectapi-us.xboxlive.com
+#xreflectapi.xboxlive.com
+#xrfd-int.gameservices.xboxlive.com
+#xrfd.gameservices.xboxlive.com
+#xscape.support.xbox.com
+#xstream-aca-dev.xboxlive.com
+#xstream-aca-prod.xboxlive.com
+#xstream-aks-dev.xboxlive.com
+#xstream-aks-prod.xboxlive.com
+#xsts-keys.auth.dnet.xboxlive.com
+#xsts-keys.auth.xboxlive.com
+#xsts-origin.auth.xboxlive.com
+#xsts-validation.auth.xboxlive.com
+#xsts.auth.dnet.xboxlive.com
+#xsts.auth.xboxlive.com
+#xstsdelegation.auth.xboxlive.com
+#xsum.dnet.xboxlive.com
+#xsum.xboxlive.com
+#xsuppv2.xboxlive.com
+#xsuppv2ppe.xboxlive.com
+#xsva-dev.support.xboxlive.com
+#xsva-int.support.xboxlive.com
+#xsva-uat.support.xboxlive.com
+#xsva.support.xboxlive.com
+#xt.com
+#xtas.dnet.xboxlive.com
+#xtas.xboxlive.com
+#xtrafondos.com
+#xusm.dnet.xboxlive.com
+#xusm2reporting-next.xboxlive.com
+#xusm2reporting.dnet.xboxlive.com
+#xusm2reporting.gtm.xboxlive.com
+#xusm2reporting.xboxlive.com
+#xwfl.dnet.xboxlive.com
+#xwfl.xboxlive.com
+#xyacs.dnet.xboxlive.com
+#xyacs.xboxlive.com
+#xyacsnext.dnet.xboxlive.com
+#yachew.com
+#yaiskitchen.com
+#yajrabox.com
+#yale.edu
+#yalwa.nl
+#yandex.com
+#yapily.com
+#yccteam.com
+#yde.co.za
+#yellow-staging.xboxservices.com
+#yellow.xboxservices.com
+#yellowbustours.com
+#yithemes.com
+#ymcahonolulu.org
+#yoa.st
+#yoast.com
+#yodayo.com
+#yorkregion.com
+#yougetsignal.com
+#youidraw.com
+#youngwriters.co.uk
+#yourprimer.com
+#yoursurprise.nl
+#yourthreads.co
+#ypsitownship.org
+#yslbeauty.ca
+#ytelegram.com
+#ytpara.com
+#yunnankitchen.com
+#yutasan.co
+#za.net
+#zabars.com
+#zabbix.com
+#zaffre-staging.xboxservices.com
+#zaffre.xboxservices.com
+#zakaz-buketa.ru
+#zamimg.com
+#zapier.com
+#zbirna.com
+#zblcdj.com
+#zed.run
+#zenarmor.com
+#zenbivy.com
+#zend.com
+#zendesk.com
+#zenpayroll.com
+#zeroflux.org
+#zestyio.com
+#zetcasino.com
+#zigzagdigital.com
+#zilvia.net
+#zingtree.com
+#zispa.co.zw
+#zktecousa.com
+#znanylekarz.pl
+#zoho.com
+#zooplus.se
+#zxing.org
+#zzhrx.com
 #__END_DOMAINS__
 
 #__BEGIN_SERVICES__
@@ -10799,11 +15852,1172 @@ exit 0
 #          "key": "online",
 #          "label": "فروشگاه، اکانت و بازی آنلاین",
 #          "domains": [
+#            "accessory.auth.dnet.xboxlive.com",
+#            "accessory.auth.xboxlive.com",
+#            "account.xbox.com",
+#            "accounts-origin.xboxlive.com",
+#            "accounts-partner-ppe.xboxlive.com",
+#            "accounts-partner.dnet.xboxlive.com",
+#            "accounts-partner.xboxlive.com",
+#            "accounts.dnet.xboxlive.com",
+#            "accounts.xboxlive.com",
+#            "accountsexternaltest.xboxlive.com",
+#            "accountsexternaltestppe.xboxlive.com",
+#            "accountsppe.xboxlive.com",
+#            "accountstest.dnet.xboxlive.com",
+#            "accountstroubleshooter-origin.xboxlive.com",
+#            "accountstroubleshooter.dnet.xboxlive.com",
+#            "accountstroubleshooter.xboxlive.com",
+#            "accountstroubleshooterppe.xboxlive.com",
+#            "activeauth.xboxlive.com",
+#            "activity.family.dnet.xboxlive.com",
+#            "afdverifyavatarservices.xboxlive.com",
+#            "alerts.xbox.com",
+#            "alt-keys-accessory.auth.dnet.xboxlive.com",
+#            "americas.gssv-auth-int.xboxlive.com",
+#            "americas.gssv-auth-intxhome.xboxlive.com",
+#            "americas.gssv-auth-prod.xboxlive.com",
+#            "americas.gssv-auth-prodxhome.xboxlive.com",
+#            "americas.gssv-auth-test.xboxlive.com",
+#            "americas.gssv-auth-testxhome.xboxlive.com",
+#            "americas.gssv-cmdrelay-int.xboxlive.com",
+#            "americas.gssv-cmdrelay-intxhome.xboxlive.com",
+#            "americas.gssv-cmdrelay-prod.xboxlive.com",
+#            "americas.gssv-cmdrelay-prodxhome.xboxlive.com",
+#            "americas.gssv-cmdrelay-test.xboxlive.com",
+#            "americas.gssv-cmdrelay-testxhome.xboxlive.com",
+#            "americas.gssv-cnry-int.xboxlive.com",
+#            "americas.gssv-cnry-prod.xboxlive.com",
+#            "americas.gssv-cnry-test.xboxlive.com",
+#            "americas.gssv-dev-int.xboxlive.com",
+#            "americas.gssv-dev-intxhome.xboxlive.com",
+#            "americas.gssv-dev-prod.xboxlive.com",
+#            "americas.gssv-dev-prodxhome.xboxlive.com",
+#            "americas.gssv-dev-test.xboxlive.com",
+#            "americas.gssv-dev-testxhome.xboxlive.com",
+#            "americas.gssv-play-int.xboxlive.com",
+#            "americas.gssv-play-intxhome.xboxlive.com",
+#            "americas.gssv-play-prod.xboxlive.com",
+#            "americas.gssv-play-prodxhome.xboxlive.com",
+#            "americas.gssv-play-test.xboxlive.com",
+#            "americas.gssv-play-testxhome.xboxlive.com",
+#            "americas.gssv-registration-int.xboxlive.com",
+#            "americas.gssv-registration-prod.xboxlive.com",
+#            "americas.gssv-registration-test.xboxlive.com",
+#            "americas.gssv-sage-int.xboxlive.com",
+#            "americas.gssv-sage-intxhome.xboxlive.com",
+#            "americas.gssv-sage-prod.xboxlive.com",
+#            "americas.gssv-sage-prodxhome.xboxlive.com",
+#            "americas.gssv-sage-test.xboxlive.com",
+#            "americas.gssv-sage-testxhome.xboxlive.com",
+#            "americas.gssv-vmcm-int.xboxlive.com",
+#            "americas.gssv-vmcm-prod.xboxlive.com",
+#            "americas.gssv-vmcm-test.xboxlive.com",
+#            "americas.int.gplt.fnch.xboxlive.com",
+#            "americas.int.gplt.sage.xboxlive.com",
+#            "americas.int.gssv.fnch.xboxlive.com",
+#            "americas.int.gssv.sage.xboxlive.com",
+#            "americas.int.play.xbox.com",
+#            "americas.int.portal.interceptor.xboxlive.com",
+#            "americas.int.shaders.xboxlive.com",
+#            "americas.int.xccs.xboxlive.com",
+#            "americas.int.xplt.fnch.xboxlive.com",
+#            "americas.pairing.accs-int.xboxlive.com",
+#            "americas.pairing.accs-prod.xboxlive.com",
+#            "americas.pairing.accs-test.xboxlive.com",
+#            "americas.prod.gplt.fnch.xboxlive.com",
+#            "americas.prod.gplt.sage.xboxlive.com",
+#            "americas.prod.gssv.fnch.xboxlive.com",
+#            "americas.prod.gssv.sage.xboxlive.com",
+#            "americas.prod.shaders.xboxlive.com",
+#            "americas.prod.xccs.xboxlive.com",
+#            "americas.prod.xplt.fnch.xboxlive.com",
+#            "americas.test.gplt.fnch.xboxlive.com",
+#            "americas.test.gplt.sage.xboxlive.com",
+#            "americas.test.gssv.fnch.xboxlive.com",
+#            "americas.test.gssv.sage.xboxlive.com",
+#            "americas.test.play.xbox.com",
+#            "americas.test.portal.interceptor.xboxlive.com",
+#            "americas.test.shaders.xboxlive.com",
+#            "americas.test.xccs.xboxlive.com",
+#            "americas.test.xplt.fnch.xboxlive.com",
+#            "americas.xplt-cnry-int.xboxlive.com",
+#            "americas.xplt-cnry-test.xboxlive.com",
+#            "americas.xplt-xcad-int.xboxlive.com",
+#            "americas.xplt-xcad-prod.xboxlive.com",
+#            "americas.xplt-xcad-test.xboxlive.com",
+#            "amsshop-stage.xbox.com",
+#            "amsshop-stage2.xbox.com",
+#            "amsshop.xbox.com",
+#            "ap.canary.xccs.xboxlive.com",
+#            "ap.packages.xboxlive.com",
+#            "ap.packagespc.xboxlive.com",
+#            "ap.xccs.xboxlive.com",
+#            "api.test.soteria.xboxlive.com",
+#            "arcadecontest.xbox.com",
+#            "asiapacific.gssv-auth-prod.xboxlive.com",
+#            "asiapacific.gssv-cmdrelay-prod.xboxlive.com",
+#            "asiapacific.gssv-dev-prod.xboxlive.com",
+#            "asiapacific.gssv-play-prod.xboxlive.com",
+#            "asiapacific.gssv-registration-prod.xboxlive.com",
+#            "asiapacific.gssv-sage-prod.xboxlive.com",
+#            "asiapacific.gssv-vmcm-prod.xboxlive.com",
+#            "asiapacific.prod.gssv.fnch.xboxlive.com",
+#            "asiapacific.prod.gssv.sage.xboxlive.com",
+#            "atgdash-ppe.xboxlive.com",
+#            "atgdash.xboxlive.com",
+#            "attachments-origin.xboxlive.com",
+#            "attachments.xboxlive.com",
+#            "auth-xg.xboxlive.com",
+#            "auth.xbox.com",
+#            "auth.xboxlive.com",
+#            "auth2.xboxlive.com",
+#            "author-xnotify.xboxlive.com",
+#            "authoring-ppe.xbox.com",
+#            "authoring.dnet.xbox.com",
+#            "authoring.xbox.com",
+#            "autosuggest.support.xboxlive.com",
+#            "avatar-ssl.xboxlive.com",
+#            "avatar.xboxlive.com",
+#            "avatarservices-origin.xboxlive.com",
+#            "avatarservices.xboxlive.com",
+#            "avatarv3-ppe.xboxlive.com",
+#            "avatarv3.xboxlive.com",
+#            "avty-origin.xboxlive.com",
+#            "avty-ppe.xboxlive.com",
+#            "avty.xboxlive.com",
+#            "ballotbox-ppe.xboxlive.com",
+#            "ballotbox.xboxlive.com",
+#            "be-inventory-x360.xboxlive.com",
+#            "be-licensing-x360.xboxlive.com",
+#            "beacons-origin.xboxlive.com",
+#            "beacons.xboxlive.com",
+#            "beaconsandactivity.xboxlive.com",
+#            "beta-accessory.auth.xboxlive.com",
+#            "beta-aks-accessory.auth.dnet.xboxlive.com",
+#            "beta-aks-accessory.auth.xboxlive.com",
+#            "beta-borg.dnet.xboxlive.com",
+#            "beta-borg.xboxlive.com",
+#            "beta-cert.mgt.dnet.xboxlive.com",
+#            "beta-cert.mgt.xboxlive.com",
+#            "beta-certrevo.mgt.dnet.xboxlive.com",
+#            "beta-certrevo.mgt.xboxlive.com",
+#            "beta-config2.mgt.dnet.xboxlive.com",
+#            "beta-config2.mgt.xboxlive.com",
+#            "beta-device.auth.dnet.xboxlive.com",
+#            "beta-device.auth.xboxlive.com",
+#            "beta-faux.mgt.dnet.xboxlive.com",
+#            "beta-faux.mgt.xboxlive.com",
+#            "beta-instance.mgt.dnet.xboxlive.com",
+#            "beta-instance.mgt.xboxlive.com",
+#            "beta-keys-accessory.auth.xboxlive.com",
+#            "beta-keys-service.auth.xboxlive.com",
+#            "beta-msaintimation.dnet.xboxlive.com",
+#            "beta-msaintimation.xboxlive.com",
+#            "beta-mxazdata.mgt.xboxlive.com",
+#            "beta-parental.xboxlive.com",
+#            "beta-privileges.xboxlive.com",
+#            "beta-receipts.xboxlive.com",
+#            "beta-revocation-xsts.dnet.xboxlive.com",
+#            "beta-revocation-xsts.xboxlive.com",
+#            "beta-revocation.dnet.xboxlive.com",
+#            "beta-revocation.xboxlive.com",
+#            "beta-service.auth.dnet.xboxlive.com",
+#            "beta-service.auth.xboxlive.com",
+#            "beta-sisu.xboxlive.com",
+#            "beta-sisupassauthext.xboxlive.com",
+#            "beta-title.auth.dnet.xboxlive.com",
+#            "beta-title.auth.xboxlive.com",
+#            "beta-title.mgt.dnet.xboxlive.com",
+#            "beta-title.mgt.xboxlive.com",
+#            "beta-user.auth.dnet.xboxlive.com",
+#            "beta-user.auth.xboxlive.com",
+#            "beta-user.mgt.dnet.xboxlive.com",
+#            "beta-user.mgt.xboxlive.com",
+#            "beta-xach.mgt.dnet.xboxlive.com",
+#            "beta-xach.mgt.xboxlive.com",
+#            "beta-xccs.xboxlive.com",
+#            "beta-xdes.dnet.xboxlive.com",
+#            "beta-xdes.xboxlive.com",
+#            "beta-xdesui.dnet.xboxlive.com",
+#            "beta-xdesui.xboxlive.com",
+#            "beta-xdpq.xboxlive.com",
+#            "beta-xforge.xboxlive.com",
+#            "beta-xforgecdc.xboxlive.com",
+#            "beta-xforgesearch.xboxlive.com",
+#            "beta-xlens-upload.xboxlive.com",
+#            "beta-xmint.xboxlive.com",
+#            "beta-xmod.mgt.dnet.xboxlive.com",
+#            "beta-xmod.mgt.xboxlive.com",
+#            "beta-xmodui.dnet.xboxlive.com",
+#            "beta-xmodui.xboxlive.com",
+#            "beta-xorc.dnet.xboxlive.com",
+#            "beta-xorc.xboxlive.com",
+#            "beta-xsts-keys.auth.xboxlive.com",
+#            "beta-xsts.auth.dnet.xboxlive.com",
+#            "beta-xsts.auth.xboxlive.com",
+#            "beta-xsum.dnet.xboxlive.com",
+#            "beta-xsum.xboxlive.com",
+#            "beta-xtas.dnet.xboxlive.com",
+#            "beta-xtas.xboxlive.com",
+#            "beta.support.xbox.com",
+#            "beta2-sisu.xboxlive.com",
+#            "bff.test.soteria.xboxlive.com",
+#            "borg.dnet.xboxlive.com",
+#            "borg.xboxlive.com",
+#            "c.xbox.com",
+#            "canadacentral-gamingconsent.xboxlive.com",
+#            "canary.xccs.xboxlive.com",
+#            "careerreader-cy2.xboxlive.com",
+#            "catalog.gamepass.com",
+#            "catalog.xboxlive.com",
+#            "cdf-anon.xboxlive.com",
+#            "cert.mgt.dnet.xboxlive.com",
+#            "cert.mgt.xboxlive.com",
+#            "certification.xboxlive.com",
+#            "certrevo.mgt.dnet.xboxlive.com",
+#            "certrevo.mgt.xboxlive.com",
+#            "certservices.xboxlive.com",
+#            "chat-origin.xboxlive.com",
+#            "chat-partner.xboxlive.com",
+#            "chat-ppe.xboxlive.com",
+#            "chat.support.xboxlive.com",
+#            "chat.xboxlive.com",
+#            "chatfd-origin.xboxlive.com",
+#            "chatfd-ppe.xboxlive.com",
+#            "chatfd.xboxlive.com",
+#            "checkout-amsshop-stage.xbox.com",
+#            "checkout-xboxdesignlab.xbox.com",
+#            "ci.support.xbox.com",
+#            "cimagecallback-ssl.xboxlive.com",
+#            "click.engage.xbox.com",
+#            "click.status.xbox.com",
+#            "client-auth.xboxlive.com",
+#            "client-party-ppe.xboxlive.com",
+#            "client-party.xboxlive.com",
+#            "client-reputation-origin.xboxlive.com",
+#            "client-reputation.dnet.xboxlive.com",
+#            "client-reputation.xboxlive.com",
+#            "client-services.xboxlive.com",
+#            "client-sessiondirectory-origin.xboxlive.com",
+#            "client-sessiondirectory-ppe.xboxlive.com",
+#            "client-sessiondirectory.xboxlive.com",
+#            "client-strings-origin.xboxlive.com",
+#            "client-strings.dnet.xboxlive.com",
+#            "client-strings.xboxlive.com",
+#            "cloud.engage.xbox.com",
+#            "cloud.status.xbox.com",
+#            "cloudcollection-ssl.dnet.xboxlive.com",
+#            "cloudcollection-ssl.xboxlive.com",
+#            "clubaccounts-partner.xboxlive.com",
+#            "clubaccounts-ppe-partner.xboxlive.com",
+#            "clubaccounts-ppe.xboxlive.com",
+#            "clubaccounts.xboxlive.com",
+#            "clubanalytics.xboxlive.com",
+#            "clubchatmgmt-ppe.xboxlive.com",
+#            "clubchatmgmt.xboxlive.com",
+#            "clubhub-partner.xboxlive.com",
+#            "clubhub-ppe-partner.xboxlive.com",
+#            "clubhub-ppe-public.xboxlive.com",
+#            "clubhub-ppe.xboxlive.com",
+#            "clubhub-public.xboxlive.com",
+#            "clubhub.xboxlive.com",
+#            "clubmoderation-ppe.xboxlive.com",
+#            "clubmoderation.xboxlive.com",
+#            "clubpresence-ppe.xboxlive.com",
+#            "clubpresence.xboxlive.com",
+#            "clubprofile-partner.xboxlive.com",
+#            "clubprofile-ppe-partner.xboxlive.com",
+#            "clubprofile-ppe.xboxlive.com",
+#            "clubprofile.xboxlive.com",
+#            "clubroster-partner.xboxlive.com",
+#            "clubroster-ppe-partner.xboxlive.com",
+#            "clubroster-ppe.xboxlive.com",
+#            "clubroster.xboxlive.com",
+#            "clubsearch-ppe.xboxlive.com",
+#            "clubsearch.xboxlive.com",
+#            "comments-ppe.xboxlive.com",
+#            "comments.xboxlive.com",
+#            "communications.xboxlive.com",
+#            "config2.mgt.dnet.xboxlive.com",
+#            "config2.mgt.xboxlive.com",
+#            "content.support.xboxlive.com",
+#            "contentbuilder-ppe.xboxlive.com",
+#            "contentbuilder.xboxlive.com",
+#            "contextualsearch.xboxlive.com",
+#            "controllers-onerf.ppe.xbox.com",
+#            "controllerwarranty.support.xboxlive.com",
+#            "core.accs-int.xboxlive.com",
+#            "core.accs-prod.xboxlive.com",
+#            "core.accs-test.xboxlive.com",
+#            "core.gssv-play-int.xboxlive.com",
+#            "core.gssv-play-prod.xboxlive.com",
+#            "corematch-ppe.xboxlive.com",
+#            "cosmos-preview-cf.xbox.com",
+#            "cosmos-preview-ppe.xbox.com",
+#            "cosmos-preview.dnet.xbox.com",
+#            "cosmos-preview.xbox.com",
+#            "dashcontent.xbox.com",
+#            "dashcontentverification.xbox.com",
+#            "data-origin.xboxlive.com",
+#            "data-vef-eap.xboxlive.com",
+#            "data-vef-origin.xboxlive.com",
+#            "data-vef-proxy.xboxlive.com",
+#            "data-vef.xboxlive.com",
+#            "data.xboxlive.com",
+#            "deletedaccounts.dnet.xboxlive.com",
+#            "deletedaccounts.xboxlive.com",
+#            "dev-chat.support.xboxlive.com",
+#            "dev-community.spro.xbox.com",
+#            "dev-content.support.xboxlive.com",
+#            "dev-controllerwarranty.support.xboxlive.com",
+#            "dev-conversation.support.xboxlive.com",
+#            "dev-enrollments.support.xboxlive.com",
+#            "dev-messagefulfillment.support.xboxlive.com",
+#            "dev-next.xair.xboxlive.com",
+#            "dev-notifications.support.xboxlive.com",
+#            "dev-orderhistory.support.xboxlive.com",
+#            "dev-proxy.support.xboxlive.com",
+#            "dev-refunds.support.xboxlive.com",
+#            "dev-search.support.xboxlive.com",
+#            "dev-webforms.support.xboxlive.com",
+#            "dev.play.xbox.com",
+#            "dev.support-loyalty.xbox.com",
+#            "dev.support-xmf.xbox.com",
+#            "dev.support.xbox.com",
+#            "dev.xair.xboxlive.com",
+#            "dev.xbox.com",
+#            "developer.xboxlive.com",
+#            "devforumsfeedback.xboxlive.com",
+#            "device-origin.auth.xboxlive.com",
+#            "device.auth.dnet.xboxlive.com",
+#            "device.auth.xboxlive.com",
+#            "device.mgt.dnet.xboxlive.com",
+#            "device.mgt.xboxlive.com",
+#            "dreamscape.xbox.com",
+#            "dui.xboxlive.com",
+#            "eastus-gamingconsent.xboxlive.com",
 #            "edgesuite.net",
+#            "editorial-origin.xboxlive.com",
+#            "editorial-ppe.xboxlive.com",
+#            "editorial.xboxlive.com",
+#            "emails.xbox.com",
+#            "enforcement-origin.xbox.com",
+#            "enforcement-preview.xbox.com",
+#            "enforcement.spro.xboxlive.com",
+#            "enforcement.xbox.com",
+#            "enforcement.xboxlive.com",
+#            "enforcementfd-preview.xbox.com",
+#            "enforcementfd.xbox.com",
+#            "enrollments.support.xboxlive.com",
+#            "entitlements-xbox-ppe.xboxlive.com",
+#            "entitlements-xbox.xboxlive.com",
+#            "epix-origin.xbox.com",
+#            "epix-preview-ssl.xbox.com",
+#            "epix-web-origin.xbox.com",
+#            "epix.xbox.com",
+#            "eplists-origin.xboxlive.com",
+#            "eplists-ppe.xboxlive.com",
+#            "eplists-xg-origin.xboxlive.com",
+#            "eplists-xg.xboxlive.com",
+#            "eplists.xboxlive.com",
+#            "eraser.dnet.xboxlive.com",
+#            "eraser.xboxlive.com",
+#            "eu.gear.xbox.com",
+#            "europe.gssv-auth-prod.xboxlive.com",
+#            "europe.gssv-auth-prodxhome.xboxlive.com",
+#            "europe.gssv-cmdrelay-prod.xboxlive.com",
+#            "europe.gssv-cmdrelay-prodxhome.xboxlive.com",
+#            "europe.gssv-dev-prod.xboxlive.com",
+#            "europe.gssv-dev-prodxhome.xboxlive.com",
+#            "europe.gssv-play-prod.xboxlive.com",
+#            "europe.gssv-play-prodxhome.xboxlive.com",
+#            "europe.gssv-registration-prod.xboxlive.com",
+#            "europe.gssv-sage-prod.xboxlive.com",
+#            "europe.gssv-sage-prodxhome.xboxlive.com",
+#            "europe.gssv-vmcm-prod.xboxlive.com",
+#            "europe.pairing.accs-prod.xboxlive.com",
+#            "europe.prod.gplt.fnch.xboxlive.com",
+#            "europe.prod.gplt.sage.xboxlive.com",
+#            "europe.prod.gssv.fnch.xboxlive.com",
+#            "europe.prod.gssv.sage.xboxlive.com",
+#            "europe.prod.shaders.xboxlive.com",
+#            "europe.prod.xccs.xboxlive.com",
+#            "europe.prod.xplt.fnch.xboxlive.com",
+#            "europe.xplt-xcad-prod.xboxlive.com",
+#            "euwest-keys-accessory.auth.xboxlive.com",
+#            "euwest-mxazdata.mgt.xboxlive.com",
+#            "euwest-xcache.xboxlive.com",
+#            "experiences.fanfest.xbox.com",
+#            "faux.mgt.dnet.xboxlive.com",
+#            "faux.mgt.xboxlive.com",
+#            "fbshare-origin.xboxlive.com",
+#            "fbshare.xboxlive.com",
+#            "feedbacklogin.xbox.com",
+#            "fitness.xboxlive.com",
+#            "flight-chat.support.xboxlive.com",
+#            "flight-content.support.xboxlive.com",
+#            "flight-controllerwarranty.support.xboxlive.com",
+#            "flight-enrollments.support.xboxlive.com",
+#            "flight-messagefulfillment.support.xboxlive.com",
+#            "flight-orderhistory.support.xboxlive.com",
+#            "flight-proxy.support.xboxlive.com",
+#            "flight-refunds.support.xboxlive.com",
+#            "flight-search.support.xboxlive.com",
+#            "flight-webforms.support.xboxlive.com",
+#            "flight.support-loyalty.xbox.com",
+#            "flight.support-refunds.xbox.com",
+#            "flight.support-xmf.xbox.com",
+#            "forums-dev.xboxlive.com",
+#            "forums-int.xboxlive.com",
+#            "forums-preview.xbox.com",
+#            "forums-preview.xboxlive.com",
+#            "forums.xbox.com",
+#            "forums.xboxlive.com",
+#            "forums1.xboxlive.com",
+#            "forums2.xboxlive.com",
+#            "forums3.xboxlive.com",
+#            "forums4.xboxlive.com",
+#            "forumsuat.xboxlive.com",
+#            "fpt.xbox.com",
+#            "fpt.xboxlive.com",
+#            "fraudprotection.support.xbox.com",
+#            "friendfinder-ppe.xboxlive.com",
+#            "friendfinder.xboxlive.com",
+#            "friendlookup.xboxlive.com",
+#            "gameclipsmetadata-origin.xboxlive.com",
+#            "gameclipsmetadata.xboxlive.com",
+#            "gameconfiguration.xboxlive.com",
+#            "gameevents-origin.xboxlive.com",
+#            "gameevents-ppe.xboxlive.com",
+#            "gameevents-stress.xboxlive.com",
+#            "gameevents.xboxlive.com",
+#            "gamemodes.xboxlive.com",
 #            "gamepass.com",
+#            "gamepassquests-ppe.xboxlive.com",
+#            "gamepassquests.xboxlive.com",
+#            "gamerpics-origin.xboxlive.com",
+#            "gamerpics.xboxlive.com",
+#            "gamertag-ppe.xboxlive.com",
+#            "gamertag.xboxlive.com",
+#            "gameserverds.dnet.xboxlive.com",
+#            "gameserverds.xboxlive.com",
+#            "gameserverdsvnext01.xboxlive.com",
+#            "gameserverdsvnext01a.xboxlive.com",
+#            "gameserverevents-origin.xboxlive.com",
+#            "gameserverevents-ppe.xboxlive.com",
+#            "gameserverevents-stress.xboxlive.com",
+#            "gameserverevents.xboxlive.com",
+#            "gameserverms.dnet.xboxlive.com",
+#            "gameserverms.xboxlive.com",
+#            "gameservermsvnext01.xboxlive.com",
+#            "gamesvcsvnext01.xboxlive.com",
+#            "gamingconsent-staging.xboxlive.com",
+#            "gamingconsent.xboxlive.com",
+#            "gamingcontext-ppe.xboxlive.com",
+#            "gamingcontext.xboxlive.com",
+#            "gamingdata-ppe.xboxlive.com",
+#            "gamingdata.xboxlive.com",
+#            "gamingusertrust-staging.xboxlive.com",
+#            "gamingusertrust.xboxlive.com",
+#            "gander.maelstrom.gameservices.xboxlive.com",
+#            "gear.xbox.com",
+#            "gearsofwar.xbox.com",
+#            "gplt-acms-int.xboxlive.com",
+#            "gplt-acms-test.xboxlive.com",
+#            "gplt-cnry-prod.xboxlive.com",
+#            "gssv-auth-int.xboxlive.com",
+#            "gssv-auth-prod.xboxlive.com",
+#            "gssv-auth-test.xboxlive.com",
+#            "gssv-cmdrelay-int.xboxlive.com",
+#            "gssv-cmdrelay-prod.xboxlive.com",
+#            "gssv-cmdrelay-test.xboxlive.com",
+#            "gssv-cnry-int.xboxlive.com",
+#            "gssv-cnry-prod.xboxlive.com",
+#            "gssv-cnry-test.xboxlive.com",
+#            "gssv-dev-int.xboxlive.com",
+#            "gssv-dev-intxhome.xboxlive.com",
+#            "gssv-dev-prod.xboxlive.com",
+#            "gssv-dev-prodxhome.xboxlive.com",
+#            "gssv-dev-test.xboxlive.com",
+#            "gssv-dev-testxhome.xboxlive.com",
+#            "gssv-nodepool-wus2-prod.xboxlive.com",
+#            "gssv-nodepool-wus2-test.xboxlive.com",
+#            "gssv-play-int.xboxlive.com",
+#            "gssv-play-prod.xboxlive.com",
+#            "gssv-play-test.xboxlive.com",
+#            "gssv-play-testxhome.xboxlive.com",
+#            "gssv-registration-int.xboxlive.com",
+#            "gssv-registration-prod.xboxlive.com",
+#            "gssv-registration-test.xboxlive.com",
+#            "gssv-sage-int.xboxlive.com",
+#            "gssv-sage-prod.xboxlive.com",
+#            "gssv-sage-test.xboxlive.com",
+#            "gssv-sigl-prod.xboxlive.com",
+#            "gssv-vmcm-int.xboxlive.com",
+#            "gssv-vmcm-prod.xboxlive.com",
+#            "gssv-vmcm-test.xboxlive.com",
+#            "gssvc-ppe.xboxlive.com",
+#            "halifax.maelstrom.gameservices.xboxlive.com",
+#            "halo.xbox.com",
+#            "help.xbox.com",
+#            "hydrator.xboxlive.com",
+#            "identityverification.xboxlive.com",
+#            "image-ssl.xboxlive.com",
+#            "image.engage.xbox.com",
+#            "image.status.xbox.com",
+#            "image.xboxlive.com",
+#            "impressions-ppe-public.xboxlive.com",
+#            "impressions-ppe.xboxlive.com",
+#            "impressions-public-origin.xboxlive.com",
+#            "impressions-public.xboxlive.com",
+#            "impressions.xboxlive.com",
+#            "inbox-dev.assist.gameservices.xboxlive.com",
+#            "inbox-int.assist.gameservices.xboxlive.com",
+#            "inbox.assist.gameservices.xboxlive.com",
+#            "inet.vmrp.xboxlive.com",
+#            "insider.xbox.com",
+#            "instance.mgt.dnet.xboxlive.com",
+#            "instance.mgt.xboxlive.com",
+#            "int-chat.support.xboxlive.com",
+#            "int-content.support.xboxlive.com",
+#            "int-controllerwarranty.support.xboxlive.com",
+#            "int-enrollments.support.xboxlive.com",
+#            "int-messagefulfillment.support.xboxlive.com",
+#            "int-notifications.support.xboxlive.com",
+#            "int-orderhistory.support.xboxlive.com",
+#            "int-proxy.support.xboxlive.com",
+#            "int-refunds.support.xboxlive.com",
+#            "int-search.support.xboxlive.com",
+#            "int-webforms.support.xboxlive.com",
+#            "int.gplt.fnch.xboxlive.com",
+#            "int.gplt.sage.xboxlive.com",
+#            "int.gssv.fnch.xboxlive.com",
+#            "int.gssv.sage.xboxlive.com",
+#            "int.licensing.sucu.xboxlive.com",
+#            "int.play.xbox.com",
+#            "int.portal.interceptor.xboxlive.com",
+#            "int.reader.sucu.xboxlive.com",
+#            "int.shaders.xboxlive.com",
+#            "int.sucu.xboxlive.com",
+#            "int.support-loyalty.xbox.com",
+#            "int.support-xmf.xbox.com",
+#            "int.support.xbox.com",
+#            "int.writer.sucu.xboxlive.com",
+#            "int.xccs.xboxlive.com",
+#            "int.xplt.fnch.xboxlive.com",
+#            "intermedia.xboxlive.com",
+#            "inventory-ppe.xboxlive.com",
+#            "inventory.xboxlive.com",
+#            "join-xip-int.xboxlive.com",
+#            "join-xip.xboxlive.com",
+#            "keys-accessory.auth.dnet.xboxlive.com",
+#            "keys-accessory.auth.xboxlive.com",
+#            "keys-service.auth.xboxlive.com",
+#            "krsouth-keys-accessory.auth.xboxlive.com",
+#            "krsouth-mxazdata.mgt.xboxlive.com",
+#            "leaderboards-origin.xboxlive.com",
+#            "leaderboards-ppe.xboxlive.com",
+#            "leaderboards.xboxlive.com",
+#            "leaderboardsvnext.xboxlive.com",
+#            "legacy.xboxdata.xboxlive.com",
+#            "lemon-int-pme.xbox.com",
+#            "lemon-pme.xbox.com",
+#            "lemon-staging.xbox.com",
+#            "licensing-mpls-ppe.xboxlive.com",
+#            "licensing-mpls.xboxlive.com",
+#            "licensing-ppe.xboxlive.com",
+#            "licensing.xboxlive.com",
+#            "link.xbox.com",
+#            "links-stg.xboxlive.com",
+#            "links-svc-stg.xboxlive.com",
+#            "links-svc.xboxlive.com",
+#            "links.xboxlive.com",
+#            "live-preview.xbox.com",
+#            "live.xbox.com",
+#            "liveconnect.xboxlive.com",
+#            "m.alerts.xbox.com",
+#            "m.emails.xbox.com",
+#            "m.mails.xbox.com",
+#            "m.notifications.xbox.com",
+#            "mails.xbox.com",
+#            "manifest-origin.xboxlive.com",
+#            "manifest-ssl.xboxlive.com",
+#            "manifest.xboxlive.com",
+#            "marketplace.xbox.com",
+#            "matchmake-ppe.xboxlive.com",
+#            "matchmaking.xboxlive.com",
+#            "mcws-eastus.xbox.com",
+#            "mcws-origin.xbox.com",
+#            "mcws-southeastasia.xbox.com",
+#            "mcws-staging.xbox.com",
+#            "mcws-westeurope.xbox.com",
+#            "mcws-westus.xbox.com",
+#            "mediacc.xboxlive.com",
+#            "mediacontent-ppe.xboxlive.com",
+#            "mediadata.xboxlive.com",
+#            "mediatraits-ppe.xboxlive.com",
+#            "mediatraits.xboxlive.com",
+#            "messagefulfillment.support.xboxlive.com",
+#            "messaging.xboxlive.com",
+#            "mixermoney.xboxlive.com",
+#            "moderation-preview.xbox.com",
+#            "moderation.xbox.com",
+#            "momatch.xboxlive.com",
 #            "mp.microsoft.com",
+#            "msa-service.auth.xboxlive.com",
+#            "msac.xboxlive.com",
+#            "msaintimation.dnet.xboxlive.com",
+#            "msaintimation.xboxlive.com",
+#            "msft.vmrp.xboxlive.com",
+#            "msg-origin.xboxlive.com",
+#            "msg.dnet.xboxlive.com",
+#            "msg.xboxlive.com",
+#            "multi-match-origin.xboxlive.com",
+#            "multiplayer.xboxlive.com",
+#            "multiplayeractivity-ppe.xboxlive.com",
+#            "multiplayeractivity.xboxlive.com",
+#            "museum.xbox.com",
+#            "musicdelivery-ssl-origin.xboxlive.com",
+#            "musicdelivery-ssl.auth.xboxlive.com",
+#            "musicdelivery-ssl.int.xboxlive.com",
+#            "musicdelivery-ssl.xboxlive.com",
+#            "musicdrive-ssl.dnet.xboxlive.com",
+#            "musicdrive-ssl.xboxlive.com",
+#            "musicimage-origin.dnet.xboxlive.com",
+#            "musicimage-origin.xboxlive.com",
+#            "musicimage.dnet.xboxlive.com",
+#            "musicimage.xboxlive.com",
+#            "musicmatch-ssl-origin.xboxlive.com",
+#            "mxazdata.mgt.dnet.xboxlive.com",
+#            "mxazdata.mgt.xboxlive.com",
+#            "myservice.xbox.com",
+#            "news.xbox.com",
+#            "nightly-int.support.xbox.com",
+#            "nightly-preview.support.xbox.com",
+#            "nightly.support.xbox.com",
+#            "nonprod.corematch-test.xboxlive.com",
+#            "northeurope-gamingconsent.xboxlive.com",
+#            "notificationhubregistration-bn1.xboxlive.com",
+#            "notificationhubregistration-co4.xboxlive.com",
+#            "notificationhubregistration-ppe.xboxlive.com",
+#            "notificationhubregistration.xboxlive.com",
+#            "notificationinbox-ppe.xboxlive.com",
+#            "notificationinbox.xboxlive.com",
+#            "notifications-dev.assist.gameservices.xboxlive.com",
+#            "notifications.assist.gameservices.xboxlive.com",
+#            "notifications.support.xboxlive.com",
+#            "notifications.xbox.com",
+#            "notifier.xboxlive.com",
+#            "notify-origin.xboxlive.com",
+#            "notify-ppe.xboxlive.com",
+#            "notify.xboxlive.com",
+#            "nuads-ssl.xboxlive.com",
+#            "offerservices.xboxlive.com",
+#            "orderhistory.support.xboxlive.com",
+#            "origin-int.xbox.com",
+#            "origin-test.xbox.com",
+#            "packages-next.xboxlive.com",
+#            "packages-origin.xboxlive.com",
+#            "packages.dnet.xboxlive.com",
+#            "packages.xboxlive.com",
+#            "packagespc-next.xboxlive.com",
+#            "packagespc.dnet.xboxlive.com",
+#            "packagespc.xboxlive.com",
+#            "pages.engage.xbox.com",
+#            "pages.status.xbox.com",
+#            "pairing.accs-int.xboxlive.com",
+#            "pairing.accs-prod.xboxlive.com",
+#            "pairing.accs-test.xboxlive.com",
+#            "parental.dnet.xboxlive.com",
+#            "parental.xboxlive.com",
+#            "party-ppe.xboxlive.com",
+#            "party.xboxlive.com",
+#            "partynow-ppe.xboxlive.com",
+#            "partynow.xboxlive.com",
+#            "pdlc.xboxlive.com",
+#            "pdlcv2-b2b.xboxlive.com",
+#            "pdlcv2-origin.xboxlive.com",
+#            "pdlcv2.xboxlive.com",
+#            "people.xboxlive.com",
+#            "peoplehub-origin.xboxlive.com",
+#            "peoplehub-ppe-origin.xboxlive.com",
+#            "peoplehub-ppe-public.xboxlive.com",
+#            "peoplehub-ppe.xboxlive.com",
+#            "peoplehub-public.xboxlive.com",
+#            "peoplehub.xboxlive.com",
+#            "phoenix.maelstrom.gameservices.xboxlive.com",
+#            "pifd-client-services.xboxlive.com",
+#            "pifd-gw.xboxlive.com",
+#            "piflc.xboxlive.com",
+#            "play.xbox.com",
+#            "pme.gssv-cnry-test.xboxlive.com",
+#            "portal.interceptor.xboxlive.com",
+#            "portalservices.xboxlive.com",
+#            "ppe.support-refunds.xbox.com",
+#            "presence-heartbeat-ppe.xboxlive.com",
+#            "presence-heartbeat.xboxlive.com",
+#            "presence.xboxlive.com",
+#            "presenceevents-origin.xboxlive.com",
+#            "presenceevents.xboxlive.com",
+#            "preview-account.xbox.com",
+#            "preview-community-origin.xbox.com",
+#            "preview-live.xbox.com",
+#            "preview.support.xbox.com",
+#            "privacy-ppe.xboxlive.com",
+#            "privacy.xboxlive.com",
+#            "privileges.dnet.xboxlive.com",
+#            "privileges.xboxlive.com",
+#            "prod.corematch.xboxlive.com",
+#            "prod.gplt.fnch.xboxlive.com",
+#            "prod.gplt.sage.xboxlive.com",
+#            "prod.gssv.fnch.xboxlive.com",
+#            "prod.gssv.sage.xboxlive.com",
+#            "prod.licensing.sucu.xboxlive.com",
+#            "prod.reader.sucu.xboxlive.com",
+#            "prod.shaders.xboxlive.com",
+#            "prod.sucu.xboxlive.com",
+#            "prod.writer.sucu.xboxlive.com",
+#            "prod.xair.xboxlive.com",
+#            "prod.xccs.xboxlive.com",
+#            "prod.xplt.fnch.xboxlive.com",
+#            "productcatalog-origin.xbox.com",
+#            "profile-origin.xboxlive.com",
+#            "profile-ppe.xboxlive.com",
+#            "profile.dnet.xboxlive.com",
+#            "profile.xboxlive.com",
+#            "progress-origin.xboxlive.com",
+#            "progress.xboxlive.com",
+#            "progressraritywriter.dnet.xboxlive.com",
+#            "progressraritywritervnext.xboxlive.com",
+#            "proxy.support.xboxlive.com",
+#            "psts-aks-stage-azurefd.xboxlive.com",
+#            "psts-aks-stage.xboxlive.com",
+#            "psts.xboxlive.com",
+#            "purchase-b2b.xboxlive.com",
+#            "purchase-gw-ppe.xboxlive.com",
+#            "purchase-gw.xboxlive.com",
+#            "purchase-origin.xboxlive.com",
+#            "purchase.xboxlive.com",
+#            "purchasegw-ppe.xboxlive.com",
+#            "purchasejournal-gw-ppe.xboxlive.com",
+#            "purchasejournal-gw.xboxlive.com",
+#            "purchasesupport.xboxlive.com",
+#            "purchasetvod-gw.xboxlive.com",
+#            "purchasetvodppe-gw.xboxlive.com",
+#            "qb-smooth.xboxlive.com",
+#            "rap-fd-int.xboxlive.com",
+#            "rap-fd.xboxlive.com",
+#            "reader.sucu.xboxlive.com",
+#            "receipts-dev.assist.gameservices.xboxlive.com",
+#            "receipts.assist.gameservices.xboxlive.com",
+#            "receipts.xboxlive.com",
+#            "refunds-dev.assist.gameservices.xboxlive.com",
+#            "refunds-flight.assist.gameservices.xboxlive.com",
+#            "refunds-int.assist.gameservices.xboxlive.com",
+#            "refunds.assist.gameservices.xboxlive.com",
+#            "refunds.support.xboxlive.com",
+#            "refundsinternal-dev.assist.gameservices.xboxlive.com",
+#            "refundsinternal-flight.assist.gameservices.xboxlive.com",
+#            "refundsinternal-int.assist.gameservices.xboxlive.com",
+#            "refundsinternal.assist.gameservices.xboxlive.com",
+#            "registration.fanfest.xbox.com",
+#            "reportingservices.xboxlive.com",
+#            "reputation-origin.xboxlive.com",
+#            "reputation-ppe.xboxlive.com",
+#            "reputation.dnet.xboxlive.com",
+#            "reputation.xboxlive.com",
+#            "res.alerts.xbox.com",
+#            "res.emails.xbox.com",
+#            "res.mails.xbox.com",
+#            "res.notifications.xbox.com",
+#            "retail.xbox.com",
+#            "revocation-xsts.dnet.xboxlive.com",
+#            "revocation-xsts.xboxlive.com",
+#            "revocation.dnet.xboxlive.com",
+#            "revocation.xboxlive.com",
+#            "roamingprofile.xboxlive.com",
+#            "rta.dnet.xboxlive.com",
+#            "rta.xboxlive.com",
+#            "runtime-mediacatalog.xboxlive.com",
+#            "safetypoc.gssv-auth-int.xboxlive.com",
+#            "sas-ppe-origin.xboxlive.com",
+#            "sas.xboxlive.com",
+#            "savantproxy-aks-prod.xboxlive.com",
+#            "savantproxy-aks-stage.xboxlive.com",
+#            "savantproxy.dnet.xboxlive.com",
+#            "savantproxy.xboxlive.com",
+#            "scape-dev.xboxlive.com",
+#            "scape-int.xboxlive.com",
+#            "screenshotsmetadata-origin.xboxlive.com",
+#            "screenshotsmetadata.xboxlive.com",
+#            "search.support.xboxlive.com",
+#            "service.auth.dnet.xboxlive.com",
+#            "service.auth.xboxlive.com",
+#            "service.xbox.com",
+#            "services-origin.xboxlive.com",
+#            "services-preview.xbox.com",
+#            "sessiondirectory-origin.xboxlive.com",
+#            "sessiondirectory-ppe.xboxlive.com",
+#            "sessiondirectory.xboxlive.com",
+#            "sessions.xboxlive.com",
+#            "setting.family.dnet.xboxlive.com",
+#            "setting.family.xboxlive.com",
+#            "settings-origin.xboxlive.com",
+#            "settings-ssl-origin.xboxlive.com",
+#            "settings-ssl.xboxlive.com",
+#            "settings.xboxlive.com",
+#            "share-mixer.xboxlive.com",
+#            "shine-ppe.xboxlive.com",
+#            "signals-feedback.xboxlive.com",
+#            "signals-mediausage.xboxlive.com",
+#            "signals-ratings.xboxlive.com",
+#            "sisu.dnet.xboxlive.com",
+#            "sisu.xbox.com",
+#            "sisu.xboxlive.com",
+#            "sisueastus.dnet.xboxlive.com",
+#            "sisupassauthext.xboxlive.com",
+#            "slsactivity-origin.xboxlive.com",
+#            "slsactivity.xboxlive.com",
+#            "smartmatch.xboxlive.com",
+#            "smartmatchsim-origin.xboxlive.com",
+#            "smartmatchsim.dnet.xboxlive.com",
+#            "smartmatchsim.xboxlive.com",
+#            "smtp-relay-xdf.xboxlive.com",
+#            "snconnect-origin.xboxlive.com",
+#            "snconnect.xboxlive.com",
+#            "social-origin.xboxlive.com",
+#            "social-ppe.xboxlive.com",
+#            "social.xboxlive.com",
+#            "socialaggregation.xboxlive.com",
+#            "socialrecommendations-ppe.xboxlive.com",
+#            "socialrecommendations.xboxlive.com",
+#            "sonos.xbox.com",
+#            "spartaprod.maelstrom.gameservices.xboxlive.com",
+#            "speedtest.xboxlive.com",
+#            "squads-ppe.xboxlive.com",
+#            "staging.support.xbox.com",
+#            "starportal.dnet.xboxlive.com",
+#            "stateshare-ppe.xboxlive.com",
+#            "stateshare.xboxlive.com",
+#            "static-origin.xbox.com",
+#            "stats.xboxlive.com",
+#            "statsread-blu.dnet.xboxlive.com",
+#            "statsread-eap1.dnet.xboxlive.com",
+#            "statsread-eap2.dnet.xboxlive.com",
+#            "statsread-ppe.xboxlive.com",
+#            "statsread.dnet.xboxlive.com",
+#            "statsread.xboxlive.com",
+#            "statswrite-blu.dnet.xboxlive.com",
+#            "statswrite-eap1.dnet.xboxlive.com",
+#            "statswrite-eap2.dnet.xboxlive.com",
+#            "statswrite-ppe.xboxlive.com",
+#            "statswrite.dnet.xboxlive.com",
+#            "statswrite.xboxlive.com",
+#            "store.xbox.com",
+#            "streaming-ppe.xboxlive.com",
+#            "streaming-primary.xboxlive.com",
+#            "streaming-secondary.xboxlive.com",
+#            "streaming.xboxlive.com",
+#            "sts.xbox.com",
+#            "submissionservices.xboxlive.com",
+#            "subscriptions-ppe.xboxlive.com",
+#            "subscriptions.xboxlive.com",
+#            "sucu.xboxlive.com",
+#            "support-loyalty.xbox.com",
+#            "support-origin.xbox.com",
+#            "support-refunds.xbox.com",
+#            "support-xmf.xbox.com",
+#            "support.xbox.com",
+#            "svcmsg.xboxlive.com",
+#            "t.alerts.xbox.com",
+#            "t.emails.xbox.com",
+#            "t.mails.xbox.com",
+#            "t.notifications.xbox.com",
+#            "takehomeconsole.gssv-play-prod.xboxlive.com",
+#            "tasteclusterreco-ppe.xboxlive.com",
+#            "tasteclusterreco.xboxlive.com",
+#            "test.gplt.fnch.xboxlive.com",
+#            "test.gplt.sage.xboxlive.com",
+#            "test.gssv.fnch.xboxlive.com",
+#            "test.gssv.sage.xboxlive.com",
+#            "test.licensing.sucu.xboxlive.com",
+#            "test.play.xbox.com",
+#            "test.portal.interceptor.xboxlive.com",
+#            "test.reader.sucu.xboxlive.com",
+#            "test.shaders.xboxlive.com",
+#            "test.soteria.xboxlive.com",
+#            "test.sucu.xboxlive.com",
+#            "test.writer.sucu.xboxlive.com",
+#            "test.xccs.xboxlive.com",
+#            "test.xplat.internal.skylab.xboxlive.com",
+#            "test.xplt.fnch.xboxlive.com",
+#            "textmoderation-ppe.xboxlive.com",
+#            "textmoderation.xboxlive.com",
+#            "thirdpartytokens-ppe.xboxlive.com",
+#            "thirdpartytokens.xboxlive.com",
+#            "tiles.xbox.com",
+#            "title.auth.dnet.xboxlive.com",
+#            "title.auth.xboxlive.com",
+#            "title.mgt.dnet.xboxlive.com",
+#            "title.mgt.xboxlive.com",
+#            "titlehistory-ppe.xboxlive.com",
+#            "titlehistory.dnet.xboxlive.com",
+#            "titlehistory.xboxlive.com",
+#            "titlehub-origin.xboxlive.com",
+#            "titlehub-ppe-origin.xboxlive.com",
+#            "titlehub-ppe.xboxlive.com",
+#            "titlehub.xboxlive.com",
+#            "titlereco-ppe.xboxlive.com",
+#            "titlereco.xboxlive.com",
+#            "titlerecords.xboxlive.com",
+#            "titlesfriendsplayed-ppe.xboxlive.com",
+#            "titlesfriendsplayed.xboxlive.com",
+#            "tokenminting-gw.xboxlive.com",
+#            "tokenstate-gw.xboxlive.com",
+#            "tokenstate-gwppe.xboxlive.com",
+#            "tools.xboxlive.com",
+#            "toolsservices.xboxlive.com",
+#            "transporter-ppe.xboxlive.com",
+#            "transporter.xboxlive.com",
+#            "trendingtv-acc-ppe.xboxlive.com",
+#            "trendingtv-acc.xboxlive.com",
+#            "uk.gear.xbox.com",
+#            "upload.preprod.xboxlive.com",
+#            "upload.xboxlive.com",
+#            "uscentral-keys-accessory.auth.xboxlive.com",
+#            "uscentral-mxazdata.mgt.xboxlive.com",
+#            "uscentral-xcache.xboxlive.com",
+#            "uscentralwest-mxazdata.mgt.xboxlive.com",
+#            "useast-keys-accessory.auth.xboxlive.com",
+#            "useast-mxazdata.mgt.xboxlive.com",
+#            "useast-xcache.xboxlive.com",
+#            "user.auth.dnet.xboxlive.com",
+#            "user.auth.xboxlive.com",
+#            "user.mgt.dnet.xboxlive.com",
+#            "user.mgt.xboxlive.com",
+#            "userconsolestoretitles-ppe.xboxlive.com",
+#            "userconsolestoretitles.xboxlive.com",
+#            "usergamepasspicksforyou-ppe.xboxlive.com",
+#            "usergamepasspicksforyou.xboxlive.com",
+#            "userpresence-ppe.xboxlive.com",
+#            "userpresence.dnet.xboxlive.com",
+#            "userpresence.xboxlive.com",
+#            "usersearch-ppe.xboxlive.com",
+#            "usersearch.xboxlive.com",
+#            "userstats-origin.xboxlive.com",
+#            "userstats-ppe.xboxlive.com",
+#            "userstats-stress.xboxlive.com",
+#            "userstats.xboxlive.com",
+#            "usertitles-origin.xboxlive.com",
+#            "usertitles-ppe.xboxlive.com",
+#            "usertitles.xboxlive.com",
+#            "uswest-keys-accessory.auth.xboxlive.com",
+#            "uswest-mxazdata.mgt.xboxlive.com",
+#            "uswest-xcache.xboxlive.com",
+#            "v1-gameserverms.xboxlive.com",
+#            "video.spro.xbox.com",
+#            "view.engage.xbox.com",
+#            "view.status.xbox.com",
+#            "vitals.xboxlive.com",
+#            "vnext.support.xbox.com",
+#            "web-payments-prod.xbox.com",
+#            "web-payments-staging.xbox.com",
+#            "webforms.support.xboxlive.com",
+#            "websvc.cert.xboxlive.com",
+#            "websvc.xboxlive.com",
+#            "westus-gamingconsent.xboxlive.com",
+#            "windowsphone.xbox.com",
+#            "writer.sucu.xboxlive.com",
+#            "www-origin.xbox.com",
+#            "www.registration.fanfest.xbox.com",
+#            "www.support.xbox.com",
+#            "www.xbox.com",
+#            "www.xboxlive.com",
+#            "xach.mgt.dnet.xboxlive.com",
+#            "xach.mgt.xboxlive.com",
+#            "xap.xboxlive.com",
+#            "xapprove-ppe.xboxlive.com",
+#            "xapprove.xboxlive.com",
+#            "xb1ingestion-next.xboxlive.com",
+#            "xb1ingestion.dnet.xboxlive.com",
+#            "xb1ingestion.xboxlive.com",
+#            "xb1ingestionv1.xboxlive.com",
+#            "xb1ingestionv2.dnet.xboxlive.com",
+#            "xb1ingestionv2.xboxlive.com",
+#            "xbgm-config.xboxlive.com",
+#            "xbgm-event.xboxlive.com",
+#            "xbl-smooth.xboxlive.com",
+#            "xblc-ppe.xboxlive.com",
+#            "xblc-tst.xboxlive.com",
+#            "xblc.xboxlive.com",
+#            "xblcfestamp01.xboxlive.com",
+#            "xblcfestamp02.xboxlive.com",
+#            "xblcfestamp03.xboxlive.com",
+#            "xblcfestamp04.xboxlive.com",
+#            "xblcfestamp05.xboxlive.com",
+#            "xblcfestamp06.xboxlive.com",
+#            "xblcfestamp07.xboxlive.com",
+#            "xblcfestamp08.xboxlive.com",
+#            "xblcfestamp09.xboxlive.com",
+#            "xblcfestamp10.xboxlive.com",
+#            "xblcfestampvnext01.xboxlive.com",
+#            "xblcfestampvnext02.xboxlive.com",
+#            "xblcrepl.xboxlive.com",
+#            "xblcreplvnext01.xboxlive.com",
+#            "xblcresourceprovider.xboxlive.com",
+#            "xblcresourceprovidervnext.xboxlive.com",
+#            "xblgraphql-mini.xboxlive.com",
+#            "xblgraphql-ppe.xboxlive.com",
+#            "xblgraphql.xboxlive.com",
+#            "xblmessaging-ppe.xboxlive.com",
+#            "xblmessaging.xboxlive.com",
+#            "xboing.dnet.xboxlive.com",
+#            "xboing.gtm.xboxlive.com",
+#            "xboing.xboxlive.com",
+#            "xbot.xboxlive.com",
 #            "xbox.com",
-#            "xboxlive.com"
+#            "xboxdata.xboxlive.com",
+#            "xboxdesignlab.xbox.com",
+#            "xboxexperiencesprod.experimentation.xboxlive.com",
+#            "xboxlive.com",
+#            "xboxreporting-ppe.xboxlive.com",
+#            "xboxreporting.xboxlive.com",
+#            "xbxweb-origin-int.xbox.com",
+#            "xbxweb-origin-test.xbox.com",
+#            "xcache-beta.xboxlive.com",
+#            "xcache.dnet.xboxlive.com",
+#            "xcache.xboxlive.com",
+#            "xcbk.dnet.xboxlive.com",
+#            "xcbk.xboxlive.com",
+#            "xccs.xboxlive.com",
+#            "xcert.xboxlive.com",
+#            "xcp.xboxlive.com",
+#            "xcpppe.xboxlive.com",
+#            "xda.xboxlive.com",
+#            "xdash-dev.xboxlive.com",
+#            "xdash-int.xboxlive.com",
+#            "xdash.xboxlive.com",
+#            "xdcp-next.xboxlive.com",
+#            "xdcp.xboxlive.com",
+#            "xdes.dnet.xboxlive.com",
+#            "xdes.xboxlive.com",
+#            "xdesui.dnet.xboxlive.com",
+#            "xdesui.xboxlive.com",
+#            "xdi.xboxlive.com",
+#            "xdisc.dnet.xboxlive.com",
+#            "xdisc.xboxlive.com",
+#            "xdp.dnet.xboxlive.com",
+#            "xdp.xboxlive.com",
+#            "xdpq.dnet.xboxlive.com",
+#            "xdpq.xboxlive.com",
+#            "xdts-proxy.xboxlive.com",
+#            "xdts.xboxlive.com",
+#            "xecho-aks-dev.xboxlive.com",
+#            "xfaas.xboxlive.com",
+#            "xflight-origin.xboxlive.com",
+#            "xflight.xboxlive.com",
+#            "xfocus-next.xboxlive.com",
+#            "xfocus.xboxlive.com",
+#            "xfocusrealtimeingestion-next.xboxlive.com",
+#            "xfs-upload.xboxlive.com",
+#            "xfus.preprod.xboxlive.com",
+#            "xfus.xboxlive.com",
+#            "xg-auth.xboxlive.com",
+#            "xgrant.xboxlive.com",
+#            "xhome.gssv-play-int.xboxlive.com",
+#            "xhome.gssv-play-prod.xboxlive.com",
+#            "xhome.gssv-play-test.xboxlive.com",
+#            "xip-portal-int.xboxlive.com",
+#            "xip-portal.xboxlive.com",
+#            "xip-registration-next.xboxlive.com",
+#            "xip-registration.xboxlive.com",
+#            "xip-registrationfd.xboxlive.com",
+#            "xkgl.xboxlive.com",
+#            "xkms-gw.xboxlive.com",
+#            "xkms-origin.xboxlive.com",
+#            "xkms.xboxlive.com",
+#            "xlens-next.xboxlive.com",
+#            "xlens-odata.xboxlive.com",
+#            "xlens-upload.xboxlive.com",
+#            "xmint.dnet.xboxlive.com",
+#            "xmint.xboxlive.com",
+#            "xmms-ppe.xboxlive.com",
+#            "xmms.xboxlive.com",
+#            "xmod.mgt.dnet.xboxlive.com",
+#            "xmod.mgt.xboxlive.com",
+#            "xmodui.dnet.xboxlive.com",
+#            "xmodui.xboxlive.com",
+#            "xms-pvt.xboxlive.com",
+#            "xms.dnet.xboxlive.com",
+#            "xms.xboxlive.com",
+#            "xmspublishing.dnet.xboxlive.com",
+#            "xmspublishing.xboxlive.com",
+#            "xncsi.dnet.xboxlive.com",
+#            "xncsi.xboxlive.com",
+#            "xnotify-production-origin.xboxlive.com",
+#            "xnotify.xboxlive.com",
+#            "xorc.dnet.xboxlive.com",
+#            "xorc.xboxlive.com",
+#            "xpack.dnet.xboxlive.com",
+#            "xpack.xboxlive.com",
+#            "xpertcompute.dnet.xboxlive.com",
+#            "xpertcompute.xboxlive.com",
+#            "xpertdata.dnet.xboxlive.com",
+#            "xpertdata.xboxlive.com",
+#            "xpertlogs.dnet.xboxlive.com",
+#            "xplt-cnry-int.xboxlive.com",
+#            "xplt-cnry-prod.xboxlive.com",
+#            "xplt-cnry-test.xboxlive.com",
+#            "xplt-ctlp-int.xboxlive.com",
+#            "xplt-ctlp-prod.xboxlive.com",
+#            "xplt-ctlp-test.xboxlive.com",
+#            "xplt-xcad-int.xboxlive.com",
+#            "xplt-xcad-prod.xboxlive.com",
+#            "xplt-xcad-test.xboxlive.com",
+#            "xpro.dnet.xboxlive.com",
+#            "xpro.xboxlive.com",
+#            "xrap.xboxlive.com",
+#            "xreflect-ppe.xboxlive.com",
+#            "xreflect.xboxlive.com",
+#            "xreflectapi-ppe.xboxlive.com",
+#            "xreflectapi-primary.xboxlive.com",
+#            "xreflectapi-us.xboxlive.com",
+#            "xreflectapi.xboxlive.com",
+#            "xrfd-int.gameservices.xboxlive.com",
+#            "xrfd.gameservices.xboxlive.com",
+#            "xscape.support.xbox.com",
+#            "xstream-aca-dev.xboxlive.com",
+#            "xstream-aca-prod.xboxlive.com",
+#            "xstream-aks-dev.xboxlive.com",
+#            "xstream-aks-prod.xboxlive.com",
+#            "xsts-keys.auth.dnet.xboxlive.com",
+#            "xsts-keys.auth.xboxlive.com",
+#            "xsts-origin.auth.xboxlive.com",
+#            "xsts-validation.auth.xboxlive.com",
+#            "xsts.auth.dnet.xboxlive.com",
+#            "xsts.auth.xboxlive.com",
+#            "xstsdelegation.auth.xboxlive.com",
+#            "xsum.dnet.xboxlive.com",
+#            "xsum.xboxlive.com",
+#            "xsuppv2.xboxlive.com",
+#            "xsuppv2ppe.xboxlive.com",
+#            "xsva-dev.support.xboxlive.com",
+#            "xsva-int.support.xboxlive.com",
+#            "xsva-uat.support.xboxlive.com",
+#            "xsva.support.xboxlive.com",
+#            "xtas.dnet.xboxlive.com",
+#            "xtas.xboxlive.com",
+#            "xusm.dnet.xboxlive.com",
+#            "xusm2reporting-next.xboxlive.com",
+#            "xusm2reporting.dnet.xboxlive.com",
+#            "xusm2reporting.gtm.xboxlive.com",
+#            "xusm2reporting.xboxlive.com",
+#            "xwfl.dnet.xboxlive.com",
+#            "xwfl.xboxlive.com",
+#            "xyacs.dnet.xboxlive.com",
+#            "xyacs.xboxlive.com",
+#            "xyacsnext.dnet.xboxlive.com"
 #          ]
 #        },
 #        {
@@ -10844,6 +17058,7 @@ exit 0
 #            "steamcommunity.com",
 #            "steampowered.com",
 #            "steamstatic.com",
+#            "store.steampowered.com",
 #            "valvesoftware.com"
 #          ]
 #        },
@@ -10864,7 +17079,9 @@ exit 0
 #          "key": "main",
 #          "label": "فروشگاه، لانچر و اکانت",
 #          "domains": [
+#            "accounts.epicgames.com",
 #            "epicgames.com",
+#            "launcher.epicgames.com",
 #            "unrealengine.com"
 #          ]
 #        }
@@ -10878,6 +17095,7 @@ exit 0
 #          "key": "main",
 #          "label": "همه",
 #          "domains": [
+#            "accounts.ea.com",
 #            "apexlegends.com",
 #            "battlefield.com",
 #            "bioware.com",
@@ -10890,15 +17108,22 @@ exit 0
 #            "eamobile.com",
 #            "eaplay.com",
 #            "easports.com",
+#            "fcas.prd.s5.prd.futc-ext.gcp.ea.com",
 #            "fcmobile.com",
 #            "frostbite.com",
+#            "gosca18.ea.com",
 #            "maxis.com",
+#            "myaccount.ea.com",
 #            "needforspeed.com",
 #            "origin.com",
 #            "popcap.com",
+#            "pvz2-prd.popcap.com",
 #            "respawn.com",
+#            "signin.ea.com",
 #            "swtor.com",
-#            "thesims.com"
+#            "thesims.com",
+#            "utas.prd.s5.prd.futc-ext.gcp.ea.com",
+#            "www.origin.com"
 #          ]
 #        }
 #      ]
@@ -10914,7 +17139,8 @@ exit 0
 #            "activision.com",
 #            "battle.net",
 #            "blizzard.com",
-#            "callofduty.com"
+#            "callofduty.com",
+#            "oauth.battle.net"
 #          ]
 #        }
 #      ]
@@ -10927,8 +17153,17 @@ exit 0
 #          "key": "main",
 #          "label": "همه",
 #          "domains": [
+#            "account.ubisoft.com",
+#            "api.ubi.com",
+#            "connect.ubisoft.com",
+#            "drops-register.ubi.com",
+#            "gamepass.ubisoft.com",
+#            "overlay.ubisoft.com",
+#            "register.ubisoft.com",
+#            "store.ubisoft.com",
 #            "ubi.com",
-#            "ubisoft.com"
+#            "ubisoft.com",
+#            "uplay.ubisoft.com"
 #          ]
 #        }
 #      ]
@@ -10942,6 +17177,7 @@ exit 0
 #          "label": "همه",
 #          "domains": [
 #            "leagueoflegends.com",
+#            "play.euw.leagueoflegends.com",
 #            "riotgames.com",
 #            "valorant.com"
 #          ]
@@ -10956,8 +17192,16 @@ exit 0
 #          "key": "main",
 #          "label": "همه",
 #          "domains": [
+#            "gta5-gen8.ros.rockstargames.com",
+#            "gta5-gen9.ros.rockstargames.com",
+#            "launcher.rockstargames.com",
+#            "prod.rgl.rockstargames.com",
+#            "prod.ros.rockstargames.com",
+#            "rdr2.rockstargames.com",
 #            "rockstargames.com",
-#            "take2games.com"
+#            "socialclub.rockstargames.com",
+#            "take2games.com",
+#            "www.rockstargames.com"
 #          ]
 #        }
 #      ]
@@ -10983,9 +17227,18 @@ exit 0
 #          "key": "main",
 #          "label": "همه",
 #          "domains": [
+#            "api.gog.com",
+#            "auth.gog.com",
+#            "cfg.gog.com",
+#            "cloud.gog.com",
+#            "embed.gog.com",
+#            "galaxy.gog.com",
+#            "gog-galaxy.gog.com",
 #            "gog.com",
 #            "humblebundle.com",
-#            "itch.io"
+#            "itch.io",
+#            "login.gog.com",
+#            "www.gog.com"
 #          ]
 #        }
 #      ]
@@ -11028,6 +17281,7 @@ exit 0
 #          "label": "همه",
 #          "domains": [
 #            "battlecode.org",
+#            "download.unity3d.com",
 #            "faceit.com",
 #            "garena.com",
 #            "hoyoverse.com",
@@ -11081,6 +17335,7 @@ exit 0
 #          "key": "main",
 #          "label": "همه",
 #          "domains": [
+#            "open.spotify.com",
 #            "scdn.co",
 #            "spotify.com"
 #          ]
@@ -11095,7 +17350,9 @@ exit 0
 #          "key": "main",
 #          "label": "همه",
 #          "domains": [
+#            "cdn.oaistatic.com",
 #            "cdn.openaimerge.com",
+#            "chat.openai.com",
 #            "chatgpt.com",
 #            "oaistatic.com",
 #            "oaistatsig.com",
@@ -11161,6 +17418,8 @@ exit 0
 #          "key": "main",
 #          "label": "همه",
 #          "domains": [
+#            "api.github.com",
+#            "education.github.com",
 #            "github.com",
 #            "githubapp.com",
 #            "githubassets.com",
@@ -11177,12 +17436,14 @@ exit 0
 #          "key": "main",
 #          "label": "همه",
 #          "domains": [
+#            "api.bitbucket.org",
 #            "bitbucket.org",
 #            "gitkraken.com",
 #            "gitlab-static.net",
 #            "gitlab.com",
 #            "gitlab.io",
-#            "gitpod.io"
+#            "gitpod.io",
+#            "packages.gitlab.com"
 #          ]
 #        }
 #      ]
@@ -11195,14 +17456,21 @@ exit 0
 #          "key": "main",
 #          "label": "همه",
 #          "domains": [
+#            "apt.kubernetes.io",
+#            "auth.docker.io",
+#            "dl.k8s.io",
 #            "docker.com",
 #            "docker.io",
+#            "download.docker.com",
 #            "gcr.io",
 #            "ghcr.io",
 #            "helm.sh",
 #            "k8s.io",
 #            "kubernetes.io",
+#            "pkgs.k8s.io",
 #            "quay.io",
+#            "registry-1.docker.io",
+#            "registry.docker.io",
 #            "registry.k8s.io"
 #          ]
 #        }
@@ -11221,12 +17489,15 @@ exit 0
 #            "centos.org",
 #            "chocolatey.org",
 #            "crates.io",
+#            "de.archive.ubuntu.com",
+#            "dl.yarnpkg.com",
 #            "fsdn.com",
 #            "go.dev",
 #            "godoc.org",
 #            "golang.org",
 #            "gopkg.in",
 #            "gradle.org",
+#            "ir.archive.ubuntu.com",
 #            "jfrog.io",
 #            "jfrog.org",
 #            "jitpack.io",
@@ -11236,6 +17507,8 @@ exit 0
 #            "maas.io",
 #            "maven.google.com",
 #            "maven.org",
+#            "mirror.centos.org",
+#            "mirrorlist.centos.org",
 #            "npmjs.com",
 #            "npmjs.org",
 #            "nuget.org",
@@ -11243,9 +17516,13 @@ exit 0
 #            "packagist.org",
 #            "pkg.go.dev",
 #            "pnpm.io",
+#            "ppa.launchpad.net",
 #            "pypi.org",
+#            "registry.npmjs.org",
+#            "repo.packagist.org",
 #            "rubygems.org",
 #            "sonatype.org",
+#            "vault.centos.org",
 #            "yarnpkg.com",
 #            "yarnpkg.org"
 #          ]
@@ -11294,8 +17571,11 @@ exit 0
 #          "key": "main",
 #          "label": "همه",
 #          "domains": [
+#            "account.adobe.com",
 #            "adobe.com",
-#            "adobelogin.com"
+#            "adobelogin.com",
+#            "auth.services.adobe.com",
+#            "services.adobe.com"
 #          ]
 #        }
 #      ]
@@ -11322,7 +17602,8 @@ exit 0
 #          "key": "main",
 #          "label": "همه",
 #          "domains": [
-#            "apple.com"
+#            "apple.com",
+#            "iforgot.apple.com"
 #          ]
 #        }
 #      ]
@@ -11341,6 +17622,7 @@ exit 0
 #            "ai.google",
 #            "aistudio.google.com",
 #            "analytics.google.com",
+#            "androidstudio.googleblog.com",
 #            "apis.google.com",
 #            "appengine.google.com",
 #            "apps.admob.com",
@@ -11351,8 +17633,12 @@ exit 0
 #            "clients2.google.com",
 #            "clients6.google.com",
 #            "cloud.google.com",
+#            "cloud.withgoogle.com",
 #            "code.google.com",
 #            "colab.research.google.com",
+#            "console.cloud.google.com",
+#            "console.firebase.google.com",
+#            "csp.withgoogle.com",
 #            "design.google.com",
 #            "developer.google.com",
 #            "developers.google.com",
@@ -11365,6 +17651,7 @@ exit 0
 #            "events.google.com",
 #            "fiber.google.com",
 #            "firebase.google.com",
+#            "firebaseextensions.clients6.google.com",
 #            "gemini.google.com",
 #            "google-analytics.com",
 #            "google.ai",
@@ -11381,9 +17668,12 @@ exit 0
 #            "marketingplantform.google.com",
 #            "notebooklm.google.com",
 #            "optimize.google.com",
+#            "packages.cloud.google.com",
 #            "payments.google.com",
 #            "play.google.com",
+#            "sitekit.withgoogle.com",
 #            "storage.googleapis.com",
+#            "survey.g.doubleclick.net",
 #            "surveys.google.com",
 #            "tagmanager.google.com",
 #            "withgoogle.com"
@@ -11415,6 +17705,7 @@ exit 0
 #          "key": "main",
 #          "label": "همه",
 #          "domains": [
+#            "a.slack-edge.com",
 #            "jitsi.org",
 #            "slack-edge.com",
 #            "slack.com",
@@ -11454,23 +17745,33 @@ exit 0
 #          "domains": [
 #            "appspot.com",
 #            "aws.amazon.com",
+#            "blogs.vmware.com",
 #            "bluemix.net",
 #            "c9.io",
+#            "cloud.digitalocean.com",
 #            "cloudflare.com",
 #            "cloudfront.net",
 #            "cocalc.com",
+#            "code.vmware.com",
 #            "codesandbox.io",
 #            "csb.app",
 #            "digitalocean.com",
+#            "doc.vmware.com",
+#            "docs.vmware.com",
 #            "download.virtualbox.org",
 #            "es.io",
 #            "firebase.com",
 #            "fly.io",
 #            "heroku.com",
 #            "hetzner.com",
+#            "hol.vmware.com",
 #            "ibm.com",
+#            "iran-locations-api.vercel.app",
 #            "java.com",
+#            "kb.vmware.com",
 #            "linode.com",
+#            "mon.vmware.com",
+#            "my.vmware.com",
 #            "netlify.app",
 #            "netlify.com",
 #            "oracle.com",
@@ -11479,11 +17780,14 @@ exit 0
 #            "replit.com",
 #            "softlayer.com",
 #            "sparkjava.com",
+#            "ssc.vmware.com",
 #            "supabase.com",
 #            "vercel.app",
 #            "vercel.com",
 #            "virtualbox.org",
 #            "vmware.com",
+#            "vsphereclient.vmware.com",
+#            "www.vmware.com",
 #            "zeit.co"
 #          ]
 #        }
@@ -11502,6 +17806,8 @@ exit 0
 #            "baeldung.com",
 #            "cljdoc.org",
 #            "codex.cs.yale.edu",
+#            "community.spiceworks.com",
+#            "compiles.overleaf.com",
 #            "coursehero.com",
 #            "coursera-apps.org",
 #            "coursera.com",
@@ -11555,24 +17861,36 @@ exit 0
 #            "amd.com",
 #            "android.com",
 #            "anydesk.com",
+#            "api.cisco.com",
 #            "arduino.cc",
+#            "ark.intel.com",
 #            "bitvise.com",
 #            "cisco.com",
 #            "clamav.net",
+#            "corpredirect.intel.com",
+#            "database.clamav.net",
 #            "dell.com",
+#            "developer.android.com",
 #            "developer.samsung.com",
 #            "digikey.com",
+#            "download-ssc.cisco.com",
 #            "download.01.org",
+#            "downloadcenter.intel.com",
+#            "downloads.arduino.cc",
 #            "element14.com",
 #            "espressif.com",
 #            "intel.com",
 #            "lenovo.com",
 #            "microchip.com",
+#            "mx-video-player.en.softonic.com",
 #            "ni.com",
 #            "nirsoft.net",
+#            "pcsupport.lenovo.com",
 #            "qualcomm.com",
 #            "raspberrypi.com",
 #            "softonic.com",
+#            "software.cisco.com",
+#            "software.intel.com",
 #            "st.com",
 #            "sun.com",
 #            "teamviewer.com",
@@ -11593,6 +17911,7 @@ exit 0
 #            "coinbase.com",
 #            "demandbase.com",
 #            "en25.com",
+#            "js.stripe.com",
 #            "mailgun.com",
 #            "paypal.com",
 #            "paypalobjects.com",
@@ -11618,6 +17937,7 @@ exit 0
 #            "ant.design",
 #            "apache.org",
 #            "arcgis.com",
+#            "artifacts.elastic.co",
 #            "atlassian.com",
 #            "atlassian.net",
 #            "b4x.com",
@@ -11634,8 +17954,10 @@ exit 0
 #            "curd.io",
 #            "dartlang.org",
 #            "deno.land",
+#            "dev.mysql.com",
 #            "developer.chrome.com",
 #            "docs.datastax.com",
+#            "docs.telerik.com",
 #            "elastic.co",
 #            "enterprisedb.com",
 #            "eslint.org",
@@ -11661,6 +17983,7 @@ exit 0
 #            "jhipster.tech",
 #            "jungle.net",
 #            "laravel.com",
+#            "marketplace.atlassian.com",
 #            "material.io",
 #            "mbed.com",
 #            "metasploit.com",
@@ -11671,22 +17994,29 @@ exit 0
 #            "nextjs.org",
 #            "nginx.com",
 #            "nodejs.org",
+#            "pecl.php.net",
 #            "php.net",
 #            "polymer-project.org",
 #            "postman.com",
+#            "pypi.python.org",
 #            "python.org",
 #            "qt.io",
 #            "rapid7.com",
 #            "reactjs.org",
 #            "realm.io",
+#            "registry.terraform.io",
 #            "releases.hashicorp.com",
+#            "repo.mongodb.org",
+#            "repo.mysql.com",
 #            "ruby-doc.org",
 #            "rust-lang.org",
 #            "schema.org",
+#            "secure.php.net",
 #            "seleniumhq.org",
 #            "serialport.io",
 #            "socket.io",
 #            "sonarsource.com",
+#            "spamassassin.apache.org",
 #            "splunk.com",
 #            "spring.io",
 #            "sstatic.net",
@@ -11699,7 +18029,9 @@ exit 0
 #            "vagrantup.com",
 #            "vuejs.org",
 #            "vuetifyjs.com",
-#            "web.dev"
+#            "web.dev",
+#            "www.algolia.com",
+#            "www.mongodb.org"
 #          ]
 #        }
 #      ]
@@ -11713,16 +18045,26 @@ exit 0
 #          "label": "همه",
 #          "domains": [
 #            "3docean.net",
+#            "api.envato.com",
+#            "blog.toggl.com",
+#            "build.envato.com",
 #            "codecanyon.net",
 #            "cp.maxcdn.com",
+#            "elements.envato.com",
 #            "envato-static.com",
 #            "envato.com",
 #            "graphicriver.net",
 #            "gravatar.com",
+#            "jobs.toggl.com",
 #            "justpaste.it",
 #            "jwplayer.com",
+#            "marketplace.envato.com",
 #            "myfonts.net",
 #            "photodune.net",
+#            "preview.codecanyon.net",
+#            "secure.gravatar.com",
+#            "superday.toggl.com",
+#            "support.toggl.com",
 #            "themeforest.net",
 #            "tinyjpg.com",
 #            "tinypng.com",
@@ -11730,7 +18072,11 @@ exit 0
 #            "unsplash.com",
 #            "videohive.net",
 #            "vmcdn.com",
-#            "wpastra.com"
+#            "wpastra.com",
+#            "www.codecanyon.net",
+#            "www.envato.com",
+#            "www.preview.themeforest.net",
+#            "www.themeforest.net"
 #          ]
 #        }
 #      ]
@@ -11745,6 +18091,7 @@ exit 0
 #          "domains": [
 #            "branch.io",
 #            "bugsnag.com",
+#            "cdn-pci.optimizely.com",
 #            "count.ly",
 #            "crashlytics.com",
 #            "expo.io",
@@ -11752,6 +18099,7 @@ exit 0
 #            "fbsbx.com",
 #            "flurry.com",
 #            "fodev.org",
+#            "insights-collector.newrelic.com",
 #            "lightstep.com",
 #            "livefyre.com",
 #            "newrelic.com",
@@ -11772,9 +18120,9 @@ exit 0
 #          "opt_in": true,
 #          "note": "روشن کردنش بازی‌های EA را از سرور جدا می‌کند — این‌ها روی ۴۴۳ نیستند",
 #          "domains": [
-#            "gosredirector.ea.com",
 #            "blaze.ea.com",
 #            "gameservices.ea.com",
+#            "gosredirector.ea.com",
 #            "tnt-ea.com"
 #          ]
 #        },
@@ -11784,8 +18132,8 @@ exit 0
 #          "opt_in": true,
 #          "note": "روشن کردنش تشخیص NAT کنسول را خراب می‌کند",
 #          "domains": [
-#            "np.playstation.net",
-#            "np.dl.playstation.net"
+#            "np.dl.playstation.net",
+#            "np.playstation.net"
 #          ]
 #        },
 #        {
@@ -11818,7 +18166,9 @@ exit 0
 #          "opt_in": true,
 #          "note": "روشن کردنش این اتصال‌ها را قطع می‌کند — SNI در مسیر مخدوش می‌شود",
 #          "domains": [
-#            "core.windows.net"
+#            "core.windows.net",
+#            "queue.core.windows.net",
+#            "table.core.windows.net"
 #          ]
 #        }
 #      ]
@@ -12058,6 +18408,7 @@ exit 0
 #          "label": "وب و محتوا",
 #          "domains": [
 #            "firefox.com",
+#            "mdn.mozilla.net",
 #            "mozilla.net",
 #            "mozilla.org"
 #          ],
@@ -12267,6 +18618,7 @@ exit 0
 #          "key": "main",
 #          "label": "وب و محتوا",
 #          "domains": [
+#            "code.videolan.org",
 #            "videolan.org"
 #          ],
 #          "note": "مسیریابی وب و محتوا؛ عملکرد کامل برنامه، تماس، UDP و پورت‌های غیر وب تضمین نمی‌شود."
@@ -13097,12 +19449,15 @@ exit 0
 #          "key": "main",
 #          "label": "وب، API و محتوا",
 #          "domains": [
+#            "api-iam.intercom.io",
 #            "cdn.workos.com",
 #            "forwarder.workos.com",
 #            "images.workoscdn.com",
 #            "intercom.io",
 #            "intercomcdn.com",
+#            "js.intercomcdn.com",
 #            "setup.workos.com",
+#            "widget.intercom.io",
 #            "workos.imgix.net"
 #          ],
 #          "note": "وابستگی‌های وب و ورود ChatGPT؛ مشترک با سرویس‌های دیگر. Cloudflare و Google در گروه‌های فعلی قرار دارند.",
@@ -14258,6 +20613,3798 @@ exit 0
 #            "https://mirror-master.debian.org/status/Mirrors.masterlist",
 #            "https://launchpad.net/ubuntu/+archivemirrors"
 #          ]
+#        }
+#      ]
+#    },
+#    {
+#      "key": "dynx",
+#      "label": "DynX / سرویس‌های تکمیلی",
+#      "groups": [
+#        {
+#          "key": "numbers",
+#          "label": "NUMBERS",
+#          "domains": [
+#            "000webhost.com",
+#            "01.org",
+#            "1-go-casino.kz",
+#            "123bclub66.com",
+#            "13deals.com",
+#            "180smoke.ca",
+#            "18590.com",
+#            "1win-apk-azerbaycan-yukle.com",
+#            "1win-giris-tr.com",
+#            "1win-kz-casino.kz",
+#            "1wins-ar.net",
+#            "1winstr.com",
+#            "2-clicks-coins.com",
+#            "24hourcampfire.com",
+#            "27.ua",
+#            "2k.com",
+#            "360medicalcenters.com",
+#            "3dconnexion.com",
+#            "3dwarehouse.sketchup.com",
+#            "4x4at.com",
+#            "5sim.net",
+#            "6sense.com",
+#            "78winlogin.com",
+#            "7uu.net",
+#            "8xr.io",
+#            "959watd.com"
+#          ],
+#          "note": "فهرست واردشده از DynX؛ پوشش خود دامنه و زیردامنه‌ها. قوانین اختصاصی سرویس‌های دیگر اولویت دارند. عملکرد تک‌تک دامنه‌ها روی رله آزمایش نشده است."
+#        },
+#        {
+#          "key": "a-f",
+#          "label": "A-F",
+#          "domains": [
+#            "a-series.net",
+#            "a.rsg.sc",
+#            "a.softaculous.com",
+#            "a2z.com",
+#            "a2zupload.com",
+#            "a4m.com",
+#            "aaa.com",
+#            "aabany.org",
+#            "aadibook.com",
+#            "aapanel.com",
+#            "aappublications.org",
+#            "aaprco.com",
+#            "abcprom.com",
+#            "aboutthedata.com",
+#            "abracon.com",
+#            "absolutelykona.com",
+#            "abuse.ch",
+#            "academicstudiespress.com",
+#            "acaia.co",
+#            "acam.org",
+#            "acate.com.br",
+#            "account.live.com",
+#            "account.microsoft.com",
+#            "account.wbgames.com",
+#            "account.wpmet.com",
+#            "accounts.2k.com",
+#            "accounts.wbgames.com",
+#            "accp.com",
+#            "accuplacer.org",
+#            "accutane.one",
+#            "aceplugins.com",
+#            "acf-extended.com",
+#            "aclanthology.org",
+#            "acloud.guru",
+#            "acloudguru.com",
+#            "acme-v02.api.letsencrypt.org",
+#            "acme.sh",
+#            "activejeremy.com",
+#            "activestate.com",
+#            "activity.windows.com",
+#            "activityconnection.com",
+#            "adams-music.com",
+#            "adaskor.fun",
+#            "adata.com",
+#            "adcn.org",
+#            "addtelegrammember.com",
+#            "addthis.com",
+#            "adept-server-prod-uodmhebufa-ue.a.run.app",
+#            "adjusterpro.com",
+#            "adkad.com",
+#            "adminmenueditor.com",
+#            "admob.com",
+#            "adnxs.com",
+#            "adobe.io",
+#            "adobecc.com",
+#            "adobeexchange.com",
+#            "adobess.com",
+#            "adobike.nl",
+#            "adolfodominguez.com",
+#            "adsrvr.org",
+#            "adsymptotic.com",
+#            "adventisthealthcare.com",
+#            "advocatehealth.com",
+#            "advocatehealth.org",
+#            "adwords.google.com",
+#            "aedo.org.br",
+#            "aeraenergy.com",
+#            "aesociety.org",
+#            "aetnaseniorproducts.com",
+#            "affclicker.com",
+#            "affini-tech.com",
+#            "affordabledentures.com",
+#            "afya.com.br",
+#            "agbrief.com",
+#            "agrian.com",
+#            "ai-chat.bsg.brave.com",
+#            "ai.google.com",
+#            "aicr.org",
+#            "aiha.org",
+#            "aip2023.com",
+#            "airandgracelondon.com",
+#            "airbnb.com",
+#            "airbnb.it",
+#            "airmeet.com",
+#            "airzena.com",
+#            "ajemjournal.com",
+#            "ajo.com",
+#            "akaislotplay.org",
+#            "akismet.com",
+#            "aksimet.com",
+#            "akuratgacor.online",
+#            "aleluyabcn.com",
+#            "alexa-apis.amazon.com",
+#            "alexa-comms-mobile-service.amazon.com",
+#            "alexa-eu.amazon.com",
+#            "alexa-fe.amazon.com",
+#            "alexa-na.amazon.com",
+#            "alexa-skills.amazon.com",
+#            "alexa.a2z.com",
+#            "alexa.amazon.ae",
+#            "alexa.amazon.ca",
+#            "alexa.amazon.cn",
+#            "alexa.amazon.co.jp",
+#            "alexa.amazon.com",
+#            "alexa.amazon.com.ag",
+#            "alexa.amazon.com.ai",
+#            "alexa.amazon.com.ar",
+#            "alexa.amazon.com.au",
+#            "alexa.amazon.com.aw",
+#            "alexa.amazon.com.bb",
+#            "alexa.amazon.com.bl",
+#            "alexa.amazon.com.bm",
+#            "alexa.amazon.com.bo",
+#            "alexa.amazon.com.br",
+#            "alexa.amazon.com.bs",
+#            "alexa.amazon.com.bz",
+#            "alexa.amazon.com.cl",
+#            "alexa.amazon.com.co",
+#            "alexa.amazon.com.cr",
+#            "alexa.amazon.com.cu",
+#            "alexa.amazon.com.cw",
+#            "alexa.amazon.com.dm",
+#            "alexa.amazon.com.do",
+#            "alexa.amazon.com.ec",
+#            "alexa.amazon.com.eg",
+#            "alexa.amazon.com.gd",
+#            "alexa.amazon.com.gp",
+#            "alexa.amazon.com.gt",
+#            "alexa.amazon.com.gy",
+#            "alexa.amazon.com.hn",
+#            "alexa.amazon.com.ht",
+#            "alexa.amazon.com.jm",
+#            "alexa.amazon.com.kn",
+#            "alexa.amazon.com.lc",
+#            "alexa.amazon.com.mf",
+#            "alexa.amazon.com.mq",
+#            "alexa.amazon.com.ms",
+#            "alexa.amazon.com.mx",
+#            "alexa.amazon.com.ni",
+#            "alexa.amazon.com.pa",
+#            "alexa.amazon.com.pe",
+#            "alexa.amazon.com.pl",
+#            "alexa.amazon.com.pr",
+#            "alexa.amazon.com.py",
+#            "alexa.amazon.com.sr",
+#            "alexa.amazon.com.sv",
+#            "alexa.amazon.com.sx",
+#            "alexa.amazon.com.tc",
+#            "alexa.amazon.com.tr",
+#            "alexa.amazon.com.tt",
+#            "alexa.amazon.com.uy",
+#            "alexa.amazon.com.vc",
+#            "alexa.amazon.com.ve",
+#            "alexa.amazon.com.vg",
+#            "alexa.amazon.com.vi",
+#            "alexa.amazon.com.za",
+#            "alexa.amazon.es",
+#            "alexa.amazon.fr",
+#            "alexa.amazon.in",
+#            "alexa.amazon.it",
+#            "alexa.amazon.nl",
+#            "alexa.amazon.sa",
+#            "alexa.amazon.se",
+#            "alexa.amazon.sg",
+#            "alexa.com",
+#            "alfahost.me",
+#            "algolianet.com",
+#            "alhoot-palace.com",
+#            "alibaba.com",
+#            "aliexpress.com",
+#            "alisadofrancesfrenchsgold.com",
+#            "alkaidvision.com",
+#            "alldatasheet.com",
+#            "alldebrid.com",
+#            "alldiamond.co.uk",
+#            "allensboots.com",
+#            "allfreecrochet.com",
+#            "alliedcycleworks.com",
+#            "alloddsbook.com",
+#            "alltheanime.com",
+#            "almalinux.mirror.liteserver.nl",
+#            "almalinux.mirror.wearetriple.com",
+#            "almalinux.org",
+#            "alpakagear.com",
+#            "alpinelinux.org",
+#            "alrugaibfurniture.com",
+#            "alt8-mtalk.google.com",
+#            "altaro.com",
+#            "altiusdirectory.com",
+#            "altn.com",
+#            "amadeus.com",
+#            "amaranth-staging.xboxservices.com",
+#            "amazon-adsystem.com",
+#            "amazon.co.uk",
+#            "amazon.com",
+#            "amazon.de",
+#            "amazonalexa.com",
+#            "amazonaws.com",
+#            "amazonaws.com.cn",
+#            "amazontrust.com",
+#            "amazonvideo.com",
+#            "amazoon.com",
+#            "amber-staging.xboxservices.com",
+#            "amber.xboxservices.com",
+#            "ambev.com.br",
+#            "americanbank.com",
+#            "americandreamnutbutter.com",
+#            "americanexpress.com",
+#            "americanfarriers.org",
+#            "americas.int.gamingai.ppe.exp.xboxservices.com",
+#            "americas.prod.gamingai.exp.xboxservices.com",
+#            "americas.test.gamingai.ppe.exp.xboxservices.com",
+#            "amerigo.net",
+#            "amorequi.net",
+#            "ampcid.google.com",
+#            "amplenote.com",
+#            "amplitude.com",
+#            "amsoveasea.com",
+#            "amuse.com",
+#            "anaconda.com",
+#            "anaconda.org",
+#            "analytify.io",
+#            "anchor.fm",
+#            "and.co",
+#            "androidexperiments.com",
+#            "anerdcooks.com",
+#            "angelrox.com",
+#            "angrybirds.com",
+#            "angular.dev",
+#            "angular.io",
+#            "angularjs.org",
+#            "angusrobertson.com.au",
+#            "anker.com",
+#            "annetouraine.com",
+#            "anniemos.com",
+#            "anphoblacht.com",
+#            "ansaldo.cl",
+#            "ansible.com",
+#            "antal.ai",
+#            "anticafarmacista.com",
+#            "ap.ign.com",
+#            "apartments.com",
+#            "apextactical.com",
+#            "api-js.mixpanel.com",
+#            "api.admincolumns.com",
+#            "api.akismet.com",
+#            "api.amadeus.com",
+#            "api.appsero.com",
+#            "api.areama.net",
+#            "api.cm-wp.com",
+#            "api.coincap.io",
+#            "api.coinex.com",
+#            "api.crocoblock.com",
+#            "api.daily.dev",
+#            "api.eu.mailgun.net",
+#            "api.exactmetrics.com",
+#            "api.fontawesome.com",
+#            "api.freemius.com",
+#            "api.getbeamer.com",
+#            "api.google.com",
+#            "api.hogwartslegacy.com",
+#            "api.ipify.org",
+#            "api.mailgun.net",
+#            "api.monsterinsights.com",
+#            "api.onesignal.com",
+#            "api.openprovider.eu",
+#            "api.resmush.it",
+#            "api.sendinblue.com",
+#            "api.snapcraft.io",
+#            "api.softaculous.com",
+#            "api.thesslstore.com",
+#            "api.tinify.com",
+#            "api.treepodia.com",
+#            "api.unlimited-elements.com",
+#            "api.us.mailgun.net",
+#            "api.virtualizor.com",
+#            "api.wordpress.org",
+#            "api.wpfastestcache.net",
+#            "api.wpmet.com",
+#            "apkpure.com",
+#            "apoteket-online.dk",
+#            "apothic.com",
+#            "app-gateway.creativemail.com",
+#            "app.clickup.com",
+#            "app.cline.bot",
+#            "app.imagify.io",
+#            "app.netdata.cloud",
+#            "appintheair.mobi",
+#            "apps.microsoft.com",
+#            "appsflyer.com",
+#            "appsflyersdk.com",
+#            "apqc.org",
+#            "apricotonline.com",
+#            "aqua-staging.xboxservices.com",
+#            "aqua.xboxservices.com",
+#            "aramco.com",
+#            "arc.msn.com",
+#            "arcadianews.com",
+#            "arcanefox.com",
+#            "arcgisonline.com",
+#            "archdpdx.org",
+#            "archive.mariadb.org",
+#            "arcticgardens.ca",
+#            "areama.net",
+#            "arenanetworks.com",
+#            "ariadneathome.nl",
+#            "arkansasonline.com",
+#            "arkopharma.com",
+#            "arkoselabs.com",
+#            "arkwildlife.co.uk",
+#            "aromaexclusive.com",
+#            "aromas.es",
+#            "arpriceplugin.com",
+#            "artbees.net",
+#            "artglasssupplies.com",
+#            "artradarjournal.com",
+#            "arval.com",
+#            "asap-supplies.com",
+#            "asaucykitchen.com",
+#            "asdowns.com",
+#            "askubuntu.com",
+#            "asromafansclub.com",
+#            "astctjournal.org",
+#            "asthma.com",
+#            "astrogallery.com",
+#            "asus.com",
+#            "asus.com.cn",
+#            "aswpsdkus.com",
+#            "atfbank.kz",
+#            "atgp.jp",
+#            "athletic-club.eus",
+#            "atitus.edu.br",
+#            "atlantathrashers.com",
+#            "atlantic-cable.com",
+#            "atlantic.fo",
+#            "atolyestone.com",
+#            "atreyurock.com",
+#            "att.com",
+#            "attacmadrid.org",
+#            "au.ign.com",
+#            "aubinandwills.com",
+#            "audiobooks.co.uk",
+#            "audiojungle.net",
+#            "audiorelay.net",
+#            "aumfidelity.com",
+#            "auroragov.org",
+#            "austinprintings.com",
+#            "auth.uber.com",
+#            "auth.wbgames.com",
+#            "auth.wincher.com",
+#            "auth0.com",
+#            "authenticate.scriptsbundle.com",
+#            "autobarn.com.au",
+#            "autodesk.com",
+#            "autodeskplm360.com",
+#            "autods.com",
+#            "autom8n.com",
+#            "autopawnohio.com",
+#            "autopunditz.com",
+#            "autorenwelt.de",
+#            "autossegredos.com.br",
+#            "avacon.de",
+#            "avada.ir",
+#            "avalonbreads.net",
+#            "avast.com",
+#            "avec.fr",
+#            "avendrealouer.fr",
+#            "avery.nl",
+#            "aviator.co",
+#            "awsstatic.com",
+#            "axocdn.com",
+#            "azdigi.com",
+#            "azucaricecream.com",
+#            "azul.com",
+#            "azure.com",
+#            "babyonline.co.nz",
+#            "bacakoran.co",
+#            "bachelorarbeit-schreiben-lassen.com",
+#            "backbonebmx.com",
+#            "backstageoriginals.com",
+#            "backup.ninja",
+#            "badssl.com",
+#            "baixxar.com.br",
+#            "bajulrowo.one",
+#            "bakhtarnews.af",
+#            "balanceone.com",
+#            "balancepro.org",
+#            "balena.io",
+#            "baltimorejewishlife.com",
+#            "bam.nr-data.net",
+#            "bambuhome.com",
+#            "barcodediscount.com",
+#            "bard.google.com",
+#            "bareknuckletattooandbarbershop.com",
+#            "barniescoffee.com",
+#            "barokafunerals.co.za",
+#            "baronionline.it",
+#            "barrett-jackson.com",
+#            "bas-ip.ru",
+#            "basicslife.com",
+#            "basil.nl",
+#            "bastrucks.com",
+#            "bathtubginnyc.com",
+#            "battlefieldtracker.com",
+#            "battleye.com",
+#            "bazel.build",
+#            "bcscschools.org",
+#            "bdthemes.com",
+#            "beamtx.com",
+#            "beatboxbeverages.com",
+#            "beatport.com",
+#            "bebemoda.co.uk",
+#            "beconscioustravels.com",
+#            "bedavabahis.net",
+#            "bedavaslotoyunlarioyna1.com",
+#            "beige-staging.xboxservices.com",
+#            "beige.xboxservices.com",
+#            "beinsportsconnect.net",
+#            "beinsportsconnect.tv",
+#            "belindainternational.com",
+#            "bellaallnatural.com",
+#            "bellahijabs.com",
+#            "bellpal.com",
+#            "bemaraki.com",
+#            "benzara.com",
+#            "bernco.gov",
+#            "bernhelmets.com",
+#            "bertheauxgrandspieds.com",
+#            "bestbusinesscoachindia.com",
+#            "bestbuy.com",
+#            "bestforandroid.com",
+#            "besthealthmag.ca",
+#            "bestjobs.eu",
+#            "bestmaterials.com",
+#            "bestofai.com",
+#            "bestvalueschools.org",
+#            "bfa.com",
+#            "biciamoreshop.com",
+#            "bidswitch.net",
+#            "bigbluebutton.org",
+#            "bigfeetpjs.com",
+#            "bigfishroofing.com",
+#            "bigrocksupply.com",
+#            "bigwalldecor.com",
+#            "bike-science.com",
+#            "bike-treks.co.uk",
+#            "bikeriser.com",
+#            "bikester.fr",
+#            "bikesterglobal.com",
+#            "binance.com",
+#            "bing.com",
+#            "bipartisanpolicy.org",
+#            "bit.ly",
+#            "bitbucket.io",
+#            "bitchesgirlz.com",
+#            "bitly.com",
+#            "bitscrunch.com",
+#            "bitstamp.net",
+#            "bitvision.app",
+#            "bk-pinco.ru",
+#            "bklyn-genealogy-info.com",
+#            "blablacar.com.br",
+#            "blackbox.ai",
+#            "blackfridaydeals.nu",
+#            "blazemeter.com",
+#            "bleacherbumcollectibles.com",
+#            "blendofbites.com",
+#            "blitz.gg",
+#            "blockchain.com",
+#            "blockchain.info",
+#            "blockstream.info",
+#            "blocktrade.com",
+#            "blog.envoyproxy.io",
+#            "blogify.io",
+#            "blondo.com",
+#            "bloomingdales.com",
+#            "blossom.io",
+#            "blue-staging.xboxservices.com",
+#            "blue.xboxservices.com",
+#            "bluecompassrv.com",
+#            "bluecross.org.uk",
+#            "bluehost.com",
+#            "blueprint.com",
+#            "bluestacks.com",
+#            "bmc.com",
+#            "bnetdocs.org",
+#            "boardgamebliss.com",
+#            "boardgamegeek.com",
+#            "boardroomadventures.com",
+#            "boatgurus.io",
+#            "boatsandoutboards.co.uk",
+#            "boattrader.com",
+#            "bocchettaplushtoys.com",
+#            "bola-88.fun",
+#            "bold-themes.com",
+#            "bolvaint.com",
+#            "bombsquadgame.com",
+#            "bonia.com",
+#            "bookatable.co.uk",
+#            "booster.com",
+#            "boosteroid-staging.xboxservices.com",
+#            "boosteroid.xboxservices.com",
+#            "bose.cn",
+#            "boseapac.com",
+#            "bossman.com",
+#            "boucheron.com",
+#            "boulderingcomps.com",
+#            "boulderlocavore.com",
+#            "bountifulbaby.com",
+#            "bowers-wilkins.com",
+#            "boxcloud.com",
+#            "boxerproperty.com",
+#            "br-gameaviator.com",
+#            "bravodeal.com",
+#            "brawn.co",
+#            "breathlessresorts.com",
+#            "bremen-tourism.de",
+#            "brentwoodca.gov",
+#            "bricksbuilder.io",
+#            "brightcove.com",
+#            "brillare.ca",
+#            "bringfido.com",
+#            "britishcornershop.co.uk",
+#            "broadcom.com",
+#            "broadpeak.tv",
+#            "bronto.com",
+#            "bronze-staging.xboxservices.com",
+#            "bronze.xboxservices.com",
+#            "browserstack.com",
+#            "broxap.com",
+#            "brubaker-usa.com",
+#            "bsigroup.com",
+#            "btc-eu.f2pool.com",
+#            "btc-us.f2pool.com",
+#            "btc.f2pool.com",
+#            "btcprivate.org",
+#            "bubbleshare.com",
+#            "budapestmarkethall.com",
+#            "buf.build",
+#            "bugs.hogwartslegacy.com",
+#            "buildertrend.net",
+#            "bulbhead.com",
+#            "bulkbuddy.co",
+#            "bungie.com",
+#            "bungiefoundation.org",
+#            "buplabs.com",
+#            "burnsideproject.org",
+#            "burnt.com",
+#            "burrataandbubbles.com",
+#            "burtonmi.gov",
+#            "busbyandfox.com",
+#            "businesssupporting.com",
+#            "buybrakes.com",
+#            "c.pki.goog",
+#            "ca.com",
+#            "ca.ign.com",
+#            "cachyos.org",
+#            "caddy.community",
+#            "cafeterosviajeros.es",
+#            "cai.rankmath.com",
+#            "caledonenterprise.com",
+#            "calleapearce.com.au",
+#            "calltothepen.com",
+#            "calottery.com",
+#            "cambridgelms.org",
+#            "camp-california.com",
+#            "campingforfoodies.com",
+#            "campsites.co.uk",
+#            "canadianfeedthechildren.ca",
+#            "canadianjournalofophthalmology.ca",
+#            "canadiensboutique.com",
+#            "cancersupportcommunity.org",
+#            "cannaraycbd.com",
+#            "canterburytales.org",
+#            "canvas4everyone.com",
+#            "capcut.com",
+#            "capcutapi.com",
+#            "capitalone.com",
+#            "capper-league.ru",
+#            "cardpaymentoptions.com",
+#            "career.org",
+#            "caribfind.tel",
+#            "carlyna.com",
+#            "carvela.com",
+#            "casaamore-international.com",
+#            "casinolevant.cfd",
+#            "casinoly.com",
+#            "casinos-argentino.com",
+#            "casinoslot.icu",
+#            "casinosonlineslot.fun",
+#            "casper.yithemes.com",
+#            "catalystcase.com",
+#            "catfootwear.com",
+#            "catherines.com",
+#            "catholicexchange.com",
+#            "cavhooah.com",
+#            "cbeci.org",
+#            "cbs.com",
+#            "cc.com",
+#            "ccleaner.com",
+#            "cctech.edu",
+#            "cdn-app.minepi.com",
+#            "cdn-download.rocket.chat",
+#            "cdn.cookielaw.org",
+#            "cdn.ispsystem.com",
+#            "cdn.jsdelivr.net",
+#            "cdn.mouseflow.com",
+#            "cdn.mxpnl.com",
+#            "cdn.pdst.fm",
+#            "cdn.pearmill.com",
+#            "cdn.polyfill.io",
+#            "cdn.shortpixel.ai",
+#            "cdn.wootric.com",
+#            "cdn.wpml.org",
+#            "cdprojektred.com",
+#            "cdw.ca",
+#            "ce4less.com",
+#            "cedar-staging.xboxservices.com",
+#            "cedar.xboxservices.com",
+#            "cef.co.uk",
+#            "celadon-staging.xboxservices.com",
+#            "celadon.xboxservices.com",
+#            "cellosolartv.com",
+#            "cens.com",
+#            "centerard.ru",
+#            "centinelafeed.com",
+#            "centos.mirror.liteserver.nl",
+#            "centos.mirror.triple-it.nl",
+#            "centrotecnologico.edu.mx",
+#            "cert.developertokenservice-staging.xboxservices.com",
+#            "cert.developertokenservice.xboxservices.com",
+#            "cerulean-staging.xboxservices.com",
+#            "cerulean.xboxservices.com",
+#            "cervejariacolorado.com.br",
+#            "cesufestivals.com",
+#            "cfengine.com",
+#            "cfraresearch.com",
+#            "cfrperformance.com",
+#            "cgaxis.com",
+#            "cgtrader.com",
+#            "chabottengineering.com",
+#            "chai-research.com",
+#            "chainsawr.com",
+#            "changwon-ymassage.com",
+#            "channelclassics.com",
+#            "chaquo.com",
+#            "chargriller.com",
+#            "charitypaws.com",
+#            "charlesjencks.com",
+#            "charlotte.com",
+#            "charterhall.com.au",
+#            "charterhouse-aquatics.com",
+#            "chaserbrand.com",
+#            "chat.google.com",
+#            "chatgot.io",
+#            "chatgptfree.ai",
+#            "chatgptonline.net",
+#            "chattyfeet.com",
+#            "check-host.net",
+#            "checkmk.com",
+#            "checks.google.com",
+#            "cheddars.com",
+#            "cheekyrascals.co.uk",
+#            "chelseadogs.com",
+#            "cherishedemblems.com",
+#            "cherishgirl.com",
+#            "cheshuntteamministry.org.uk",
+#            "chessmaxacademy.com",
+#            "chiccoutureonline.com",
+#            "chinacourt.org",
+#            "chinchillanews.com.au",
+#            "chizhouwenhua.com",
+#            "chooseyourvenue.com",
+#            "chordtela.com",
+#            "chrome.com",
+#            "chromeexperiments.com",
+#            "chromium.org",
+#            "cialisfstdelvri.com",
+#            "circulodecredito.com.mx",
+#            "cirros-cloud.net",
+#            "cisalfasport.it",
+#            "citeworld.com",
+#            "cityofgriffin.com",
+#            "cityofkokomo.org",
+#            "cityofpacificgrove.org",
+#            "clamav.com",
+#            "clarins.ca",
+#            "clarity.ms",
+#            "classywomencollection.com",
+#            "clawhammersupply.com",
+#            "clear.store",
+#            "clementoni.com",
+#            "clevelandgolf.com",
+#            "clicrdv.com",
+#            "client.crisp.chat",
+#            "client.sabinserver.com",
+#            "clients1.google.com",
+#            "clients3.google.com",
+#            "clients4.google.com",
+#            "clients5.google.com",
+#            "clinicasantamaria.cl",
+#            "clipchamp.com",
+#            "clkbank.com",
+#            "clksupplies.com",
+#            "closedcasketactivities.com",
+#            "clothedwithtruth.com",
+#            "cloud.openshift.com",
+#            "cloudbees.com",
+#            "cloudcontrolband.com",
+#            "cloudconvert.com",
+#            "cloudflareinsights.com",
+#            "cloudflarestatus.com",
+#            "cloudfunctions.net",
+#            "cloudheadgames.com",
+#            "cloudinary.com",
+#            "cloudlinux.com",
+#            "cloudservepoint.com",
+#            "cloudzonetrk.com",
+#            "cmdvn.cn",
+#            "cmf.tech",
+#            "cms.gov",
+#            "cnet.com",
+#            "coccinelle.nl",
+#            "cocoalife.org",
+#            "code.jquery.com",
+#            "codeassist.google",
+#            "codecs.fedoraproject.org",
+#            "codedexchange.com",
+#            "codegrepper.com",
+#            "codepal.ai",
+#            "codepen.io",
+#            "codewithmosh.com",
+#            "coeursports.com",
+#            "coffee-staging.xboxservices.com",
+#            "coin360.com",
+#            "coinauctionshelp.com",
+#            "coincap.io",
+#            "cokhinganhin.com",
+#            "colab.google",
+#            "coladaily.com",
+#            "colby.edu",
+#            "colegiodelabici.edu.co",
+#            "coleswindell.com",
+#            "collectui.com",
+#            "collive.com",
+#            "coloriageetdessins.com",
+#            "combohr.com",
+#            "combustibles-gruchy.fr",
+#            "commissionaires.ca",
+#            "commoncrawl.org",
+#            "community.appian.com",
+#            "community.hpe.com",
+#            "computernetworkingnotes.com",
+#            "computerwoche.de",
+#            "computerworld.com",
+#            "comsol.com",
+#            "conan.io",
+#            "conda.io",
+#            "coneyislandfunguide.com",
+#            "conikal.com",
+#            "connect.redhat.com",
+#            "connect.wpmailsmtp.com",
+#            "connoisseurusveg.com",
+#            "consent.config.office.com",
+#            "constantcontact.com",
+#            "consuelastore.com",
+#            "consul.io",
+#            "consumer.pearmill.com",
+#            "contentaccess.exp-staging.xboxservices.com",
+#            "contentaccess.exp.xboxservices.com",
+#            "continue.dev",
+#            "controlledchaoshair.com",
+#            "convertio.co",
+#            "convertio.me",
+#            "cooganlondon.com",
+#            "cookielaw.org",
+#            "cookingchatfood.com",
+#            "coolhorse.com",
+#            "coop.org",
+#            "coopers.com.au",
+#            "copilot.platform.xboxservices.com",
+#            "coracoffeeco.com",
+#            "coral-staging.xboxservices.com",
+#            "coral.xboxservices.com",
+#            "core-online.org",
+#            "coreldraw.com",
+#            "coren-sp.gov.br",
+#            "coronadoleather.com",
+#            "corp.ign.com",
+#            "corsica-ferries.co.uk",
+#            "cosanti.com",
+#            "cosmosdeli.net",
+#            "cougarpaws.com",
+#            "councilfordisabledchildren.org.uk",
+#            "countrycross.sk",
+#            "countyofriverside.us",
+#            "cover-addict.com",
+#            "coyotecafe.com",
+#            "cpanel.net",
+#            "cppstories.com",
+#            "cpuid.com",
+#            "cracking.org",
+#            "craftandglory.in",
+#            "crazydomains.co.uk",
+#            "crazytime-apk.com",
+#            "creationinfoplus.com",
+#            "creativelab5.com",
+#            "creativemail.com",
+#            "creativemarket.com",
+#            "creg.gov.co",
+#            "crepmovement.com",
+#            "crewbikeco.com",
+#            "crimson-staging.xboxservices.com",
+#            "crimson.xboxservices.com",
+#            "criteo.com",
+#            "crocoblock.com",
+#            "crowboroughlife.com",
+#            "crtv.mk",
+#            "crybit.com",
+#            "cs50.ai",
+#            "cs50.dev",
+#            "cs50.io",
+#            "cs50.me",
+#            "csc.net.cn",
+#            "cscmp.org",
+#            "ctemploymentlawblog.com",
+#            "ctic.com",
+#            "ctm.co.za",
+#            "cubeslam.com",
+#            "culture21.ru",
+#            "cumminsengines.com",
+#            "curbsidecycle.com",
+#            "curl.haxx.se",
+#            "curl.se",
+#            "cvedetails.com",
+#            "cwtv.com",
+#            "cyan-staging.xboxservices.com",
+#            "cyan-teak-furniture.com",
+#            "cyan.xboxservices.com",
+#            "cybrary.it",
+#            "cyclinic.com.au",
+#            "cyfe.com",
+#            "cygnett.com",
+#            "cyland.org",
+#            "cylex-locale.fr",
+#            "da-staging.xboxservices.com",
+#            "da.vsicloud.com",
+#            "da.xboxservices.com",
+#            "daaz.com",
+#            "dafi.pl",
+#            "daily.dev",
+#            "dankmemer.lol",
+#            "dannyda.com",
+#            "darklithorror.com",
+#            "dart.dev",
+#            "dartpad.dev",
+#            "das.domreg.lt",
+#            "dashboardpack.com",
+#            "data-cdn.mbamupdates.com",
+#            "data.gingersoftware.com",
+#            "database.windows.net",
+#            "databreaches.net",
+#            "dataguidance.com",
+#            "datastax.com",
+#            "datastudio.google.com",
+#            "datastudios.org",
+#            "davenportiowa.com",
+#            "davidmiscavige.org",
+#            "daylunalife.com",
+#            "daynoimi.net",
+#            "daypassapp.com",
+#            "daytonastate.edu",
+#            "de.ign.com",
+#            "deb.etcher.io",
+#            "deb.nodesource.com",
+#            "debian.org",
+#            "decathlon.it",
+#            "dedicatedpanel.com",
+#            "deepinfra.com",
+#            "deepmind.com",
+#            "defold.com",
+#            "defu123.com",
+#            "deglingos.com",
+#            "degods.com",
+#            "delas.pt",
+#            "dellcdn.com",
+#            "dellemc.com",
+#            "delltechnologies.com",
+#            "delta-aggregator-staging.xboxservices.com",
+#            "delta-aggregator.xboxservices.com",
+#            "demdex.net",
+#            "demo.phlox.pro",
+#            "demo.themegrill.com",
+#            "demolay.org",
+#            "demonware.net",
+#            "denimheads.cz",
+#            "deno.com",
+#            "denon.com",
+#            "deployer.org",
+#            "deploymentcode.com",
+#            "design911.com",
+#            "designfesta.com",
+#            "destinythegame.com",
+#            "detiklink.com",
+#            "deutschlandcard.de",
+#            "dev.copilot.platform.xboxservices.com",
+#            "dev.dynamicsigls.exp.xboxservices.com",
+#            "dev.to",
+#            "developer-staging.xboxservices.com",
+#            "developer.com",
+#            "developer.wordpress.org",
+#            "developer.xboxservices.com",
+#            "developers.chrome.com",
+#            "developertokenservice-staging.xboxservices.com",
+#            "developertokenservice.xboxservices.com",
+#            "device-metrics-us.amazon.com",
+#            "devops.com",
+#            "devs.mx",
+#            "dewacsn889.org",
+#            "dezeenjobs.com",
+#            "dfndusa.com",
+#            "dfsa.ae",
+#            "dhammasukha.org",
+#            "dhem-france.com",
+#            "digicert.com",
+#            "digift.sg",
+#            "digital.nhs.uk",
+#            "digitalattackmap.com",
+#            "digitec.ch",
+#            "dimmakcollection.com",
+#            "dinersdriveinsdiveslocations.com",
+#            "dioceseduluth.org",
+#            "directadmin.com",
+#            "discord.media",
+#            "discourse-cdn.com",
+#            "discover-echo.com",
+#            "dishingdelish.com",
+#            "disney.com",
+#            "disneyinteractive.com",
+#            "disneyjunior.com",
+#            "divinechocolateusa.com",
+#            "divoom.com",
+#            "diymotofix.com",
+#            "djangoproject.com",
+#            "dl.trimble.com",
+#            "dlang.org",
+#            "dlm.mariadb.com",
+#            "dmww.com",
+#            "dnaplainfield.com",
+#            "dnastack.com",
+#            "dnsdumpster.com",
+#            "dnsv1.com",
+#            "dockerflow.com",
+#            "dockerstatic.com",
+#            "docnc.org",
+#            "doctorly.org",
+#            "dodi-repacks.site",
+#            "dogechain.info",
+#            "dogobooks.com",
+#            "dogsy.co.uk",
+#            "dolcielondon.com",
+#            "domaincheck.auda.org.au",
+#            "domario.ru",
+#            "dominos.co.uk",
+#            "donnaomamma.it",
+#            "donsappliances.com",
+#            "doors.nyc",
+#            "dorianlpg.com",
+#            "dot.tk",
+#            "downduck.com",
+#            "download-2.xyz",
+#            "download-app-pinup.ru",
+#            "download.ccleaner.com",
+#            "download.hogwartslegacy.com",
+#            "download.imunify360.com",
+#            "download.maxmind.com",
+#            "download.sunnytoo.com",
+#            "download.wordpress.org",
+#            "downloads.joomla.org",
+#            "downloads.mariadb.com",
+#            "downloads.wordpress.org",
+#            "dpm.demdex.net",
+#            "draw.io",
+#            "draytek.com.tw",
+#            "dreamstime.com",
+#            "dreamworksdirect.com",
+#            "drewbinsky.com",
+#            "drgreger.org",
+#            "driftt.com",
+#            "drivereasy.com",
+#            "driverguide.com",
+#            "drkellyann.com",
+#            "drleaf.com",
+#            "ds.ign.com",
+#            "dsfo.de",
+#            "dshield.org",
+#            "dsmedia.ign.com",
+#            "dtek-kem.com.ua",
+#            "dueruote.it",
+#            "duncker-humblot.de",
+#            "dundalkfc.com",
+#            "dusseldorpbmw.nl",
+#            "dvusd.org",
+#            "dwtn.nl",
+#            "dyn.com",
+#            "dynamicsigls.exp.xboxservices.com",
+#            "dynect.net",
+#            "dynstatus.com",
+#            "e-food.gr",
+#            "earthbits.com",
+#            "earthengine.google.com",
+#            "earthplaza.jp",
+#            "earthythailand.com",
+#            "easternbikes.com",
+#            "eastvaleca.gov",
+#            "easyapplianceparts.com",
+#            "easyjet.com",
+#            "eatbobos.com",
+#            "ebay.at",
+#            "ebay.ca",
+#            "ebay.com",
+#            "ebay.us",
+#            "ebaycdn.net",
+#            "ebayimg.com",
+#            "ebaystatic.co",
+#            "ebaystatic.com",
+#            "ebbo.com",
+#            "eberlestock.com",
+#            "ebora.nl",
+#            "ebrosia.de",
+#            "ebuyer.com",
+#            "echo-api.amazon.com",
+#            "eclipsefoods.com",
+#            "ecomdash.com",
+#            "economiza.com",
+#            "ecoverdirect.com",
+#            "ectorcountyisd.org",
+#            "eddiebauer.com",
+#            "edelmanfinancialengines.com",
+#            "editorafi.org",
+#            "editorx.com",
+#            "educaciodigital.cat",
+#            "eep.io",
+#            "eesystem.com",
+#            "effortlessfoodie.com",
+#            "eggfactorycafe.com",
+#            "eid.gov.mt",
+#            "eigenphi.io",
+#            "einstein.br",
+#            "eio.com",
+#            "ekahau.com",
+#            "ekstraklasa.net",
+#            "elamerican.com",
+#            "elanfinancialservices.com",
+#            "elastic.dev",
+#            "elasticemail.com",
+#            "eldoradofurniture.com",
+#            "eleague.com",
+#            "electioncenter.org",
+#            "electrickicks.com.au",
+#            "electricmirror.com",
+#            "electron.build",
+#            "elegantbridal.com",
+#            "elegantflyer.com",
+#            "elektrika.ua",
+#            "elementor.api.kustomerapp.com",
+#            "elementor.com",
+#            "elemis.com",
+#            "elevatedfaith.com",
+#            "elitelawyer.com",
+#            "elitesalondayspa.com",
+#            "ellesilk.com",
+#            "elo.com",
+#            "eloqua.com",
+#            "elstc.co",
+#            "ember-staging.xboxservices.com",
+#            "ember.xboxservices.com",
+#            "emc.com",
+#            "emedco.com",
+#            "emerald-staging.xboxservices.com",
+#            "emerald.xboxservices.com",
+#            "emeraldaircleaners.com",
+#            "emersonlakepalmer.com",
+#            "emotiva.com",
+#            "employerlawreport.com",
+#            "en.miui.com",
+#            "energiavirasto.fi",
+#            "energytradeaction.org",
+#            "engadget.com",
+#            "engelslogistiek.nl",
+#            "engineeredtoslide.com",
+#            "engineering.canceriq.com",
+#            "enjoylifefoods.com",
+#            "enjukuracing.com",
+#            "enlineadirecta.info",
+#            "enlisted.net",
+#            "enpi-info.eu",
+#            "ensamble.info",
+#            "enter.online",
+#            "entertimeonline.com",
+#            "entitlements-staging.xboxservices.com",
+#            "entitlements.xboxservices.com",
+#            "envanto.com",
+#            "envato.market",
+#            "envatousercontent.com",
+#            "envoyproxy.io",
+#            "enzoclothingstore.com",
+#            "epayments.com",
+#            "epel.mirror.wearetriple.com",
+#            "epicgames.dev",
+#            "epochtimes.com",
+#            "equaljusticeworks.org",
+#            "equus.co.uk",
+#            "erith-6-uk.tlsext.com",
+#            "escortradar.com",
+#            "espacechristianepeugeot.org",
+#            "esportsparra.com",
+#            "esquinanyc.com",
+#            "essexkilns.com",
+#            "esure.com",
+#            "ethernodes.org",
+#            "ethique.co.nz",
+#            "etsy.com",
+#            "ettdnsv.com",
+#            "eucasinoutansvensklicens.se",
+#            "europe.prod.gamingai.exp.xboxservices.com",
+#            "eurosiz.ua",
+#            "eus.prod.monolith.experiences.xboxservices.com",
+#            "eus.test.monolith.experiences.xboxservices.com",
+#            "eventbrite.fi",
+#            "eventdove.com",
+#            "ever-eden.com",
+#            "everysaving.ae",
+#            "everythingfor420.com",
+#            "evidenceinvestor.com",
+#            "evolution-house.ru",
+#            "evscschools.com",
+#            "exactmetrics.com",
+#            "exaloop.io",
+#            "exceedlms.com",
+#            "exodus.io",
+#            "exp-tas.com",
+#            "exp.host",
+#            "expedia.co.jp",
+#            "explorit.org",
+#            "expo.dev",
+#            "expomap.ru",
+#            "extendify.com",
+#            "extensions.sketchup.com",
+#            "externalstreamingcatalog-staging.xboxservices.com",
+#            "externalstreamingcatalog.xboxservices.com",
+#            "extremeloading.com",
+#            "eyeonearthsummit.org",
+#            "ezclocker.com",
+#            "f-secure.com",
+#            "f2pool.com",
+#            "fa.wordpress.org",
+#            "fab.com",
+#            "fabianomoratoimoveis.com.br",
+#            "facetdermatology.com",
+#            "faceueditor.com",
+#            "factoryofsadness.co",
+#            "familyhomeplans.com",
+#            "famousinreal.life",
+#            "fanatical.com",
+#            "fanbase.com",
+#            "fantasyflightgames.com",
+#            "fanucci.it",
+#            "faradayskitchenstore.com",
+#            "farazserver.net",
+#            "farmgirlflowers.com",
+#            "fashionvibes.net",
+#            "fastapi.tiangolo.com",
+#            "fastly-debug.com",
+#            "fastly-insights.com",
+#            "fastly-status.com",
+#            "fastly.com",
+#            "fastly.io",
+#            "fatboy.com",
+#            "fatemag.com",
+#            "favecrafts.com",
+#            "fayetteville-ga.gov",
+#            "fb68.technology",
+#            "federale.be",
+#            "fedora-epel.koyanet.lv",
+#            "fedoramagazine.org",
+#            "fedoraproject.org",
+#            "feedburner.com",
+#            "feedly.com",
+#            "feedz.com.br",
+#            "feinkost-kaefer.de",
+#            "fern-staging.xboxservices.com",
+#            "fern.xboxservices.com",
+#            "fesselmenfirearms.com",
+#            "fhahoreca.com",
+#            "fifaindex.com",
+#            "filecr.com",
+#            "filehippo.com",
+#            "filehippo.net",
+#            "files.directadmin.com",
+#            "files.pythonhosted.org",
+#            "files.rtl-theme.com",
+#            "files.softaculous.com",
+#            "files.virtualizor.com",
+#            "filmmodu.nl",
+#            "financieraelcorteingles.es",
+#            "findamasters.com",
+#            "findhomesusa.com",
+#            "findinghomefarms.com",
+#            "firebase.io",
+#            "firebaseapp.com",
+#            "firebaseio.com",
+#            "firebaseremoteconfig.com",
+#            "fireflyfriends.com",
+#            "fireworks.com",
+#            "firmware.amazon.com",
+#            "firstdata.com",
+#            "fishersci.se",
+#            "fishing.net.nz",
+#            "fispalfoodservice.com.br",
+#            "fitness.gov",
+#            "fitssock.com",
+#            "fivem-mods.com",
+#            "fiverr.com",
+#            "fiverrcdn.com",
+#            "fjallraven.com.au",
+#            "flag-icon-css.lip.is",
+#            "flaticon.com",
+#            "flatmatefinders.com.au",
+#            "flexdog.com",
+#            "flexibleshipping.com",
+#            "flexperks.com",
+#            "flightroutes.com",
+#            "fluchos.es",
+#            "fluentd.org",
+#            "flutter-io.cn",
+#            "flux.ai",
+#            "flvetbehavior.com",
+#            "flygresor.se",
+#            "flyhomes.com",
+#            "flymacarthur.com",
+#            "flynn.io",
+#            "fnmgroup.it",
+#            "fol.nl",
+#            "followeran.com",
+#            "fontawesome.com",
+#            "fontkeren.com",
+#            "fonts.com",
+#            "foodbev.cn",
+#            "footedpajamas.com",
+#            "footlocker.ae",
+#            "footlocker.com.eg",
+#            "foreignaffairs.gov.mt",
+#            "formulaswiss.com",
+#            "fortheloveofgrad.com",
+#            "forticlient.com",
+#            "fortinet.com",
+#            "fortnite-storage-live.s3.amazonaws.com",
+#            "fortunetiger-game-slot.com",
+#            "fourwindsgrowers.com",
+#            "foxdealer.com",
+#            "fpdownload.macromedia.com",
+#            "fragosoturismo.com",
+#            "framer.com",
+#            "franklincountync.us",
+#            "franklinplanner.com",
+#            "frankstellanyc.com",
+#            "freedesktop.org",
+#            "freelancer.com",
+#            "freemius.com",
+#            "freenas.org",
+#            "freenom.com",
+#            "freepbx.org",
+#            "freepik.com",
+#            "freepikcompany.com",
+#            "freeyabb.com",
+#            "frenchbull.com",
+#            "freshworks.com",
+#            "fridaysforfuturebrasil.org",
+#            "friendsparodyontour.com",
+#            "frizzoff.com",
+#            "fromanother.ca",
+#            "fryeburgacademy.org",
+#            "ftp.postgresql.org",
+#            "ftpf.org",
+#            "fuchsia-staging.xboxservices.com",
+#            "fuchsia.dev",
+#            "fuchsia.xboxservices.com",
+#            "fullstory.com",
+#            "fully.com",
+#            "fun88kyc.com",
+#            "fundsxpress.com",
+#            "funenokagakukan.or.jp",
+#            "fusioncharts.com"
+#          ],
+#          "note": "فهرست واردشده از DynX؛ پوشش خود دامنه و زیردامنه‌ها. قوانین اختصاصی سرویس‌های دیگر اولویت دارند. عملکرد تک‌تک دامنه‌ها روی رله آزمایش نشده است."
+#        },
+#        {
+#          "key": "g-m",
+#          "label": "G-M",
+#          "domains": [
+#            "g.codefresh.io",
+#            "g.live.com",
+#            "gabyfriedman.com",
+#            "gaijinent.com",
+#            "gaithersburgmd.gov",
+#            "galxe.com",
+#            "game.co.uk",
+#            "gamea.clashofclans.com",
+#            "gamekit.com",
+#            "gamenguide.com",
+#            "gamepassperks-staging.xboxservices.com",
+#            "gamepassperks.xboxservices.com",
+#            "gamesplanet.com",
+#            "gamestop.com",
+#            "gamingai.exp.xboxservices.com",
+#            "gamingthelottery.org",
+#            "gamrfirst.ch",
+#            "ganttproject.biz",
+#            "garbagedomain.com",
+#            "gardenforwildlife.com",
+#            "gardensofthesun.com",
+#            "garmin.com",
+#            "gateway-staging.xboxservices.com",
+#            "gavereleather.net",
+#            "gbcass.com",
+#            "gbudb.com",
+#            "gclubauto.net",
+#            "gcping.com",
+#            "gcppodcast.com",
+#            "gcyouthministries.org",
+#            "gdrvowners.com",
+#            "gears.exp.xboxservices.com",
+#            "geekglam.net",
+#            "geeksforgeeks.org",
+#            "geforce.co.uk",
+#            "gemini.google",
+#            "generativeai.google",
+#            "geniusdexchange.com",
+#            "genspark.ai",
+#            "genymotion.com",
+#            "georgetownma.gov",
+#            "germany2006.tv",
+#            "get.acme.sh",
+#            "get.docker.ir",
+#            "getambassador.io",
+#            "getcomposer.org",
+#            "getcruise.com",
+#            "getflywheel.com",
+#            "getjackblack.com",
+#            "getliner.com",
+#            "getmdl.io",
+#            "getmerlin.in",
+#            "getpostman.com",
+#            "getsentry.com",
+#            "getwooplugins.com",
+#            "geyanw.com",
+#            "ggpartners.com",
+#            "gifi.fr",
+#            "gifting-online.ca",
+#            "giftr.sg",
+#            "gillcapital.com.sg",
+#            "giro.com",
+#            "gitconnected.com",
+#            "github.dev",
+#            "github.io",
+#            "githubcopilot.com",
+#            "gitlag.com",
+#            "gitman.com",
+#            "gitter.im",
+#            "gladbachlive.de",
+#            "glamagalparty.com",
+#            "glassdoor.nl",
+#            "glitch.com",
+#            "glitch.me",
+#            "global14.com",
+#            "globegazette.com",
+#            "gluonhq.com",
+#            "gmail-smtp-in.l.google.com",
+#            "gmail.com",
+#            "gmktec.com",
+#            "gmtreks.com",
+#            "gnome.org",
+#            "gns3.com",
+#            "go.com",
+#            "go.wbgames.com",
+#            "goeuro.com",
+#            "goforthgoods.com",
+#            "gog-galaxy.com",
+#            "goharbor.io",
+#            "gohugo.io",
+#            "gojerusalem.com",
+#            "gold-staging.xboxservices.com",
+#            "gold.xboxservices.com",
+#            "goldenbearstore.com",
+#            "golfdiscount.com",
+#            "golobos.com",
+#            "goo.gl",
+#            "goo.gle",
+#            "goodnet.gr",
+#            "goodordering.com",
+#            "goodwillfinds.com",
+#            "google.dev",
+#            "google.qualtrics.com",
+#            "googleapps.com",
+#            "googlecode.com",
+#            "googlesciencefair.com",
+#            "gooutside.com.br",
+#            "gopro.com",
+#            "gordiehoweinternationalbridge.com",
+#            "gotomeeting.com",
+#            "governmentresume.org",
+#            "gpsessentials.com",
+#            "gpubgm.com",
+#            "gpuopen.com",
+#            "gputechconf.com",
+#            "gradio.app",
+#            "gradle-dn.com",
+#            "grafana.net",
+#            "grafana.org",
+#            "gramfeed.com",
+#            "grammarly.com",
+#            "granite-staging.xboxservices.com",
+#            "granite.xboxservices.com",
+#            "grappleguardsoap.com",
+#            "gravityapi.com",
+#            "gravityforms.com",
+#            "gravitykit.com",
+#            "gravityview.co",
+#            "gravityview.com",
+#            "greatbendpost.com",
+#            "greenlee.com",
+#            "greenmountaindiapers.com",
+#            "greenwichacademy.org",
+#            "grey-staging.xboxservices.com",
+#            "grey.xboxservices.com",
+#            "griiham.in",
+#            "groceriesapparel.com",
+#            "groundworkscompanies.com",
+#            "groupenovatech.com",
+#            "grow.google",
+#            "grundysshoes.com.au",
+#            "gsap.com",
+#            "gstyleusa.com",
+#            "gtav.com",
+#            "gtmetrix.com",
+#            "gtmoriginal.com",
+#            "gud2know.com",
+#            "gurobi.com",
+#            "gutteridge.com",
+#            "gvb.ch",
+#            "gvt1.com",
+#            "gvt2.com",
+#            "gwtproject.org",
+#            "gymnasium4.ru",
+#            "h-bid.com",
+#            "hackertarget.com",
+#            "hackthebox.com",
+#            "hackthebox.eu",
+#            "halototoslot.foundation",
+#            "haphong.edu.vn",
+#            "happyandpolly.com",
+#            "happypuppy.com",
+#            "happytailpuppies.com",
+#            "hardwareportal.ru",
+#            "harivco.org",
+#            "harleybenton.com",
+#            "harrypotter.com",
+#            "haupcar.com",
+#            "hauteshoes.ca",
+#            "havecamerawilltravel.com",
+#            "hawaiithreads.com",
+#            "hawkfanatic.com",
+#            "haxx.se",
+#            "hayagi.com",
+#            "hbhorsewear.com.au",
+#            "hbogo.com",
+#            "hbonow.com",
+#            "he.net",
+#            "healthrangerstore.com",
+#            "healthybluemedicaid.top",
+#            "heartlanepharmacy.com",
+#            "heatonsstores.com",
+#            "heavym.net",
+#            "hebergtonserv.com",
+#            "heckofalope.com",
+#            "heil-hvac.com",
+#            "heinzketchup.com",
+#            "heldref.org",
+#            "helena-arkansas.com",
+#            "hellofresh.com",
+#            "hellofresh.de",
+#            "helloprenup.com",
+#            "help.one.com",
+#            "help.us-themes.com",
+#            "helpshift.com",
+#            "helveticalifestyle.com",
+#            "hemnet.se",
+#            "hemptons.co.za",
+#            "henglianmx.com",
+#            "henrymayo.com",
+#            "heraldpalladium.com",
+#            "herbsguide.net",
+#            "heritagestore.com",
+#            "heroturko.net",
+#            "hetzner.cloud",
+#            "hetzner.company",
+#            "hetzner.de",
+#            "hex.pm",
+#            "heyspin.com",
+#            "hgsplyco.com",
+#            "hhs.gov",
+#            "hielscher.com",
+#            "hiexpress.com",
+#            "highcharts.com",
+#            "hippieshop.com",
+#            "historicaldis.ru",
+#            "historicmapworks.com",
+#            "hitraveltales.com",
+#            "hmmyok.com",
+#            "hobiesurfshop.com",
+#            "hogash.com",
+#            "hogwartslegacy.bugs.wbgames.com",
+#            "hogwartslegacy.com",
+#            "holabeew.com",
+#            "holidayme.com",
+#            "holloshoe.com",
+#            "homecentre.com",
+#            "homesteadsupplier.com",
+#            "homezonefurniture.com",
+#            "hondaiscoin.com",
+#            "honeyplaybox.com",
+#            "hortonworks.com",
+#            "host.io",
+#            "hostcontrol-backoffice.com",
+#            "hoster.kz",
+#            "hostinger.ae",
+#            "hostinger.com",
+#            "hostinger.nl",
+#            "hostnine.com",
+#            "hotchillys.com",
+#            "hotel-hennef.com",
+#            "hotelbusiness.com",
+#            "hoteliermiddleeast.com",
+#            "hotjar.com",
+#            "hotmatchcollectables.com",
+#            "hotspurhq.com",
+#            "hoturls.info",
+#            "house.pl",
+#            "houseofharlow1960.com",
+#            "housesandparties.com",
+#            "houstonballet.org",
+#            "howgoogleworks.net",
+#            "hp.com",
+#            "hpe.com",
+#            "hqmix.com.br",
+#            "html5rocks.com",
+#            "html5up.net",
+#            "http.app",
+#            "http.codes",
+#            "http.dev",
+#            "httpupdate.cpanel.net",
+#            "huarenjie.net",
+#            "huawei.com",
+#            "hubapi.com",
+#            "huemor.rocks",
+#            "hufworldwide.co.uk",
+#            "hummkombucha.com",
+#            "huntoffice.co.uk",
+#            "hurma.work",
+#            "hyped.sg",
+#            "hypevault.co",
+#            "i-online-casino.org",
+#            "iahsaa.org",
+#            "iampsychiatry.com",
+#            "iask.ai",
+#            "ibankcoin.com",
+#            "icebarrel.com",
+#            "icitech.org",
+#            "icloud.com",
+#            "iconbazaar.com",
+#            "id5-sync.com",
+#            "idagent.com",
+#            "ideal-house.ru",
+#            "idni.org",
+#            "idsi.md",
+#            "idwall.co",
+#            "idx.dev",
+#            "idx.google.com",
+#            "idyllwind.com",
+#            "ie.ign.com",
+#            "ieee.com",
+#            "iev.aero",
+#            "ifconfig.co",
+#            "ifconfig.me",
+#            "ifyousayido.com",
+#            "igamingbrazil.com",
+#            "igbnorthamerica.com",
+#            "igkhair.com",
+#            "ign.com",
+#            "ignimgs.com",
+#            "iid.com",
+#            "ilovepdf.com",
+#            "ilsr.org",
+#            "imandra.ai",
+#            "imdb.com",
+#            "img.freepik.com",
+#            "imgix.net",
+#            "imgur.com",
+#            "immortalromanceslots.org",
+#            "immuniweb.com",
+#            "imon.net",
+#            "import.aheto.co",
+#            "impossible.sg",
+#            "imtra.com",
+#            "in.appcenter.ms",
+#            "inapp.gov.it",
+#            "incubate-propagate.com",
+#            "independentreserve.com",
+#            "independer.nl",
+#            "inderscienceonline.com",
+#            "indexing.com",
+#            "indianexpress.com",
+#            "indigo-staging.xboxservices.com",
+#            "indigo.xboxservices.com",
+#            "inea.pl",
+#            "inez.com",
+#            "infd.edu.ar",
+#            "infideas.com",
+#            "informaticsjournals.com",
+#            "ingeoexpert.com",
+#            "ingress.com",
+#            "insidersport.com",
+#            "insidetracker.com",
+#            "insomnia.rest",
+#            "inspirefitness.com",
+#            "install.avcdn.net",
+#            "instana.com",
+#            "instantcard.net",
+#            "institutoidv.org",
+#            "int.copilot.platform.xboxservices.com",
+#            "int.gamingai.ppe.exp.xboxservices.com",
+#            "int.library.exp.xboxservices.com",
+#            "int.monolith.experiences.xboxservices.com",
+#            "int.productmanagementcore.gamepass.xboxservices.com",
+#            "int.search.exp.xboxservices.com",
+#            "int.xai.xboxservices.com",
+#            "int.xoobe.platform.xboxservices.com",
+#            "integralgroup.com",
+#            "intel.de",
+#            "intelephense.com",
+#            "intellij.net",
+#            "intellywp.com",
+#            "interiorsonline.com.au",
+#            "internetdownloadmanager.com",
+#            "interstateplastics.com",
+#            "intertech.com",
+#            "interweavetextiles.com",
+#            "intljs.rmtag.com",
+#            "investcanada.ca",
+#            "invisionapp.com",
+#            "iographer.com",
+#            "iomtt.com",
+#            "ip.sb",
+#            "ip2location.com",
+#            "ipecho.net",
+#            "ipinfo.io",
+#            "ipsoft.com",
+#            "ipwhois.app",
+#            "iqcent.com",
+#            "irdpo.ru",
+#            "irobot.ca",
+#            "ironandresin.com",
+#            "ironphoenix.org",
+#            "ironplanet.com.au",
+#            "isaet.org",
+#            "ispsystem.com",
+#            "issabel.com",
+#            "issabel.org",
+#            "istanbulescortnet.com",
+#            "istio.io",
+#            "itasoftware.com",
+#            "ithemes.com",
+#            "itsfoss.com",
+#            "itsjustwings.com",
+#            "iu7.ru",
+#            "ivans.com",
+#            "ivory-staging.xboxservices.com",
+#            "ivory.xboxservices.com",
+#            "ixsystems.com",
+#            "izhakwood.com",
+#            "jabra.com",
+#            "jack-wolfskin.de",
+#            "jackiepapandrew.com",
+#            "jackpotbob.com",
+#            "jacobandco.shop",
+#            "jade-staging.xboxservices.com",
+#            "jade.xboxservices.com",
+#            "jaegertracing.io",
+#            "janesnyderart.com",
+#            "jansamarth.in",
+#            "jansport.ca",
+#            "japannext.com",
+#            "java.net",
+#            "javascript.com",
+#            "jayboymodz.com",
+#            "jbalvin.com",
+#            "jbs.org",
+#            "jcehepatology.com",
+#            "jcwesternwear.com",
+#            "jeffersoncountywi.gov",
+#            "jenningsbrewery.co.uk",
+#            "jenshansen.com",
+#            "jerseysmadeeasy.com",
+#            "jestbahis.one",
+#            "jetbrains.space",
+#            "jetpack.com",
+#            "jewelove.in",
+#            "jezelle.com",
+#            "jfrog.com",
+#            "jiading.gov.cn",
+#            "jiligame.in",
+#            "jinenstore.com",
+#            "jito.network",
+#            "jiuzhenhao.com",
+#            "joannabuchanan.com",
+#            "jobinplanet.com",
+#            "jobstreet.com.my",
+#            "joe.co.uk",
+#            "johnbellcroyden.co.uk",
+#            "johnboos.com",
+#            "joininuk.org",
+#            "joker.com",
+#            "jokerscostumemegastore.com.au",
+#            "jornaldeuberaba.com.br",
+#            "journeycheck.com",
+#            "joyeshop.ru",
+#            "jquery.com",
+#            "js.braintreegateway.com",
+#            "js.org",
+#            "jsdelivr.net",
+#            "json.org",
+#            "jules.google",
+#            "jumpsudbury.ca",
+#            "junkbrands.com",
+#            "jupiterbahis.sbs",
+#            "jurysinns.com",
+#            "just-eat.dk",
+#            "justcloud.com",
+#            "justhype.co.uk",
+#            "jwt.io",
+#            "k3s.io",
+#            "kaffe-clothing.com",
+#            "kaggle.io",
+#            "kaidan136.com",
+#            "kairfashion.com",
+#            "kaleidoscopeapp.com",
+#            "kali.download",
+#            "kali.org",
+#            "kaplanpathways.com",
+#            "kappit.com",
+#            "karlkani.com",
+#            "katacoda.com",
+#            "kaufleuten.ch",
+#            "kb.objectrocket.com",
+#            "keengamer.com",
+#            "keepersecurity.com",
+#            "keil.com",
+#            "kelashartanah.my",
+#            "kentcasino-slots.ru",
+#            "ker.com",
+#            "kerberos.io",
+#            "kernel.org",
+#            "kero.yachay.pe",
+#            "keypowersports.my",
+#            "khronos.org",
+#            "kick.com",
+#            "kidneyregistry.org",
+#            "kidsgrowth.com",
+#            "kievcity.gov.ua",
+#            "killerspin.com",
+#            "killerstartups.com",
+#            "kinderfonds.nl",
+#            "kindredbravely.com",
+#            "kineticskateboarding.com",
+#            "kingcomposer.com",
+#            "kinglouie.nl",
+#            "kingscross.co.uk",
+#            "kinkbmx.com",
+#            "kinsta.com",
+#            "kirikomade.com",
+#            "kitbash3d.com",
+#            "kite.com",
+#            "kleankanteen.co.uk",
+#            "kleinboot.com",
+#            "klrworld.com",
+#            "kmart.com",
+#            "kmplayer.com",
+#            "kncbeauty.com",
+#            "knigoboz.ru",
+#            "knowledge.ca",
+#            "knowyourteam.com",
+#            "kobi5.com",
+#            "kohls.com",
+#            "koio.co",
+#            "kolomna-speed-skating.com",
+#            "komodo.co.uk",
+#            "konami.com",
+#            "konghq.com",
+#            "koop.co.nz",
+#            "kooziegroup.com",
+#            "kosas.com",
+#            "kotogadang-pusako.com",
+#            "kraken.ignimgs.com",
+#            "kreaturamedia.com",
+#            "krincingemaszerofire.com",
+#            "krisp.ai",
+#            "ksayerdoula.com",
+#            "ksbar.org",
+#            "ksmetals.com",
+#            "kulfibeauty.com",
+#            "kumioils.com",
+#            "kurand.jp",
+#            "kuwinzhz.com",
+#            "l-t.de",
+#            "labellefoundation.org",
+#            "labs.google.com",
+#            "lacabra.dk",
+#            "lacitysan.org",
+#            "lacoste.sa",
+#            "ladowntownnews.com",
+#            "lagunabeachtextileco.com",
+#            "lakewayresortandspa.com",
+#            "lanakk.com",
+#            "landal.de",
+#            "langchain.com",
+#            "laprensani.com",
+#            "larksuite.com",
+#            "las.ch",
+#            "lastmilepev.com",
+#            "launchdarkly.com",
+#            "launcher.hogwartslegacy.com",
+#            "launcher.rockstargames.net",
+#            "launchpadcontent.net",
+#            "laurageller.com",
+#            "lauriebelles.com",
+#            "lavender-staging.xboxservices.com",
+#            "lavender.xboxservices.com",
+#            "lawdepot.com",
+#            "layawayau.com",
+#            "layla.amazon.com",
+#            "lazybearsf.com",
+#            "lc.org",
+#            "ldplayer.net",
+#            "leaddevelop.net",
+#            "leadinglady.com",
+#            "leafletjs.com",
+#            "league.com",
+#            "leaguelane.com",
+#            "lebanon-express.com",
+#            "lebrusanstudio.com",
+#            "ledlichtdiscounter.nl",
+#            "leech.com",
+#            "leetchi.com",
+#            "leftbank.com",
+#            "leket.org",
+#            "lemon-staging.xboxservices.com",
+#            "lencr.org",
+#            "lenderhomepage.com",
+#            "lens.google.com",
+#            "leon-greek.com",
+#            "lethato.com",
+#            "letsencrypt.org",
+#            "letsignit.com",
+#            "letsmakeaplan.org",
+#            "leukstetickets.nl",
+#            "level1productions.com",
+#            "level3.com",
+#            "level3.net",
+#            "leveluprn.com",
+#            "lexch.com",
+#            "lg.com",
+#            "lg.he.net",
+#            "lgappstv.com",
+#            "liantis.be",
+#            "licence.yithemes.com",
+#            "license.dynamic.ooo",
+#            "license.opencart-api.com",
+#            "licensepal.com",
+#            "licenses.bdthemes.co",
+#            "licenses.softaculous.com",
+#            "lids.com",
+#            "lifehousemusic.com",
+#            "lifterlms.com",
+#            "lightning.devs.mx",
+#            "lightning.hogwartslegacy.com",
+#            "lilly.es",
+#            "lily-jade.com",
+#            "lilylolo.co.uk",
+#            "lime-staging.xboxservices.com",
+#            "lime.xboxservices.com",
+#            "limetorrents.info",
+#            "linor.com",
+#            "linuxhostsupport.com",
+#            "linuxquestions.org",
+#            "linuxserver2.dedidata.com",
+#            "lioncountrysafari.com",
+#            "lipsum.com",
+#            "liputan6.com",
+#            "lisasfamilypizzeria.com",
+#            "lit.dev",
+#            "litespeedtech.com",
+#            "littleme.com.my",
+#            "littlewonderandco.com",
+#            "live.com",
+#            "livepopulation.com",
+#            "livesoccertv.com",
+#            "llama.com",
+#            "llamameta.net",
+#            "llrmi.com",
+#            "lnm.lt",
+#            "loadbalancer.org",
+#            "localgirlhookup.org",
+#            "loctote.com",
+#            "login.canceriq.com",
+#            "login.live.com",
+#            "login.microsoftonline.com",
+#            "login.ml.youngjoygame.com",
+#            "login.windows.net",
+#            "logomark.com",
+#            "logrocket.com",
+#            "londonluggage.co.uk",
+#            "loopme.com",
+#            "lorettochapel.com",
+#            "lostgolfballs.com",
+#            "lostrivercave.org",
+#            "loylecarner.com",
+#            "lrmer.com",
+#            "lrss-staging.xboxservices.com",
+#            "lrss.xboxservices.com",
+#            "lstc.com",
+#            "luckyduck-casino-apk.ru",
+#            "luckysmarket.com",
+#            "lundhumphries.com",
+#            "lussocitta.com",
+#            "luxunaire.co.uk",
+#            "luxuryperfume.com",
+#            "m.chiltepin.net",
+#            "m.uber.com",
+#            "maandhan.in",
+#            "machinelearningmastery.com",
+#            "macromedia.com",
+#            "mactools.com",
+#            "macysinc.com",
+#            "maddogsdoc.com",
+#            "madewithcode.com",
+#            "maeree.com",
+#            "mafia.2k.com",
+#            "magestore.com",
+#            "magiccars.com",
+#            "magicsleepsuit.com",
+#            "mail.smtp2go.com",
+#            "mailchimp.com",
+#            "mailenable.com",
+#            "maisonmartinmargiela.com",
+#            "maitreyaproject.org",
+#            "makeandtell.com",
+#            "makeliverpool.com",
+#            "makerflocrafts.com",
+#            "makersuite.google.com",
+#            "makerworld.com",
+#            "makeuseof.com",
+#            "malbongolf.com",
+#            "maltajobs.com.mt",
+#            "malwarebytes.com",
+#            "mambiznes.pl",
+#            "mamoriginals.com",
+#            "manage2.cpanel.net",
+#            "management.windows.net",
+#            "mandolinrestaurant.com",
+#            "mandrillapp.com",
+#            "manitobah.ca",
+#            "manningcartell.com.au",
+#            "mapgenie.io",
+#            "maps.google.com",
+#            "maralex-paris.com",
+#            "mariadb.com",
+#            "maritimeaquarium.org",
+#            "markdownguide.org",
+#            "marketingplatform.google.com",
+#            "markmonitor.com",
+#            "marloushoes.com",
+#            "maroon-staging.xboxservices.com",
+#            "maroon.xboxservices.com",
+#            "martinboot.com",
+#            "martinhajek.com",
+#            "marylandheights.com",
+#            "masoz.net",
+#            "mastercard.it",
+#            "mastermoz.com",
+#            "matadorequipment.com",
+#            "match.adsrvr.org",
+#            "mateeno.co.uk",
+#            "materialdesignicons.com",
+#            "matt-thorn.com",
+#            "matthewkeys.net",
+#            "mauidivers.com",
+#            "maxcdn.com",
+#            "maxmind.com",
+#            "mbbank.com.vn",
+#            "mbokmu.one",
+#            "mcadmd.org",
+#            "mcafee.com",
+#            "mcclatchydc.com",
+#            "mcguirearmynavy.com",
+#            "mcwcasino.club",
+#            "mcxindia.com",
+#            "mdma.ch",
+#            "mdnr-elicense.com",
+#            "mealplanningmommies.com",
+#            "mebiebaby.com",
+#            "media.ign.com",
+#            "media.ignimgs.com",
+#            "meditationmount.org",
+#            "medsindoors.com",
+#            "meetfranz.com",
+#            "megamenu.com",
+#            "meganleary.com",
+#            "meghantelpner.com",
+#            "meiman29nr.cn",
+#            "meine-landausfluege.de",
+#            "melrosehoteldc.com",
+#            "memoryhackers.org",
+#            "mendeley.com",
+#            "meninkilts.com",
+#            "menstuxedousa.com",
+#            "mercadoactual.es",
+#            "mercadolivre.com",
+#            "merchantos.com",
+#            "mercieruk.co.uk",
+#            "merigold-staging.xboxservices.com",
+#            "merigold.xboxservices.com",
+#            "messagebird.com",
+#            "messages.ide.platform.xboxservices.com",
+#            "messages.ppe.ide.platform.xboxservices.com",
+#            "messages.test.ide.platform.xboxservices.com",
+#            "mestergronn.no",
+#            "meta.com",
+#            "metabase.com",
+#            "metalsdepot.com",
+#            "metier.com",
+#            "metrobankonline.co.uk",
+#            "meybod.net",
+#            "meyercanada.ca",
+#            "mgl.lobby.igamecj.com",
+#            "mi.com",
+#            "michelinepitt.com",
+#            "microblink.com",
+#            "micropyramid.com",
+#            "microryza.com",
+#            "microsoft.com",
+#            "microsoftonline.com",
+#            "mila4u.com",
+#            "milano-pro-sport.com",
+#            "milavert.com",
+#            "milimilu.com",
+#            "milka.fr",
+#            "milkandhoneycoffeehouses.com",
+#            "milkshake.app",
+#            "min.io",
+#            "mindtools.com",
+#            "minimadthings.com",
+#            "minio.io",
+#            "mintegral.com",
+#            "mirenesse.com",
+#            "mirror.1000mbps.com",
+#            "mirror.nl.datapacket.com",
+#            "mirror.oxilion.nl",
+#            "mirror.prolocation.net",
+#            "mirror.proserve.nl",
+#            "mirror.serverius.net",
+#            "mirror.sitbv.nl",
+#            "mirror.spectraip.net",
+#            "mirror.theory7.net",
+#            "mirror.usenet.farm",
+#            "mirror.wd6.net",
+#            "mirror.widexs.nl",
+#            "mirrors.almalinux.org",
+#            "mirrors.fedoraproject.org",
+#            "miui.com",
+#            "mixer.com",
+#            "mktoresp.com",
+#            "ml.com",
+#            "mmc33.net",
+#            "mmreality.cz",
+#            "mobilbahis.one",
+#            "mobilehomepartsstore.com",
+#            "mockable.io",
+#            "mof.gov.ua",
+#            "mogianahc.net",
+#            "mohitgoyal.co",
+#            "molloyhs.org",
+#            "mollyevelyphotography.com",
+#            "momentum.hu",
+#            "monaco-chicago.com",
+#            "monarch.tonic.to",
+#            "monkeyleague.io",
+#            "monogramcompany.com",
+#            "monsterinsights.com",
+#            "moonmagic.com",
+#            "moonwell.fi",
+#            "moralis.com",
+#            "morgandetoi.fr",
+#            "mosaicfoods.com",
+#            "moshensk.ru",
+#            "mosinform.ru",
+#            "motionarray.com",
+#            "motorola.com",
+#            "mots-croises.ch",
+#            "mountain-press.com",
+#            "mountainmoverz.com",
+#            "mouser.com",
+#            "mowasalat.com",
+#            "moz.com",
+#            "mrcutout.com",
+#            "mroyun.one",
+#            "mrpennarak.com",
+#            "msi.com",
+#            "msn.com",
+#            "msrgear.com",
+#            "msufcu.org",
+#            "mtalk.google.com",
+#            "mtfca.com",
+#            "mtvanhoevenberg.com",
+#            "mundoplus.tv",
+#            "murdermiletours.com",
+#            "mureandgrand.com",
+#            "mustangheritagefoundation.org",
+#            "musto.com",
+#            "mutebank.co.uk",
+#            "mvnrepository.com",
+#            "mvp189.net",
+#            "mxtoolbox.com",
+#            "my-netdata.io",
+#            "my.dogechain.info",
+#            "my.elementor.com",
+#            "my.nic.io",
+#            "my.yoast.com",
+#            "my918mega.com",
+#            "myaccountaccess.com",
+#            "mycloud.com",
+#            "myconsumers.org",
+#            "myeg.com.my",
+#            "myfamilymobile.com",
+#            "myfonts.com",
+#            "myget.org",
+#            "myiknowchurch.co.uk",
+#            "myip.com",
+#            "myip.nl",
+#            "myislandsubaru.com",
+#            "mykawartha.com",
+#            "mykyivregion.com.ua",
+#            "mymarcopolo.com",
+#            "mymavenrepo.com",
+#            "mymoinfo.com",
+#            "mypamperedlifeseattle.com",
+#            "mypanier.com",
+#            "mypersonaltrainerwebsite.com",
+#            "mysisterscloset.com",
+#            "mysynchrony.com",
+#            "myteamspeak.com",
+#            "mytoque.com"
+#          ],
+#          "note": "فهرست واردشده از DynX؛ پوشش خود دامنه و زیردامنه‌ها. قوانین اختصاصی سرویس‌های دیگر اولویت دارند. عملکرد تک‌تک دامنه‌ها روی رله آزمایش نشده است."
+#        },
+#        {
+#          "key": "n-s",
+#          "label": "N-S",
+#          "domains": [
+#            "nailberry.co.uk",
+#            "namecheap.co",
+#            "namshi.com",
+#            "nana-massage.net",
+#            "naniwatourist.jp",
+#            "nanobox.io",
+#            "nantlisfashion.com",
+#            "naomedical.com",
+#            "naplesplayers.org",
+#            "nativecos.com",
+#            "naturesbakery.com",
+#            "natureworldnews.com",
+#            "navigator.canceriq.com",
+#            "navy-staging.xboxservices.com",
+#            "navy.xboxservices.com",
+#            "navyblue-staging.xboxservices.com",
+#            "navyblue.xboxservices.com",
+#            "nbcuni.com",
+#            "nccaom.org",
+#            "nccwwh.com",
+#            "ncsbn.org",
+#            "ncus.int.monolith.experiences.xboxservices.com",
+#            "ncus.prod.monolith.experiences.xboxservices.com",
+#            "nebula-staging.xboxservices.com",
+#            "nebula.xboxservices.com",
+#            "neighborhoods.com",
+#            "nejm.org",
+#            "nemanet.org",
+#            "nemchuaotdo.com",
+#            "neon-staging.xboxservices.com",
+#            "neon.xboxservices.com",
+#            "neonmama.com",
+#            "nessus.org",
+#            "nestedbean.com",
+#            "nestjs.com",
+#            "nestlearning.com",
+#            "nestlingkids.com",
+#            "netacad.com",
+#            "netbeans.org",
+#            "netdata.cloud",
+#            "netdevgroup.com",
+#            "netdna-ssl.com",
+#            "netify.ai",
+#            "nettiauto.com",
+#            "neu.prod.monolith.experiences.xboxservices.com",
+#            "neustarlocaleze.biz",
+#            "neversummer.com",
+#            "new-line.com",
+#            "new10.com",
+#            "newbalance.eu",
+#            "newmastersounds.com",
+#            "newportvineyards.com",
+#            "news.pn",
+#            "newsitem.com",
+#            "newteachercenter.org",
+#            "newwavemagazine.com",
+#            "nextcomputers.org",
+#            "nextendweb.com",
+#            "nextgenmemorials.com",
+#            "nextlevelburger.com",
+#            "nexusductservice.com",
+#            "ngrok.com",
+#            "ngrok.io",
+#            "ngxpagespeed.com",
+#            "niceoo.com",
+#            "nicerx.com",
+#            "nicev2.placeit.net",
+#            "nichibei.org",
+#            "nigeriapropertycentre.com",
+#            "nightwatch.io",
+#            "nil.store",
+#            "ninjateam.org",
+#            "niod.com",
+#            "njgamblingsites.com",
+#            "nkh.gov.hu",
+#            "nl-casinozondercruks.com",
+#            "nmaam.org",
+#            "nmag.gov",
+#            "nnlightsbookheaven.com",
+#            "noc1.wordfence.com",
+#            "noc2.wordfence.com",
+#            "noc3.wordfence.com",
+#            "noc4.wordfence.com",
+#            "node-binaries.s3.amazonaws.com",
+#            "node.aapanel.com",
+#            "nodesource.com",
+#            "noirfootwear.com",
+#            "nomanssky.com",
+#            "noon.com",
+#            "nopixel.net",
+#            "nordicoil.de",
+#            "northmyrtlebeachtravel.com",
+#            "northumberlandnews.com",
+#            "norton.com",
+#            "notebooklm.google",
+#            "nothing.tech",
+#            "notifications.google.com",
+#            "notion.com",
+#            "nova24tv.si",
+#            "novalia.co.uk",
+#            "novininsta.com",
+#            "novipnoad.net",
+#            "nowpayments.io",
+#            "npg.org.uk",
+#            "npm.org",
+#            "nr-data.net",
+#            "nspower.ca",
+#            "nudieglow.com",
+#            "nuroco.com",
+#            "nursingce.com",
+#            "nuxtjs.org",
+#            "nvcr.io",
+#            "nvgtn.com",
+#            "nvidia-staging.xboxservices.com",
+#            "nvidia.co.uk",
+#            "nvidia.fr",
+#            "nvidia.xboxservices.com",
+#            "nvidiagrid.net",
+#            "nwvault.ign.com",
+#            "nxnews.net",
+#            "nxp.com",
+#            "nyac.org",
+#            "nykaafashion.com",
+#            "oauth.rankmath.com",
+#            "oauth2.com",
+#            "objectcache.pro",
+#            "ocalafl.gov",
+#            "oceanwp.org",
+#            "ochre-staging.xboxservices.com",
+#            "ochre.xboxservices.com",
+#            "ocsp.comodoca.com",
+#            "ocsp.digicert.com",
+#            "oddrun.ir",
+#            "odr.mookie1.com",
+#            "oetker.de",
+#            "office365.com",
+#            "offitkurman.com",
+#            "ogslb.com",
+#            "ohea.org",
+#            "ohneoasiscasino-main.com",
+#            "ojrq.net",
+#            "okcoin.com",
+#            "okd.io",
+#            "olark.com",
+#            "olesmoky.com",
+#            "olivemagazine.gr",
+#            "olivierlaudus.com",
+#            "olly.com",
+#            "om.fi",
+#            "omappapi.com",
+#            "omnilife.com",
+#            "omtrdc.net",
+#            "omusa.org",
+#            "on2url.com",
+#            "onbuy.com",
+#            "one.google.com",
+#            "onebid.pl",
+#            "oneblockdown.it",
+#            "onecondoms.com",
+#            "onedrive.com",
+#            "onehoneyboutique.com",
+#            "oneida-nsn.gov",
+#            "onesignal.com",
+#            "onesignal.net",
+#            "onetrust.com",
+#            "onfastspring.com",
+#            "online-fix.me",
+#            "online-sports-shop.co.uk",
+#            "onlinecuteshoes.com",
+#            "onlinesim.ru",
+#            "onpage.org",
+#            "opal-staging.xboxservices.com",
+#            "opal.xboxservices.com",
+#            "opedge.com",
+#            "open-vsx.org",
+#            "opencontainers.org",
+#            "opencv.org",
+#            "opendev.org",
+#            "openembedded.or",
+#            "openembedded.org",
+#            "opennebula.io",
+#            "openreview.net",
+#            "opensea.io",
+#            "openshift.com",
+#            "openssl.org",
+#            "openstreetmap.org",
+#            "openvpn.net",
+#            "openwrt.org",
+#            "openx.net",
+#            "opera-masada.com",
+#            "opower.com",
+#            "optus.com.au",
+#            "optusnet.com.au",
+#            "oraclecloud.com",
+#            "orange-staging.xboxservices.com",
+#            "orange.xboxservices.com",
+#            "orchid-staging.xboxservices.com",
+#            "orchid.xboxservices.com",
+#            "order.heapsoftware.com",
+#            "originalgrain.com",
+#            "orijen.ca",
+#            "oriondemo.solarwinds.com",
+#            "orleanshistoricalsociety.org",
+#            "orlebarbrown.com",
+#            "oroinc.com",
+#            "osde.com.ar",
+#            "ossec.net",
+#            "ostrovfantaziy.ru",
+#            "oteapi.webnic.cc",
+#            "ourmoneymarket.com",
+#            "outdoorworlddirect.co.uk",
+#            "outgo.com.br",
+#            "outlook.office365.com",
+#            "outofthewoods.com",
+#            "overboardcanada.ca",
+#            "oxxio.nl",
+#            "oxy.host",
+#            "oxygenbuilder.com",
+#            "oxygenetix.com",
+#            "oystatic.ignimgs.com",
+#            "oyster.ignimgs.com",
+#            "ozelkartepetuanakizyurdu.com",
+#            "ozstraps.com.au",
+#            "p3campus.com",
+#            "packagecloud.io",
+#            "packages-eu.bigbluebutton.org",
+#            "packages.translationspress.com",
+#            "packagist.com",
+#            "packer.edu",
+#            "paddle.com",
+#            "paessler.com",
+#            "pafijawatengah.org",
+#            "pagespeedonline.com",
+#            "pagodabox.io",
+#            "palladiumboots.fr",
+#            "palletsprojects.com",
+#            "palmangels.com",
+#            "paloaltonetworks.com",
+#            "pamelasproducts.com",
+#            "pamperedchef.biz",
+#            "pandasecurity.com",
+#            "pandawin7.com",
+#            "pandora.com",
+#            "panel.preyproject.com",
+#            "paper-hub.com",
+#            "paperpumpkin.com",
+#            "paperspace.com",
+#            "paradigmadigital.com",
+#            "parallel.life",
+#            "paranashop.com.br",
+#            "parceljs.org",
+#            "pari-match-in.com",
+#            "paribus.co",
+#            "parierenbelgique.be",
+#            "parkimeter.com",
+#            "parleecycles.com",
+#            "parthenonfoods.com",
+#            "partidoliberal.org.br",
+#            "partners.tremorhub.com",
+#            "partstown.com",
+#            "pasionaria.com.ar",
+#            "pasionrojagt.com",
+#            "paslaugos.lt",
+#            "passengermusic.com",
+#            "patches.wbgames.com",
+#            "patchi.com",
+#            "patogupirkti.lt",
+#            "patreon.com",
+#            "patrongrill.com",
+#            "paulmilnescycles.com",
+#            "pauwelsconsulting.com",
+#            "pawsomecouture.com",
+#            "pay.google.com",
+#            "paychex.com",
+#            "paydesk.co",
+#            "payettecounty.org",
+#            "payiw.com",
+#            "paymentexpert.com",
+#            "payments-staging.xboxservices.com",
+#            "payments.xboxservices.com",
+#            "paymentwall.com",
+#            "pbr.co.uk",
+#            "pcmedia.ign.com",
+#            "pdafans.com",
+#            "pdf2go.com",
+#            "pdinsurance.co.nz",
+#            "peaksandpedalsgear.com",
+#            "peaksrecovery.com",
+#            "pecherestaurant.com",
+#            "pedalclothing.co",
+#            "peelorange.com",
+#            "pelicans.fi",
+#            "pencarrie.com",
+#            "pendo.io",
+#            "penfield.org",
+#            "penguin.com",
+#            "pensionbee.com",
+#            "penza-gorod.ru",
+#            "peoplelooker.com",
+#            "peoplescaremedicalsupply.shop",
+#            "pepipost.com",
+#            "percona.com",
+#            "perfectloans24.com",
+#            "perfectmoney.com",
+#            "perfmatters.io",
+#            "periwinkle-staging.xboxservices.com",
+#            "periwinkle.xboxservices.com",
+#            "permitsearch.net",
+#            "pertaminafoundation.org",
+#            "perthairport.com.au",
+#            "peru-retail.com",
+#            "pes22-game.cs.konami.net",
+#            "petcube.com",
+#            "peterglenn.com",
+#            "petitpan.com",
+#            "petmeds.com",
+#            "pharmacyonline.foundation",
+#            "philcoulter.com",
+#            "philwood.com",
+#            "phlox.pro",
+#            "phlur.com",
+#            "phoebehealth.com",
+#            "photoroom.com",
+#            "picknweight.de",
+#            "pietzoomers.com",
+#            "piie.com",
+#            "pimwick.com",
+#            "pine-staging.xboxservices.com",
+#            "pine.xboxservices.com",
+#            "pingdom.com",
+#            "pink-staging.xboxservices.com",
+#            "pink.xboxservices.com",
+#            "pinkchicken.com",
+#            "pinkivyshoes.net",
+#            "pinup-casino-24.com",
+#            "pinup-giris-tr.com",
+#            "pipersfarm.com",
+#            "piquetea.com",
+#            "pitangui.amazon.com",
+#            "pitcrew.nz",
+#            "pivotcycles.com.au",
+#            "pkg.dev",
+#            "pkg.jenkins.io",
+#            "pki.goog",
+#            "pkkb.ac.id",
+#            "placeholder.com",
+#            "placeit.net",
+#            "placonference.org",
+#            "plaid-staging.xboxservices.com",
+#            "plaid.xboxservices.com",
+#            "planet.com",
+#            "planprescriber.com",
+#            "plantbasedonabudget.com",
+#            "plasticsconverters.eu",
+#            "platform9.com",
+#            "play.ht",
+#            "play.thewitcher.com",
+#            "playartifact.com",
+#            "playfab.com",
+#            "playfabapi.com",
+#            "playfabgateway-staging.xboxservices.com",
+#            "playfabgateway.xboxservices.com",
+#            "playground.com",
+#            "playmapscube.com",
+#            "playvalorant.com",
+#            "playvig.com",
+#            "plentyofbikes.com",
+#            "plesk.com",
+#            "plinko-apk.in",
+#            "plinko-online-italy.com",
+#            "plot.ly",
+#            "plotly.com",
+#            "plugin-downloads.elementor.com",
+#            "plugins.svn.wordpress.org",
+#            "plum-staging.xboxservices.com",
+#            "plum.xboxservices.com",
+#            "pluralsight.com",
+#            "pmo.gov.bb",
+#            "pnc.com",
+#            "podsights.com",
+#            "pogoplug.com",
+#            "point3gear.com",
+#            "pokemonmasters-game.com",
+#            "policyoverride-ppe.exp.xboxservices.com",
+#            "policyoverride.exp.xboxservices.com",
+#            "polkadot-staging.xboxservices.com",
+#            "polkadot.xboxservices.com",
+#            "polyfill.io",
+#            "polymaker.com",
+#            "pomerium.com",
+#            "poochandmutt.co.uk",
+#            "popcast88.com",
+#            "popfigures.com",
+#            "poppyandsageco.com",
+#            "popternative.com",
+#            "porsche-minvody.ru",
+#            "portal.2k.com",
+#            "portkeygamessupport.wbgames.com",
+#            "portworx.com",
+#            "posh.vip",
+#            "postalannex.com",
+#            "postman.co",
+#            "potatohead.co",
+#            "poundametre.com",
+#            "powerpackelements.com",
+#            "ppe.dynamicsigls.exp.xboxservices.com",
+#            "ppe.surfaces.ide.platform.xboxservices.com",
+#            "practicalperfectionut.com",
+#            "pravda.com.ua",
+#            "preciouscore.com",
+#            "premierbodyarmor.com",
+#            "premium-akadeule.de",
+#            "premium-hausarbeitschreiben.de",
+#            "prescateamwear.com",
+#            "presidentsalliance.org",
+#            "prestashop.com",
+#            "prezi.com",
+#            "pricebaba.com",
+#            "pridesband.com",
+#            "primeinc.org",
+#            "primopdf.com",
+#            "printzone.com.au",
+#            "privacyportal.onetrust.com",
+#            "proboards100.com",
+#            "probuilds.net",
+#            "prod.monolith.experiences.xboxservices.com",
+#            "producer.ai",
+#            "productionhub.com",
+#            "productmanagementcore.gamepass.xboxservices.com",
+#            "profitwell.com",
+#            "progearbikes.com.au",
+#            "programiz.com",
+#            "progulkipomoskve.ru",
+#            "projectals.org",
+#            "projectrebrief.com",
+#            "prokabaddi.com",
+#            "proofreadingservices.com",
+#            "propertycouncil.com.au",
+#            "proshop.nl",
+#            "proz.com",
+#            "prtl.pl",
+#            "ps3media.ign.com",
+#            "pscu.com",
+#            "pspl.com",
+#            "pspmedia.ign.com",
+#            "psthc.fr",
+#            "pstmn.io",
+#            "psychhub.com",
+#            "psyonix.com",
+#            "pub.dev",
+#            "pub.hostdns.top",
+#            "public.ecr.aws",
+#            "pubmatic.com",
+#            "puckhcky.com",
+#            "purchasecore-staging.xboxservices.com",
+#            "purchasecore.xboxservices.com",
+#            "pure-bike.co.uk",
+#            "purebread.ca",
+#            "pureparima.com",
+#            "puroclean.com",
+#            "purple-staging.xboxservices.com",
+#            "purple.xboxservices.com",
+#            "purplle.com",
+#            "pushbikes.co.nz",
+#            "pushbullet.com",
+#            "pushbulletusercontent.com",
+#            "pvp.net",
+#            "pwc.ca",
+#            "pxf.io",
+#            "pypa.io",
+#            "pyramidhill.org",
+#            "pyrex.eu",
+#            "pythonhosted.org",
+#            "pytorch.org",
+#            "pytorchlightning.ai",
+#            "qh88wt.com",
+#            "qodana.cloud",
+#            "quadlayers.com",
+#            "qualtrics.com",
+#            "quantockhills.com",
+#            "queens-br.com",
+#            "query.petametrics.com",
+#            "quic.cloud",
+#            "quicklane.com",
+#            "quicksprout.com",
+#            "quidax.io",
+#            "quietlight.com",
+#            "quillbot.com",
+#            "quilljs.com",
+#            "quokka.com",
+#            "quorum.us",
+#            "qvb.com.au",
+#            "r.cpanel.fleetssl.com",
+#            "r.mariadb.com",
+#            "rabbitmq.com",
+#            "radar.cedexis.com",
+#            "radiojavan.com",
+#            "radix-ui.com",
+#            "radk.ru",
+#            "radleychevrolet.com",
+#            "radpowerbikes.com",
+#            "radware.com",
+#            "railsclothing.com",
+#            "rainbowroom.com",
+#            "rallybound.com",
+#            "rangerup.com",
+#            "rankmath.com",
+#            "ransslot88n.com",
+#            "rapidapi.com",
+#            "rapidtables.com",
+#            "raq.org.au",
+#            "rarespecies.org",
+#            "rayrickburn.com",
+#            "rdale.org",
+#            "rdforum.org",
+#            "react-select.com",
+#            "reactnavigation.org",
+#            "readingglasses.com",
+#            "readtoto.org",
+#            "readywise.com",
+#            "realclearenergy.org",
+#            "realdildos.com",
+#            "reality.ai",
+#            "really-simple-ssl.com",
+#            "realpropertymgt.com",
+#            "realty.com",
+#            "rebornrags.co.uk",
+#            "recipe-diaries.com",
+#            "reclamefolder.nl",
+#            "recruitee.com",
+#            "red-gate.com",
+#            "red.com",
+#            "redaspenlove.com",
+#            "redboxtools.com",
+#            "redcliff-nsn.gov",
+#            "reddeadredemption.com",
+#            "redgold.com",
+#            "redhat.com",
+#            "redhat.io",
+#            "redirect.ign.com",
+#            "redis.com",
+#            "redis.io",
+#            "rediscoveredfamilies.com",
+#            "redkit.cdprojektred.com",
+#            "redux.io",
+#            "reduxframework.com",
+#            "regalresolutionteam.com",
+#            "registry.access.redhat.com",
+#            "registry.redhat.io",
+#            "regxa.com",
+#            "rehs.com",
+#            "reinsw.com.au",
+#            "reka.ai",
+#            "relatedargent.co.uk",
+#            "relativewave.com",
+#            "releases.rocket.chat",
+#            "reliablecorporation.com",
+#            "reload.getsentry.net",
+#            "reluctanttrading.com",
+#            "remini.ai",
+#            "remotedesktop.google.com",
+#            "remoteok.io",
+#            "remove.bg",
+#            "renovationreserve.com",
+#            "replicawatches.mx",
+#            "reply.io",
+#            "repo.alt.cloudlinux.com",
+#            "repo.cloudlinux.com",
+#            "repo.imunify360.cloudlinux.com",
+#            "repo.jetlicense.com",
+#            "repo.percona.com",
+#            "repo.the7.io",
+#            "repo.zabbix.com",
+#            "report.ml.youngjoygame.com",
+#            "repository.kreaturamedia.com",
+#            "republic.co",
+#            "rescompros.com",
+#            "rescuefrenchbulldogs.org",
+#            "research.google.com",
+#            "reservesupplycompany.com",
+#            "resmush.it",
+#            "resources.infosecinstitute.com",
+#            "rest.akismet.com",
+#            "retailmenot.com",
+#            "retroarch.com",
+#            "retrogamestar.com",
+#            "retrotainmentgames.com",
+#            "reuter.com",
+#            "revalidate.wbgames.com",
+#            "revenuquebec.ca",
+#            "revistaveredas.com.br",
+#            "revvity.com",
+#            "rewards.bing.com",
+#            "rgpub.io",
+#            "richmediagallery.com",
+#            "ricici.com",
+#            "rideoregonride.com",
+#            "ridgeandriver.com",
+#            "rigidhitch.com",
+#            "ringlead.com",
+#            "rinsekit.com",
+#            "riocokidswear.com",
+#            "riotcdn.com",
+#            "riotcdn.net",
+#            "riotgames.es",
+#            "riotgames.info",
+#            "risco.ro",
+#            "riversidehall.org",
+#            "rl-psy.net",
+#            "rlcdn.com",
+#            "rma-trmc.org",
+#            "rnc.org",
+#            "ro-verdecasyno.com",
+#            "robaxin.lol",
+#            "robertdyas.co.uk",
+#            "roboflow.com",
+#            "rockaway.com",
+#            "rocket.chat",
+#            "rocketcdn.me",
+#            "rockstar.com",
+#            "rockstaronline.com",
+#            "rocktape.com",
+#            "rockylinux.org",
+#            "rollbar.com",
+#            "romanlabel.com",
+#            "rompetrol.ro",
+#            "roofsquad.com",
+#            "rose-staging.xboxservices.com",
+#            "rose.xboxservices.com",
+#            "rosehosting.com",
+#            "rosieassoulin.com",
+#            "rothschildandco.com",
+#            "routeone.net",
+#            "rover.ebay.com",
+#            "rovio.com",
+#            "royaloffice.th",
+#            "royalroads.ca",
+#            "rpxcorp.com",
+#            "rsg.ms",
+#            "rsg.sc",
+#            "rstudio.com",
+#            "rtings.com",
+#            "rtm.com",
+#            "rubiconproject.com",
+#            "ruby-chen.com",
+#            "rubyscafe.com",
+#            "rumsonnj.gov",
+#            "run.app",
+#            "runi.ac.il",
+#            "runningfactory.com",
+#            "runtherock.com",
+#            "ruspowerman.ru",
+#            "russellathletic.com",
+#            "rxjs.dev",
+#            "ryanhoover.me",
+#            "ryte.com",
+#            "s.ign.com",
+#            "s.rsg.sc",
+#            "s0.softaculous.com",
+#            "s1.softaculous.com",
+#            "s2.softaculous.com",
+#            "s3-us-west-2.amazonaws.com",
+#            "s3.amazonaws.com",
+#            "s3.softaculous.com",
+#            "s3browser.com",
+#            "s3stores.com",
+#            "s4.softaculous.com",
+#            "s5.softaculous.com",
+#            "s6.softaculous.com",
+#            "s7.softaculous.com",
+#            "s8.softaculous.com",
+#            "sabrinascloset.com",
+#            "sactownmag.com",
+#            "sae.digital",
+#            "safaribooksonline.com",
+#            "safebrowsing.google.com",
+#            "saffron-staging.xboxservices.com",
+#            "saffron.xboxservices.com",
+#            "sahirajewelrydesign.com",
+#            "sailblogs.com",
+#            "sainly.com",
+#            "saintgeorgespreschool.com",
+#            "samacsys.com",
+#            "samsung.com",
+#            "sanctis.fr",
+#            "sandbox-wbapi.thesslstore.com",
+#            "sandbox.google.com",
+#            "sandisk.com",
+#            "sanity.io",
+#            "sanlorenzohawaii.com",
+#            "santafesprings.org",
+#            "santevia.com",
+#            "sapphire-staging.xboxservices.com",
+#            "sapphire.xboxservices.com",
+#            "sarawakjobs.com",
+#            "saudebusiness.com",
+#            "sausalito.gov",
+#            "savegyd.com",
+#            "sband.org",
+#            "sc-static.net",
+#            "scalefunder.com",
+#            "scene7.com",
+#            "schd.ws",
+#            "schreiber-netzwerk.eu",
+#            "schrodinger.com",
+#            "scienceblog.com",
+#            "scnylegislature.us",
+#            "scoompa.com",
+#            "scootle.edu.au",
+#            "scorebar.com",
+#            "scotsmart.com",
+#            "scottycameron.com",
+#            "scr4.co",
+#            "screendigest.com",
+#            "scribd.com",
+#            "scriptsbundle.com",
+#            "scus.int.monolith.experiences.xboxservices.com",
+#            "scus.prod.monolith.experiences.xboxservices.com",
+#            "sdkells.co.uk",
+#            "sdmo-info.ru",
+#            "sea-ny.com",
+#            "sea.ign.com",
+#            "seagate.com",
+#            "seancroxton.com",
+#            "searates.com",
+#            "search.exp.xboxservices.com",
+#            "searchaiplugin-staging.xboxservices.com",
+#            "searchaiplugin.xboxservices.com",
+#            "searchconsole.com",
+#            "searchgpt.com",
+#            "searchwp.com",
+#            "sears.com",
+#            "seatgeek.com",
+#            "seattlegoodwill.org",
+#            "seattlesbest.com",
+#            "secumd.org",
+#            "securedownloads.cpanel.net",
+#            "secureproductswiki.com",
+#            "securitytrails.com",
+#            "sega-dreamcast-info-games-preservation.com",
+#            "segashop.co.uk",
+#            "segment.com",
+#            "segment.io",
+#            "selver.ee",
+#            "semrush.com",
+#            "senat.pl",
+#            "sendinblue.com",
+#            "seniorly.com",
+#            "sentry-cdn.com",
+#            "seo-hacker.com",
+#            "seoab.io",
+#            "seopress.org",
+#            "seoptimer.com",
+#            "seoreviewtools.com",
+#            "sepia-staging.xboxservices.com",
+#            "sepia.xboxservices.com",
+#            "sequelquestpod.com",
+#            "serpent-shop.com",
+#            "server.arcgisonline.com",
+#            "server.softaculous.com",
+#            "serverpilot.io",
+#            "servicebus.windows.net",
+#            "services.google.com",
+#            "servingclks.com",
+#            "sesame.com",
+#            "sevalla.com",
+#            "seviercountytn.org",
+#            "sfaa.org",
+#            "sfdc.co",
+#            "sfvbj.com",
+#            "shadowserver.org",
+#            "shamansmarket.com",
+#            "shareappscrack.com",
+#            "sharepointdiary.com",
+#            "sharethrough.com",
+#            "shaw.ca",
+#            "shebazaar.com",
+#            "sheerid.com",
+#            "sheetmusicplus.com",
+#            "sheetsformarketers.com",
+#            "sheffieldforum.co.uk",
+#            "shefit.com",
+#            "shelfies.com",
+#            "shepherd.com",
+#            "shetlandtimes.co.uk",
+#            "shitthatiknit.com",
+#            "shoefad.com",
+#            "shoelace.com",
+#            "shoesfulcrum.com",
+#            "shoethebear.us",
+#            "shoetree.io",
+#            "shooos.ro",
+#            "shopapi.apigift.com",
+#            "shoparteresalynn.com",
+#            "shopdunkin.com",
+#            "shopenzer.com",
+#            "shoplazypants.com",
+#            "shoprollingloud.com",
+#            "shopsector.com",
+#            "shopstartingate.com",
+#            "shorte.st",
+#            "shortpixel.ai",
+#            "shortpixel.com",
+#            "showmecables.com",
+#            "shrimptoncouture.com",
+#            "shubhamdipt.com",
+#            "shudder.com",
+#            "shujinko.io",
+#            "siajewellery.com",
+#            "siftscience.com",
+#            "sightmachine.com",
+#            "signin-s.rsg.sc",
+#            "signup.playster.com",
+#            "silklaundry.com",
+#            "silver-staging.xboxservices.com",
+#            "silver.xboxservices.com",
+#            "similarweb.com",
+#            "simplemaps.com",
+#            "simplemodern.com",
+#            "simplyheadsets.com.au",
+#            "simyo.es",
+#            "sip-scootershop.com",
+#            "site.pro",
+#            "sitefinity.com",
+#            "siteground.com",
+#            "siteminder.com",
+#            "sites.google.com",
+#            "skandia.se",
+#            "sketchfab.com",
+#            "sketchup.com",
+#            "skillfulteaching.com",
+#            "skinpixel.co.uk",
+#            "skoah.com",
+#            "skoll.me",
+#            "skor.nl",
+#            "skrewballwhiskey.com",
+#            "skylink.cz",
+#            "skype.com",
+#            "sleepjunkies.com",
+#            "slidesgo.com",
+#            "sling.com",
+#            "slivoff.com",
+#            "slot777royal.com",
+#            "sloth.gr.jp",
+#            "smallseotools.com",
+#            "smalofts.co.uk",
+#            "smartadserver.com",
+#            "smartertools.com",
+#            "smartmobilityworld.net",
+#            "smartone-iptv.com",
+#            "smartrike.com",
+#            "smartsheet.com",
+#            "smashingmagazine.com",
+#            "smashinn.com",
+#            "smashtess.com",
+#            "smfgindiacredit.com",
+#            "smilebox.com",
+#            "smoothwall.com",
+#            "smtimes.ru",
+#            "smtp.pepipost.com",
+#            "smtp2go.com",
+#            "smushpro.wpmudev.org",
+#            "snl24.com",
+#            "snoozeeatery.com",
+#            "snort.org",
+#            "snowshoemtn.com",
+#            "socalhomebuyers.com",
+#            "soccermanager.com",
+#            "sociablelabs.com",
+#            "socialchain.app",
+#            "socialprintstudio.com",
+#            "softaculous.com",
+#            "softether-download.com",
+#            "softperfect.com",
+#            "sohohouseny.com",
+#            "solarwinds.com",
+#            "solecentral.com.au",
+#            "solid.preyproject.com",
+#            "solinftec.com",
+#            "solocal.com",
+#            "soloyal.co",
+#            "sony.com",
+#            "sony.net",
+#            "soosi.co.in",
+#            "sootthaengball.com",
+#            "sophos.com",
+#            "sora.com",
+#            "souman.nl",
+#            "soundcore.com",
+#            "sourceforge.net",
+#            "sourcegraph.com",
+#            "southelgin.com",
+#            "southernlabware.com",
+#            "southpark.cc.com",
+#            "spar.hr",
+#            "sparbote.de",
+#            "spark.ru",
+#            "specialist.canceriq.com",
+#            "specsavers.com",
+#            "spectrumlaserlights.com",
+#            "speedtest.tele2.net",
+#            "spelamedspelpaus.org",
+#            "spicekitchenuk.com",
+#            "spigotmc.org",
+#            "spikes.studio",
+#            "split.io",
+#            "sportmaster.dk",
+#            "spoti.fi",
+#            "spotifycdn.com",
+#            "spplus.com",
+#            "springnaturalkitchen.com",
+#            "springstepshoes.com",
+#            "springwise.com",
+#            "square.site",
+#            "squarespace.com",
+#            "sslshopper.com",
+#            "sspx.org",
+#            "stable.api.dartpad.dev",
+#            "stackshare.io",
+#            "starsandtarot.com",
+#            "starwars.com",
+#            "stateline.org",
+#            "staticnails.com",
+#            "stats.wp.com",
+#            "statuspage.io",
+#            "stb.ua",
+#            "stealth.com",
+#            "steam-api.com",
+#            "steam-chat.com",
+#            "steam.tv",
+#            "steamgames.com",
+#            "steamserver.net",
+#            "steamstat.us",
+#            "steamunlocked.net",
+#            "steamusercontent.com",
+#            "steroidesafe.com",
+#            "sthb.ac.id",
+#            "stjosephmuseum.org",
+#            "stoegerindustries.com",
+#            "storage.com",
+#            "store.cpanel.net",
+#            "store.theplusaddons.com",
+#            "strava.com",
+#            "straw.page",
+#            "strengthwarehouseusa.com",
+#            "stringnthread.com",
+#            "stripe.network",
+#            "strongloop.com",
+#            "stroybaza-new.ru",
+#            "studiooneeightynine.com",
+#            "stylishtop.com.au",
+#            "stytch.com",
+#            "styxworld.com",
+#            "sugarrush-demotr.com",
+#            "suitechild.com",
+#            "suitedash.com",
+#            "sujajuice.com",
+#            "sultangames.com",
+#            "sundaynews.co.zw",
+#            "sundayswagger.com",
+#            "sundried.com",
+#            "sunlightmtn.com",
+#            "sunnytoo.com",
+#            "suntancity.com",
+#            "suny.edu",
+#            "superdry.com",
+#            "superpro.com.au",
+#            "supplychain.mariadb.com",
+#            "supplychaindigital.com",
+#            "supplyhouse.com",
+#            "support.brainstormforce.com",
+#            "support.cdprojektred.com",
+#            "support.wbgames.com",
+#            "surfaces.ppe.ide.platform.xboxservices.com",
+#            "surfaces.test.ide.platform.xboxservices.com",
+#            "suricata.io",
+#            "surveyjunkie.com",
+#            "sv368.consulting",
+#            "svgsprit.es",
+#            "sw-soft.com",
+#            "sw-themes.com",
+#            "swagger.io",
+#            "swiftbook.io",
+#            "swiftype.com",
+#            "swisslife.fr",
+#            "switch.co",
+#            "sycamore-staging.xboxservices.com",
+#            "sycamore.xboxservices.com",
+#            "synergyse.com",
+#            "sysdig.com",
+#            "sysinternals.com"
+#          ],
+#          "note": "فهرست واردشده از DynX؛ پوشش خود دامنه و زیردامنه‌ها. قوانین اختصاصی سرویس‌های دیگر اولویت دارند. عملکرد تک‌تک دامنه‌ها روی رله آزمایش نشده است."
+#        },
+#        {
+#          "key": "t-z",
+#          "label": "T-Z",
+#          "domains": [
+#            "tableau.com",
+#            "tablesgenerator.com",
+#            "tabnine.com",
+#            "takoutny.com",
+#            "talaera.com",
+#            "talesoftavern.com",
+#            "talosintelligence.com",
+#            "tamankawan.site",
+#            "tanzu.io",
+#            "tappara.fi",
+#            "tarbut.edu.mx",
+#            "target.com",
+#            "tartepink.com",
+#            "taskrabbit.com",
+#            "tatasteel.com",
+#            "tdbank.com",
+#            "teamspeak.com",
+#            "teamvvv.com",
+#            "teapigs.co.uk",
+#            "techspot.com",
+#            "techtarget.com",
+#            "techvibes.com",
+#            "techwatch.co.uk",
+#            "tecmint.com",
+#            "teconce.com",
+#            "teefashionstar.com",
+#            "teemill.com",
+#            "teeoff.com",
+#            "teespring.com",
+#            "teez.in",
+#            "tele2.net",
+#            "telestax.com",
+#            "telummedia.com",
+#            "temeculablogs.com",
+#            "templatemag.com",
+#            "tenable.com",
+#            "tennis-point.nl",
+#            "tennispro.eu",
+#            "terrafootwear.ca",
+#            "territoryfoods.com",
+#            "test-prod.xboxservices.com",
+#            "test-staging.xboxservices.com",
+#            "test.beshkon.ir",
+#            "test.gamingai.ppe.exp.xboxservices.com",
+#            "test.library.exp.xboxservices.com",
+#            "test.monolith.experiences.xboxservices.com",
+#            "test.portalfrontend.gamepass.xboxservices.com",
+#            "test.productmanagementcore.gamepass.xboxservices.com",
+#            "test.search.exp.xboxservices.com",
+#            "test.xai.xboxservices.com",
+#            "testbericht.de",
+#            "texashillcountryoliveco.com",
+#            "thaiwatsadu.com",
+#            "thatconference.com",
+#            "the7.io",
+#            "thebabysroom.co",
+#            "thebigdomain.com",
+#            "theboxsf.com",
+#            "thebrunswicknews.com",
+#            "thecheesegeek.com",
+#            "theclashify.com",
+#            "thecliffbarbados.com",
+#            "thefabricator.com",
+#            "thefork.nl",
+#            "thehawaiistore.com",
+#            "thehealthyfoodie.com",
+#            "thehendersonnews.com",
+#            "thehour.com",
+#            "thehouseoflrc.com",
+#            "theinstituteforaddictionstudy.org",
+#            "thejnotes.com",
+#            "theme-fusion.com",
+#            "theme.net.cn",
+#            "themeisle.com",
+#            "themepixels.me",
+#            "themexriver.com",
+#            "themoviedb.org",
+#            "thenewcraftmaker.com",
+#            "thenorthface.de",
+#            "thepharmakonllc.com",
+#            "thepitchkc.com",
+#            "thepixelfarm.co.uk",
+#            "theplatform.com",
+#            "theraband.com",
+#            "theraggedpriest.com",
+#            "theseed.ca",
+#            "thesiskiss.com",
+#            "thestateless.com",
+#            "thestationerystudio.com",
+#            "thetouchx.com",
+#            "theweddingofmydreams.co.uk",
+#            "thewitcher.com",
+#            "thig.com",
+#            "thimpress.com",
+#            "thingworx.com",
+#            "thinkib.net",
+#            "thinkwithgoogle.com",
+#            "this.ne.jp",
+#            "thisibelieve.org",
+#            "thmarinesupplies.com",
+#            "thrombosisadviser.com",
+#            "thuisschoonmaken.nl",
+#            "thwack.solarwinds.com",
+#            "tiara.com.sg",
+#            "ticketland.ru",
+#            "tidelift.com",
+#            "tielabs.com",
+#            "tigren.com",
+#            "tilecloud.com.au",
+#            "time.google.com",
+#            "timedoctor.com",
+#            "timer-tab.com",
+#            "tinify.com",
+#            "tinkerbell.org",
+#            "tinyurl.com",
+#            "titleist.co.uk",
+#            "tk88.rodeo",
+#            "tkt.ge",
+#            "tnedi.me",
+#            "tobewornagain.com",
+#            "toccotoscano.com",
+#            "tokei365.org",
+#            "tomboyx.com",
+#            "tomtom.com",
+#            "tonercity.com.au",
+#            "toolbox.com",
+#            "tools.google.com",
+#            "toolswarehouse.com.au",
+#            "top-australian-casinos.com",
+#            "topaz-staging.xboxservices.com",
+#            "topaz.xboxservices.com",
+#            "topclassactions.com",
+#            "topdoek.nl",
+#            "topeleven.com",
+#            "toptal.com",
+#            "torrentz2.eu",
+#            "totalbattle.com",
+#            "totalmerchantservices.com",
+#            "totohot.net",
+#            "towardsdatascience.com",
+#            "townofdeweybeach.com",
+#            "toy-people.com",
+#            "toys2discover.com",
+#            "toysforbigboys.com",
+#            "toyshine.in",
+#            "tp.tax.gov.ir",
+#            "tp.wpml.org",
+#            "tr-pin-up-casino.com",
+#            "track.customer.io",
+#            "tracktik.com",
+#            "tradera.se",
+#            "trae.ai",
+#            "trailcampro.com",
+#            "trainline.eu",
+#            "translate.wordpress.org",
+#            "traversbikes.com",
+#            "travis-ci.com",
+#            "travis-ci.org",
+#            "treatments.cf",
+#            "treesofantiquity.com",
+#            "trellocdn.com",
+#            "tribunedelyon.fr",
+#            "tribuneindia.com",
+#            "tricksinfo.net",
+#            "trifield.com",
+#            "trinket-vendor-assets.trinket.io",
+#            "trotters.co.uk",
+#            "trubrain.com",
+#            "true-vfx.xyz",
+#            "truelicense.java.net",
+#            "truenas.com",
+#            "trueos.org",
+#            "trufflesuite.com",
+#            "truste.com",
+#            "trustnodes.com",
+#            "trycaviar.com",
+#            "tryhackme.com",
+#            "tryruby.org",
+#            "ts.nopixel.net",
+#            "tstindustries.com",
+#            "ttgtmedia.com",
+#            "ttsdschools.org",
+#            "turner.com",
+#            "tutorialspoint.com",
+#            "tv-static.net",
+#            "tvcdn.de",
+#            "twilio.com",
+#            "twimg.com",
+#            "twinbrooksgardens.com",
+#            "twistintwirlintutus.com",
+#            "twohandspaperie.com",
+#            "type.com",
+#            "typekit.com",
+#            "typekit.net",
+#            "typoci.com",
+#            "ubaenseimpressos.com.br",
+#            "uber.com",
+#            "ubereats.com",
+#            "ubisoft-staging.xboxservices.com",
+#            "ubisoft.connect.com",
+#            "ubisoft.xboxservices.com",
+#            "ubuntu.bigbluebutton.org",
+#            "ubuntu.com",
+#            "ucha.se",
+#            "uk.ign.com",
+#            "ukrweekly.com",
+#            "uks.prod.monolith.experiences.xboxservices.com",
+#            "ultralytics.com",
+#            "umamimart.com",
+#            "umber-staging.xboxservices.com",
+#            "umber.xboxservices.com",
+#            "undelucram.ro",
+#            "undergroundlighting.com",
+#            "underlords.com",
+#            "unex-tech.com",
+#            "unicureindia.com",
+#            "unionbay.com",
+#            "uniquesmokeshop.com",
+#            "uniquindio.edu.co",
+#            "unlimited-elements.com",
+#            "unltd.ca",
+#            "unothegateway.com",
+#            "unpkg.com",
+#            "unrealtournament.com",
+#            "up.edu.br",
+#            "upd.merkulov.design",
+#            "update.site.pro",
+#            "update.yithemes.com",
+#            "updates.theme-fusion.com",
+#            "updates.themepunch-ext-a.tools",
+#            "updates.themepunch-ext-b.tools",
+#            "updates.themepunch-ext-c.tools",
+#            "updates.themepunch.tools",
+#            "updates.wpbakery.com",
+#            "uplay.com",
+#            "uplynk.com",
+#            "upstate.edu",
+#            "urbandictionary.store",
+#            "urbangalaxyonline.com",
+#            "urm.lt",
+#            "usa.visa.com",
+#            "usa10.tavanahost.com",
+#            "usaa.com",
+#            "usakilts.com",
+#            "usalocator.org",
+#            "usbank.com",
+#            "usbank.visabuxx.com",
+#            "usbankconnect.com",
+#            "usbankfocus.com",
+#            "usbankgomobile.com",
+#            "usbconvenientcash.com",
+#            "usbgear.com",
+#            "uscareerinstitute.edu",
+#            "useblackbox.io",
+#            "usercentrics.eu",
+#            "usertesting.com",
+#            "usharbors.com",
+#            "usserviceanimals.org",
+#            "utahskigear.com",
+#            "utrum.io",
+#            "uxcam.com",
+#            "v0.dev",
+#            "valve.net",
+#            "vapehongkong.com",
+#            "vapo.co.nz",
+#            "vapor.com",
+#            "vaporboss.com",
+#            "vastrachowk.com",
+#            "vatvostudio.vn",
+#            "vaultproject.io",
+#            "vchapmanstudio.com",
+#            "vendecommerce.com",
+#            "venezianocoffee.com.au",
+#            "veracityglobal.com",
+#            "verdecasinos-hu.com",
+#            "verdemente.com",
+#            "verify.cpanel.net",
+#            "veritas.com",
+#            "verkkokauppa.com",
+#            "vermilion-staging.xboxservices.com",
+#            "vermilion.xboxservices.com",
+#            "verwarminghandel.nl",
+#            "vestacp.com",
+#            "veteranownedbusiness.com",
+#            "via.placeholder.com",
+#            "victoriametrics.com",
+#            "vidyard.com",
+#            "viedeparents.ca",
+#            "vikingdirect.ie",
+#            "vince.com",
+#            "vinegarsyndrome.com",
+#            "vinesse.com",
+#            "vinfast.vn",
+#            "vinos.de",
+#            "violet-staging.xboxservices.com",
+#            "violet.xboxservices.com",
+#            "viridianweapontech.com",
+#            "virtual-strategy.com",
+#            "virtualizor.com",
+#            "virtualmin.com",
+#            "virtus.com",
+#            "virtustream.com",
+#            "virustotal.com",
+#            "visa.com",
+#            "visa.de",
+#            "visamiddleeast.com",
+#            "visionlab.es",
+#            "visitcalaveras.org",
+#            "visitcripplecreek.com",
+#            "visitvenezia.eu",
+#            "visser.com.au",
+#            "vistaprint.nl",
+#            "visualping.io",
+#            "visualstudio.com",
+#            "visualwebsiteoptimizer.com",
+#            "vivrelejapon.com",
+#            "vjs.zencdn.net",
+#            "vjudge.net",
+#            "vonage.co.uk",
+#            "vonvon.me",
+#            "vorticwatches.com",
+#            "vscode-unpkg.net",
+#            "vsd.lt",
+#            "vtwonen.nl",
+#            "vue.com",
+#            "vuemastery.com",
+#            "vulkanvegascasinospiele.com",
+#            "vultr.com",
+#            "vyos.io",
+#            "vysor.io",
+#            "vystarcu.org",
+#            "wakatime.com",
+#            "walkerscelticjewelry.com",
+#            "wallet.google.com",
+#            "wallpaperget.com",
+#            "walnut.xboxservices.com",
+#            "wandb.ai",
+#            "wanderingbearcoffee.com",
+#            "warmrooms.co.uk",
+#            "warnerbros.com",
+#            "warnerbrosgames.com",
+#            "washtimes.com",
+#            "watchaser.com",
+#            "watches.com",
+#            "wattstowers.org",
+#            "waze.com",
+#            "wb.com",
+#            "wbc247-kor.com",
+#            "wbgames.com",
+#            "wbplay.com",
+#            "wd.com",
+#            "wdc.com",
+#            "wdtvlive.com",
+#            "weareams.com",
+#            "web-analytics.engagio.com",
+#            "webcatalog.app",
+#            "webcatalog.io",
+#            "webdesign.org",
+#            "webershandwick.co.uk",
+#            "webex.com",
+#            "webm2.dk",
+#            "webmin.com",
+#            "webnus.net",
+#            "webpay.bahamta.com",
+#            "webrtc.org",
+#            "websitedemos.net",
+#            "websiteforstudents.com",
+#            "webulk.bio",
+#            "wegift.io",
+#            "welaunch.io",
+#            "wells.pt",
+#            "westchestermagazine.com",
+#            "westerndigital.com",
+#            "westernsoul.com",
+#            "westus3.xboxservices.com",
+#            "weu.prod.monolith.experiences.xboxservices.com",
+#            "weui.io",
+#            "whileshesleeps.com",
+#            "white-staging.xboxservices.com",
+#            "white.xboxservices.com",
+#            "whiteflowerfarm.com",
+#            "whmcs.deploymentcode.com",
+#            "whmcsglobalservices.com",
+#            "whollygenes.com",
+#            "widgets.ign.com",
+#            "widyatama.ac.id",
+#            "wiimmfi.de",
+#            "wildhornoutfitters.com",
+#            "wildminimalist.com",
+#            "wildone.com",
+#            "williamsondailynews.com",
+#            "willowbayaustralia.com",
+#            "wilsonsautobody.com",
+#            "wincher.com",
+#            "windows.com",
+#            "wine-staging.xboxservices.com",
+#            "wine.xboxservices.com",
+#            "wineindustryinsight.com",
+#            "wininformant.com",
+#            "winnerssportswear.com",
+#            "wirelessmedia.ign.com",
+#            "wiroos.com",
+#            "witcher3.cdprojektred.com",
+#            "wix.com",
+#            "wizardingworld.com",
+#            "wiztopic.com",
+#            "wndygc.com",
+#            "womaness.com",
+#            "womenscyberjutsu.org",
+#            "womensecret.mx",
+#            "womentechmakers.com",
+#            "woocomerce.com",
+#            "woocommerce.com",
+#            "woodmart.xtemos.com",
+#            "woodturner.org",
+#            "woosignal.com",
+#            "wopilo.com",
+#            "wopsterscloset.com",
+#            "wordfence.com",
+#            "wordpress.org",
+#            "wordtune.com",
+#            "workboatshow.com",
+#            "workoutforless.co.uk",
+#            "workspace.google.com",
+#            "worldometers.info",
+#            "worldsfamousphotos.com",
+#            "worthavegroup.com",
+#            "wowhead.com",
+#            "wowtv.de",
+#            "wowza.com",
+#            "wp-rocket.me",
+#            "wp-statistics.com",
+#            "wp-toolkit.plesk.com",
+#            "wp.com",
+#            "wpall.club",
+#            "wpapi.quic.cloud",
+#            "wpbakery.com",
+#            "wpforms.com",
+#            "wpmailsmtp.com",
+#            "wpmet.com",
+#            "wpml.org",
+#            "wpmudev.com",
+#            "wpmudev.org",
+#            "wpsheeteditor.com",
+#            "wrappixel.com",
+#            "wtaps.com",
+#            "wtfismyip.com",
+#            "wuppertal-total.de",
+#            "wus3.int.monolith.experiences.xboxservices.com",
+#            "wus3.test.monolith.experiences.xboxservices.com",
+#            "www.a.softaculous.com",
+#            "www.api.softaculous.com",
+#            "www.api.virtualizor.com",
+#            "www.arpriceplugin.com",
+#            "www.bigbluebutton.org",
+#            "www.bitgo.uk",
+#            "www.com",
+#            "www.directadmin.com",
+#            "www.exactmetrics.com",
+#            "www.files.virtualizor.com",
+#            "www.gt",
+#            "www.ign.com",
+#            "www.ilghera.com",
+#            "www.jetpack.com",
+#            "www.licenses.softaculous.com",
+#            "www.nic.pa",
+#            "www.onesignal.com",
+#            "www.rtl-theme.com",
+#            "www.s1.softaculous.com",
+#            "www.s2.softaculous.com",
+#            "www.s3.softaculous.com",
+#            "www.s4.softaculous.com",
+#            "www.s5.softaculous.com",
+#            "www.s6.softaculous.com",
+#            "www.s7.softaculous.com",
+#            "www.server.softaculous.com",
+#            "www.softaculous.com",
+#            "www.sunnytoo.com",
+#            "www.teamspeak.com",
+#            "www.virtualizor.com",
+#            "www.warnerbrosgames.com",
+#            "www.wbgames.com",
+#            "www.wonderplugin.com",
+#            "www.wordfence.com",
+#            "www.yoa.st",
+#            "www.yoast.com",
+#            "wyomingwhiskey.com",
+#            "xai.xboxservices.com",
+#            "xbox.ipv6.microsoft.com",
+#            "xbox360media.ign.com",
+#            "xboxlive.xbox",
+#            "xboxrewards-staging.xboxservices.com",
+#            "xboxrewards.xboxservices.com",
+#            "xboxservices.com",
+#            "xchair.com",
+#            "xcrenos.exp.xboxservices.com",
+#            "xdsbikeco.com",
+#            "xero.com",
+#            "xiaomi.com",
+#            "xip.io",
+#            "xkcd.com",
+#            "xkms.xbolive.com",
+#            "xn---116-93d3ap.xn--p1ai",
+#            "xn--4dbcyzi5a.com",
+#            "xn--80abmambabkk3avmbjkc2qrc.xn--p1ai",
+#            "xn--megsb-l11b.com",
+#            "xoobe.platform.xboxservices.com",
+#            "xpostands.com",
+#            "xt.com",
+#            "xtrafondos.com",
+#            "yachew.com",
+#            "yaiskitchen.com",
+#            "yajrabox.com",
+#            "yale.edu",
+#            "yalwa.nl",
+#            "yandex.com",
+#            "yapily.com",
+#            "yccteam.com",
+#            "yde.co.za",
+#            "yellow-staging.xboxservices.com",
+#            "yellow.xboxservices.com",
+#            "yellowbustours.com",
+#            "yithemes.com",
+#            "ymcahonolulu.org",
+#            "yoa.st",
+#            "yoast.com",
+#            "yodayo.com",
+#            "yorkregion.com",
+#            "yougetsignal.com",
+#            "youidraw.com",
+#            "youngwriters.co.uk",
+#            "yourprimer.com",
+#            "yoursurprise.nl",
+#            "yourthreads.co",
+#            "ypsitownship.org",
+#            "yslbeauty.ca",
+#            "ytelegram.com",
+#            "ytpara.com",
+#            "yunnankitchen.com",
+#            "yutasan.co",
+#            "za.net",
+#            "zabars.com",
+#            "zabbix.com",
+#            "zaffre-staging.xboxservices.com",
+#            "zaffre.xboxservices.com",
+#            "zakaz-buketa.ru",
+#            "zamimg.com",
+#            "zapier.com",
+#            "zbirna.com",
+#            "zblcdj.com",
+#            "zed.run",
+#            "zenarmor.com",
+#            "zenbivy.com",
+#            "zend.com",
+#            "zendesk.com",
+#            "zenpayroll.com",
+#            "zeroflux.org",
+#            "zestyio.com",
+#            "zetcasino.com",
+#            "zigzagdigital.com",
+#            "zilvia.net",
+#            "zingtree.com",
+#            "zispa.co.zw",
+#            "zktecousa.com",
+#            "znanylekarz.pl",
+#            "zoho.com",
+#            "zooplus.se",
+#            "zxing.org",
+#            "zzhrx.com"
+#          ],
+#          "note": "فهرست واردشده از DynX؛ پوشش خود دامنه و زیردامنه‌ها. قوانین اختصاصی سرویس‌های دیگر اولویت دارند. عملکرد تک‌تک دامنه‌ها روی رله آزمایش نشده است."
 #        }
 #      ]
 #    }

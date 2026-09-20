@@ -32,7 +32,7 @@ UI assets and fonts are embedded in the installer; the panels do not depend on a
 
 ## Services and templates
 
-The current catalogue contains **122 service entries and 1755 domain entries**.
+The current catalogue contains **123 service entries and 6808 domain entries**.
 The September 16 expansion adds 49 service entries and 1188 domains while keeping existing
 service and group identifiers intact.
 
@@ -184,3 +184,14 @@ Report bugs in [DNS Issues](https://github.com/DevURANIUM/DNS/issues), including
 The code is distributed under the [MIT License](LICENSE). Vazirmatn is distributed separately under the [SIL Open Font License](assets/ui/OFL.txt). Issues and pull requests belong in [DevURANIUM/DNS](https://github.com/DevURANIUM/DNS).
 
 Thanks to previous contributors, including [Armin Toranj](https://github.com/arminandtoo).
+
+
+## DynX — 2026-09-21
+
+Imported all 5470 unique domain names from the three user-selected DynX lists;
+5053 were new and 417 already existed. Original downloads are retained in
+`domains/sources/dynx/`; [import report](domains/sources/dynx-import.json).
+Nginx map files were parsed as data, not installed as executable configuration.
+Existing opt-in exceptions retain their behavior. Custom templates must enable
+the new DynX groups explicitly; the full default template includes ordinary new domains.
+These third-party lists have not been independently verified for ownership or connectivity.
