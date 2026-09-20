@@ -38,7 +38,7 @@ STAMP="$(date +%Y%m%d-%H%M%S)"
 # What this file is. Written to the machine once an install finishes, so the
 # next run can tell whether it is an upgrade, a re-run, or somebody about to
 # put an older version over a newer one by accident.
-VERSION="0.3.24"
+VERSION="0.3.25"
 
 # What this install did, so uninstall can undo exactly that and nothing more.
 # Without it, removal would be guesswork: whether dnsmasq was ours or already
@@ -789,7 +789,8 @@ if [ "$ROLE" = relay ]; then
         printf 'cache-size=10000\ndomain-needed\nbogus-priv\nno-hosts\n'
         printf 'bind-interfaces\nlisten-address=127.0.0.1,%s\n\n' "$RELAY_IP"
         printf '# domains answered with this relay, so the traffic leaves via the exit\n'
-        payload DOMAINS | while read -r d; do
+        payload DOMAINS | while IFS= read -r d; do
+            d="$(printf '%s' "$d" | tr -d '\r' | sed 's/#.*//;s/^[[:space:]]*//;s/[[:space:]]*$//')"
             [ -n "$d" ] && printf 'address=/%s/%s\n' "$d" "$RELAY_IP"
         done
     } > "$tmp"
@@ -1326,10 +1327,22 @@ check "nginx running" "$(systemctl is-active nginx)" active
 if [ "$ROLE" = relay ]; then
     check "dnsmasq running" "$(systemctl is-active dnsmasq)" active
     check "coturn running"  "$(systemctl is-active coturn)"  active
+    if ! systemctl is-active --quiet dnsmasq; then
+        warn "dnsmasq failed; configuration and service diagnostics follow:"
+        dnsmasq --test -C /etc/dnsmasq.conf 2>&1 || true
+        systemctl status dnsmasq --no-pager -l 2>&1 || true
+        journalctl -u dnsmasq -n 35 --no-pager 2>&1 || true
+        ss -luntp 'sport = :53' 2>&1 || true
+    fi
     check "a routed domain resolves to this relay" \
           "$(dig +short +time=3 @127.0.0.1 github.com A 2>/dev/null | tail -1)" "$RELAY_IP"
-    check "no IPv6 answers leak around the relay" \
-          "$(dig +short +time=3 @127.0.0.1 github.com AAAA 2>/dev/null | grep -c ':' || true)" "0"
+    if aaaa_answer="$(dig +time=3 +tries=1 +noall +comments +answer @127.0.0.1 github.com AAAA 2>&1)" &&
+       printf '%s\n' "$aaaa_answer" | grep -q 'status: NOERROR'; then
+        check "no IPv6 answers leak around the relay" \
+              "$(printf '%s\n' "$aaaa_answer" | awk '$4 == "AAAA" { n++ } END { print n+0 }')" "0"
+    else
+        check "AAAA query succeeded (IPv6 check unavailable)" "DNS query failed" "success"
+    fi
     # Two things, not one. A domain we do not route has to answer, and has to
     # answer with somebody else's address. Counting its records was wrong:
     # example.com has more than one, and how many is not ours to assert.
