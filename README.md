@@ -195,3 +195,26 @@ Nginx map files were parsed as data, not installed as executable configuration.
 Existing opt-in exceptions retain their behavior. Custom templates must enable
 the new DynX groups explicitly; the full default template includes ordinary new domains.
 These third-party lists have not been independently verified for ownership or connectivity.
+
+
+## IP registration API
+
+Update the exit and relay to 0.3.28 or later. In the user panel, expand the API key
+section and confirm your account password to generate or revoke a key. Generating
+a key replaces the previous one. Save the key immediately; it is shown only once.
+Only a SHA-256 digest is stored. Deleting the user also deletes their key.
+
+```sh
+curl --fail-with-body -X POST 'https://dns.azrael.cfd:8443/ip' \
+  -H 'Authorization: Bearer YOUR_KEY' \
+  --data-urlencode 'ip=YOUR_PUBLIC_IPV4'
+```
+
+Use your relay hostname. POST form encoding is required. Do not put keys in URLs.
+The curl `--key` option is for TLS client certificates, not this API.
+A successful response is JSON with `ok: true` and `ip`; propagation takes up to
+30 seconds. The request replaces the account's previous IP and does not activate
+or extend its plan. Private, loopback, multicast and IPv6 addresses are rejected.
+HTTP errors: 400 invalid IP, 401 invalid/revoked key, 403 suspended account,
+409 IP owned by another user, 429 rate limit (10 valid-key requests/minute),
+503 exit unavailable. The key grants IP registration only, not account management.

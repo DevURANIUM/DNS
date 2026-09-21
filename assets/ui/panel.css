@@ -78,3 +78,5 @@ body.customer,body.admin-panel,body.admin-login{font-family:Vazirmatn,Tahoma,san
 .toolbar select{appearance:none;-webkit-appearance:none;direction:rtl;text-align:right;min-width:180px;width:auto;max-width:100%;padding:10px 14px 10px 42px;min-height:48px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%239ca8c6' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-position:14px center;background-repeat:no-repeat}
 .account-link{display:block;font-size:12px;margin-top:8px}.account-editor{max-width:650px}.account-editor label{display:block;margin-top:16px}.account-editor input:not([type=hidden]){display:block;width:100%;margin:8px 0 16px}.account-editor hr{border:0;border-top:1px solid var(--line);margin:32px 0}
 @media(forced-colors:active){.toolbar select{appearance:auto;background-image:none}}
+
+.api-example{white-space:pre-wrap;overflow-wrap:anywhere;text-align:left;padding:16px;background:var(--inset);border:1px solid var(--line);border-radius:10px;font-family:JetBrainsMono,monospace}

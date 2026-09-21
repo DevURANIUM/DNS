@@ -22,6 +22,7 @@ no pip step.
 """
 
 import base64
+import ipaddress
 import hashlib
 import hmac
 import html
@@ -595,6 +596,14 @@ def relax_telegram_id(db, path):
         raise RuntimeError("migration left %d dangling references - the "
                            "database before it is at %s" % (len(broken), backup))
 
+
+SCHEMA += """
+CREATE TABLE IF NOT EXISTS user_api_keys (
+ user_id INTEGER PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE,
+ digest TEXT NOT NULL UNIQUE,
+ created_at TEXT NOT NULL
+);
+"""
 
 class Store:
     """All database access, with one lock around it.
@@ -1409,6 +1418,10 @@ class API(http.server.BaseHTTPRequestHandler):
                                     })
 
         # ---- user panel, served by the relay on the customer's behalf ----
+        if self.path == "/user-api-key":
+            return self.reply(200, self.do_api_key(body))
+        if self.path == "/key-claim":
+            return self.reply(200, self.do_key_claim(body))
         if self.path == "/user-info":
             return self.reply(200, self.do_user_info(body))
         if self.path == "/user-claim":
@@ -1554,20 +1567,73 @@ class API(http.server.BaseHTTPRequestHandler):
         return self.do_claim_register(user["id"], ip)
 
     def do_claim_register(self, user_id, ip):
-        owner = self.store.one("SELECT user_id FROM ips WHERE ip = ?", (ip,))
-        if owner and owner["user_id"] != user_id:
-            return {"ok": False, "message": "این آی‌پی به حساب دیگری ثبت شده است"}
-        user = self.store.one("SELECT * FROM users WHERE id = ?", (user_id,))
-        existing = self.store.user_ips(user_id)
-        # One active address per account, with as many changes as they like.
-        # Replacing rather than adding is what makes that true.
-        if existing and len(existing) >= user["max_ips"]:
-            for old in existing[: len(existing) - user["max_ips"] + 1]:
-                self.store.run("DELETE FROM ips WHERE id = ?", (old["id"],))
-        self.store.run(
-            "INSERT OR REPLACE INTO ips (user_id, ip, added_at) VALUES (?, ?, ?)",
-            (user_id, ip, now()))
+        with self.store.lock:
+            with self.store.db:
+                db = self.store.db
+                owner = db.execute("SELECT user_id FROM ips WHERE ip=?", (ip,)).fetchone()
+                if owner and owner["user_id"] != user_id:
+                    return {"ok": False, "message": "این آی‌پی به حساب دیگری ثبت شده است"}
+                if not db.execute("SELECT id FROM users WHERE id=?", (user_id,)).fetchone():
+                    return {"ok": False, "message": "حساب پیدا نشد"}
+                db.execute("DELETE FROM ips WHERE user_id=?", (user_id,))
+                db.execute("INSERT INTO ips(user_id,ip,added_at) VALUES (?,?,?)", (user_id, ip, now()))
         return {"ok": True, "message": "آی‌پی %s ثبت شد" % ip}
+
+    def do_api_key(self, body):
+        user = self._session_user(body.get("session"))
+        if not user:
+            return {"ok": False, "message": "نشست معتبر نیست"}
+        gate = "api-key:%d" % user["id"]
+        allowed, _ = THROTTLE.check(gate, limit=6, window=900)
+        if not allowed:
+            return {"ok": False, "message": "تلاش زیاد؛ چند دقیقه صبر کنید"}
+        THROTTLE.hit(gate)
+        if not check_password(user, body.get("password") or ""):
+            return {"ok": False, "message": "رمز حساب صحیح نیست"}
+        action = body.get("action")
+        if action == "revoke":
+            self.store.run("DELETE FROM user_api_keys WHERE user_id=?", (user["id"],))
+            return {"ok": True, "message": "کلید لغو شد"}
+        if action != "generate":
+            return {"ok": False, "message": "عملیات نامعتبر"}
+        key = "dns_" + secrets.token_urlsafe(32)
+        self.store.run("INSERT OR REPLACE INTO user_api_keys(user_id,digest,created_at) VALUES (?,?,?)",
+                       (user["id"], hashlib.sha256(key.encode()).hexdigest(), now()))
+        return {"ok": True, "key": key}
+
+    def do_key_claim(self, body):
+        key = body.get("key")
+        if not isinstance(key, str) or not re.fullmatch(r"dns_[A-Za-z0-9_-]{43}", key):
+            return {"ok": False, "error": "invalid_key", "status": 401}
+        try:
+            address = ipaddress.IPv4Address(body.get("ip", ""))
+            if not address.is_global or address.is_multicast:
+                raise ValueError()
+        except (ValueError, TypeError):
+            return {"ok": False, "error": "invalid_public_ipv4", "status": 400}
+        digest = hashlib.sha256(key.encode()).hexdigest()
+        # Authentication, ownership check and replacement share one transaction,
+        # so revocation and other IP claims cannot race this operation.
+        with self.store.lock:
+            with self.store.db:
+                db = self.store.db
+                user = db.execute("SELECT u.* FROM users u JOIN user_api_keys k ON k.user_id=u.id WHERE k.digest=?", (digest,)).fetchone()
+                if not user:
+                    return {"ok": False, "error": "invalid_key", "status": 401}
+                if user["status"] == "suspended":
+                    return {"ok": False, "error": "account_suspended", "status": 403}
+                gate = "key-claim:%d" % user["id"]
+                allowed, _ = THROTTLE.check(gate, limit=10, window=60)
+                if not allowed:
+                    return {"ok": False, "error": "rate_limited", "status": 429}
+                THROTTLE.hit(gate)
+                ip = str(address)
+                owner = db.execute("SELECT user_id FROM ips WHERE ip=?", (ip,)).fetchone()
+                if owner and owner["user_id"] != user["id"]:
+                    return {"ok": False, "error": "ip_in_use", "status": 409}
+                db.execute("DELETE FROM ips WHERE user_id=?", (user["id"],))
+                db.execute("INSERT INTO ips(user_id,ip,added_at) VALUES (?,?,?)", (user["id"], ip, now()))
+        return {"ok": True, "ip": ip, "message": "IP registered; relay sync may take 30 seconds", "status": 200}
 
     def do_user_info(self, body):
         user = self._session_user(body.get("session"))
@@ -1580,6 +1646,7 @@ class API(http.server.BaseHTTPRequestHandler):
             tpl = self.store.one("SELECT name FROM templates WHERE is_default = 1")
         return {
             "ok": True,
+            "api_key_active": bool(self.store.one("SELECT user_id FROM user_api_keys WHERE user_id=?", (user["id"],))),
             "name": user["first_name"] or user["username"] or "",
             "telegram_id": user["telegram_id"],
             "ip": ips[0]["ip"] if ips else None,
