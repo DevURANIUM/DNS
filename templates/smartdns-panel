@@ -641,23 +641,33 @@ class Store:
         )
 
     def migrate_catalogue_groups(self, catalogue):
-        """Merge legacy alphabet groups without changing a custom plan's routes."""
+        """Translate saved selections to categories without widening access."""
         with self.lock:
             with self.db:
-                for service in catalogue:
-                    for group in service["groups"]:
-                        legacy = group.get("legacy_dynx_groups")
-                        if not legacy:
-                            continue
-                        rows = self.db.execute("SELECT template_id,group_key FROM template_services WHERE service_key='dynx'").fetchall()
-                        by_template = {}
-                        for row in rows:
-                            by_template.setdefault(row["template_id"], set()).update(legacy.get(row["group_key"], []))
-                        for tid, selected in by_template.items():
-                            self.db.execute("INSERT OR IGNORE INTO template_services(template_id,service_key,group_key) VALUES (?,?,?)", (tid, service["key"], group["key"]))
-                            for domain in set(group["domains"]) - selected:
-                                self.db.execute("INSERT OR IGNORE INTO template_domains_off(template_id,domain) VALUES (?,?)", (tid, domain))
-                            self.db.execute("DELETE FROM template_services WHERE template_id=? AND service_key='dynx'", (tid,))
+                rows = self.db.execute("SELECT template_id,service_key,group_key FROM template_services").fetchall()
+                choices = {}
+                for row in rows:
+                    choices.setdefault(row["template_id"], set()).add((row["service_key"], row["group_key"]))
+                for tid, selected in choices.items():
+                    migrated = set()
+                    for service in catalogue:
+                        for group in service["groups"]:
+                            picked = set()
+                            for source in group.get("legacy_sources", []):
+                                key = (source["service"], source["group"])
+                                if key in selected:
+                                    picked.update(source["domains"])
+                                    migrated.add(key)
+                            if not picked:
+                                continue
+                            newkey = (service["key"], group["key"])
+                            # A completed migration never has legacy rows left.
+                            if newkey not in selected:
+                                self.db.execute("INSERT OR IGNORE INTO template_services VALUES (?,?,?)", (tid,) + newkey)
+                                for domain in set(group["domains"]) - picked:
+                                    self.db.execute("INSERT OR IGNORE INTO template_domains_off(template_id,domain) VALUES (?,?)", (tid, domain))
+                    for key in migrated:
+                        self.db.execute("DELETE FROM template_services WHERE template_id=? AND service_key=? AND group_key=?", (tid,) + key)
 
     def q(self, sql, args=()):
         with self.lock:
@@ -898,7 +908,7 @@ class Store:
                 # backend group would tick it and see nothing happen. The
                 # relay leaves the pins out of a profile that asked to route
                 # them, and keeps them everywhere else.
-                "pins": ("bypass", "epic") not in self.template_groups(tid),
+                "pins": not ({("bypass", "epic"), ("category_exceptions", "exception_bypass_epic")} & self.template_groups(tid)),
             }
         return by_ip, profiles
 
