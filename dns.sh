@@ -38,7 +38,7 @@ STAMP="$(date +%Y%m%d-%H%M%S)"
 # What this file is. Written to the machine once an install finishes, so the
 # next run can tell whether it is an upgrade, a re-run, or somebody about to
 # put an older version over a newer one by accident.
-VERSION="0.3.31"
+VERSION="0.3.32"
 
 # What this install did, so uninstall can undo exactly that and nothing more.
 # Without it, removal would be guesswork: whether dnsmasq was ours or already
@@ -1618,6 +1618,12 @@ exit 0
 #server=/genesis.stun.eu.demonware.net/8.8.8.8
 #server=/genesis.stun.us.demonware.net/1.1.1.1
 #server=/genesis.stun.us.demonware.net/8.8.8.8
+#
+## Warzone lobby hostname observed after login in the client capture. Keep it
+## off the HTTP/SNI relay; this is a scoped routing workaround, not proof that
+## the client's direct path to Demonware is reachable.
+#server=/lsg.7400.prod.demonware.net/1.1.1.1
+#server=/lsg.7400.prod.demonware.net/8.8.8.8
 #__END_BYPASS__
 
 #__BEGIN_NO_AAAA__
@@ -34455,6 +34461,15 @@ exit 0
 #          ],
 #          "note": "روشن کردنش این اتصال‌ها را قطع می‌کند — SNI در مسیر مخدوش می‌شود",
 #          "opt_in": true
+#        },
+#        {
+#          "key": "warzone_lobby",
+#          "label": "Warzone / Lobby — مسیر مستقیم",
+#          "domains": [
+#            "lsg.7400.prod.demonware.net"
+#          ],
+#          "opt_in": true,
+#          "note": "پیش‌فرض مستقیم: میزبان مشاهده‌شده در لاگ اتصال وارزون از رلهٔ وب عبور نمی‌کند. فعال‌کردن این گزینه آن را به رله برمی‌گرداند. دسترسی مستقیم از اینترنت کاربر و رفع خطای بازی تأیید نشده است."
 #        },
 #        {
 #          "key": "warzone_stun",

@@ -58,6 +58,14 @@ the HTTP/SNI proxy. See the [catalogue guide](docs/service-catalogue.md).
 
 ### Player hub redesign
 
+Version 0.3.32 adds a scoped Warzone routing workaround: the observed lobby
+hostname `lsg.7400.prod.demonware.net` resolves directly, alongside the existing
+`genesis.stun.eu.demonware.net` and `genesis.stun.us.demonware.net` exceptions.
+HTTPS login remains routed. Update the exit first (template catalogue), then
+the relay (base DNS rules). Existing templates bypass the new lobby group
+unless it is explicitly enabled. This avoids sending that host to the web-only
+relay; it does not guarantee direct connectivity or fix every Warzone error.
+
 The panels use a gaming-inspired layout with violet accents, clear account cards
 and a compact icon button for copying DNS. Day/night themes and password
 visibility controls are available only in the user panel. Receipt upload and
