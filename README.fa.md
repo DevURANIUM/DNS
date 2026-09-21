@@ -188,9 +188,10 @@ These third-party lists have not been independently verified for ownership or co
 
 ## IP registration API
 
-Update the exit and relay to 0.3.28 or later. In the user panel, expand the API key
-section and confirm your account password to generate or revoke a key. Generating
-a key replaces the previous one. Save the key immediately; it is shown only once.
+Update the exit and relay to 0.3.30 or later. In the user panel, expand the API key
+section and click Generate/Replace. No password prompt is required for a signed-in user.
+The new random 48-character hexadecimal key appears inline with a copy button.
+Generating a key invalidates the previous key. Save it immediately; it is shown only once.
 Only a SHA-256 digest is stored. Deleting the user also deletes their key.
 
 ```sh

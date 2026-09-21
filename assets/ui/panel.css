@@ -80,3 +80,5 @@ body.customer,body.admin-panel,body.admin-login{font-family:Vazirmatn,Tahoma,san
 @media(forced-colors:active){.toolbar select{appearance:auto;background-image:none}}
 
 .api-example{white-space:pre-wrap;overflow-wrap:anywhere;text-align:left;padding:16px;background:var(--inset);border:1px solid var(--line);border-radius:10px;font-family:JetBrainsMono,monospace}
+
+.api-key-row{display:flex;align-items:center;gap:8px;direction:ltr}.api-key-row input{flex:1;min-width:0;font-family:JetBrainsMono,monospace!important}.customer .api-key-row button{width:44px;min-width:44px;height:44px;margin:0;padding:10px;display:grid;place-items:center}

@@ -1588,22 +1588,20 @@ class API(http.server.BaseHTTPRequestHandler):
         if not allowed:
             return {"ok": False, "message": "تلاش زیاد؛ چند دقیقه صبر کنید"}
         THROTTLE.hit(gate)
-        if not check_password(user, body.get("password") or ""):
-            return {"ok": False, "message": "رمز حساب صحیح نیست"}
         action = body.get("action")
         if action == "revoke":
             self.store.run("DELETE FROM user_api_keys WHERE user_id=?", (user["id"],))
             return {"ok": True, "message": "کلید لغو شد"}
         if action != "generate":
             return {"ok": False, "message": "عملیات نامعتبر"}
-        key = "dns_" + secrets.token_urlsafe(32)
+        key = secrets.token_hex(24)
         self.store.run("INSERT OR REPLACE INTO user_api_keys(user_id,digest,created_at) VALUES (?,?,?)",
                        (user["id"], hashlib.sha256(key.encode()).hexdigest(), now()))
         return {"ok": True, "key": key}
 
     def do_key_claim(self, body):
         key = body.get("key")
-        if not isinstance(key, str) or not re.fullmatch(r"dns_[A-Za-z0-9_-]{43}", key):
+        if not isinstance(key, str) or not re.fullmatch(r"(?:[a-f0-9]{48}|dns_[A-Za-z0-9_-]{43})", key):
             return {"ok": False, "error": "invalid_key", "status": 401}
         try:
             address = ipaddress.IPv4Address(body.get("ip", ""))
