@@ -38,7 +38,7 @@ STAMP="$(date +%Y%m%d-%H%M%S)"
 # What this file is. Written to the machine once an install finishes, so the
 # next run can tell whether it is an upgrade, a re-run, or somebody about to
 # put an older version over a newer one by accident.
-VERSION="0.3.30"
+VERSION="0.3.31"
 
 # What this install did, so uninstall can undo exactly that and nothing more.
 # Without it, removal would be guesswork: whether dnsmasq was ours or already
@@ -1612,6 +1612,12 @@ exit 0
 #server=/edea.live.use1a.on.epicgames.com/8.8.8.8
 #server=/core.windows.net/1.1.1.1
 #server=/core.windows.net/8.8.8.8
+#
+## Warzone STUN hosts observed in client DNS capture; keep login HTTPS routed.
+#server=/genesis.stun.eu.demonware.net/1.1.1.1
+#server=/genesis.stun.eu.demonware.net/8.8.8.8
+#server=/genesis.stun.us.demonware.net/1.1.1.1
+#server=/genesis.stun.us.demonware.net/8.8.8.8
 #__END_BYPASS__
 
 #__BEGIN_NO_AAAA__
@@ -34449,6 +34455,16 @@ exit 0
 #          ],
 #          "note": "روشن کردنش این اتصال‌ها را قطع می‌کند — SNI در مسیر مخدوش می‌شود",
 #          "opt_in": true
+#        },
+#        {
+#          "key": "warzone_stun",
+#          "label": "Warzone / STUN — مسیر مستقیم",
+#          "domains": [
+#            "genesis.stun.eu.demonware.net",
+#            "genesis.stun.us.demonware.net"
+#          ],
+#          "opt_in": true,
+#          "note": "پیش‌فرض مستقیم: دو میزبان STUN مشاهده‌شده در لاگ بازی. پروکسی وب این پروژه ترافیک STUN بازی را منتقل نمی‌کند؛ فعال‌کردن این گزینه آن‌ها را به رله می‌فرستد. رفع کامل خطای بازی هنوز تأیید نشده است."
 #        }
 #      ]
 #    }
