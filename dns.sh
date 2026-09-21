@@ -38,7 +38,7 @@ STAMP="$(date +%Y%m%d-%H%M%S)"
 # What this file is. Written to the machine once an install finishes, so the
 # next run can tell whether it is an upgrade, a re-run, or somebody about to
 # put an older version over a newer one by accident.
-VERSION="0.3.32"
+VERSION="0.3.33"
 
 # What this install did, so uninstall can undo exactly that and nothing more.
 # Without it, removal would be guesswork: whether dnsmasq was ours or already
@@ -1718,6 +1718,38 @@ exit 0
 #
 #        location @https_redirect {
 #            return 301 https://$http_host$request_uri;
+#        }
+#    }
+#
+#    # Preserve HTTP for game content and certificate checks. Captures showed
+#    # our blanket redirect replacing CRL/Windows trust downloads with a 301.
+#    # Only these named destinations are proxied, only from the relay. Use
+#    # $host (not a client-supplied port in $http_host) and pin upstream port 80.
+#    server {
+#        listen 80;
+#        listen [::]:80;
+#        server_name
+#            .activision.com .callofduty.com .demonware.net
+#            .battle.net .blizzard.com
+#            .digicert.com .windowsupdate.com
+#            ncc.avast.com;
+#        allow __RELAY_IP__;
+#        deny all;
+#
+#        location / {
+#            proxy_pass http://$host:80$request_uri;
+#            proxy_set_header Host $host;
+#            proxy_http_version 1.1;
+#            proxy_set_header Connection "";
+#            proxy_buffering off;
+#            proxy_request_buffering off;
+#            proxy_connect_timeout 10s;
+#            proxy_send_timeout 60s;
+#            proxy_read_timeout 60s;
+#            # Preserve upstream statuses and redirects; never manufacture an
+#            # HTTPS redirect when the upstream is unreachable.
+#            proxy_intercept_errors off;
+#            proxy_redirect off;
 #        }
 #    }
 #

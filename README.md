@@ -58,6 +58,15 @@ the HTTP/SNI proxy. See the [catalogue guide](docs/service-catalogue.md).
 
 ### Player hub redesign
 
+Version 0.3.33 preserves HTTP requests for Activision, Call of Duty, Demonware,
+Battle.net, Blizzard, DigiCert, Windows Update and the exact Avast connectivity
+host `ncc.avast.com`. The exit previously replaced those requests with an HTTPS
+redirect, including certificate downloads seen in a client capture. The scoped
+proxy accepts only the configured relay, connects on port 80, and preserves
+upstream responses. Update the exit to apply this fix. This addresses HTTP
+compatibility, not a confirmed cause of the Warzone connection error; arbitrary
+game TCP/UDP transport is still outside the web proxy.
+
 Version 0.3.32 adds a scoped Warzone routing workaround: the observed lobby
 hostname `lsg.7400.prod.demonware.net` resolves directly, alongside the existing
 `genesis.stun.eu.demonware.net` and `genesis.stun.us.demonware.net` exceptions.
