@@ -19,7 +19,7 @@ def build():
             'font-display:swap;src:url(data:font/woff2;base64,' + mono + ') format("woff2")}\n')
     script = '<script>' + (assets / 'panel.js').read_text(encoding='utf-8') + '</script>'
     for name, variable in [('smartdns-admin', 'CSS'), ('smartdns-sync', 'USER_CSS')]:
-        path = ROOT / 'templates' / name
+        path = ROOT / 'templates' / 'services' / name
         text = path.read_text(encoding='utf-8')
         start = text.index('# BEGIN GENERATED UI')
         end = text.index('# END GENERATED UI', start) + len('# END GENERATED UI')

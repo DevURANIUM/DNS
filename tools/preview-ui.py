@@ -12,7 +12,7 @@ ROOT = Path(__file__).resolve().parent.parent
 
 
 def load(name):
-    loader = importlib.machinery.SourceFileLoader(name, str(ROOT / 'templates' / name))
+    loader = importlib.machinery.SourceFileLoader(name, str(ROOT / 'templates' / 'services' / name))
     spec = importlib.util.spec_from_loader(name, loader)
     module = importlib.util.module_from_spec(spec)
     loader.exec_module(module)

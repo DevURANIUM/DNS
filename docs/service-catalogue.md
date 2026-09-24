@@ -1,73 +1,63 @@
-# Service catalogue — 2026-09-16
+# Domain catalogue
 
-The catalogue contains 122 services and 1755 domain entries. This expansion added
-49 service entries and 1188 domains, preserving previous group identifiers and
-ownership. Existing custom templates retain their selections. The default full
-template includes ordinary new groups; existing opt-in exclusions remain intact.
+The live catalogue is `domains/services.json`. It groups services by category,
+rather than keeping a separate visible entry for every imported source.
+`domains/domains.txt` supplies the base relay DNS list and the exit HTTP allowlist.
 
-## Coverage
+## Editing
 
-AI additions include Runway, ElevenLabs, Suno, Udio, Stability, Replicate, fal,
-Cohere, Grok, Qwen, Kling, Luma, HeyGen, Synthesia, You.com, FLUX, SambaNova,
-Cerebras, Midjourney, Leonardo and Ideogram. Existing ChatGPT, Claude, Gemini,
-DeepSeek, Mistral, Perplexity, Hugging Face and coding tools remain available.
+1. Update the relevant group in `services.json`.
+2. Update `domains.txt` for names that should be routed by the base resolver.
+3. For a direct exception, update `common/bypass.conf` and add an opt-in
+   exception group so default and custom profiles can preserve the direct path.
+4. Run `python -B tools/build-installer.py`.
+5. Deploy the exit first, then the relay.
 
-Game additions include Warframe, Destiny/Bungie, Escape from Tarkov,
-Battlestate, Gaijin, Wargaming, Square Enix, FFXIV, Guild Wars 2, Facepunch,
-Dead by Daylight, Overwolf, Modrinth and FiveM. Steam, Rockstar, PlayStation,
-Xbox, Epic, Warzone and the other existing publisher groups are retained.
+Keep category/group keys and `legacy_sources` metadata stable. The panel uses
+those identifiers when migrating saved template selections. Existing templates
+inherit changes inside selected groups; newly added groups are not necessarily
+selected in custom templates. Opt-in groups are excluded from the full default.
 
-Windows Update has a separate group for update.microsoft.com, windowsupdate.com
-and adl.windows.com. Delivery Optimization endpoints under mp.microsoft.com
-are already owned by Xbox: select that group as well for these downloads.
+## Matching and automatic web routing
 
-Linux repositories include Debian, Ubuntu, Fedora, Rocky, AlmaLinux, openSUSE,
-Kali, Raspbian and NixOS. The shared Linux mirror group combines HTTP/HTTPS
-hosts from the official Debian, Ubuntu, Arch and Alpine lists. Arch entries
-must be active with at least 95% completion in the fetched status snapshot.
-Shared hosts are stored once, not once per distribution. Existing parent
-rules may already cover a mirror, so source counts differ from added counts.
+A rule for `example.com` covers the root and all its subdomains, but does not
+match `fakeexample.com` or `example.com.attacker.invalid`. More specific DNS
+rules take precedence. Avoid routing and bypassing the exact same hostname in
+different ordinary groups: equal-specificity rules can undermine an exception.
 
-## Domain rules
+The installer builds an HTTP hostname map from `domains.txt`. Invalid names
+abort the build. Redundant descendants are collapsed in that map, not removed
+from the catalogue. The default HTTP server rejects hosts absent from the map;
+explicit HTTP server exceptions are retained.
 
-A domain covers itself and all subdomains at any depth. For example,
-example.com covers api.example.com and a.b.example.com but not fakeexample.com.
-The longest matching domain wins, so explicit subdomain bypass rules remain
-effective. This is already implemented by dnsmasq and smartdns-rules; no broad
-catch-all rule or invented wildcard domains are required.
+HTTPS uses SNI. Upstream web addresses are resolved on demand with a 60-second
+cache. This is not automatic detection of non-web game destinations or automatic
+selection between direct and relay. Panel custom domains do not update the
+build-time HTTP map automatically.
 
-## Verification and limits
+## Games
 
-[The source manifest](../domains/catalogue-sources.json) records a source and
-check date for each added domain, overlaps, and failed website checks that
-were excluded. Official lists establish mirror identity, not continuous health.
-A responding vendor homepage identifies a website, not a complete backend list.
-The catalogue is not a claim that every entry is sanctioned or blocked in Iran.
-No end-to-end relay/exit connectivity or Iranian ISP tests were performed.
+Steam web dependencies for CS2 and Dota 2 are in Games together with
+`counter-strike.net` and `dota2.com`. The Akamai domain is a shared CDN and its
+inclusion also affects non-Steam subdomains.
 
-These rules route HTTP/SNI traffic. They do not provide general UDP, rsync, FTP,
-voice, game-server connectivity or guaranteed access to region-restricted accounts.
-Download and mirror traffic consumes relay/exit quota. This is a dated snapshot,
-not an exhaustive list of every service or every Linux mirror worldwide.
+Warzone STUN hosts `genesis.stun.eu.demonware.net`,
+`genesis.stun.us.demonware.net` and the observed lobby hostname
+`lsg.7400.prod.demonware.net` have direct exceptions. Preserve those separately
+from the routed parent `demonware.net`.
 
-## Primary sources
+Listing a game's domains does not provide arbitrary UDP/TCP forwarding or
+guarantee matchmaking. Valve documents this distinction in its
+[required ports and proxy domains](https://help.steampowered.com/en/faqs/view/2EA8-4D75-DA21-31EB).
 
-- [OpenAI network guidance](https://help.openai.com/en/articles/9247338-network-recommendations-for-chatgpt-errors-on-web-and-apps)
-- [Microsoft Windows endpoints](https://learn.microsoft.com/en-us/windows/privacy/windows-11-endpoints-non-enterprise-editions)
-- [Debian mirror master list](https://mirror-master.debian.org/status/Mirrors.masterlist)
-- [Ubuntu archive mirrors](https://launchpad.net/ubuntu/+archivemirrors)
-- [Arch mirror status](https://archlinux.org/mirrors/status/json/)
-- [Alpine mirror list](https://dl-cdn.alpinelinux.org/alpine/MIRRORS.txt)
+## Sources
 
-Edit services.json and domains.txt together, preserve group keys and rebuild
-with `python tools/build-installer.py`. The legacy classify-services.py tool
-rebuilds classifications and should not be run over this curated catalogue.
+- [Source manifest](../domains/catalogue-sources.json): historical research and provenance.
+- [DynX import report](../domains/sources/dynx-import.json): imported files and hashes.
+- [Original DynX snapshots](../domains/sources/dynx/): retained for reproducibility.
 
-
-## DynX import — 2026-09-21
-
-Current total: 123 services and 6808 domains. Imported 5470 unique domains from
-[DynX](https://github.com/MrDevAnony/DynX-AntiBan-Domains), adding 5053 and preserving 417 existing entries.
-See [the import manifest](../domains/sources/dynx-import.json) for original hashes,
-normalization and group assignments. Source entries are not independently verified.
-Existing opt-in subdomains remain excluded by default.
+Snapshots are reference data, not executable nginx configuration. Source reports
+describe imports at their recorded dates; their counts are not current totals.
+No list is an exhaustive inventory of every game backend or Linux mirror, and
+third-party entries are not a guarantee of ownership, regional restrictions or
+current reachability. Review proposed entries before deploying them.

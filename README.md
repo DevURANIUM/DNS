@@ -1,264 +1,197 @@
 # DNS
 
-A self-hosted Smart DNS service with user accounts, traffic quotas, service templates and Persian web panels.
+سرویس Smart DNS شخصی با پنل مدیریت و کاربری فارسی، قالب‌های سرویس، سهمیهٔ مصرف و ثبت IP از طریق API.
 
-[Repository](https://github.com/DevURANIUM/DNS) · [Report an issue](https://github.com/DevURANIUM/DNS/issues) · [راهنمای فارسی](README.fa.md)
+**نسخهٔ آمادهٔ انتشار: 0.3.36**
 
-## How it works
+[مخزن پروژه](https://github.com/DevURANIUM/DNS) · [گزارش مشکل](https://github.com/DevURANIUM/DNS/issues) · [راهنمای دامنه‌ها](docs/service-catalogue.md) · [راهنمای توسعه](docs/development.md)
 
-Deploy a relay in Iran and an exit server abroad. The relay answers selected domain names with its own address and forwards their connections through the exit. Other domains resolve normally. HTTPS routing reads SNI without decrypting TLS traffic.
+## نصب سریع
 
-```text
-Client → Relay → Exit → Destination
-           │      │
-     User panel   Admin panel + SQLite
-           └──────┘
-       Sync every 30 seconds
-```
+ابتدا روی **Exit خارج از ایران** و سپس روی **Relay داخل ایران** اجرا کنید:
 
-Accounts and usage live in a central database on the exit. Relays send usage and fetch access rules. This is domain-based routing, not a general-purpose VPN.
-
-## Features
-
-- **Administration:** users, fractional quotas, download limits, expiry dates, service templates and domain rules.
-- **User accounts:** signup, login, IP registration, usage, password changes.
-- **Redesigned panels:** Persian RTL layout, responsive pages, local Vazirmatn font and persistent light/dark themes for users.
-- **Panel tools:** Persian table search, status filters, result counts and an overview of accounts needing attention.
-- **Connection setup:** DNS copy button, setup guide and password visibility controls.
-- **Access control:** per-IP allowlists and traffic accounting through nftables, quota enforcement and monthly or one-time allowances.
-- **Operations:** host monitoring, logs, backup/restore and TLS certificate provisioning and renewal.
-
-UI assets and fonts are embedded in the installer; the panels do not depend on a CDN. Signup creates a pending account. An operator must save a plan before access is activated.
-
-## Services and templates
-
-The current catalogue contains **123 service entries and 6808 domain entries**.
-The September 16 expansion adds 49 service entries and 1188 domains while keeping existing
-service and group identifiers intact.
-
-| Category | Examples |
-| --- | --- |
-| Games and platforms | Call of Duty / Warzone, CS2, Dota 2, Valorant, Steam, Epic, PlayStation, Xbox |
-| More games | Marvel Rivals, Delta Force, ARC Raiders, THE FINALS, Fortnite, Rocket League, Fall Guys, Path of Exile, PUBG Mobile |
-| Video and music | YouTube / YouTube Music, Netflix, Twitch, Spotify, Vimeo, SoundCloud |
-| Communication and storage | Discord, Telegram Web, Signal website/downloads, Proton, Dropbox |
-| Learning and browsing | Wikipedia, Internet Archive, Duolingo, DeepL, Reddit, Pinterest, Firefox |
-| Development and creative tools | GitHub, GitLab, Docker, GitBook, Read the Docs, Blender, OBS, VLC, Kdenlive |
-| AI | OpenAI, Anthropic and other catalogue entries |
-
-In the admin panel's template editor, select service groups and adjust their
-domains, save the template, then assign it to a user. New ordinary groups are
-included in the default full template; existing custom templates keep their
-selections, so enable new services explicitly. Opt-in groups remain off by default.
-
-Entries cover configured website and content domains, not every operation of an
-app or game. CS2 and Dota 2 may also need Steam; YouTube sign-in needs the Google
-group. Game sessions, voice calls and arbitrary UDP traffic are not carried by
-the HTTP/SNI proxy. See the [catalogue guide](docs/service-catalogue.md).
-
-### Player hub redesign
-
-Version 0.3.35 completes the Games category's official Steam HTTP dependencies
-for CS2 and Dota 2: steampowered.com, steamcommunity.com, steamgames.com,
-steamusercontent.com, steamcontent.com, steamstatic.com and akamaihd.net.
-The existing counter-strike.net and dota2.com entries remain; parent rules
-cover subdomains. Akamai is a shared CDN, so selecting this category also
-routes other hosts under akamaihd.net. Update the exit catalogue and relay;
-templates with Games selected receive the extra dependencies on sync.
-These are web/content routes, not a guarantee of matchmaking or UDP gameplay.
-See [Valve's required ports and proxy domains](https://help.steampowered.com/en/faqs/view/2EA8-4D75-DA21-31EB).
-
-Version 0.3.34 adds automatic HTTP destination selection for the shipped domain
-catalogue and its subdomains, using the request's hostname. HTTPS already uses
-TLS SNI to select its destination. Both paths resolve upstream names on demand
-with a 60-second DNS cache and a five-second DNS timeout; no pinned IP list or
-scheduled nginx restart is required. Existing sessions are not moved when DNS
-changes. Unlisted HTTP hosts are refused by the default server (the existing
-explicit HTTP exceptions remain available). Custom domains added in the panel
-are not automatically added to this build-time HTTP catalogue.
-
-Install this version on the exit to enable it. The relay and the working
-Warzone direct-routing exceptions are unchanged. This does not discover
-arbitrary UDP/game destinations or automatically choose direct versus relay:
-those connections may contain no hostname. No game ports are opened. Rebuild
-the installer after changing domains/domains.txt; malformed domains fail the
-build instead of being embedded as nginx configuration.
-
-Version 0.3.33 preserves HTTP requests for Activision, Call of Duty, Demonware,
-Battle.net, Blizzard, DigiCert, Windows Update and the exact Avast connectivity
-host `ncc.avast.com`. The exit previously replaced those requests with an HTTPS
-redirect, including certificate downloads seen in a client capture. The scoped
-proxy accepts only the configured relay, connects on port 80, and preserves
-upstream responses. Update the exit to apply this fix. This addresses HTTP
-compatibility, not a confirmed cause of the Warzone connection error; arbitrary
-game TCP/UDP transport is still outside the web proxy.
-
-Version 0.3.32 adds a scoped Warzone routing workaround: the observed lobby
-hostname `lsg.7400.prod.demonware.net` resolves directly, alongside the existing
-`genesis.stun.eu.demonware.net` and `genesis.stun.us.demonware.net` exceptions.
-HTTPS login remains routed. Update the exit first (template catalogue), then
-the relay (base DNS rules). Existing templates bypass the new lobby group
-unless it is explicitly enabled. This avoids sending that host to the web-only
-relay; it does not guarantee direct connectivity or fix every Warzone error.
-
-The panels use a gaming-inspired layout with violet accents, clear account cards
-and a compact icon button for copying DNS. Day/night themes and password
-visibility controls are available only in the user panel. Receipt upload and
-review have been removed; administrators activate and renew accounts directly.
-
-### Recent panel fixes
-
-Usernames appear once in a green badge matching the IP address. The template
-selector has more room for its label and an RTL arrow layout. The local Vazirmatn
-font, theme controls and table filters remain available.
-
-## Requirements
-
-- Two Debian or Ubuntu servers with public IP addresses: a relay and an exit.
-- Root or sudo access and a working network path between the servers.
-- Access to distribution package repositories.
-- A domain pointing to each server that serves an HTTPS panel, with a valid certificate. Automatic HTTP certificate validation requires reachable port 80.
-
-The installer uses distribution packages including Python, nginx, dnsmasq and nftables. No npm, pip or Docker is required to run the service.
-
-## Install
-
-Install the **exit first**, then the **relay**. Run on each server:
-
-```sh
+```bash
 curl -fsSLO https://raw.githubusercontent.com/DevURANIUM/DNS/main/dns.sh && sudo bash dns.sh
 ```
 
-Choose the server role and follow the prompts. Supply the exit's sync token when configuring the relay. The installer prints connection details and enabled panel addresses when finished.
+در هر سرور نقش مناسب را انتخاب کنید و اطلاعات خواسته‌شده را وارد کنید. توکن همگام‌سازی Exit برای تنظیم Relay لازم است. نصب‌کننده در پایان آدرس پنل‌ها را نمایش می‌دهد.
 
-Download the file before executing it: the installer reads embedded payloads from itself and expects interactive input. The installer filename is `dns.sh`.
+فایل `dns.sh` مستقل است؛ برای نصب به clone کردن مخزن نیازی ندارید. آن را ابتدا دانلود کنید؛ اجرای مستقیم با pipe مناسب نیست، چون نصب‌کننده محتوای ضمیمه‌شده به خود فایل را می‌خواند.
 
-### Ports
+> دستور بالا نسخهٔ موجود در شاخهٔ main را دریافت می‌کند. تغییرات محلی تا زمانی که در مخزن منتشر نشده‌اند، با این دستور دانلود نمی‌شوند.
 
-| Port | Relay | Exit |
+## پیش‌نیازها
+
+- دو سرور Debian یا Ubuntu با IPv4 عمومی و دسترسی root یا sudo.
+- ارتباط شبکه بین Relay و Exit و دسترسی به مخازن بسته‌های سیستم‌عامل.
+- دامنه و گواهی TLS برای پنل‌های HTTPS؛ دامنهٔ هر پنل باید به سرور مربوط به آن اشاره کند.
+- دسترسی پورت 80 برای صدور گواهی به روش HTTP، مگر اینکه از روش دیگری برای گواهی استفاده کنید.
+
+نصب‌کننده بسته‌هایی مانند nginx، dnsmasq، Python، nftables و coturn را نصب می‌کند. اجرای سرویس به Docker، npm یا pip وابسته نیست. نسخه‌های مختلف سیستم‌عامل باید پیش از استفادهٔ عملیاتی در محیط خودتان بررسی شوند.
+
+## نحوهٔ کار
+
+```text
+کاربر → DNS روی Relay
+          ├─ دامنهٔ مستقیم → IP واقعی مقصد
+          └─ دامنهٔ مسیریابی‌شده → Relay → Exit → مقصد HTTP/HTTPS
+
+پنل کاربری روی Relay ← همگام‌سازی → پنل مدیریت و پایگاه داده روی Exit
+```
+
+- DNS برای دامنه‌های انتخاب‌شده، IP رله را برمی‌گرداند.
+- Exit مقصد HTTPS را از SNI و مقصد HTTP را از نام میزبان درخواست پیدا می‌کند.
+- مسیر عمومی HTTP به فهرست دامنه‌های همراه پروژه و زیردامنه‌های آن محدود است؛ استثناهای صریح تنظیمات هم برقرارند.
+- IP مقصدهای وب هنگام نیاز resolve می‌شود؛ کش DNS این مسیرها ۶۰ ثانیه است. اتصال فعال با تغییر IP جابه‌جا نمی‌شود.
+- حساب‌ها و سهمیه‌ها روی Exit نگهداری می‌شوند و Relay معمولاً هر ۳۰ ثانیه همگام می‌شود.
+
+**این پروژه VPN یا تونل عمومی بازی نیست.** تشخیص خودکار مقصد وب به معنی تشخیص همهٔ اتصال‌های UDP، انتخاب خودکار مسیر مستقیم/رله یا تضمین اجرای همهٔ بازی‌ها نیست.
+
+## امکانات
+
+| بخش | قابلیت |
+| --- | --- |
+| مدیریت کاربران | فعال‌سازی، مسدودی، حذف حساب و تغییر رمز کاربر |
+| مدیریت پلن | سهمیه، انقضا، محدودیت سرعت دانلود و قالب سرویس |
+| پنل کاربر | ثبت‌نام، ورود، مشاهدهٔ مصرف و ثبت IP اتصال |
+| API | ساخت و جایگزینی کلید برای ثبت IPv4 عمومی |
+| قالب‌ها | انتخاب دسته‌های سرویس و قواعد دامنه |
+| دسترسی | فهرست IPهای مجاز و شمارش مصرف با nftables |
+| رابط کاربری | فارسی و راست‌به‌چپ، فونت محلی، حالت روز/شب در پنل کاربر و کپی سریع |
+| نگهداری | گزارش سرویس‌ها، بررسی مسیر دامنه، گواهی TLS و نسخهٔ پشتیبان هنگام تغییرات نصب |
+
+فونت‌های Vazirmatn و JetBrains Mono همراه نصب‌کننده هستند؛ رابط کاربری برای دریافت آن‌ها به CDN نیاز ندارد. بخش ارسال رسید پرداخت وجود ندارد و فعال‌سازی حساب با مدیر است.
+
+## راه‌اندازی اولین کاربر
+
+1. از پنل کاربری ثبت‌نام کنید.
+2. مدیر در پنل مدیریت، پلن کاربر را ذخیره کند تا حساب فعال شود.
+3. کاربر از همان اینترنتی که برای سرویس استفاده می‌کند، وارد پنل شود و IP را ثبت کند.
+4. آدرس DNS نمایش‌داده‌شده را روی دستگاه قرار دهد.
+5. پس از تغییر IP اینترنت، دوباره IP را از پنل یا API ثبت کند.
+
+اگر دستگاه DNS دوم می‌خواهد، همان آدرس سرویس را تکرار کنید. استفاده از DNS عمومی دیگر ممکن است قواعد سرویس را دور بزند.
+
+Relay تازه ابتدا باز است؛ پس از اولین همگام‌سازی شامل IP ثبت‌شده، محدودسازی خودکار دسترسی فعال می‌شود. وضعیت را بررسی کنید:
+
+```bash
+sudo smartdns-acl enforce status
+```
+
+## قالب‌ها و دامنه‌ها
+
+فهرست سرویس‌ها دسته‌هایی مانند بازی، هوش مصنوعی، توسعه، رسانه، Windows و Linux دارد. مثال‌ها شامل Steam، CS2، Dota 2، Warzone، PlayStation، Xbox، YouTube و مخازن توزیع‌های لینوکس هستند.
+
+هر دامنه، خودش و زیردامنه‌هایش را پوشش می‌دهد. قاعدهٔ دقیق‌تر می‌تواند مسیر متفاوتی داشته باشد. استثناهای اتصال مستقیم Warzone و سایر سرویس‌ها را بدون بررسی تغییر ندهید.
+
+قالب پیش‌فرض کامل، گروه‌های عادی را شامل می‌شود؛ گروه‌های اختیاری پیش‌فرض مستقیم‌اند. قالب‌های سفارشی انتخاب‌های خود را نگه می‌دارند. افزودن دامنه به یک گروه انتخاب‌شده با افزودن گروه جدید تفاوت دارد.
+
+دامنهٔ سفارشی پنل به‌صورت خودکار به فهرست مجاز HTTP ساخته‌شده داخل نصب‌کننده اضافه نمی‌شود. برای تغییر آن فهرست، منابع پروژه را ویرایش و نصب‌کننده را بازسازی کنید.
+
+جزئیات منابع، قواعد و محدودیت پوشش در [راهنمای دامنه‌ها](docs/service-catalogue.md) آمده است.
+
+## ثبت IP با API
+
+در پنل کاربری بخش کلید API را باز کنید و «ساخت / جایگزینی» را بزنید. کلید جدید همان‌جا با دکمهٔ کپی نمایش داده می‌شود؛ آن را همان زمان ذخیره کنید. جایگزینی، کلید قبلی را نامعتبر می‌کند.
+
+```bash
+curl --fail-with-body 'https://YOUR_DNS_DOMAIN:8443/ip' -H 'Authorization: Bearer YOUR_KEY' -d 'ip=YOUR_PUBLIC_IPV4'
+```
+
+دامنه، کلید و IPv4 عمومی خودتان را جایگزین کنید. گزینهٔ `-d` درخواست را POST می‌کند؛ کلید را داخل URL قرار ندهید. گزینهٔ `curl --key` مربوط به گواهی TLS است و برای این API نیست.
+
+این درخواست IP قبلی حساب را جایگزین می‌کند و حساب را فعال یا تمدید نمی‌کند. اعمال روی Relay ممکن است حدود ۳۰ ثانیه طول بکشد. فقط هش کلید نگهداری می‌شود.
+
+| وضعیت | معنی |
+| --- | --- |
+| 200 | ثبت موفق |
+| 400 | IP نامعتبر |
+| 401 | کلید نامعتبر یا جایگزین‌شده |
+| 403 | حساب غیرمجاز |
+| 409 | IP متعلق به حساب دیگر |
+| 429 | درخواست بیش از حد |
+| 503 | Exit در دسترس نیست |
+
+## پورت‌ها
+
+| پورت | Relay | Exit |
 | --- | --- | --- |
-| 53 TCP/UDP | Client DNS | — |
-| 80 TCP | HTTP forwarding and certificate validation | HTTP and certificate validation |
-| 443 TCP | SNI proxy | SNI proxy |
-| 3478 UDP | STUN | — |
-| 8443 TCP | TLS user panel | Sync API |
-| 9443 TCP, default | — | Configurable admin panel |
-| 22 TCP | SSH | SSH |
+| TCP/UDP 53 | DNS کاربران | — |
+| TCP 80 | انتقال HTTP و صدور گواهی | HTTP و صدور گواهی |
+| TCP 443 | انتقال HTTPS | پروکسی SNI |
+| UDP 3478 | STUN | — |
+| TCP 8443 | پنل کاربری HTTPS | API همگام‌سازی |
+| TCP 9443 | — | پیش‌فرض پنل مدیریت؛ قابل تنظیم |
+| TCP 22 | SSH، در صورت استفاده از پورت پیش‌فرض | SSH، در صورت استفاده از پورت پیش‌فرض |
 
-Port 8446 on the exit is loopback-only for its Google IPv6 route; it does not need public exposure. Configure both host and provider firewalls for the services used on each machine.
+پورت 8446 روی Exit برای مسیر داخلی Google است و عمومی نیست. محدودیت فایروال میزبان و ارائه‌دهندهٔ سرور را متناسب با سرویس‌ها تنظیم کنید؛ نیازی به بازکردن همهٔ پورت‌ها نیست.
 
-### First connection
+## به‌روزرسانی و حذف
 
-1. Create an account in the user panel.
-2. Save its quota and validity period in the admin panel to activate it.
-3. Open the user panel from the intended internet connection and register its IP.
-4. Set the displayed DNS address on the device. Repeat the same address if a secondary DNS is required.
-5. Register the IP again after changing networks or receiving a new public IP.
+برای به‌روزرسانی، دستور نصب را ابتدا روی Exit و سپس Relay اجرا کنید. تنظیمات و کاربران حفظ می‌شوند و نصب‌کننده تغییر نسخه را نمایش می‌دهد.
 
-A new relay starts open. It automatically enables access enforcement after the first sync containing a registered address. Check with `sudo smartdns-acl enforce status`. SSH is not gated.
-
-## Update or uninstall
-
-Download the installer again and rerun it. It compares versions and asks before continuing. Existing users and settings are preserved; database backups are stored under `/var/backups/smart-dns/`.
-
-```sh
-# Print the version without installing
+```bash
+# نسخهٔ فایل دانلودشده
 bash dns.sh --version
 
-# Remove the service from this machine
+# نسخهٔ نصب‌شده
+cat /var/lib/smart-dns/version
+
+# حذف سرویس از همین سرور
 sudo bash dns.sh --uninstall
 ```
 
-## Useful commands
+نسخه‌های پشتیبان نصب در `/var/backups/smart-dns/` قرار می‌گیرند. قبل از حذف یا تغییرات مهم، از داده‌ها و تنظیمات سرور نیز پشتیبان مستقل بگیرید.
 
-```sh
-# Exit: find the admin panel
+## عیب‌یابی
+
+```bash
+# Exit: اطلاعات ورود به پنل مدیریت
 sudo smartdns-access
 
-# Relay: inspect service and domain routing
+# Relay: وضعیت و مسیر واقعی دامنه در قالب‌ها
 sudo smartdns status
-sudo smartdns list
-sudo smartdns find spotify
 sudo smartdns-rules check example.com
 sudo smartdns-acl enforce status
 
-# Either server: diagnostics and restart
+# لاگ و گزارش
 sudo smartdns-logs -e
 sudo smartdns-logs -f
 sudo smartdns-logs --report
+
+# راه‌اندازی مجدد سرویس‌ها؛ ممکن است اتصال‌ها موقتاً قطع شوند
 sudo smartdns-restart
 ```
 
-Reports mask configuration secrets but can still contain customer IPs and usernames. Review before sharing. Restarting can briefly interrupt active connections.
+پاسخ صحیح DNS به‌تنهایی موفقیت اتصال بازی را ثابت نمی‌کند. اتصال‌های مستقیم کاربران در ضبط ترافیک Relay دیده نمی‌شوند. محدودیت سرعت مربوط به دانلود است.
 
-## Development
+برای [گزارش مشکل](https://github.com/DevURANIUM/DNS/issues)، نسخه، سیستم‌عامل، نقش سرور و مراحل تکرار را بنویسید. رمز، کلید API، توکن همگام‌سازی و مسیر خصوصی پنل مدیریت را منتشر نکنید؛ گزارش‌ها ممکن است IP یا نام کاربر داشته باشند.
 
-| Path | Purpose |
-| --- | --- |
-| `templates/` | Python services, management commands and service configuration |
-| `tools/installer-logic.sh` | Install and upgrade logic |
-| `assets/ui/` | CSS, JavaScript, font and font license |
-| `domains/` | Domain lists and service catalogue |
-| `common/` | Shared network configuration |
-| `tools/` | Builds and previews |
+## ساختار پروژه
 
-```sh
-# Rebuild panel assets and the standalone installer
-python tools/build-installer.py
+```text
+dns.sh                    نصب‌کنندهٔ مستقل تولیدشده
+templates/
+  services/               پنل مدیریت، API مرکزی و همگام‌سازی/پنل کاربر
+  commands/               فرمان‌های مدیریتی نصب‌شونده روی سرور
+  config/                 تنظیمات nginx، nftables و STUN
+  systemd/                سرویس‌ها و تایمرها
+common/                   تنظیمات مشترک DNS و شبکه
+domains/                  فهرست دامنه‌ها، قالب‌ها و منابع
+assets/ui/                CSS، JavaScript، فونت‌ها و مجوز آن‌ها
+tools/                    ساخت نصب‌کننده، رابط کاربری و پیش‌نمایش
+docs/                     راهنماهای نگهداری و توسعه
+```
+
+برای ساخت از سورس:
+
+```bash
+python -B tools/build-installer.py
 bash -n dns.sh
-
-# Generate sample pages and serve them locally
-python tools/preview-ui.py
-python -m http.server 8765 --bind 127.0.0.1 --directory docs/preview
 ```
 
-Open the local [admin overview](http://127.0.0.1:8765/admin.html), [user management](http://127.0.0.1:8765/users.html) or [customer panel](http://127.0.0.1:8765/user.html). Previews use sample data and do not execute server operations. Generated previews, local screenshots and Python caches are excluded from version control; generate the preview pages before opening these links.
+فایل تولیدشده را دستی ویرایش نکنید. مسیرهای نصب روی سرور با پوشه‌بندی سورس متفاوت‌اند. [راهنمای توسعه](docs/development.md) جزئیات را توضیح می‌دهد.
 
-Edit source assets and rebuild instead of editing the installer or generated UI blocks directly. See the [UI asset guide](assets/ui/README.md) and [Persian UI change notes](docs/UI-update.fa.md).
+## مجوز
 
-## Limitations and bug reports
-
-This project is alpha software. Connectivity depends on the relay-to-exit path, ISP and destination service. Speed limits apply to downloads only. A relay without a TLS certificate does not serve a user panel. Xbox download stalls were previously reported; this update does not establish that they are fixed.
-
-Report bugs in [DNS Issues](https://github.com/DevURANIUM/DNS/issues), including server role, OS, version, reproduction steps and relevant output. Do not publish passwords, tokens or private admin panel URLs.
-
-## License and contributions
-
-The code is distributed under the [MIT License](LICENSE). Vazirmatn is distributed separately under the [SIL Open Font License](assets/ui/OFL.txt). Issues and pull requests belong in [DevURANIUM/DNS](https://github.com/DevURANIUM/DNS).
-
-Thanks to previous contributors, including [Armin Toranj](https://github.com/arminandtoo).
-
-
-## DynX — 2026-09-21
-
-Imported all 5470 unique domain names from the three user-selected DynX lists;
-5053 were new and 417 already existed. Original downloads are retained in
-`domains/sources/dynx/`; [import report](domains/sources/dynx-import.json).
-Nginx map files were parsed as data, not installed as executable configuration.
-Existing opt-in exceptions retain their behavior. Custom templates must enable
-the new DynX groups explicitly; the full default template includes ordinary new domains.
-These third-party lists have not been independently verified for ownership or connectivity.
-
-
-## IP registration API
-
-Update the exit and relay to 0.3.30 or later. In the user panel, expand the API key
-section and click Generate/Replace. No password prompt is required for a signed-in user.
-The new random 48-character hexadecimal key appears inline with a copy button.
-Generating a key invalidates the previous key. Save it immediately; it is shown only once.
-Only a SHA-256 digest is stored. Deleting the user also deletes their key.
-
-```sh
-curl --fail-with-body -X POST 'https://dns.azrael.cfd:8443/ip' \
-  -H 'Authorization: Bearer YOUR_KEY' \
-  --data-urlencode 'ip=YOUR_PUBLIC_IPV4'
-```
-
-Use your relay hostname. POST form encoding is required. Do not put keys in URLs.
-The curl `--key` option is for TLS client certificates, not this API.
-A successful response is JSON with `ok: true` and `ip`; propagation takes up to
-30 seconds. The request replaces the account's previous IP and does not activate
-or extend its plan. Private, loopback, multicast and IPv6 addresses are rejected.
-HTTP errors: 400 invalid IP, 401 invalid/revoked key, 403 suspended account,
-409 IP owned by another user, 429 rate limit (10 valid-key requests/minute),
-503 exit unavailable. The key grants IP registration only, not account management.
+کد تحت [MIT](LICENSE) منتشر می‌شود. مجوزهای [Vazirmatn](assets/ui/OFL.txt) و [JetBrains Mono](assets/ui/JetBrainsMono-OFL.txt) جداگانه همراه پروژه نگهداری می‌شوند. منابع شخص ثالث دامنه‌ها برای امکان پیگیری منشأ داده‌ها حفظ شده‌اند.
