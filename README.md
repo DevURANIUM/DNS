@@ -4,7 +4,7 @@ Self-hosted Smart DNS with Persian admin and user panels, service profiles, traf
 
 **Release: 0.3.36**
 
-[راهنمای فارسی](README.fa.md) · [Repository](https://github.com/DevURANIUM/DNS) · [Report an issue](https://github.com/DevURANIUM/DNS/issues) · [Domain catalogue](docs/service-catalogue.md)
+[README FA](README.fa.md) · [Repository](https://github.com/DevURANIUM/DNS) · [Report an issue](https://github.com/DevURANIUM/DNS/issues) · [Domain catalogue](docs/service-catalogue.md)
 
 ## Quick start
 
