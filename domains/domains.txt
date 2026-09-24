@@ -9,6 +9,7 @@ adservice.google.com
 ai.google
 aistudio.google.com
 aka.ms
+akamaihd.net
 algolia.com
 algolia.net
 altera.com

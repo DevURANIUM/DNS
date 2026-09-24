@@ -58,6 +58,32 @@ the HTTP/SNI proxy. See the [catalogue guide](docs/service-catalogue.md).
 
 ### Player hub redesign
 
+Version 0.3.35 completes the Games category's official Steam HTTP dependencies
+for CS2 and Dota 2: steampowered.com, steamcommunity.com, steamgames.com,
+steamusercontent.com, steamcontent.com, steamstatic.com and akamaihd.net.
+The existing counter-strike.net and dota2.com entries remain; parent rules
+cover subdomains. Akamai is a shared CDN, so selecting this category also
+routes other hosts under akamaihd.net. Update the exit catalogue and relay;
+templates with Games selected receive the extra dependencies on sync.
+These are web/content routes, not a guarantee of matchmaking or UDP gameplay.
+See [Valve's required ports and proxy domains](https://help.steampowered.com/en/faqs/view/2EA8-4D75-DA21-31EB).
+
+Version 0.3.34 adds automatic HTTP destination selection for the shipped domain
+catalogue and its subdomains, using the request's hostname. HTTPS already uses
+TLS SNI to select its destination. Both paths resolve upstream names on demand
+with a 60-second DNS cache and a five-second DNS timeout; no pinned IP list or
+scheduled nginx restart is required. Existing sessions are not moved when DNS
+changes. Unlisted HTTP hosts are refused by the default server (the existing
+explicit HTTP exceptions remain available). Custom domains added in the panel
+are not automatically added to this build-time HTTP catalogue.
+
+Install this version on the exit to enable it. The relay and the working
+Warzone direct-routing exceptions are unchanged. This does not discover
+arbitrary UDP/game destinations or automatically choose direct versus relay:
+those connections may contain no hostname. No game ports are opened. Rebuild
+the installer after changing domains/domains.txt; malformed domains fail the
+build instead of being embedded as nginx configuration.
+
 Version 0.3.33 preserves HTTP requests for Activision, Call of Duty, Demonware,
 Battle.net, Blizzard, DigiCert, Windows Update and the exact Avast connectivity
 host `ncc.avast.com`. The exit previously replaced those requests with an HTTPS

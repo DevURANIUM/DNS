@@ -64,12 +64,16 @@ def main():
     # Keep both standalone templates and the downloadable installer in sync.
     import runpy
     runpy.run_path(os.path.join(ROOT, "tools", "build-ui.py"))["build"]()
+    compile_routes = runpy.run_path(os.path.join(ROOT, "tools", "route-map.py"))["route_map"]
+    http_routes = compile_routes(read("domains/domains.txt"))
     logic = read("tools/installer-logic.sh")
     parts = [logic, "", "# " + "=" * 68,
              "# Config payloads. Everything below is data, never executed.",
              "# " + "=" * 68, ""]
     for name, path in PAYLOADS:
         body = read(path)
+        if name == "EXIT_NGINX":
+            body = body.replace("__HTTP_ROUTE_MAP__", http_routes)
         # relay-nginx.conf carries MODULE_PATH; the installer fills it in after
         # writing, so normalise it to the same placeholder style as the rest.
         if name == "RELAY_NGINX":
