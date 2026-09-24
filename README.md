@@ -1,197 +1,198 @@
 # DNS
 
-سرویس Smart DNS شخصی با پنل مدیریت و کاربری فارسی، قالب‌های سرویس، سهمیهٔ مصرف و ثبت IP از طریق API.
+Self-hosted Smart DNS with Persian admin and user panels, service profiles, traffic quotas, and an API for registering a user's public IP address.
 
-**نسخهٔ آمادهٔ انتشار: 0.3.36**
+**Release: 0.3.36**
 
-[مخزن پروژه](https://github.com/DevURANIUM/DNS) · [گزارش مشکل](https://github.com/DevURANIUM/DNS/issues) · [راهنمای دامنه‌ها](docs/service-catalogue.md) · [راهنمای توسعه](docs/development.md)
+[راهنمای فارسی](README.fa.md) · [Repository](https://github.com/DevURANIUM/DNS) · [Report an issue](https://github.com/DevURANIUM/DNS/issues) · [Domain catalogue](docs/service-catalogue.md)
 
-## نصب سریع
+## Quick start
 
-ابتدا روی **Exit خارج از ایران** و سپس روی **Relay داخل ایران** اجرا کنید:
+Install the **exit server first**, then the **relay server**. Run this command on each:
 
 ```bash
 curl -fsSLO https://raw.githubusercontent.com/DevURANIUM/DNS/main/dns.sh && sudo bash dns.sh
 ```
 
-در هر سرور نقش مناسب را انتخاب کنید و اطلاعات خواسته‌شده را وارد کنید. توکن همگام‌سازی Exit برای تنظیم Relay لازم است. نصب‌کننده در پایان آدرس پنل‌ها را نمایش می‌دهد.
+Select the appropriate server role and follow the prompts. You will need the exit server's sync token when configuring the relay. The installer prints the available panel addresses when setup finishes.
 
-فایل `dns.sh` مستقل است؛ برای نصب به clone کردن مخزن نیازی ندارید. آن را ابتدا دانلود کنید؛ اجرای مستقیم با pipe مناسب نیست، چون نصب‌کننده محتوای ضمیمه‌شده به خود فایل را می‌خواند.
+The installer is self-contained; cloning this repository is not required. Download the file before running it rather than piping it into Bash, because it reads its embedded configuration payloads from disk.
 
-> دستور بالا نسخهٔ موجود در شاخهٔ main را دریافت می‌کند. تغییرات محلی تا زمانی که در مخزن منتشر نشده‌اند، با این دستور دانلود نمی‌شوند.
+> This command downloads the version published on the main branch. Local changes become available through this URL only after they are published.
 
-## پیش‌نیازها
+## How it works
 
-- دو سرور Debian یا Ubuntu با IPv4 عمومی و دسترسی root یا sudo.
-- ارتباط شبکه بین Relay و Exit و دسترسی به مخازن بسته‌های سیستم‌عامل.
-- دامنه و گواهی TLS برای پنل‌های HTTPS؛ دامنهٔ هر پنل باید به سرور مربوط به آن اشاره کند.
-- دسترسی پورت 80 برای صدور گواهی به روش HTTP، مگر اینکه از روش دیگری برای گواهی استفاده کنید.
-
-نصب‌کننده بسته‌هایی مانند nginx، dnsmasq، Python، nftables و coturn را نصب می‌کند. اجرای سرویس به Docker، npm یا pip وابسته نیست. نسخه‌های مختلف سیستم‌عامل باید پیش از استفادهٔ عملیاتی در محیط خودتان بررسی شوند.
-
-## نحوهٔ کار
+Deploy a relay inside Iran and an exit server outside Iran. The relay returns its own IP address for selected domains and forwards supported web connections through the exit. Domains with direct-routing rules resolve to their original addresses.
 
 ```text
-کاربر → DNS روی Relay
-          ├─ دامنهٔ مستقیم → IP واقعی مقصد
-          └─ دامنهٔ مسیریابی‌شده → Relay → Exit → مقصد HTTP/HTTPS
+Client → Relay DNS
+           ├─ Direct domain → Original destination
+           └─ Routed domain → Relay → Exit → HTTP/HTTPS destination
 
-پنل کاربری روی Relay ← همگام‌سازی → پنل مدیریت و پایگاه داده روی Exit
+User panel on Relay ← Sync → Admin panel and database on Exit
 ```
 
-- DNS برای دامنه‌های انتخاب‌شده، IP رله را برمی‌گرداند.
-- Exit مقصد HTTPS را از SNI و مقصد HTTP را از نام میزبان درخواست پیدا می‌کند.
-- مسیر عمومی HTTP به فهرست دامنه‌های همراه پروژه و زیردامنه‌های آن محدود است؛ استثناهای صریح تنظیمات هم برقرارند.
-- IP مقصدهای وب هنگام نیاز resolve می‌شود؛ کش DNS این مسیرها ۶۰ ثانیه است. اتصال فعال با تغییر IP جابه‌جا نمی‌شود.
-- حساب‌ها و سهمیه‌ها روی Exit نگهداری می‌شوند و Relay معمولاً هر ۳۰ ثانیه همگام می‌شود.
+The exit uses the HTTP hostname or TLS SNI to identify the web destination. HTTPS traffic passes through without TLS decryption. Accounts and quotas are stored on the exit; the relay normally synchronizes every 30 seconds.
 
-**این پروژه VPN یا تونل عمومی بازی نیست.** تشخیص خودکار مقصد وب به معنی تشخیص همهٔ اتصال‌های UDP، انتخاب خودکار مسیر مستقیم/رله یا تضمین اجرای همهٔ بازی‌ها نیست.
+Upstream web addresses are resolved on demand with a 60-second DNS cache. Existing connections are not moved when an address changes.
 
-## امکانات
+**DNS is not a general-purpose VPN or game tunnel.** It does not automatically identify arbitrary UDP destinations, decide which services require a direct route, or guarantee access to every game.
 
-| بخش | قابلیت |
+## Features
+
+| Area | Capabilities |
 | --- | --- |
-| مدیریت کاربران | فعال‌سازی، مسدودی، حذف حساب و تغییر رمز کاربر |
-| مدیریت پلن | سهمیه، انقضا، محدودیت سرعت دانلود و قالب سرویس |
-| پنل کاربر | ثبت‌نام، ورود، مشاهدهٔ مصرف و ثبت IP اتصال |
-| API | ساخت و جایگزینی کلید برای ثبت IPv4 عمومی |
-| قالب‌ها | انتخاب دسته‌های سرویس و قواعد دامنه |
-| دسترسی | فهرست IPهای مجاز و شمارش مصرف با nftables |
-| رابط کاربری | فارسی و راست‌به‌چپ، فونت محلی، حالت روز/شب در پنل کاربر و کپی سریع |
-| نگهداری | گزارش سرویس‌ها، بررسی مسیر دامنه، گواهی TLS و نسخهٔ پشتیبان هنگام تغییرات نصب |
+| Administration | Activate, block and delete users; reset user passwords |
+| Plans | Traffic quotas, expiry dates, download speed limits and service profiles |
+| User panel | Registration, login, usage display and public IP registration |
+| API keys | Generate or replace a key for IPv4 registration |
+| Service profiles | Select service categories and configure domain rules |
+| Access control | IP allowlists and traffic accounting through nftables |
+| Interface | Persian RTL panels, bundled fonts, user light/dark themes and copy buttons |
+| Operations | Service logs, domain-route inspection, TLS certificate management and installer backups |
 
-فونت‌های Vazirmatn و JetBrains Mono همراه نصب‌کننده هستند؛ رابط کاربری برای دریافت آن‌ها به CDN نیاز ندارد. بخش ارسال رسید پرداخت وجود ندارد و فعال‌سازی حساب با مدیر است.
+Vazirmatn and JetBrains Mono are bundled with the panels, so fonts do not require an external CDN. Payment receipt submission is not included; administrators activate accounts directly.
 
-## راه‌اندازی اولین کاربر
+## Requirements
 
-1. از پنل کاربری ثبت‌نام کنید.
-2. مدیر در پنل مدیریت، پلن کاربر را ذخیره کند تا حساب فعال شود.
-3. کاربر از همان اینترنتی که برای سرویس استفاده می‌کند، وارد پنل شود و IP را ثبت کند.
-4. آدرس DNS نمایش‌داده‌شده را روی دستگاه قرار دهد.
-5. پس از تغییر IP اینترنت، دوباره IP را از پنل یا API ثبت کند.
+- Two Debian or Ubuntu servers with public IPv4 addresses.
+- Root or sudo access on both servers.
+- A working network path between the relay and exit, and access to distribution package repositories.
+- A domain and TLS certificate for each HTTPS panel, with DNS pointing to the appropriate server.
+- Reachable port 80 for HTTP certificate validation, unless another certificate method is used.
 
-اگر دستگاه DNS دوم می‌خواهد، همان آدرس سرویس را تکرار کنید. استفاده از DNS عمومی دیگر ممکن است قواعد سرویس را دور بزند.
+The installer uses distribution packages such as nginx, dnsmasq, Python, nftables and coturn. Docker, npm and pip are not required to run the service. Validate your chosen operating system and network setup before production use.
 
-Relay تازه ابتدا باز است؛ پس از اولین همگام‌سازی شامل IP ثبت‌شده، محدودسازی خودکار دسترسی فعال می‌شود. وضعیت را بررسی کنید:
+## Set up the first user
+
+1. Register an account in the user panel.
+2. In the admin panel, save a plan for that user to activate the account.
+3. From the internet connection that will use the service, sign in to the user panel and register its IP.
+4. Set the device's DNS server to the address shown in the panel.
+5. Register the IP again whenever the connection's public address changes.
+
+If the device requires a secondary DNS address, repeat the same service address. An unrelated public resolver can bypass the configured routing rules.
+
+A new relay starts with access enforcement disabled. It automatically enables enforcement after the first sync containing a registered address. Check the current state with:
 
 ```bash
 sudo smartdns-acl enforce status
 ```
 
-## قالب‌ها و دامنه‌ها
+## Services and domain rules
 
-فهرست سرویس‌ها دسته‌هایی مانند بازی، هوش مصنوعی، توسعه، رسانه، Windows و Linux دارد. مثال‌ها شامل Steam، CS2، Dota 2، Warzone، PlayStation، Xbox، YouTube و مخازن توزیع‌های لینوکس هستند.
+The catalogue groups domains into categories such as games, AI, development, media, Windows and Linux. Examples include Steam, CS2, Dota 2, Warzone, PlayStation, Xbox, YouTube and Linux distribution repositories.
 
-هر دامنه، خودش و زیردامنه‌هایش را پوشش می‌دهد. قاعدهٔ دقیق‌تر می‌تواند مسیر متفاوتی داشته باشد. استثناهای اتصال مستقیم Warzone و سایر سرویس‌ها را بدون بررسی تغییر ندهید.
+A parent domain covers itself and its subdomains. A more specific rule can override that route. Preserve the direct-routing exceptions for Warzone and other services unless you have verified a reason to change them.
 
-قالب پیش‌فرض کامل، گروه‌های عادی را شامل می‌شود؛ گروه‌های اختیاری پیش‌فرض مستقیم‌اند. قالب‌های سفارشی انتخاب‌های خود را نگه می‌دارند. افزودن دامنه به یک گروه انتخاب‌شده با افزودن گروه جدید تفاوت دارد.
+The full default profile includes ordinary groups and excludes opt-in groups. Custom profiles retain their saved selections. Adding a domain to a selected group is different from adding a new group, which may need to be selected explicitly.
 
-دامنهٔ سفارشی پنل به‌صورت خودکار به فهرست مجاز HTTP ساخته‌شده داخل نصب‌کننده اضافه نمی‌شود. برای تغییر آن فهرست، منابع پروژه را ویرایش و نصب‌کننده را بازسازی کنید.
+The default HTTP proxy accepts domains in the installer's generated allowlist and their subdomains; explicit HTTP exceptions also remain available. Custom domains added through the panel do not automatically update that build-time HTTP allowlist. Update the source catalogue and rebuild the installer to change it.
 
-جزئیات منابع، قواعد و محدودیت پوشش در [راهنمای دامنه‌ها](docs/service-catalogue.md) آمده است.
+See the [catalogue guide](docs/service-catalogue.md) for editing instructions, sources and coverage limits.
 
-## ثبت IP با API
+## IP registration API
 
-در پنل کاربری بخش کلید API را باز کنید و «ساخت / جایگزینی» را بزنید. کلید جدید همان‌جا با دکمهٔ کپی نمایش داده می‌شود؛ آن را همان زمان ذخیره کنید. جایگزینی، کلید قبلی را نامعتبر می‌کند.
+In the user panel, open the API key section and select Generate/Replace. The new key appears inline with a copy button. Save it immediately; replacing a key invalidates the previous one. Only its hash is stored.
 
 ```bash
 curl --fail-with-body 'https://YOUR_DNS_DOMAIN:8443/ip' -H 'Authorization: Bearer YOUR_KEY' -d 'ip=YOUR_PUBLIC_IPV4'
 ```
 
-دامنه، کلید و IPv4 عمومی خودتان را جایگزین کنید. گزینهٔ `-d` درخواست را POST می‌کند؛ کلید را داخل URL قرار ندهید. گزینهٔ `curl --key` مربوط به گواهی TLS است و برای این API نیست.
+Replace the hostname, key and public IPv4 address. The `-d` option makes this a POST request. Do not put keys in URLs. The curl `--key` option is for TLS client certificates and is unrelated to this API.
 
-این درخواست IP قبلی حساب را جایگزین می‌کند و حساب را فعال یا تمدید نمی‌کند. اعمال روی Relay ممکن است حدود ۳۰ ثانیه طول بکشد. فقط هش کلید نگهداری می‌شود.
+A successful request replaces the account's previous IP. It does not activate an account or extend its plan. Changes can take approximately 30 seconds to reach the relay.
 
-| وضعیت | معنی |
+| HTTP status | Meaning |
 | --- | --- |
-| 200 | ثبت موفق |
-| 400 | IP نامعتبر |
-| 401 | کلید نامعتبر یا جایگزین‌شده |
-| 403 | حساب غیرمجاز |
-| 409 | IP متعلق به حساب دیگر |
-| 429 | درخواست بیش از حد |
-| 503 | Exit در دسترس نیست |
+| 200 | IP registered successfully |
+| 400 | Invalid IP address |
+| 401 | Invalid or replaced API key |
+| 403 | Account not permitted |
+| 409 | IP belongs to another account |
+| 429 | Rate limit exceeded |
+| 503 | Exit unavailable |
 
-## پورت‌ها
+## Network ports
 
-| پورت | Relay | Exit |
+| Port | Relay | Exit |
 | --- | --- | --- |
-| TCP/UDP 53 | DNS کاربران | — |
-| TCP 80 | انتقال HTTP و صدور گواهی | HTTP و صدور گواهی |
-| TCP 443 | انتقال HTTPS | پروکسی SNI |
+| TCP/UDP 53 | Client DNS | — |
+| TCP 80 | HTTP forwarding and certificate validation | HTTP proxy and certificate validation |
+| TCP 443 | HTTPS forwarding | SNI proxy |
 | UDP 3478 | STUN | — |
-| TCP 8443 | پنل کاربری HTTPS | API همگام‌سازی |
-| TCP 9443 | — | پیش‌فرض پنل مدیریت؛ قابل تنظیم |
-| TCP 22 | SSH، در صورت استفاده از پورت پیش‌فرض | SSH، در صورت استفاده از پورت پیش‌فرض |
+| TCP 8443 | HTTPS user panel | Sync API |
+| TCP 9443 | — | Default admin panel port; configurable |
+| TCP 22 | SSH, if using the default port | SSH, if using the default port |
 
-پورت 8446 روی Exit برای مسیر داخلی Google است و عمومی نیست. محدودیت فایروال میزبان و ارائه‌دهندهٔ سرور را متناسب با سرویس‌ها تنظیم کنید؛ نیازی به بازکردن همهٔ پورت‌ها نیست.
+Port 8446 on the exit is reserved for an internal Google route and is not publicly exposed. Configure host and provider firewalls for the services you use; opening all ports is unnecessary.
 
-## به‌روزرسانی و حذف
+## Update or uninstall
 
-برای به‌روزرسانی، دستور نصب را ابتدا روی Exit و سپس Relay اجرا کنید. تنظیمات و کاربران حفظ می‌شوند و نصب‌کننده تغییر نسخه را نمایش می‌دهد.
+Download and run the installer again, updating the exit before the relay. The installer displays version changes and preserves existing users and settings.
 
 ```bash
-# نسخهٔ فایل دانلودشده
+# Version of the downloaded installer
 bash dns.sh --version
 
-# نسخهٔ نصب‌شده
+# Version installed on this server
 cat /var/lib/smart-dns/version
 
-# حذف سرویس از همین سرور
+# Uninstall from this server
 sudo bash dns.sh --uninstall
 ```
 
-نسخه‌های پشتیبان نصب در `/var/backups/smart-dns/` قرار می‌گیرند. قبل از حذف یا تغییرات مهم، از داده‌ها و تنظیمات سرور نیز پشتیبان مستقل بگیرید.
+Installer backups are stored under `/var/backups/smart-dns/`. Keep an independent backup of your deployment's data and configuration before uninstalling or making major changes.
 
-## عیب‌یابی
+## Troubleshooting
 
 ```bash
-# Exit: اطلاعات ورود به پنل مدیریت
+# Exit: show admin access information
 sudo smartdns-access
 
-# Relay: وضعیت و مسیر واقعی دامنه در قالب‌ها
+# Relay: inspect service state and a domain's route
 sudo smartdns status
 sudo smartdns-rules check example.com
 sudo smartdns-acl enforce status
 
-# لاگ و گزارش
+# Logs and diagnostic report
 sudo smartdns-logs -e
 sudo smartdns-logs -f
 sudo smartdns-logs --report
 
-# راه‌اندازی مجدد سرویس‌ها؛ ممکن است اتصال‌ها موقتاً قطع شوند
+# Restart services; active connections may be interrupted
 sudo smartdns-restart
 ```
 
-پاسخ صحیح DNS به‌تنهایی موفقیت اتصال بازی را ثابت نمی‌کند. اتصال‌های مستقیم کاربران در ضبط ترافیک Relay دیده نمی‌شوند. محدودیت سرعت مربوط به دانلود است.
+A correct DNS answer does not prove that a game connection succeeds. Direct client connections do not pass through the relay and will not appear in its packet captures. Speed limits apply to downloads.
 
-برای [گزارش مشکل](https://github.com/DevURANIUM/DNS/issues)، نسخه، سیستم‌عامل، نقش سرور و مراحل تکرار را بنویسید. رمز، کلید API، توکن همگام‌سازی و مسیر خصوصی پنل مدیریت را منتشر نکنید؛ گزارش‌ها ممکن است IP یا نام کاربر داشته باشند.
+When [reporting an issue](https://github.com/DevURANIUM/DNS/issues), include the version, operating system, server role and reproduction steps. Remove passwords, API keys, sync tokens and private admin paths. Diagnostic reports can still contain customer IPs or usernames.
 
-## ساختار پروژه
+## Project layout
 
 ```text
-dns.sh                    نصب‌کنندهٔ مستقل تولیدشده
+dns.sh                    Generated standalone installer
 templates/
-  services/               پنل مدیریت، API مرکزی و همگام‌سازی/پنل کاربر
-  commands/               فرمان‌های مدیریتی نصب‌شونده روی سرور
-  config/                 تنظیمات nginx، nftables و STUN
-  systemd/                سرویس‌ها و تایمرها
-common/                   تنظیمات مشترک DNS و شبکه
-domains/                  فهرست دامنه‌ها، قالب‌ها و منابع
-assets/ui/                CSS، JavaScript، فونت‌ها و مجوز آن‌ها
-tools/                    ساخت نصب‌کننده، رابط کاربری و پیش‌نمایش
-docs/                     راهنماهای نگهداری و توسعه
+  services/               Admin panel, central API, relay sync and user panel
+  commands/               Management commands installed on the servers
+  config/                 nginx, nftables and STUN configuration templates
+  systemd/                Service units and timers
+common/                   Shared DNS and network configuration
+domains/                  Domain lists, service catalogue and source records
+assets/ui/                CSS, JavaScript, fonts and font licenses
+tools/                    Installer build, UI build and preview tools
+docs/                     Maintenance and development guides
 ```
 
-برای ساخت از سورس:
+Build from source:
 
 ```bash
 python -B tools/build-installer.py
 bash -n dns.sh
 ```
 
-فایل تولیدشده را دستی ویرایش نکنید. مسیرهای نصب روی سرور با پوشه‌بندی سورس متفاوت‌اند. [راهنمای توسعه](docs/development.md) جزئیات را توضیح می‌دهد.
+Edit source files rather than the generated installer. Repository paths differ from installed server paths. See the [development guide](docs/development.md) for build and release checks.
 
-## مجوز
+## License
 
-کد تحت [MIT](LICENSE) منتشر می‌شود. مجوزهای [Vazirmatn](assets/ui/OFL.txt) و [JetBrains Mono](assets/ui/JetBrainsMono-OFL.txt) جداگانه همراه پروژه نگهداری می‌شوند. منابع شخص ثالث دامنه‌ها برای امکان پیگیری منشأ داده‌ها حفظ شده‌اند.
+The code is distributed under the [MIT License](LICENSE). [Vazirmatn](assets/ui/OFL.txt) and [JetBrains Mono](assets/ui/JetBrainsMono-OFL.txt) retain their separate font licenses. Third-party domain source records are preserved for provenance.

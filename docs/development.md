@@ -65,5 +65,7 @@ Update Exit before Relay when catalogue or routing rules change.
 
 Release 0.3.36 consolidates documentation and reorganizes source templates.
 It preserves the 0.3.35 routing behavior and installed command names. Obsolete
-UI change notes, the duplicate Persian README and the legacy classifier were
-removed; source provenance and license files remain.
+UI change notes and the legacy classifier were removed; source provenance and
+license files remain. README.md is the English guide; README.fa.md contains
+the corresponding Persian guide. Keep both aligned when changing user-facing
+features or installation instructions.
