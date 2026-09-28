@@ -38,7 +38,7 @@ STAMP="$(date +%Y%m%d-%H%M%S)"
 # What this file is. Written to the machine once an install finishes, so the
 # next run can tell whether it is an upgrade, a re-run, or somebody about to
 # put an older version over a newer one by accident.
-VERSION="0.3.37"
+VERSION="0.3.38"
 
 # What this install did, so uninstall can undo exactly that and nothing more.
 # Without it, removal would be guesswork: whether dnsmasq was ours or already
@@ -840,8 +840,22 @@ if [ "$ROLE" = relay ]; then
     # missing entirely. Loading it on every run would append a duplicate of
     # every rule; rebuilding the table on every run would throw away the
     # allowlist and everybody's usage along with it.
-    if [ "$NFT_CHANGED" = 1 ] || ! nft list table inet smartdns >/dev/null 2>&1; then
-        [ -x /usr/local/bin/smartdns-acl ] && /usr/local/bin/smartdns-acl save 2>/dev/null
+    NFT_PRESENT=0
+    if nft list table inet smartdns >/dev/null 2>&1; then NFT_PRESENT=1; fi
+    if [ "$NFT_CHANGED" = 1 ] || [ "$NFT_PRESENT" = 0 ]; then
+        # After a reboot the saved state may exist while the live table does
+        # not. Saving in that case fails and set -e aborts the installation.
+        # Keep the saved state and restore it after creating the table.
+        if [ "$NFT_PRESENT" = 1 ]; then
+            if [ ! -x /usr/local/bin/smartdns-acl ]; then
+                die "cannot preserve the live allowlist: smartdns-acl is missing; firewall left unchanged"
+            fi
+            if ! /usr/local/bin/smartdns-acl save; then
+                die "cannot save the live allowlist and usage; firewall left unchanged"
+            fi
+        else
+            info "live firewall table missing - restoring from saved state"
+        fi
         nft delete table inet smartdns 2>/dev/null || true
         nft -f /etc/nftables.d/10-smartdns.conf || die "nft rejected the ruleset"
         # Structure first, then whoever was registered before it, then the

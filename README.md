@@ -2,7 +2,11 @@
 
 Self-hosted Smart DNS with Persian admin and user panels, service profiles, traffic quotas, and an API for registering a user's public IP address.
 
-**Release: 0.3.37**
+**Release: 0.3.38**
+
+Firewall repair now restores saved state when the live nftables table is absent,
+instead of aborting while trying to save a missing table. A failure to save an
+existing table stops the repair with a visible error before deleting that table.
 
 Sync responses now negotiate gzip compression to reduce large profile transfers.
 Older peers retain plain JSON compatibility. Sync response writes have a
