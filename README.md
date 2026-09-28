@@ -2,7 +2,11 @@
 
 Self-hosted Smart DNS with Persian admin and user panels, service profiles, traffic quotas, and an API for registering a user's public IP address.
 
-**Release: 0.3.38**
+**Release: 0.3.39**
+
+The full-chain check reports HTTP status and curl exit status separately.
+HTTP 200 followed by a transfer failure remains a failed check; its curl error
+is now visible instead of the misleading combined value 200000.
 
 Firewall repair now restores saved state when the live nftables table is absent,
 instead of aborting while trying to save a missing table. A failure to save an

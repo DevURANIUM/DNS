@@ -38,7 +38,7 @@ STAMP="$(date +%Y%m%d-%H%M%S)"
 # What this file is. Written to the machine once an install finishes, so the
 # next run can tell whether it is an upgrade, a re-run, or somebody about to
 # put an older version over a newer one by accident.
-VERSION="0.3.38"
+VERSION="0.3.39"
 
 # What this install did, so uninstall can undo exactly that and nothing more.
 # Without it, removal would be guesswork: whether dnsmasq was ours or already
@@ -1375,8 +1375,25 @@ if [ "$ROLE" = relay ]; then
     fi
     check "an unrouted domain is not pointed at this relay" \
           "$(printf '%s\n' "$unrouted" | grep -c "^${RELAY_IP}$" || true)" "0"
+    # Keep transport status separate from HTTP status: a partial response can
+    # return HTTP 200 and still time out. Appending '000' hid that as 200000.
+    # Do not let proxy environment variables bypass the relay being tested.
+    chain_error="$(mktemp)"
+    chain_rc=0
+    if chain_http="$(curl --noproxy '*' -sS -o /dev/null -m 25 \
+        --resolve "github.com:443:${RELAY_IP}" -w '%{http_code}' \
+        https://github.com/ 2>"$chain_error")"; then
+        chain_rc=0
+    else
+        chain_rc=$?
+    fi
     check "a site loads through the full chain" \
-          "$(curl -sS -o /dev/null -m 25 --resolve "github.com:443:${RELAY_IP}" -w '%{http_code}' https://github.com/ 2>/dev/null || echo 000)" "200"
+          "HTTP=${chain_http:-000} curl_exit=$chain_rc" "HTTP=200 curl_exit=0"
+    if [ "$chain_rc" != 0 ]; then
+        warn "full-chain transfer failed (HTTP headers alone do not prove a complete download):"
+        cat "$chain_error" >&2
+    fi
+    rm -f "$chain_error"
     # The API the relay syncs with, reached the way smartdns-sync reaches it -
     # by address, with a name in the handshake - but with a GET, which the API
     # refuses as 501 without looking at any secret, so this proves the path
@@ -1422,9 +1439,9 @@ fi
 
 if [ -n "$ENFORCE_OUT" ]; then
     printf '    %sAccess control is on%s - only addresses registered in the panel get
-    DNS, HTTP and HTTPS through this relay. Nobody is registered yet, so right
-    now that is nobody: sign a customer up, give them a plan, and let them
-    register their address from the customer panel.
+    DNS, HTTP and HTTPS through this relay. Check the current allowlist with
+    smartdns-acl list. If it is empty, activate a customer account and register
+    its address from the customer panel; existing registrations remain valid.
 
     SSH is never gated, and the customer panel is on a port the gate does not
     touch - so a wrong allowlist cannot lock you out of either.
