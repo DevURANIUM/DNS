@@ -38,7 +38,7 @@ STAMP="$(date +%Y%m%d-%H%M%S)"
 # What this file is. Written to the machine once an install finishes, so the
 # next run can tell whether it is an upgrade, a re-run, or somebody about to
 # put an older version over a newer one by accident.
-VERSION="0.3.36"
+VERSION="0.3.37"
 
 # What this install did, so uninstall can undo exactly that and nothing more.
 # Without it, removal would be guesswork: whether dnsmasq was ours or already
@@ -7794,6 +7794,7 @@ exit 0
 #"""
 #
 #import base64
+#import gzip
 #import ipaddress
 #import hashlib
 #import hmac
@@ -9114,12 +9115,41 @@ exit 0
 #        log_access(self, "api", code, path, getattr(self, "_who", ""))
 #
 #    def reply(self, code, obj):
-#        body = json.dumps(obj).encode()
+#        body = json.dumps(obj, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
+#        compressed = False
+#        # Negotiate explicitly: older relays only understand plain JSON.
+#        encodings = self.headers.get("Accept-Encoding", "").lower().split(",")
+#        accepts_gzip = False
+#        for entry in encodings:
+#            parts = [part.strip() for part in entry.split(";")]
+#            if parts[0] != "gzip":
+#                continue
+#            try:
+#                quality = next((float(p[2:]) for p in parts[1:] if p.startswith("q=")), 1.0)
+#                accepts_gzip = 0 < quality <= 1
+#            except ValueError:
+#                accepts_gzip = False
+#            break
+#        if self.path == "/sync" and code == 200:
+#            self.connection.settimeout(60)
+#            if accepts_gzip and len(body) >= 1024:
+#                body = gzip.compress(body, compresslevel=5, mtime=0)
+#                compressed = True
 #        self.send_response(code)
 #        self.send_header("Content-Type", "application/json")
+#        self.send_header("Vary", "Accept-Encoding")
+#        if compressed:
+#            self.send_header("Content-Encoding", "gzip")
 #        self.send_header("Content-Length", str(len(body)))
 #        self.end_headers()
-#        self.wfile.write(body)
+#        try:
+#            self.wfile.write(body)
+#        except (TimeoutError, BrokenPipeError, ConnectionResetError):
+#            self.close_connection = True
+#            log(WARN, "api response write failed: path=%s bytes=%d gzip=%s relay=%s" %
+#                (urllib.parse.urlparse(self.path).path[:120], len(body), compressed,
+#                 self.client_address[0]))
+#            raise
 #
 #    def authorised(self):
 #        # This port is reachable from the whole internet, so the bearer token
@@ -9560,6 +9590,8 @@ exit 0
 #import http.cookies
 #import http.server
 #import json
+#import gzip
+#import io
 #import os
 #import re
 #import ssl
@@ -9686,7 +9718,8 @@ exit 0
 #    ctx = ssl.SSLContext(ssl.PROTOCOL_TLS_CLIENT)
 #    ctx.check_hostname = False
 #    ctx.verify_mode = ssl.CERT_NONE
-#    conn = NamedHTTPS(CFG["PANEL_HOST"], 8443, sync_sni(), timeout=25, context=ctx)
+#    conn = NamedHTTPS(CFG["PANEL_HOST"], 8443, sync_sni(),
+#                      timeout=65 if path == "/sync" else 25, context=ctx)
 #    try:
 #        conn.connect()
 #        seen = hashlib.sha256(conn.sock.getpeercert(binary_form=True)).hexdigest()
@@ -9699,10 +9732,25 @@ exit 0
 #        conn.request(
 #            "POST", path, body,
 #            {"Content-Type": "application/json",
+#             "Accept-Encoding": "gzip" if path == "/sync" else "identity",
 #             "Authorization": "Bearer " + CFG["SYNC_SECRET"]},
 #        )
 #        res = conn.getresponse()
-#        data = json.loads(res.read() or b"{}")
+#        # Bound both the wire response and its expanded size. Do not apply a
+#        # partial sync if the response is truncated, corrupt or oversized.
+#        limit = 32 * 1024 * 1024
+#        raw = res.read(limit + 1)
+#        if len(raw) > limit:
+#            raise RuntimeError("exit response exceeds 32 MiB")
+#        encoding = res.getheader("Content-Encoding", "identity").strip().lower()
+#        if encoding == "gzip":
+#            with gzip.GzipFile(fileobj=io.BytesIO(raw)) as compressed:
+#                raw = compressed.read(limit + 1)
+#            if len(raw) > limit:
+#                raise RuntimeError("expanded exit response exceeds 32 MiB")
+#        elif encoding != "identity":
+#            raise RuntimeError("unsupported exit response encoding")
+#        data = json.loads(raw or b"{}")
 #        if res.status != 200:
 #            raise RuntimeError("exit returned %d: %s" % (res.status, data))
 #        return data

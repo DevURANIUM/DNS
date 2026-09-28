@@ -2,9 +2,14 @@
 
 Self-hosted Smart DNS with Persian admin and user panels, service profiles, traffic quotas, and an API for registering a user's public IP address.
 
-**Release: 0.3.36**
+**Release: 0.3.37**
 
-[README FA](README.fa.md) · [Repository](https://github.com/DevURANIUM/DNS) · [Report an issue](https://github.com/DevURANIUM/DNS/issues) · [Domain catalogue](docs/service-catalogue.md)
+Sync responses now negotiate gzip compression to reduce large profile transfers.
+Older peers retain plain JSON compatibility. Sync response writes have a
+60-second timeout and the relay waits up to 65 seconds per socket operation;
+other API calls retain their existing timeout. Update the exit, then the relay.
+
+[راهنمای فارسی](README.fa.md) · [Repository](https://github.com/DevURANIUM/DNS) · [Report an issue](https://github.com/DevURANIUM/DNS/issues) · [Domain catalogue](docs/service-catalogue.md)
 
 ## Quick start
 
