@@ -139,7 +139,8 @@ def main():
     with open(CONF, "w") as fh:
         fh.write("\n".join(lines) + "\n")
 
-    check = subprocess.run(["dnsmasq", "--test", "-C", "/etc/dnsmasq.conf"],
+    check = subprocess.run(["dnsmasq", "--test", "-C", "/etc/dnsmasq.conf",
+                            "-7", "/etc/dnsmasq.d,.dpkg-dist,.dpkg-old,.dpkg-new"],
                            capture_output=True, text=True)
     if check.returncode != 0:
         os.remove(CONF)

@@ -46,6 +46,12 @@ Warzone STUN hosts `genesis.stun.eu.demonware.net`,
 `lsg.7400.prod.demonware.net` have direct exceptions. Preserve those separately
 from the routed parent `demonware.net`.
 
+Game-platform backends belong in Games, not in the general group, so that a
+template with only Games ticked still routes them. Release 0.3.41 moved
+Demonware, Steam CM (`steamserver.net`), Epic Online Services
+(`epicgames.dev`), PlayFab, Riot (`pvp.net`, `riotcdn.net`), BattlEye, Xbox
+services and PUBG Mobile lobby hosts there from the general group.
+
 Listing a game's domains does not provide arbitrary UDP/TCP forwarding or
 guarantee matchmaking. Valve documents this distinction in its
 [required ports and proxy domains](https://help.steampowered.com/en/faqs/view/2EA8-4D75-DA21-31EB).

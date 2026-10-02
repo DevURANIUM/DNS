@@ -38,7 +38,7 @@ STAMP="$(date +%Y%m%d-%H%M%S)"
 # What this file is. Written to the machine once an install finishes, so the
 # next run can tell whether it is an upgrade, a re-run, or somebody about to
 # put an older version over a newer one by accident.
-VERSION="0.3.39"
+VERSION="0.3.41"
 
 # What this install did, so uninstall can undo exactly that and nothing more.
 # Without it, removal would be guesswork: whether dnsmasq was ours or already
@@ -99,6 +99,8 @@ install_payload() {
     payload "$name" \
         | sed -e "s#__RELAY_IP__#${RELAY_IP}#g" \
               -e "s#__EXIT_IP__#${EXIT_IP}#g" \
+              -e "s#__LISTEN_IP__#${LISTEN_IP:-$RELAY_IP}#g" \
+              -e "s#__STUN_EXTERNAL__#${STUN_EXTERNAL:-$RELAY_IP}#g" \
               -e "s#__MODULE_PATH__#${MOD:-__MODULE_PATH__}#g" \
               -e "${NO_GOOGLE_V6:+/# google-v6 begin/,/# google-v6 end/d}" \
         > "$tmp"
@@ -124,6 +126,84 @@ set_env_key() {
     printf '%s=%s\n' "$key" "$value" >> "$tmp"
     cat "$tmp" > "$file"
     rm -f "$tmp"
+}
+
+# Install packages without letting apt start their daemons. Debian and Ubuntu
+# start dnsmasq and coturn the moment they are unpacked, with stock configs:
+# dnsmasq then binds every address on port 53, collides with systemd-resolved,
+# the package's postinst fails, and apt - and with it this installer - stops
+# half way with "Address already in use". policy-rc.d is the documented way
+# to tell the packaging scripts not to start anything; this script starts each
+# service itself once its own config is in place.
+#
+# It also waits for an apt lock held by unattended-upgrades on a freshly booted
+# machine, finishes an interrupted dpkg run, and refreshes stale package lists
+# and retries, instead of failing on the first transient mirror error.
+POLICY_RC=/usr/sbin/policy-rc.d
+POLICY_RC_OURS=""
+cleanup_policy_rc() {
+    [ -n "$POLICY_RC_OURS" ] && rm -f "$POLICY_RC"
+    POLICY_RC_OURS=""
+}
+trap cleanup_policy_rc EXIT
+apt_install() {
+    local attempt rc=1
+    if [ ! -e "$POLICY_RC" ]; then
+        printf '#!/bin/sh\n# written by the smart-dns installer while it installs packages\nexit 101\n' > "$POLICY_RC"
+        chmod 755 "$POLICY_RC"
+        POLICY_RC_OURS=1
+    fi
+    for attempt in 1 2 3; do
+        if [ "$attempt" -gt 1 ] || [ -n "${APT_NEEDS_UPDATE-1}" ]; then
+            apt-get -o DPkg::Lock::Timeout=300 update -qq || warn "apt-get update reported errors (attempt $attempt)"
+            APT_NEEDS_UPDATE=""
+        fi
+        if apt-get -o DPkg::Lock::Timeout=300 -o Dpkg::Options::=--force-confdef \
+               -o Dpkg::Options::=--force-confold install -y -qq "$@" >/dev/null; then
+            rc=0; break
+        else
+            rc=$?
+        fi
+        warn "package install failed (attempt $attempt of 3) - repairing and retrying"
+        dpkg --configure -a >/dev/null 2>&1 || true
+        sleep 5
+    done
+    cleanup_policy_rc
+    return "$rc"
+}
+
+# Whether an IPv4 address is configured on this machine. Some providers hand a
+# server a private address and translate the public one in front of it; the
+# public address is then not on any interface and nothing can bind to it.
+local_has_ip() {
+    ip -4 -o addr show 2>/dev/null | awk '{print $4}' | cut -d/ -f1 | grep -qxF "$1"
+}
+
+# Something other than the named programs listening on a port. Prints one
+# "address program" line per listener, so the caller can name what is in the
+# way rather than leaving the operator to find it.
+port_holders() {
+    # $1 is tcp, udp or any: a UDP service on 443 (QUIC, a VPN) does not stand
+    # in the way of nginx, which only listens on TCP there.
+    local proto="$1" port="$2"; shift 2
+    ss -Hlntup "sport = :$port" 2>/dev/null | awk -v ok="$*" -v proto="$proto" '
+        BEGIN { n = split(ok, allow, " ") }
+        proto != "any" && $1 != proto { next }
+        {
+            prog = $0; sub(/.*users:\(\("/, "", prog); sub(/".*/, "", prog)
+            if ($0 !~ /users:/) prog = "?"
+            for (i = 1; i <= n; i++) if (prog == allow[i]) next
+            print $5, prog
+        }' | sort -u
+}
+
+# dnsmasq --test, reading what the running service reads. Debian starts it
+# with -7 /etc/dnsmasq.d,... from its systemd helper, so a test of
+# /etc/dnsmasq.conf alone checks none of this project's files and passes a
+# config the service then refuses to start with.
+dnsmasq_test() {
+    dnsmasq --test --conf-file=/etc/dnsmasq.conf \
+        --conf-dir=/etc/dnsmasq.d,.dpkg-dist,.dpkg-old,.dpkg-new "$@"
 }
 
 # Record a fact about this install, one "key value" per line.
@@ -531,6 +611,22 @@ else
     RELAY_IP="$PEER_IP"; EXIT_IP="$SELF_IP"
 fi
 
+# The address the relay's resolver and STUN server bind to. Normally the public
+# address itself; behind 1:1 NAT that address is on no interface, dnsmasq and
+# coturn refused to start with "cannot assign requested address", and the
+# whole relay was down. There the local address that carries the traffic is
+# used for binding, while answers keep pointing clients at the public one.
+LISTEN_IP="$SELF_IP"
+if [ "$ROLE" = relay ] && ! local_has_ip "$SELF_IP"; then
+    LISTEN_IP="$(ip -4 route get 1.1.1.1 2>/dev/null | sed -n 's/.* src \([0-9.]*\).*/\1/p' | head -1)"
+    valid_ip "${LISTEN_IP:-}" || die "$SELF_IP is not configured on this machine and no local
+    address could be found to listen on. Check the address you entered."
+    warn "$SELF_IP is not on any interface here - assuming NAT in front of this"
+    warn "machine; services will listen on $LISTEN_IP and answer with $SELF_IP."
+fi
+STUN_EXTERNAL="$RELAY_IP"
+[ "$LISTEN_IP" != "$RELAY_IP" ] && STUN_EXTERNAL="$RELAY_IP/$LISTEN_IP"
+
 # ------------------------------------------------------------------ panel
 # The panel is optional. Someone who only wants the bypass can leave these
 # blank and still get a working pair; the questions are asked here rather than
@@ -577,6 +673,9 @@ if [ -z "${ASSUME_YES:-}" ] && [ -z "$UPGRADE" ]; then
 fi
 
 export DEBIAN_FRONTEND=noninteractive
+# Ubuntu's needrestart otherwise opens a full-screen dialog in the middle of an
+# unattended package install and waits for a key nobody is there to press.
+export NEEDRESTART_MODE=a NEEDRESTART_SUSPEND=1
 NGINX_CHANGED=0
 DNSMASQ_CHANGED=0
 
@@ -639,9 +738,10 @@ for pkg in $WANT; do
     dpkg-query -W -f='${Status}' "$pkg" 2>/dev/null | grep -q "install ok installed" || missing="$missing $pkg"
 done
 if [ -n "$missing" ]; then
-    apt-get update -qq
     # shellcheck disable=SC2086
-    apt-get install -y -qq $missing >/dev/null
+    apt_install $missing || die "could not install:$missing
+    Check that this machine can reach its package mirrors (apt-get update),
+    then run the installer again."
     info "installed:$missing"
 else
     info "all present"
@@ -747,6 +847,39 @@ esac
 info "congestion=$(sysctl -n net.ipv4.tcp_congestion_control) qdisc=$(sysctl -n net.core.default_qdisc)"
 
 # ---------------------------------------------------------------- nginx
+step "Checking the ports this service needs"
+# Another web server on 80/443 or another resolver on 53 used to surface as
+# "nginx rejected the config" or a dnsmasq that would not start, several steps
+# later and with nothing naming the program actually in the way.
+port_clash=""
+for port in 80 443; do
+    holders="$(port_holders tcp "$port" nginx)"
+    if [ -n "$holders" ]; then
+        port_clash=1
+        warn "port $port is already in use by: $(printf '%s' "$holders" | tr '\n' ' ')"
+    fi
+done
+if [ "$ROLE" = relay ]; then
+    # Only listeners that would collide with ours: the wildcard, or the exact
+    # addresses dnsmasq binds. systemd-resolved on 127.0.0.53 is no problem.
+    holders="$(port_holders any 53 dnsmasq | awk -v a="$LISTEN_IP" '
+        { addr = $1; sub(/:[0-9]+$/, "", addr); sub(/%.*/, "", addr) }
+        addr == "0.0.0.0" || addr == "*" || addr == "[::]" || addr == a || addr == "127.0.0.1"' || true)"
+    if [ -n "$holders" ]; then
+        port_clash=1
+        warn "port 53 is already in use by: $(printf '%s' "$holders" | tr '\n' ' ')"
+        case "$holders" in
+            *systemd-resolve*)
+                warn "systemd-resolved is listening on all addresses. Set"
+                warn "DNSStubListener=no or remove DNSStubListenerExtra in"
+                warn "/etc/systemd/resolved.conf and restart systemd-resolved." ;;
+        esac
+    fi
+fi
+[ -z "$port_clash" ] || die "stop or reconfigure the programs above, then run the installer again.
+    For example:  systemctl disable --now apache2"
+info "80 and 443$([ "$ROLE" = relay ] && printf ' and 53') are free"
+
 step "nginx"
 MOD="$(find /usr/lib/nginx/modules -name ngx_stream_module.so 2>/dev/null | head -1)"
 [ -n "$MOD" ] || die "the nginx stream module is missing - libnginx-mod-stream did not install"
@@ -787,7 +920,22 @@ if [ "$ROLE" = relay ]; then
         printf '# generated by the smart-dns installer - do not edit by hand\n'
         printf 'no-resolv\nserver=1.1.1.1\nserver=8.8.8.8\nserver=9.9.9.9\n'
         printf 'cache-size=10000\ndomain-needed\nbogus-priv\nno-hosts\n'
-        printf 'bind-interfaces\nlisten-address=127.0.0.1,%s\n\n' "$RELAY_IP"
+        # The default of 150 queries in flight is reached by a few dozen busy
+        # households over a slow international link, after which dnsmasq
+        # drops new queries and games time out at sign-in.
+        printf 'dns-forward-max=1500\n'
+        # address= answers carry a TTL of 0 by default, so every new
+        # connection a console makes waits for a fresh lookup. A minute keeps
+        # template changes prompt while saving most of those round trips.
+        printf 'local-ttl=60\n'
+        # The DNS Flag Day size: larger UDP answers fragment, and fragments
+        # are easily lost on long international paths. Bigger answers fall
+        # back to TCP instead of silently timing out.
+        printf 'edns-packet-max=1232\n'
+        # bind-dynamic rather than bind-interfaces: the relay address may
+        # appear after dnsmasq starts at boot, and bind-interfaces then fails
+        # outright instead of picking the address up when it arrives.
+        printf 'bind-dynamic\nlisten-address=127.0.0.1,%s\n\n' "$LISTEN_IP"
         printf '# domains answered with this relay, so the traffic leaves via the exit\n'
         payload DOMAINS | while IFS= read -r d; do
             d="$(printf '%s' "$d" | tr -d '\r' | sed 's/#.*//;s/^[[:space:]]*//;s/[[:space:]]*$//')"
@@ -808,9 +956,31 @@ if [ "$ROLE" = relay ]; then
     rm -f /etc/dnsmasq.d/ea-bypass.conf   # superseded filename from an earlier build
 
     step "dnsmasq: stop AAAA answers routing clients around us"
-    install_payload NO_AAAA /etc/dnsmasq.d/no-aaaa.conf && DNSMASQ_CHANGED=1 || true
+    # filter-AAAA arrived in dnsmasq 2.89. Older releases (Debian 11, an
+    # un-updated Ubuntu 20.04/22.04) reject the whole config over that one
+    # line, and the relay's DNS never came up at all. There the file is
+    # written without it, and the check at the end says what that costs.
+    NO_AAAA_OK=1
+    if ! dnsmasq --test --conf-file=/dev/null --filter-AAAA >/dev/null 2>&1; then
+        NO_AAAA_OK=""
+        note_file /etc/dnsmasq.d/no-aaaa.conf
+        tmp="$(mktemp)"
+        payload NO_AAAA | sed 's/^filter-AAAA$/# filter-AAAA - not supported by this dnsmasq ('"$(dnsmasq --version 2>/dev/null | head -1 | awk '{print $3}')"')/' > "$tmp"
+        if [ -f /etc/dnsmasq.d/no-aaaa.conf ] && cmp -s "$tmp" /etc/dnsmasq.d/no-aaaa.conf; then
+            rm -f "$tmp"
+        else
+            backup_file /etc/dnsmasq.d/no-aaaa.conf
+            mv "$tmp" /etc/dnsmasq.d/no-aaaa.conf; chmod 644 /etc/dnsmasq.d/no-aaaa.conf
+            DNSMASQ_CHANGED=1
+        fi
+        warn "this dnsmasq is older than 2.89 and cannot filter AAAA answers;"
+        warn "dual-stack clients may reach some services over IPv6, around the relay."
+        warn "upgrading the OS packages (apt-get upgrade dnsmasq) fixes it."
+    else
+        install_payload NO_AAAA /etc/dnsmasq.d/no-aaaa.conf && DNSMASQ_CHANGED=1 || true
+    fi
 
-    dnsmasq --test -C /etc/dnsmasq.conf || die "dnsmasq rejected the config"
+    dnsmasq_test || die "dnsmasq rejected the config"
     enable_service dnsmasq dnsmasq
 
     step "STUN server, so consoles can still detect their NAT"
@@ -979,7 +1149,10 @@ if [ -n "${PANEL_DOMAIN:-}" ]; then
     [ -f /etc/smart-dns/cloudflare.ini ] && CERT_PKGS="$CERT_PKGS python3-certbot-dns-cloudflare"
     for pkg in $([ -z "${PANEL_CERT:-}" ] && echo $CERT_PKGS); do
         dpkg -s "$pkg" >/dev/null 2>&1 || {
-            apt-get install -y -qq "$pkg" >/dev/null 2>&1 || die "could not install $pkg"
+            # apt_install refreshes the package lists itself when they are
+            # stale: a machine that already had every base package never ran
+            # apt-get update above, and certbot then could not be found.
+            apt_install "$pkg" || die "could not install $pkg"
             NEW_PACKAGES="$NEW_PACKAGES $pkg"
             remember packages-installed "$pkg"
         }
@@ -1320,6 +1493,24 @@ EOF
     fi
 fi
 
+# ------------------------------------------------------------------ ufw
+# A host firewall that is switched on drops DNS and the proxy ports, and the
+# install then "succeeds" while no client can use it. Only the ports this
+# service listens on are opened, and only when ufw is already active - an
+# inactive or absent ufw is left exactly as it is.
+if command -v ufw >/dev/null 2>&1 && ufw status 2>/dev/null | grep -q '^Status: active'; then
+    step "ufw is active - opening this service's ports"
+    if [ "$ROLE" = relay ]; then
+        UFW_PORTS="53/udp 53/tcp 80/tcp 443/tcp 3478/udp 8443/tcp"
+    else
+        admin_port="$(sed -n 's/^ADMIN_PORT=//p' /etc/smart-dns/admin.env 2>/dev/null | head -1 || true)"
+        UFW_PORTS="80/tcp 443/tcp 8443/tcp${admin_port:+ $admin_port/tcp}"
+    fi
+    for rule in $UFW_PORTS; do
+        ufw allow "$rule" >/dev/null 2>&1 && info "allowed $rule" || warn "could not open $rule in ufw"
+    done
+fi
+
 # ---------------------------------------------------------------- start
 step "Starting services"
 if [ "$NGINX_CHANGED" = 1 ]; then systemctl restart nginx
@@ -1343,14 +1534,16 @@ if [ "$ROLE" = relay ]; then
     check "coturn running"  "$(systemctl is-active coturn)"  active
     if ! systemctl is-active --quiet dnsmasq; then
         warn "dnsmasq failed; configuration and service diagnostics follow:"
-        dnsmasq --test -C /etc/dnsmasq.conf 2>&1 || true
+        dnsmasq_test 2>&1 || true
         systemctl status dnsmasq --no-pager -l 2>&1 || true
         journalctl -u dnsmasq -n 35 --no-pager 2>&1 || true
         ss -luntp 'sport = :53' 2>&1 || true
     fi
     check "a routed domain resolves to this relay" \
           "$(dig +short +time=3 @127.0.0.1 github.com A 2>/dev/null | tail -1)" "$RELAY_IP"
-    if aaaa_answer="$(dig +time=3 +tries=1 +noall +comments +answer @127.0.0.1 github.com AAAA 2>&1)" &&
+    if [ -z "${NO_AAAA_OK-1}" ]; then
+        warn "skipping the IPv6 leak check - this dnsmasq cannot filter AAAA (see above)"
+    elif aaaa_answer="$(dig +time=3 +tries=1 +noall +comments +answer @127.0.0.1 github.com AAAA 2>&1)" &&
        printf '%s\n' "$aaaa_answer" | grep -q 'status: NOERROR'; then
         check "no IPv6 answers leak around the relay" \
               "$(printf '%s\n' "$aaaa_answer" | awk '$4 == "AAAA" { n++ } END { print n+0 }')" "0"
@@ -1380,14 +1573,14 @@ if [ "$ROLE" = relay ]; then
     # Do not let proxy environment variables bypass the relay being tested.
     chain_error="$(mktemp)"
     chain_rc=0
-    if chain_http="$(curl --noproxy '*' -sS -o /dev/null -m 25 \
+    if chain_http="$(curl --http1.1 --noproxy '*' -sS -o /dev/null -m 25 \
         --resolve "github.com:443:${RELAY_IP}" -w '%{http_code}' \
         https://github.com/ 2>"$chain_error")"; then
         chain_rc=0
     else
         chain_rc=$?
     fi
-    check "a site loads through the full chain" \
+    check "an HTTPS site loads through the full chain (HTTP/1.1)" \
           "HTTP=${chain_http:-000} curl_exit=$chain_rc" "HTTP=200 curl_exit=0"
     if [ "$chain_rc" != 0 ]; then
         warn "full-chain transfer failed (HTTP headers alone do not prove a complete download):"

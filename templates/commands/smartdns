@@ -8,6 +8,12 @@ BYPASS=/etc/dnsmasq.d/bypass.conf
 IP=__RELAY_IP__
 
 need_root() { [ "$(id -u)" = 0 ] || { echo "run as root"; exit 1; }; }
+# A typo such as "example.com/" or a pasted space used to be written straight
+# into dnsmasq's config; the test then failed and the list kept the bad line.
+valid_domain() {
+  printf '%s' "$1" | grep -Eq '^[a-z0-9]([a-z0-9-]{0,61}[a-z0-9])?(\.[a-z0-9]([a-z0-9-]{0,61}[a-z0-9])?)+$' \
+    || { echo "not a domain name: $1" >&2; return 1; }
+}
 
 case "${1:-}" in
   add)
@@ -15,6 +21,7 @@ case "${1:-}" in
     [ $# -gt 0 ] || { echo "usage: smartdns add <domain> [domain ...]"; exit 1; }
     for d in "$@"; do
       d=$(echo "$d" | tr 'A-Z' 'a-z' | sed 's#^https\?://##; s#/.*##; s/^\.//')
+      valid_domain "$d" || continue
       if grep -qxF "address=/$d/$IP" "$CONF"; then
         echo "already present: $d"
       else
@@ -22,13 +29,14 @@ case "${1:-}" in
         echo "added: $d"
       fi
     done
-    dnsmasq --test -C /etc/dnsmasq.conf && systemctl restart dnsmasq && echo "dnsmasq reloaded"
+    dnsmasq --test -C /etc/dnsmasq.conf -7 /etc/dnsmasq.d,.dpkg-dist,.dpkg-old,.dpkg-new && systemctl restart dnsmasq && echo "dnsmasq reloaded"
     ;;
   del|rm)
     need_root; shift
     [ $# -gt 0 ] || { echo "usage: smartdns del <domain> [domain ...]"; exit 1; }
     for d in "$@"; do
       d=$(echo "$d" | tr 'A-Z' 'a-z' | sed 's#^https\?://##; s#/.*##; s/^\.//')
+      valid_domain "$d" || continue
       if grep -qxF "address=/$d/$IP" "$CONF"; then
         sed -i "\#^address=/$d/$IP\$#d" "$CONF"
         echo "removed: $d"
@@ -45,6 +53,7 @@ case "${1:-}" in
     [ $# -gt 0 ] || { echo "usage: smartdns bypass <domain> [domain ...]"; exit 1; }
     for d in "$@"; do
       d=$(echo "$d" | tr 'A-Z' 'a-z' | sed 's#^https\?://##; s#/.*##; s/^\.//')
+      valid_domain "$d" || continue
       if grep -qxF "server=/$d/1.1.1.1" "$BYPASS"; then
         echo "already bypassed: $d"
       else
@@ -54,12 +63,13 @@ server=/%s/8.8.8.8
         echo "bypassed (resolves to its real IP now): $d"
       fi
     done
-    dnsmasq --test -C /etc/dnsmasq.conf && systemctl restart dnsmasq && echo "dnsmasq reloaded"
+    dnsmasq --test -C /etc/dnsmasq.conf -7 /etc/dnsmasq.d,.dpkg-dist,.dpkg-old,.dpkg-new && systemctl restart dnsmasq && echo "dnsmasq reloaded"
     ;;
   unbypass)
     need_root; shift
     for d in "$@"; do
       d=$(echo "$d" | tr 'A-Z' 'a-z' | sed 's#^https\?://##; s#/.*##; s/^\.//')
+      valid_domain "$d" || continue
       sed -i "\#^server=/$d/#d" "$BYPASS" && echo "un-bypassed: $d"
     done
     systemctl restart dnsmasq && echo "dnsmasq reloaded"

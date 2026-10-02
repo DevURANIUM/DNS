@@ -1,13 +1,20 @@
 (()=>{'use strict';
 const root=document.documentElement;
 const isCustomer=document.body.classList.contains('customer');
-try{root.dataset.theme=isCustomer?(localStorage.getItem('dns-theme')||'dark'):'dark';}catch(_){root.dataset.theme='dark';}
+// The head of each page sets the saved or system theme before first paint;
+// this only repeats it for pages rendered without that snippet.
+if(!root.dataset.theme){let saved=null;try{saved=localStorage.getItem('dns-theme');}catch(_){}root.dataset.theme=saved||(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');}
 const toast=document.createElement('div');toast.className='toast';toast.setAttribute('role','status');document.body.append(toast);let timer;
 function notify(message){toast.textContent=message;clearTimeout(timer);timer=setTimeout(()=>{toast.textContent='';},3500);}
 const theme=document.createElement('button');theme.type='button';theme.className='ghost theme-toggle';
-function themeLabel(){theme.textContent=root.dataset.theme==='light'?'حالت تاریک':'حالت روشن';theme.setAttribute('aria-label',theme.textContent);}
+const sun='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>';
+const moon='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>';
+function themeLabel(){const light=root.dataset.theme==='light';const text=light?'حالت تاریک':'حالت روشن';theme.innerHTML=(light?moon:sun)+'<span>'+text+'</span>';theme.setAttribute('aria-label',text);theme.title=text;}
 themeLabel();theme.onclick=()=>{root.dataset.theme=root.dataset.theme==='light'?'dark':'light';try{localStorage.setItem('dns-theme',root.dataset.theme);}catch(_){}themeLabel();};
-if(isCustomer)(document.querySelector('header')||document.body).append(theme);
+const sideFoot=document.querySelector('.side-foot');
+if(sideFoot)sideFoot.prepend(theme);
+else if(isCustomer)(document.querySelector('header')||document.body).append(theme);
+else document.body.append(theme);
 document.querySelectorAll('nav a.on').forEach(a=>a.setAttribute('aria-current','page'));
 document.querySelectorAll('body.customer input[type=password]').forEach((input,index)=>{
  if(!input.id)input.id='password-'+index;

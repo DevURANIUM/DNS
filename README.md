@@ -2,20 +2,32 @@
 
 Self-hosted Smart DNS with Persian admin and user panels, service profiles, traffic quotas, and an API for registering a user's public IP address.
 
-**Release: 0.3.39**
+**Release: 0.3.41**
 
-The full-chain check reports HTTP status and curl exit status separately.
-HTTP 200 followed by a transfer failure remains a failed check; its curl error
-is now visible instead of the misleading combined value 200000.
+**Installation.** Packages are installed without letting apt start dnsmasq or
+coturn with their stock configs, which on Ubuntu collided with systemd-resolved
+on port 53 and aborted the install. apt now waits for a held lock, repairs an
+interrupted dpkg run and retries; certbot no longer fails on stale package lists.
+Programs already holding ports 80, 443 or 53 are named before anything is
+changed. Relays behind 1:1 NAT (public IP not on an interface) now start.
+An active ufw gets this service's ports opened. dnsmasq older than 2.89 no
+longer rejects the whole configuration over `filter-AAAA`; the installer warns
+instead. Configuration tests now read `/etc/dnsmasq.d`, as the service does.
 
-Firewall repair now restores saved state when the live nftables table is absent,
-instead of aborting while trying to save a missing table. A failure to save an
-existing table stops the repair with a visible error before deleting that table.
+**DNS.** More concurrent upstream queries (1500), a 60-second TTL on routed
+answers, a 1232-byte EDNS limit and `bind-dynamic` for boot-time robustness.
+Template resolvers bypass through two upstreams instead of one.
+`smartdns add/bypass` rejects malformed names.
 
-Sync responses now negotiate gzip compression to reduce large profile transfers.
-Older peers retain plain JSON compatibility. Sync response writes have a
-60-second timeout and the relay waits up to 65 seconds per socket operation;
-other API calls retain their existing timeout. Update the exit, then the relay.
+**Games.** About 260 game-platform domains that were filed under "other
+services" (Demonware, Steam CM servers, Epic Online Services, PlayFab, Riot,
+BattlEye, Xbox services, PUBG Mobile and others) now belong to the Games group,
+so a games-only template routes them. EasyAntiCheat, Ubisoft Connect and
+CurseForge were added.
+
+**Panels.** One rebuilt stylesheet for the admin and customer pages: fixed
+sidebar with icons, status badges, a light theme for the admin console, theme
+that follows the system setting, and lighter rendering on low-end phones.
 
 [راهنمای فارسی](README.fa.md) · [Repository](https://github.com/DevURANIUM/DNS) · [Report an issue](https://github.com/DevURANIUM/DNS/issues) · [Domain catalogue](docs/service-catalogue.md)
 
@@ -61,7 +73,7 @@ Upstream web addresses are resolved on demand with a 60-second DNS cache. Existi
 | API keys | Generate or replace a key for IPv4 registration |
 | Service profiles | Select service categories and configure domain rules |
 | Access control | IP allowlists and traffic accounting through nftables |
-| Interface | Persian RTL panels, bundled fonts, user light/dark themes and copy buttons |
+| Interface | Persian RTL panels, bundled fonts, light/dark themes on both panels (following the system setting) and copy buttons |
 | Operations | Service logs, domain-route inspection, TLS certificate management and installer backups |
 
 Vazirmatn and JetBrains Mono are bundled with the panels, so fonts do not require an external CDN. Payment receipt submission is not included; administrators activate accounts directly.

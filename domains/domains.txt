@@ -6779,3 +6779,9 @@ zoho.com
 zooplus.se
 zxing.org
 zzhrx.com
+
+# Game platform additions 2026-10-02 (anti-cheat, launchers, mod hosts)
+easyanticheat.net
+ubisoftconnect.com
+curseforge.com
+forgecdn.net

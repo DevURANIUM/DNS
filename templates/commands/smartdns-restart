@@ -56,7 +56,7 @@ if [ "$role" = relay ]; then
     restart smartdns-sync $resolvers
     # A config that does not load would keep dnsmasq down after the restart,
     # where right now it is at least running on the old one.
-    if out="$(dnsmasq --test -C /etc/dnsmasq.conf 2>&1)"; then
+    if out="$(dnsmasq --test -C /etc/dnsmasq.conf -7 /etc/dnsmasq.d,.dpkg-dist,.dpkg-old,.dpkg-new 2>&1)"; then
         restart dnsmasq
     else
         echo "  dnsmasq's config does not load, so it was left running as it was:"

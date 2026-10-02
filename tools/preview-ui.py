@@ -33,9 +33,17 @@ def main():
             ('کیان', 'kian', 'over_quota'), ('نیلوفر', 'niloufar', 'expired')], 1):
             store.db.execute('INSERT INTO users (id, first_name, username, status, created_at, quota_bytes, used_bytes) VALUES (?,?,?,?,?,?,?)',
                              (index, name, username, status, '2026-09-14T00:00:00+00:00', int(10.5 * admin.GB), index * admin.GB))
+        store.db.execute("INSERT INTO templates (id, name, is_default, created_at) VALUES (1, 'کامل', 1, '2026-09-14')")
+        store.db.execute("INSERT INTO templates (id, name, is_default, created_at) VALUES (2, 'فقط بازی', 0, '2026-09-14')")
+        store.db.execute("INSERT INTO template_services (template_id, service_key, group_key) VALUES (2, 'category_games', 'main')")
+        store.db.execute("INSERT INTO custom_domains (domain, note, added_at) VALUES ('example.org', 'نمونه', '2026-09-20')")
         store.db.commit()
         admin.STORE = admin.Store(db)
+        import json
+        admin.CATALOGUE[:] = json.loads((ROOT / 'domains' / 'services.json').read_text(encoding='utf-8'))['services']
+        admin.CFG.update({'ADMIN_PORT': '9443'})
         handler = object.__new__(admin.Admin)
+        handler.path = '/preview/'
         customer = object.__new__(sync.UserPanel)
         customer.session = lambda: 'preview-only'
         customer.banner = lambda: ''
@@ -52,6 +60,15 @@ def main():
                  'login.html': admin.login_page(admin.CFG),
                  'signup.html': sync.user_page(sync.signup_form()),
                  'user.html': customer.dashboard()}
+        for name, title, active, path, method in (
+                ('templates.html', 'قالب‌ها', 'templates', '/preview/templates', 'templates'),
+                ('template-edit.html', 'قالب‌ها', 'templates', '/preview/templates?t=2', 'templates'),
+                ('domains.html', 'دامنه‌ها', 'domains', '/preview/domains', 'domains'),
+                ('settings.html', 'تنظیمات', 'settings', '/preview/settings', 'settings'),
+                ('account.html', 'مدیریت حساب', 'users', '/preview/user-account?id=1', 'user_account'),
+                ('logs.html', 'لاگ', 'logs', '/preview/logs', 'logs')):
+            handler.path = path
+            pages[name] = admin.page(title, getattr(handler, method)(), admin.CFG, active)
         for name, content in pages.items():
             # Preview must never submit administrative operations.
             content = content.replace('<form ', '<form onsubmit="event.preventDefault()" ')
