@@ -1356,7 +1356,11 @@ class API(http.server.BaseHTTPRequestHandler):
 
     def log_message(self, fmt, *args):
         # http.server's own notes - a malformed request, a timeout. The access
-        # line is log_request below.
+        # line is log_request below. send_error's "code 501, message ..." is
+        # left out: the access line right after it already says 501, and the
+        # pair doubled every refused request in the log.
+        if fmt.startswith("code %d"):
+            return
         log(INFO, "api %s from %s" % (fmt % args, self.client_address[0]))
 
     def parse_request(self):
