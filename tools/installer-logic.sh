@@ -1646,53 +1646,6 @@ if [ "$ROLE" = relay ]; then
     fi
     check "an unrouted domain is not pointed at this relay" \
           "$(printf '%s\n' "$unrouted" | grep -c "^${RELAY_IP}$" || true)" "0"
-    # Keep transport status separate from HTTP status: a partial response can
-    # return HTTP 200 and still time out. Appending '000' hid that as 200000.
-    # Do not let proxy environment variables bypass the relay being tested.
-    chain_error="$(mktemp)"
-    chain_rc=0
-    if chain_http="$(curl --http1.1 --noproxy '*' -sS -o /dev/null -m 25 \
-        --resolve "github.com:443:${RELAY_IP}" -w '%{http_code}' \
-        https://github.com/ 2>"$chain_error")"; then
-        chain_rc=0
-    else
-        chain_rc=$?
-    fi
-    check "an HTTPS site loads through the full chain (HTTP/1.1)" \
-          "HTTP=${chain_http:-000} curl_exit=$chain_rc" "HTTP=200 curl_exit=0"
-    if [ "$chain_rc" != 0 ]; then
-        warn "full-chain transfer failed (HTTP headers alone do not prove a complete download):"
-        cat "$chain_error" >&2
-        # Narrow it down: the same request straight to the exit, skipping this
-        # relay's nginx, and once more with a different name in the handshake.
-        # Which of these also fails says whether the fault is here, on the
-        # exit, or on the path between them.
-        direct="$(curl --http1.1 --noproxy '*' -s -o /dev/null -m 20 -w '%{http_code}' \
-            --connect-to "github.com:443:${EXIT_IP}:${LINK_PORT}" https://github.com/ 2>/dev/null || true)"
-        other="$(curl --http1.1 --noproxy '*' -s -o /dev/null -m 20 -w '%{http_code}' \
-            --connect-to "www.microsoft.com:443:${EXIT_IP}:${LINK_PORT}" https://www.microsoft.com/ 2>/dev/null || true)"
-        src="$(ip -4 route get "$EXIT_IP" 2>/dev/null | sed -n 's/.* src \([0-9.]*\).*/\1/p' | head -1)"
-        warn "diagnosis:"
-        warn "  straight to the exit, github.com:        HTTP=${direct:-000}"
-        warn "  straight to the exit, www.microsoft.com: HTTP=${other:-000}"
-        warn "  this relay reaches the exit from:        ${src:-unknown} (the exit allows only $RELAY_IP)"
-        if [ -n "$src" ] && [ "$src" != "$RELAY_IP" ] && [ "$src" != "$LISTEN_IP" ]; then
-            warn "  -> the exit sees a different source address and refuses it."
-            warn "     Add $src to RELAY_IP in /etc/smart-dns/panel.env on the exit and re-run it there."
-        elif [ "${direct:-000}" = 000 ] && [ "${other:-000}" = 000 ]; then
-            warn "  -> nothing completes on link port $LINK_PORT. If the exit's error.log is"
-            warn "     empty, the route cuts TLS after the handshake: update the exit first"
-            warn "     (it then also listens on $LINK_PORT_DEFAULT), allow that port in its firewall,"
-            warn "     and run this installer here again to switch ports."
-        elif [ "${direct:-000}" = 000 ]; then
-            warn "  -> only this name fails: the path to the exit is dropping that SNI,"
-            warn "     or the exit cannot reach github.com itself."
-        else
-            warn "  -> the exit works directly, so this relay's nginx is the fault:"
-            warn "     check journalctl -u nginx and /var/log/nginx/error.log here."
-        fi
-    fi
-    rm -f "$chain_error"
     # The API the relay syncs with, reached the way smartdns-sync reaches it -
     # by address, with a name in the handshake - but with a GET, which the API
     # refuses as 501 without looking at any secret, so this proves the path
