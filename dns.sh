@@ -38,7 +38,7 @@ STAMP="$(date +%Y%m%d-%H%M%S)"
 # What this file is. Written to the machine once an install finishes, so the
 # next run can tell whether it is an upgrade, a re-run, or somebody about to
 # put an older version over a newer one by accident.
-VERSION="0.3.41"
+VERSION="0.3.42"
 
 # What this install did, so uninstall can undo exactly that and nothing more.
 # Without it, removal would be guesswork: whether dnsmasq was ours or already
@@ -101,6 +101,8 @@ install_payload() {
               -e "s#__EXIT_IP__#${EXIT_IP}#g" \
               -e "s#__LISTEN_IP__#${LISTEN_IP:-$RELAY_IP}#g" \
               -e "s#__STUN_EXTERNAL__#${STUN_EXTERNAL:-$RELAY_IP}#g" \
+              -e "${LINK_ON_443:+/# relay link port\$/d}" \
+              -e "s#__LINK_PORT__#${LINK_PORT:-443}#g" \
               -e "s#__MODULE_PATH__#${MOD:-__MODULE_PATH__}#g" \
               -e "${NO_GOOGLE_V6:+/# google-v6 begin/,/# google-v6 end/d}" \
         > "$tmp"
@@ -703,6 +705,7 @@ PREV_PACKAGES="$(recall_flat packages-installed || true)"
 PREV_REPLACED="$(recall_flat files-replaced || true)"
 PREV_CREATED="$(recall_flat files-created || true)"
 PREV_SERVICES="$(recall_flat services-enabled || true)"
+PREV_LINK_PORT="$(recall link-port 2>/dev/null | tail -1 || true)"
 : > "$STATE"
 remember role "$ROLE"
 remember relay-ip "$RELAY_IP"
@@ -852,7 +855,7 @@ step "Checking the ports this service needs"
 # "nginx rejected the config" or a dnsmasq that would not start, several steps
 # later and with nothing naming the program actually in the way.
 port_clash=""
-for port in 80 443; do
+for port in 80 443 $([ "$ROLE" = exit ] && [ "$LINK_PORT" != 443 ] && echo "$LINK_PORT"); do
     holders="$(port_holders tcp "$port" nginx)"
     if [ -n "$holders" ]; then
         port_clash=1
@@ -879,6 +882,56 @@ fi
 [ -z "$port_clash" ] || die "stop or reconfigure the programs above, then run the installer again.
     For example:  systemctl disable --now apache2"
 info "80 and 443$([ "$ROLE" = relay ] && printf ' and 53') are free"
+
+# ------------------------------------------------------------- link port
+# The port the relay reaches the exit's SNI proxy on. Port 443 was the only
+# one, and on some Iranian routes TLS to a foreign address on 443 is cut right
+# after the handshake: a capture on the exit showed its first post-handshake
+# packet retransmitted to a relay that never received it, while the same
+# server's TLS on 8443 passed. The exit now also listens on a second port, and
+# the relay uses whichever one actually carries a full HTTPS request.
+LINK_PORT_DEFAULT=8444
+valid_port() { case "$1" in ""|*[!0-9]*) return 1 ;; esac; [ "$1" -ge 1 ] && [ "$1" -le 65535 ]; }
+if [ "$ROLE" = exit ]; then
+    step "Relay link port"
+    LINK_PORT="${EXIT_LINK_PORT:-${PREV_LINK_PORT:-$LINK_PORT_DEFAULT}}"
+    valid_port "$LINK_PORT" || die "EXIT_LINK_PORT must be a port number"
+    case "$LINK_PORT" in
+        22|53|80|8443|8446) die "port $LINK_PORT is already used here - pick another EXIT_LINK_PORT" ;;
+    esac
+    if [ "$LINK_PORT" = 443 ]; then
+        info "the relay connects on 443 only"
+    else
+        info "the relay may connect on 443 and on $LINK_PORT"
+        info "allow TCP $LINK_PORT from the relay in any provider firewall too"
+    fi
+else
+    step "Choosing how this relay reaches the exit"
+    # Probed with a real request straight to the exit: an open port proves
+    # nothing on a route where the cut comes after the TLS handshake.
+    LINK_PORT=""
+    tried=""
+    for port in ${EXIT_LINK_PORT:-${PREV_LINK_PORT:-} $LINK_PORT_DEFAULT 443}; do
+        valid_port "$port" || continue
+        case " $tried " in *" $port "*) continue ;; esac
+        tried="$tried $port"
+        code="$(curl --http1.1 --noproxy '*' -s -o /dev/null -m 15 -w '%{http_code}' \
+            --connect-to "github.com:443:${EXIT_IP}:${port}" https://github.com/ 2>/dev/null || true)"
+        case "${code:-000}" in
+            000) info "port $port: no complete HTTPS response through the exit" ;;
+            *)   info "port $port: works (HTTP $code)"; LINK_PORT="$port"; break ;;
+        esac
+    done
+    if [ -z "$LINK_PORT" ]; then
+        LINK_PORT="${EXIT_LINK_PORT:-${PREV_LINK_PORT:-443}}"
+        warn "no port to the exit carried a full HTTPS request - using $LINK_PORT."
+        warn "update the exit to this version first (it adds port $LINK_PORT_DEFAULT),"
+        warn "allow that port in the exit's firewall, then run this again."
+    fi
+fi
+LINK_ON_443=""
+[ "$LINK_PORT" = 443 ] && LINK_ON_443=1
+remember link-port "$LINK_PORT"
 
 step "nginx"
 MOD="$(find /usr/lib/nginx/modules -name ngx_stream_module.so 2>/dev/null | head -1)"
@@ -1304,6 +1357,7 @@ EOF
                     warn "   443    the proxy"
                     warn "  8443    the sync API the relays connect to"
                     warn "  8446    the exit's own route to Google over IPv6"
+                    warn "  $LINK_PORT    the relay's link to this exit"
                     warn "on a relay, 3478 is taken as well."
                     warn "pick anything else, and open it in your firewall."
                     printf '\n'
@@ -1328,6 +1382,7 @@ EOF
                 22) die "port 22 is ssh" ;;
                 8443) die "port 8443 is the sync API the relays connect to" ;;
                 8446) die "port 8446 is the exit's own route to Google over IPv6" ;;
+                "$LINK_PORT") die "port $LINK_PORT is the relay link port" ;;
                 53|80|443) die "port $ADMIN_PORT is the service's own - pick
     another. 22, 53, 80, 443, 8443 and 8446 are all taken." ;;
             esac
@@ -1504,7 +1559,7 @@ if command -v ufw >/dev/null 2>&1 && ufw status 2>/dev/null | grep -q '^Status: 
         UFW_PORTS="53/udp 53/tcp 80/tcp 443/tcp 3478/udp 8443/tcp"
     else
         admin_port="$(sed -n 's/^ADMIN_PORT=//p' /etc/smart-dns/admin.env 2>/dev/null | head -1 || true)"
-        UFW_PORTS="80/tcp 443/tcp 8443/tcp${admin_port:+ $admin_port/tcp}"
+        UFW_PORTS="80/tcp 443/tcp 8443/tcp $LINK_PORT/tcp${admin_port:+ $admin_port/tcp}"
     fi
     for rule in $UFW_PORTS; do
         ufw allow "$rule" >/dev/null 2>&1 && info "allowed $rule" || warn "could not open $rule in ufw"
@@ -1590,9 +1645,9 @@ if [ "$ROLE" = relay ]; then
         # Which of these also fails says whether the fault is here, on the
         # exit, or on the path between them.
         direct="$(curl --http1.1 --noproxy '*' -s -o /dev/null -m 20 -w '%{http_code}' \
-            --resolve "github.com:443:${EXIT_IP}" https://github.com/ 2>/dev/null || true)"
+            --connect-to "github.com:443:${EXIT_IP}:${LINK_PORT}" https://github.com/ 2>/dev/null || true)"
         other="$(curl --http1.1 --noproxy '*' -s -o /dev/null -m 20 -w '%{http_code}' \
-            --resolve "www.microsoft.com:443:${EXIT_IP}" https://www.microsoft.com/ 2>/dev/null || true)"
+            --connect-to "www.microsoft.com:443:${EXIT_IP}:${LINK_PORT}" https://www.microsoft.com/ 2>/dev/null || true)"
         src="$(ip -4 route get "$EXIT_IP" 2>/dev/null | sed -n 's/.* src \([0-9.]*\).*/\1/p' | head -1)"
         warn "diagnosis:"
         warn "  straight to the exit, github.com:        HTTP=${direct:-000}"
@@ -1602,8 +1657,10 @@ if [ "$ROLE" = relay ]; then
             warn "  -> the exit sees a different source address and refuses it."
             warn "     Add $src to RELAY_IP in /etc/smart-dns/panel.env on the exit and re-run it there."
         elif [ "${direct:-000}" = 000 ] && [ "${other:-000}" = 000 ]; then
-            warn "  -> the exit closes every connection: check its nginx (journalctl -u nginx,"
-            warn "     /var/log/nginx/error.log) and that it was installed for relay $RELAY_IP."
+            warn "  -> nothing completes on link port $LINK_PORT. If the exit's error.log is"
+            warn "     empty, the route cuts TLS after the handshake: update the exit first"
+            warn "     (it then also listens on $LINK_PORT_DEFAULT), allow that port in its firewall,"
+            warn "     and run this installer here again to switch ports."
         elif [ "${direct:-000}" = 000 ]; then
             warn "  -> only this name fails: the path to the exit is dropping that SNI,"
             warn "     or the exit cannot reach github.com itself."
@@ -1651,9 +1708,10 @@ if [ "$ROLE" = relay ]; then
 else
     printf '
     This exit only accepts connections from %s, so it is not an open proxy.
-    Run the installer on the relay next, if you have not already.
+    The relay may reach it on TCP 443 or %s - allow both from the relay in
+    any provider firewall. Run the installer on the relay next.
 
-' "$RELAY_IP"
+' "$RELAY_IP" "$LINK_PORT"
 fi
 
 if [ -n "$ENFORCE_OUT" ]; then
@@ -7014,6 +7072,11 @@ exit 0
 #        resolver 1.1.1.1 8.8.8.8 valid=60s ipv6=off;
 #        resolver_timeout 5s;
 #        listen 443;
+#        # The relay's link. On some Iranian routes TLS on port 443 to a
+#        # foreign address is cut right after the handshake while other ports
+#        # pass, so the relay may reach this server on a second port instead.
+#        # The installer drops this line when the link port is 443.
+#        listen __LINK_PORT__; # relay link port
 #        allow __RELAY_IP__;
 #        deny all;
 #        ssl_preread on;
@@ -7059,7 +7122,9 @@ exit 0
 #        listen 443;
 #        proxy_connect_timeout 10s;
 #        proxy_timeout 10m;
-#        proxy_pass __EXIT_IP__:443;
+#        # The exit's link port: 443, or the alternative port the installer
+#        # found working when 443 to the exit is filtered on the way out.
+#        proxy_pass __EXIT_IP__:__LINK_PORT__;
 #    }
 #
 #    # Port 80 is forwarded rather than answered. It used to return a 301 to

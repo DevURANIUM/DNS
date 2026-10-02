@@ -2,7 +2,15 @@
 
 Self-hosted Smart DNS with Persian admin and user panels, service profiles, traffic quotas, and an API for registering a user's public IP address.
 
-**Release: 0.3.41**
+**Release: 0.3.42**
+
+**Relay link port.** On some Iranian routes, TLS from the relay to the exit on
+port 443 is cut right after the handshake, and nothing loads. The exit now also
+listens on TCP 8444 (`EXIT_LINK_PORT` to change it). The relay tests 8444 and 443
+with a real HTTPS request and uses the first one that works. Update the exit
+first, allow 8444 from the relay in its firewall, then re-run the relay.
+
+Changes in 0.3.41:
 
 **Installation.** Packages are installed without letting apt start dnsmasq or
 coturn with their stock configs, which on Ubuntu collided with systemd-resolved
@@ -145,6 +153,7 @@ A successful request replaces the account's previous IP. It does not activate an
 | TCP/UDP 53 | Client DNS | — |
 | TCP 80 | HTTP forwarding and certificate validation | HTTP proxy and certificate validation |
 | TCP 443 | HTTPS forwarding | SNI proxy |
+| TCP 8444 | — | Relay link (SNI proxy, relay only) |
 | UDP 3478 | STUN | — |
 | TCP 8443 | HTTPS user panel | Sync API |
 | TCP 9443 | — | Default admin panel port; configurable |
