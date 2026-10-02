@@ -1585,6 +1585,32 @@ if [ "$ROLE" = relay ]; then
     if [ "$chain_rc" != 0 ]; then
         warn "full-chain transfer failed (HTTP headers alone do not prove a complete download):"
         cat "$chain_error" >&2
+        # Narrow it down: the same request straight to the exit, skipping this
+        # relay's nginx, and once more with a different name in the handshake.
+        # Which of these also fails says whether the fault is here, on the
+        # exit, or on the path between them.
+        direct="$(curl --http1.1 --noproxy '*' -s -o /dev/null -m 20 -w '%{http_code}' \
+            --resolve "github.com:443:${EXIT_IP}" https://github.com/ 2>/dev/null || true)"
+        other="$(curl --http1.1 --noproxy '*' -s -o /dev/null -m 20 -w '%{http_code}' \
+            --resolve "www.microsoft.com:443:${EXIT_IP}" https://www.microsoft.com/ 2>/dev/null || true)"
+        src="$(ip -4 route get "$EXIT_IP" 2>/dev/null | sed -n 's/.* src \([0-9.]*\).*/\1/p' | head -1)"
+        warn "diagnosis:"
+        warn "  straight to the exit, github.com:        HTTP=${direct:-000}"
+        warn "  straight to the exit, www.microsoft.com: HTTP=${other:-000}"
+        warn "  this relay reaches the exit from:        ${src:-unknown} (the exit allows only $RELAY_IP)"
+        if [ -n "$src" ] && [ "$src" != "$RELAY_IP" ] && [ "$src" != "$LISTEN_IP" ]; then
+            warn "  -> the exit sees a different source address and refuses it."
+            warn "     Add $src to RELAY_IP in /etc/smart-dns/panel.env on the exit and re-run it there."
+        elif [ "${direct:-000}" = 000 ] && [ "${other:-000}" = 000 ]; then
+            warn "  -> the exit closes every connection: check its nginx (journalctl -u nginx,"
+            warn "     /var/log/nginx/error.log) and that it was installed for relay $RELAY_IP."
+        elif [ "${direct:-000}" = 000 ]; then
+            warn "  -> only this name fails: the path to the exit is dropping that SNI,"
+            warn "     or the exit cannot reach github.com itself."
+        else
+            warn "  -> the exit works directly, so this relay's nginx is the fault:"
+            warn "     check journalctl -u nginx and /var/log/nginx/error.log here."
+        fi
     fi
     rm -f "$chain_error"
     # The API the relay syncs with, reached the way smartdns-sync reaches it -
