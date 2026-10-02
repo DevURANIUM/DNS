@@ -10,6 +10,12 @@ listens on TCP 8444 (`EXIT_LINK_PORT` to change it). The relay tests 8444 and 44
 with a real HTTPS request and uses the first one that works. Update the exit
 first, allow 8444 from the relay in its firewall, then re-run the relay.
 
+**Re-runs ask nothing.** A relay whose final check failed used to record no
+version, so every run asked for the addresses, pairing token and domain again.
+Every completed run now records its version: later runs reuse the saved
+answers and only ask whether to install a different version.
+`sudo bash dns.sh --reconfigure` asks for everything again.
+
 Changes in 0.3.41:
 
 **Installation.** Packages are installed without letting apt start dnsmasq or

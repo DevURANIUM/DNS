@@ -282,9 +282,10 @@ case "${1:-}" in
     --version|-V) printf '%s\n' "$VERSION"; exit 0 ;;
     --help|-h)
         printf 'DNS %s\n\n' "$VERSION"
-        printf 'usage: sudo bash %s [--uninstall]\n\n' "$0"
+        printf 'usage: sudo bash %s [--uninstall | --reconfigure]\n\n' "$0"
         printf '  no arguments   install or update this machine\n'
         printf '  --uninstall    put it back as it was\n'
+        printf '  --reconfigure  ask for the addresses, token and domain again\n'
         printf '  --version      print the version of this file\n'
         printf '\nenvironment (sudo does not pass these, put them after it):\n'
         printf '  ASSUME_YES=1   take the default for every question\n'
@@ -450,6 +451,7 @@ uninstall() {
 # --version and --help were answered above, before the preflight.
 case "${1:-}" in
     --uninstall|-u|uninstall) uninstall ;;
+    --reconfigure) RECONFIGURE=1 ;;
     "") ;;
     *) die "unknown argument: $1  (try --help)" ;;
 esac
@@ -537,9 +539,17 @@ fi
 # to install this version at all. It used to walk the whole questionnaire
 # again, addresses and all, as if the machine had never been set up.
 UPGRADE=""
-if [ -n "$INSTALLED_VERSION" ]; then
+was() { recall "$1" 2>/dev/null | tail -1 || true; }
+# A run whose final checks failed used to record no version, so every later
+# run looked like a first install and asked for every address, the pairing
+# token and the domain again - on a relay whose only problem was the route to
+# the exit. The state file says what that run was told; use it.
+PREVIOUS_RUN=""
+[ -z "$INSTALLED_VERSION" ] && [ -n "$(was role)" ] && PREVIOUS_RUN=1
+if [ -n "${RECONFIGURE:-}" ]; then
+    info "--reconfigure: asking for every setting again"
+elif [ -n "$INSTALLED_VERSION" ] || [ -n "$PREVIOUS_RUN" ]; then
     UPGRADE=1
-    was() { recall "$1" 2>/dev/null | tail -1 || true; }
     ROLE="${ROLE:-$(was role)}"
     if [ -z "$ROLE" ]; then
         if [ -f /etc/smart-dns/sync.env ]; then ROLE=relay
@@ -560,7 +570,19 @@ if [ -n "$INSTALLED_VERSION" ]; then
         [ -n "$PEER_IP" ] || PEER_IP="$(sed -n 's/^RELAY_IP=//p' /etc/smart-dns/panel.env 2>/dev/null | head -1 | cut -d, -f1 || true)"
     fi
     PANEL_DOMAIN="${PANEL_DOMAIN:-$(was panel-domain)}"
-    info "upgrading this ${ROLE:-machine} in place - nothing to answer"
+    if [ -n "$PREVIOUS_RUN" ]; then
+        printf '\n%sThis machine was set up before%s (as %s, exit %s, domain %s).\n' \
+               "$B" "$N" "${ROLE:-?}" "$( [ "$ROLE" = relay ] && echo "${PEER_IP:-?}" || echo "${SELF_IP:-?}")" "${PANEL_DOMAIN:-none}"
+        info "this file is version $VERSION; its answers are reused, nothing is asked again."
+        info "to change an address, the token or the domain: sudo bash $0 --reconfigure"
+        if [ -z "${ASSUME_YES:-}" ]; then
+            read -r -p "  install version $VERSION with these settings? [Y/n]: " reply
+            reply="$(printf '%s' "$reply" | tr -d '\r')"
+            case "$reply" in n|N|no|NO) printf '\n    Nothing was changed.\n\n'; exit 0 ;; esac
+        fi
+    else
+        info "upgrading this ${ROLE:-machine} in place - nothing to answer"
+    fi
 fi
 
 # ---------------------------------------------------------------- questions
@@ -639,7 +661,8 @@ STUN_EXTERNAL="$RELAY_IP"
 # and one database is what makes a customer's allowance mean the same thing on
 # all of them. The exit builds it unasked; the relay asks for the pairing token
 # the exit prints at the end of its own install.
-if [ "$ROLE" = relay ] && [ -z "${SYNC_TOKEN:-}" ] && [ -z "${ASSUME_YES:-}" ] && [ -z "$UPGRADE" ]; then
+if [ "$ROLE" = relay ] && [ -z "${SYNC_TOKEN:-}" ] && [ -z "${ASSUME_YES:-}" ] \
+   && { [ -z "$UPGRADE" ] || [ ! -f /etc/smart-dns/sync.env ]; }; then
     printf '\n%sPanel%s (optional - press enter to skip)\n\n' "$B" "$N"
     printf '  The exit server prints a pairing token at the end of its install.\n'
     read -r -p "  pairing token: " SYNC_TOKEN
@@ -1681,16 +1704,19 @@ if [ "$ROLE" = relay ]; then
 fi
 
 printf '\n'
+# Written once the run reaches this point, whether or not every check passed:
+# everything is installed by now, and a failed check (often the route to the
+# exit) is not fixed by asking the operator for their addresses again. A run
+# that died earlier never gets here and records nothing.
+mkdir -p "$STATE_DIR"
+printf '%s\n' "$VERSION" > "$VERSION_FILE"
 if [ "$fail" = 0 ]; then
-    # Written here and nowhere earlier: a run that died half way through has
-    # not installed this version, and recording it would tell the next run
-    # there was nothing left to do.
-    mkdir -p "$STATE_DIR"
-    printf '%s\n' "$VERSION" > "$VERSION_FILE"
     printf '%s%s is installed and working, version %s.%s\n' \
            "$G" "$ROLE" "$VERSION" "$N"
 else
-    printf '%sSomething is off - see the failures above.%s\n' "$Y" "$N"
+    printf '%s%s %s is installed, but something is off - see the failures above.%s\n' \
+           "$Y" "$ROLE" "$VERSION" "$N"
+    printf '    Fix that and run the installer again; it will not ask the questions again.\n'
 fi
 
 if [ "$ROLE" = relay ]; then
