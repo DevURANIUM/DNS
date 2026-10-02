@@ -38,7 +38,7 @@ STAMP="$(date +%Y%m%d-%H%M%S)"
 # What this file is. Written to the machine once an install finishes, so the
 # next run can tell whether it is an upgrade, a re-run, or somebody about to
 # put an older version over a newer one by accident.
-VERSION="0.3.42"
+VERSION="0.3.43"
 
 # What this install did, so uninstall can undo exactly that and nothing more.
 # Without it, removal would be guesswork: whether dnsmasq was ours or already
@@ -103,6 +103,9 @@ install_payload() {
               -e "s#__STUN_EXTERNAL__#${STUN_EXTERNAL:-$RELAY_IP}#g" \
               -e "${LINK_ON_443:+/# relay link port\$/d}" \
               -e "s#__LINK_PORT__#${LINK_PORT:-443}#g" \
+              -e "s#__LINK_TLS_PORT__#${LINK_TLS_PORT:-8445}#g" \
+              -e "s#__LINK_SNI__#${LINK_SNI:-localhost}#g" \
+              -e "${LINK_PLAIN:+/# link-tls begin/,/# link-tls end/d}" \
               -e "s#__MODULE_PATH__#${MOD:-__MODULE_PATH__}#g" \
               -e "${NO_GOOGLE_V6:+/# google-v6 begin/,/# google-v6 end/d}" \
         > "$tmp"
@@ -729,6 +732,7 @@ PREV_REPLACED="$(recall_flat files-replaced || true)"
 PREV_CREATED="$(recall_flat files-created || true)"
 PREV_SERVICES="$(recall_flat services-enabled || true)"
 PREV_LINK_PORT="$(recall link-port 2>/dev/null | tail -1 || true)"
+PREV_LINK_MODE="$(recall link-mode 2>/dev/null | tail -1 || true)"
 : > "$STATE"
 remember role "$ROLE"
 remember relay-ip "$RELAY_IP"
@@ -878,7 +882,7 @@ step "Checking the ports this service needs"
 # "nginx rejected the config" or a dnsmasq that would not start, several steps
 # later and with nothing naming the program actually in the way.
 port_clash=""
-for port in 80 443 $([ "$ROLE" = exit ] && [ "$LINK_PORT" != 443 ] && echo "$LINK_PORT"); do
+for port in 80 443 $([ "$ROLE" = exit ] && echo "$LINK_PORT $LINK_TLS_PORT"); do
     holders="$(port_holders tcp "$port" nginx)"
     if [ -n "$holders" ]; then
         port_clash=1
@@ -907,54 +911,41 @@ fi
 info "80 and 443$([ "$ROLE" = relay ] && printf ' and 53') are free"
 
 # ------------------------------------------------------------- link port
-# The port the relay reaches the exit's SNI proxy on. Port 443 was the only
-# one, and on some Iranian routes TLS to a foreign address on 443 is cut right
-# after the handshake: a capture on the exit showed its first post-handshake
-# packet retransmitted to a relay that never received it, while the same
-# server's TLS on 8443 passed. The exit now also listens on a second port, and
-# the relay uses whichever one actually carries a full HTTPS request.
+# How the relay reaches the exit's SNI proxy. Plain TLS on 443 was the only
+# way, and on some Iranian routes it is cut right after the handshake: a
+# capture on the exit showed its first post-handshake packet retransmitted to
+# a relay that never received it - while the sync connection, TLS between the
+# same two machines carrying this service's own domain, passed untouched.
+# So the exit offers three ways in and the relay keeps the first that carries
+# a real HTTPS request end to end:
+#   plain 443   the original
+#   plain 8444  the same, on another port
+#   tls   8445  the client's TLS wrapped in an outer TLS session named after
+#               this service's domain - shaped like the sync connection
 LINK_PORT_DEFAULT=8444
+LINK_TLS_PORT=8445
 valid_port() { case "$1" in ""|*[!0-9]*) return 1 ;; esac; [ "$1" -ge 1 ] && [ "$1" -le 65535 ]; }
 if [ "$ROLE" = exit ]; then
-    step "Relay link port"
+    step "Relay link ports"
     LINK_PORT="${EXIT_LINK_PORT:-${PREV_LINK_PORT:-$LINK_PORT_DEFAULT}}"
     valid_port "$LINK_PORT" || die "EXIT_LINK_PORT must be a port number"
     case "$LINK_PORT" in
-        22|53|80|8443|8446) die "port $LINK_PORT is already used here - pick another EXIT_LINK_PORT" ;;
+        22|53|80|8443|8446|"$LINK_TLS_PORT") die "port $LINK_PORT is already used here - pick another EXIT_LINK_PORT" ;;
     esac
-    if [ "$LINK_PORT" = 443 ]; then
-        info "the relay connects on 443 only"
-    else
-        info "the relay may connect on 443 and on $LINK_PORT"
-        info "allow TCP $LINK_PORT from the relay in any provider firewall too"
-    fi
+    LINK_MODE=plain
+    info "the relay may connect on 443, $LINK_PORT, or wrapped in TLS on $LINK_TLS_PORT"
+    info "allow TCP 443, $LINK_PORT and $LINK_TLS_PORT from the relay in any provider firewall"
 else
-    step "Choosing how this relay reaches the exit"
-    # Probed with a real request straight to the exit: an open port proves
-    # nothing on a route where the cut comes after the TLS handshake.
-    LINK_PORT=""
-    tried=""
-    for port in ${EXIT_LINK_PORT:-${PREV_LINK_PORT:-} $LINK_PORT_DEFAULT 443}; do
-        valid_port "$port" || continue
-        case " $tried " in *" $port "*) continue ;; esac
-        tried="$tried $port"
-        code="$(curl --http1.1 --noproxy '*' -s -o /dev/null -m 15 -w '%{http_code}' \
-            --connect-to "github.com:443:${EXIT_IP}:${port}" https://github.com/ 2>/dev/null || true)"
-        case "${code:-000}" in
-            000) info "port $port: no complete HTTPS response through the exit" ;;
-            *)   info "port $port: works (HTTP $code)"; LINK_PORT="$port"; break ;;
-        esac
-    done
-    if [ -z "$LINK_PORT" ]; then
-        LINK_PORT="${EXIT_LINK_PORT:-${PREV_LINK_PORT:-443}}"
-        warn "no port to the exit carried a full HTTPS request - using $LINK_PORT."
-        warn "update the exit to this version first (it adds port $LINK_PORT_DEFAULT),"
-        warn "allow that port in the exit's firewall, then run this again."
-    fi
+    # Chosen after nginx is configured, below: each candidate is tested
+    # through this relay's own nginx, which is the only honest test of the
+    # wrapped mode and of the whole chain.
+    LINK_MODE="${PREV_LINK_MODE:-plain}"
+    LINK_PORT="${PREV_LINK_PORT:-443}"
 fi
 LINK_ON_443=""
 [ "$LINK_PORT" = 443 ] && LINK_ON_443=1
-remember link-port "$LINK_PORT"
+LINK_PLAIN=""
+[ "$LINK_MODE" = plain ] && LINK_PLAIN=1
 
 step "nginx"
 MOD="$(find /usr/lib/nginx/modules -name ngx_stream_module.so 2>/dev/null | head -1)"
@@ -976,12 +967,75 @@ if [ "$ROLE" = exit ]; then
         info "no working IPv6 here, or nginx older than 1.23.1 - Google leaves over IPv4"
     fi
 fi
+if [ "$ROLE" = exit ] && [ ! -f /etc/smart-dns/sync.key ]; then
+    # Made here rather than with the panel further down: the wrapped link
+    # serves this certificate, and nginx will not start without it. The panel
+    # step keeps whatever exists, so the pairing fingerprint is the same one.
+    mkdir -p /etc/smart-dns; chmod 700 /etc/smart-dns
+    openssl req -x509 -newkey rsa:2048 -nodes -days 3650 \
+        -subj "/CN=smartdns-sync" \
+        -keyout /etc/smart-dns/sync.key -out /etc/smart-dns/sync.crt \
+        >/dev/null 2>&1 || die "could not generate the sync certificate"
+    chmod 600 /etc/smart-dns/sync.key
+fi
 if [ "$ROLE" = relay ]; then
     install_payload RELAY_NGINX /etc/nginx/nginx.conf && NGINX_CHANGED=1 || true
 else
     install_payload EXIT_NGINX /etc/nginx/nginx.conf && NGINX_CHANGED=1 || true
 fi
 nginx -t || die "nginx rejected the config; the previous one is in $BACKUP_DIR"
+
+if [ "$ROLE" = relay ]; then
+    step "Choosing how this relay reaches the exit"
+    # The outer name for the wrapped link: this relay's own panel domain, the
+    # same name the sync connection carries.
+    LINK_SNI="${PANEL_DOMAIN:-$(sed -n 's/^PANEL_DOMAIN=//p' /etc/smart-dns/sync.env 2>/dev/null | head -1 || true)}"
+    LINK_SNI="${LINK_SNI:-localhost}"
+    # Each candidate is installed in nginx and a real HTTPS request goes
+    # through it, client to relay to exit to github.com. An open port proves
+    # nothing on a route that cuts the connection after the handshake.
+    try_link() {
+        LINK_MODE="$1"; LINK_PORT="$2"
+        LINK_ON_443=""; [ "$LINK_PORT" = 443 ] && LINK_ON_443=1
+        LINK_PLAIN=""; [ "$LINK_MODE" = plain ] && LINK_PLAIN=1
+        install_payload RELAY_NGINX /etc/nginx/nginx.conf >/dev/null && NGINX_CHANGED=1 || true
+        nginx -t >/dev/null 2>&1 || return 1
+        if systemctl is-active --quiet nginx; then systemctl reload nginx
+        else systemctl restart nginx; fi
+        sleep 1
+        code="$(curl --http1.1 --noproxy '*' -s -o /dev/null -m 15 -w '%{http_code}' \
+            --resolve "github.com:443:127.0.0.1" https://github.com/ 2>/dev/null || true)"
+        [ "${code:-000}" != 000 ]
+    }
+    if [ -n "${EXIT_LINK:-}" ]; then
+        candidates="$EXIT_LINK"            # e.g. EXIT_LINK=tls:8445
+    else
+        candidates="${PREV_LINK_MODE:+$PREV_LINK_MODE:$PREV_LINK_PORT} plain:443 plain:$LINK_PORT_DEFAULT tls:$LINK_TLS_PORT"
+    fi
+    chosen=""
+    tried=""
+    for cand in $candidates; do
+        case " $tried " in *" $cand "*) continue ;; esac
+        tried="$tried $cand"
+        if try_link "${cand%%:*}" "${cand##*:}"; then
+            info "${cand%%:*} link on port ${cand##*:}: works (HTTP $code)"
+            chosen="$cand"; break
+        fi
+        info "${cand%%:*} link on port ${cand##*:}: no complete HTTPS response"
+    done
+    if [ -z "$chosen" ]; then
+        # Nothing worked; settle on the wrapped link, the one most likely to
+        # start working once the exit is updated and its port is open.
+        try_link tls "$LINK_TLS_PORT" || true
+        warn "no way to the exit carried a full HTTPS request. Check that the exit"
+        warn "runs this version ($VERSION), that it was installed for relay $RELAY_IP,"
+        warn "and that its firewall allows TCP 443, $LINK_PORT_DEFAULT and $LINK_TLS_PORT from it."
+        warn "then run this installer again here. If all of that is right, the route"
+        warn "to this exit is filtered and a different exit address is needed."
+    fi
+fi
+remember link-mode "$LINK_MODE"
+remember link-port "$LINK_PORT"
 enable_service nginx nginx
 
 # ---------------------------------------------------------------- relay only
@@ -1380,7 +1434,7 @@ EOF
                     warn "   443    the proxy"
                     warn "  8443    the sync API the relays connect to"
                     warn "  8446    the exit's own route to Google over IPv6"
-                    warn "  $LINK_PORT    the relay's link to this exit"
+                    warn "  $LINK_PORT, $LINK_TLS_PORT    the relay's links to this exit"
                     warn "on a relay, 3478 is taken as well."
                     warn "pick anything else, and open it in your firewall."
                     printf '\n'
@@ -1405,7 +1459,7 @@ EOF
                 22) die "port 22 is ssh" ;;
                 8443) die "port 8443 is the sync API the relays connect to" ;;
                 8446) die "port 8446 is the exit's own route to Google over IPv6" ;;
-                "$LINK_PORT") die "port $LINK_PORT is the relay link port" ;;
+                "$LINK_PORT"|"$LINK_TLS_PORT") die "port $ADMIN_PORT is a relay link port" ;;
                 53|80|443) die "port $ADMIN_PORT is the service's own - pick
     another. 22, 53, 80, 443, 8443 and 8446 are all taken." ;;
             esac
@@ -1582,7 +1636,7 @@ if command -v ufw >/dev/null 2>&1 && ufw status 2>/dev/null | grep -q '^Status: 
         UFW_PORTS="53/udp 53/tcp 80/tcp 443/tcp 3478/udp 8443/tcp"
     else
         admin_port="$(sed -n 's/^ADMIN_PORT=//p' /etc/smart-dns/admin.env 2>/dev/null | head -1 || true)"
-        UFW_PORTS="80/tcp 443/tcp 8443/tcp $LINK_PORT/tcp${admin_port:+ $admin_port/tcp}"
+        UFW_PORTS="80/tcp 443/tcp 8443/tcp $LINK_PORT/tcp $LINK_TLS_PORT/tcp${admin_port:+ $admin_port/tcp}"
     fi
     for rule in $UFW_PORTS; do
         ufw allow "$rule" >/dev/null 2>&1 && info "allowed $rule" || warn "could not open $rule in ufw"
@@ -1695,10 +1749,10 @@ if [ "$ROLE" = relay ]; then
 else
     printf '
     This exit only accepts connections from %s, so it is not an open proxy.
-    The relay may reach it on TCP 443 or %s - allow both from the relay in
-    any provider firewall. Run the installer on the relay next.
+    The relay may reach it on TCP 443, %s or %s - allow all three from the
+    relay in any provider firewall. Run the installer on the relay next.
 
-' "$RELAY_IP" "$LINK_PORT"
+' "$RELAY_IP" "$LINK_PORT" "$LINK_TLS_PORT"
 fi
 
 if [ -n "$ENFORCE_OUT" ]; then
@@ -7070,6 +7124,26 @@ exit 0
 #        proxy_connect_timeout 10s;
 #        proxy_pass $upstream;
 #    }
+#
+#    # The wrapped link. The relay opens TLS here under this service's own
+#    # domain, and inside it the client's untouched TLS. nginx ends the outer
+#    # session first (stream's ssl phase runs before preread), so ssl_preread
+#    # then reads the client's real SNI exactly as on the plain ports.
+#    server {
+#        resolver 1.1.1.1 8.8.8.8 valid=60s ipv6=off;
+#        resolver_timeout 5s;
+#        listen __LINK_TLS_PORT__ ssl;
+#        ssl_certificate /etc/smart-dns/sync.crt;
+#        ssl_certificate_key /etc/smart-dns/sync.key;
+#        ssl_protocols TLSv1.2 TLSv1.3;
+#        ssl_session_cache shared:link:10m;
+#        ssl_session_timeout 1h;
+#        allow __RELAY_IP__;
+#        deny all;
+#        ssl_preread on;
+#        proxy_connect_timeout 10s;
+#        proxy_pass $upstream;
+#    }
 #    # google-v6 begin
 #
 #    # The IPv6 hop: the same pass-through, asking the resolver for AAAA
@@ -7109,9 +7183,20 @@ exit 0
 #        listen 443;
 #        proxy_connect_timeout 10s;
 #        proxy_timeout 10m;
-#        # The exit's link port: 443, or the alternative port the installer
-#        # found working when 443 to the exit is filtered on the way out.
+#        # The exit's link port: 443, or whichever alternative the installer
+#        # found carrying a full HTTPS request when 443 is filtered.
 #        proxy_pass __EXIT_IP__:__LINK_PORT__;
+#        # link-tls begin
+#        # Wrapped link: the client's TLS rides inside a second TLS session
+#        # whose name is this service's own domain - the shape of the sync
+#        # connection, which passes on routes that cut SNI-proxied TLS for
+#        # well-known names. The inner session is still end to end; the outer
+#        # one only hides it, so its certificate is not verified.
+#        proxy_ssl on;
+#        proxy_ssl_server_name on;
+#        proxy_ssl_name __LINK_SNI__;
+#        proxy_ssl_session_reuse on;
+#        # link-tls end
 #    }
 #
 #    # Port 80 is forwarded rather than answered. It used to return a 301 to

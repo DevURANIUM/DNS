@@ -2,7 +2,18 @@
 
 Self-hosted Smart DNS with Persian admin and user panels, service profiles, traffic quotas, and an API for registering a user's public IP address.
 
-**Release: 0.3.42**
+**Release: 0.3.43**
+
+**Wrapped relay link.** When the route cuts the relay's TLS to the exit, the
+relay can now wrap it in an outer TLS session named after this service's own
+domain, the same shape as the sync connection that passes on such routes. The
+exit listens on 443, 8444 and 8445 (wrapped). The relay sends a real HTTPS
+request through its own nginx in each mode and keeps the first one that works.
+`EXIT_LINK=tls:8445` forces a mode. The exit's sync API now closes connections
+from unpaired addresses before TLS, and logs one summary line an hour instead
+of every scanner probe. Allow TCP 443, 8444 and 8445 from the relay on the exit.
+
+Changes in 0.3.42:
 
 **Relay link port.** On some Iranian routes, TLS from the relay to the exit on
 port 443 is cut right after the handshake, and nothing loads. The exit now also
@@ -160,6 +171,7 @@ A successful request replaces the account's previous IP. It does not activate an
 | TCP 80 | HTTP forwarding and certificate validation | HTTP proxy and certificate validation |
 | TCP 443 | HTTPS forwarding | SNI proxy |
 | TCP 8444 | — | Relay link (SNI proxy, relay only) |
+| TCP 8445 | — | Wrapped relay link (TLS, relay only) |
 | UDP 3478 | STUN | — |
 | TCP 8443 | HTTPS user panel | Sync API |
 | TCP 9443 | — | Default admin panel port; configurable |
