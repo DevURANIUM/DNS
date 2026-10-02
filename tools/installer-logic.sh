@@ -1652,8 +1652,16 @@ if [ "$ROLE" = relay ]; then
     # and leaves no "wrong secret" warning in the exit's log. A relay whose
     # sync could not get through used to pass every check here and then fail
     # in the customer's panel instead.
-    check "the exit's sync API answers this relay" \
-          "$(curl -sk -o /dev/null -m 20 --resolve "${PANEL_DOMAIN:-sync.example.com}:8443:${EXIT_IP}" -w '%{http_code}' "https://${PANEL_DOMAIN:-sync.example.com}:8443/" 2>/dev/null || true)" "501"
+    sync_code="$(curl -sk -o /dev/null -m 20 --resolve "${PANEL_DOMAIN:-sync.example.com}:8443:${EXIT_IP}" -w '%{http_code}' "https://${PANEL_DOMAIN:-sync.example.com}:8443/" 2>/dev/null || true)"
+    check "the exit's sync API answers this relay" "$sync_code" "501"
+    if [ "$sync_code" != 501 ]; then
+        # The exit closes connections from any address not paired with it,
+        # before TLS - which is also exactly what a relay that has changed
+        # address, or a new relay the exit was never told about, runs into.
+        warn "the exit talks only to the relays it was installed for. If this relay"
+        warn "is new or its address changed, run on the exit:"
+        warn "    sudo bash dns.sh --reconfigure     (relay address: $RELAY_IP)"
+    fi
 fi
 
 printf '\n'

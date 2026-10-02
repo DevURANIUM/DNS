@@ -1282,7 +1282,42 @@ class TLSServer(http.server.ThreadingHTTPServer):
 
     def __init__(self, addr, handler, ctx):
         self.ctx = ctx
+        self.refused = {}
+        self.refused_since = time.monotonic()
+        self.refused_lock = threading.Lock()
         super().__init__(addr, handler)
+
+    # How often the dropped strangers are summarised in the log.
+    REFUSED_REPORT = 3600
+
+    def verify_request(self, request, client_address):
+        """Only paired relays get as far as a TLS handshake.
+
+        The port is public, and scanners walked it all day - /.env, /.git,
+        graphql - each probe two log lines that buried the relays' own. They
+        were all refused, but only after a handshake and a parsed request.
+        Now a stranger's connection is closed unanswered, and the log gets one
+        summary line an hour instead of one per probe. An empty relay list
+        (tests) lets everyone through to the old checks.
+        """
+        relays = getattr(self.RequestHandlerClass, "relays", ())
+        ip = client_address[0]
+        if not relays or ip in relays:
+            return True
+        with self.refused_lock:
+            self.refused[ip] = self.refused.get(ip, 0) + 1
+            now = time.monotonic()
+            if now - self.refused_since >= self.REFUSED_REPORT:
+                total = sum(self.refused.values())
+                top = sorted(self.refused.items(), key=lambda kv: -kv[1])[:3]
+                log(INFO, "api: dropped %d connections from %d unpaired addresses"
+                    " in the last hour (most: %s). A relay whose address changed"
+                    " must be added to RELAY_IP in panel.env."
+                    % (total, len(self.refused),
+                       ", ".join("%s x%d" % kv for kv in top)))
+                self.refused = {}
+                self.refused_since = now
+        return False
 
     def finish_request(self, request, client_address):
         if self.ctx is None:

@@ -1652,8 +1652,16 @@ if [ "$ROLE" = relay ]; then
     # and leaves no "wrong secret" warning in the exit's log. A relay whose
     # sync could not get through used to pass every check here and then fail
     # in the customer's panel instead.
-    check "the exit's sync API answers this relay" \
-          "$(curl -sk -o /dev/null -m 20 --resolve "${PANEL_DOMAIN:-sync.example.com}:8443:${EXIT_IP}" -w '%{http_code}' "https://${PANEL_DOMAIN:-sync.example.com}:8443/" 2>/dev/null || true)" "501"
+    sync_code="$(curl -sk -o /dev/null -m 20 --resolve "${PANEL_DOMAIN:-sync.example.com}:8443:${EXIT_IP}" -w '%{http_code}' "https://${PANEL_DOMAIN:-sync.example.com}:8443/" 2>/dev/null || true)"
+    check "the exit's sync API answers this relay" "$sync_code" "501"
+    if [ "$sync_code" != 501 ]; then
+        # The exit closes connections from any address not paired with it,
+        # before TLS - which is also exactly what a relay that has changed
+        # address, or a new relay the exit was never told about, runs into.
+        warn "the exit talks only to the relays it was installed for. If this relay"
+        warn "is new or its address changed, run on the exit:"
+        warn "    sudo bash dns.sh --reconfigure     (relay address: $RELAY_IP)"
+    fi
 fi
 
 printf '\n'
@@ -9364,7 +9372,42 @@ exit 0
 #
 #    def __init__(self, addr, handler, ctx):
 #        self.ctx = ctx
+#        self.refused = {}
+#        self.refused_since = time.monotonic()
+#        self.refused_lock = threading.Lock()
 #        super().__init__(addr, handler)
+#
+#    # How often the dropped strangers are summarised in the log.
+#    REFUSED_REPORT = 3600
+#
+#    def verify_request(self, request, client_address):
+#        """Only paired relays get as far as a TLS handshake.
+#
+#        The port is public, and scanners walked it all day - /.env, /.git,
+#        graphql - each probe two log lines that buried the relays' own. They
+#        were all refused, but only after a handshake and a parsed request.
+#        Now a stranger's connection is closed unanswered, and the log gets one
+#        summary line an hour instead of one per probe. An empty relay list
+#        (tests) lets everyone through to the old checks.
+#        """
+#        relays = getattr(self.RequestHandlerClass, "relays", ())
+#        ip = client_address[0]
+#        if not relays or ip in relays:
+#            return True
+#        with self.refused_lock:
+#            self.refused[ip] = self.refused.get(ip, 0) + 1
+#            now = time.monotonic()
+#            if now - self.refused_since >= self.REFUSED_REPORT:
+#                total = sum(self.refused.values())
+#                top = sorted(self.refused.items(), key=lambda kv: -kv[1])[:3]
+#                log(INFO, "api: dropped %d connections from %d unpaired addresses"
+#                    " in the last hour (most: %s). A relay whose address changed"
+#                    " must be added to RELAY_IP in panel.env."
+#                    % (total, len(self.refused),
+#                       ", ".join("%s x%d" % kv for kv in top)))
+#                self.refused = {}
+#                self.refused_since = now
+#        return False
 #
 #    def finish_request(self, request, client_address):
 #        if self.ctx is None:
