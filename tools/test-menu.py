@@ -170,7 +170,7 @@ else:
         for line in block.splitlines():
             line = line.split("#")[0].strip()
             words = [w for w in line.split() if w not in EXAMPLES]
-            if not words or not re.match(r"(smartdns[\w-]*|doctor-dns\.sh)$", words[0]):
+            if not words or not re.match(r"(smartdns[\w-]*|doctor-dns\.sh|dns\.sh)$", words[0]):
                 continue
             if words[0] in ("smartdns-menu",):
                 continue
