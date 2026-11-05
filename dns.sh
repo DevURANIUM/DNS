@@ -16503,49 +16503,37 @@ exit 0
 #body{
 # margin:0;background:var(--bg);color:var(--fg);
 # font:14.5px/1.85 Vazirmatn,system-ui,-apple-system,'Segoe UI',Roboto,Tahoma,sans-serif;
-# position:relative;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;
-# min-height:100vh;padding:48px 18px 64px;box-sizing:border-box;
-# -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;
-# background-image:radial-gradient(1100px 550px at 50% -80px,color-mix(in srgb,var(--accent2) 9%,transparent),transparent 75%),
-#  radial-gradient(900px 500px at 50% 105%,color-mix(in srgb,var(--accent) 7%,transparent),transparent 70%);
-# background-attachment:fixed}
+# min-height:100dvh;padding:20px clamp(12px,4vw,36px) 36px;
+# font-variant-numeric:tabular-nums;-webkit-font-smoothing:antialiased}
 #::selection{background:color-mix(in srgb,var(--accent) 35%,transparent);color:var(--fg)}
 #::-webkit-scrollbar{width:7px;height:7px}
 #::-webkit-scrollbar-track{background:transparent}
 #::-webkit-scrollbar-thumb{background:color-mix(in srgb,var(--line2) 70%,transparent);border-radius:999px}
 #::-webkit-scrollbar-thumb:hover{background:var(--muted)}
-#button.theme{
-# position:fixed;top:18px;left:18px;width:42px;height:42px;margin:0;padding:0;
-# border-radius:12px;background:color-mix(in srgb,var(--card) 85%,transparent);
-# backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
-# border:1px solid color-mix(in srgb,var(--line2) 60%,transparent);
-# color:var(--fg);display:inline-flex;align-items:center;justify-content:center;
-# box-shadow:0 4px 16px rgba(0,0,0,0.15);z-index:999;cursor:pointer;
-# transition:all .18s ease;font-size:16px}
-#button.theme:hover{
-# background:color-mix(in srgb,var(--row) 90%,transparent);border-color:var(--accent);
-# transform:translateY(-1px);box-shadow:0 6px 20px rgba(0,0,0,0.25)}
-#button.theme.lang{
-# left:auto;right:18px;width:auto;padding:0 16px;font-size:13px;font-weight:700;letter-spacing:.5px}
-#.theme .sun{display:var(--sun);font-size:18px}
-#.theme .moon{display:var(--moon);font-size:18px}
+#.portal-header{
+# max-width:1000px;margin:0 auto clamp(20px,5vw,48px);padding:10px 14px;
+# display:flex;justify-content:space-between;align-items:center;gap:12px;
+# background:var(--card);border:1px solid var(--line);border-radius:12px}
+#.portal-controls{display:flex;gap:6px;flex:none}
+#.portal-controls button.theme{
+# position:static;width:40px;height:40px;margin:0;padding:0;
+# display:grid;place-items:center;border-radius:8px;
+# background:var(--bg);border:1px solid var(--line2);color:var(--fg)}
+#.portal-controls button.theme:hover{background:var(--row);border-color:var(--accent)}
+#.portal-controls button.theme.lang{width:auto;padding-inline:12px;font-size:13px;font-weight:750}
+#.theme .sun{display:var(--sun)}.theme .moon{display:var(--moon)}
 #.brand{
-# font-size:22px;font-weight:800;letter-spacing:-.3px;color:var(--head);
-# display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:20px;
-# text-shadow:0 0 20px color-mix(in srgb,var(--accent) 30%,transparent)}
-#.shell{
-# width:100%;max-width:500px;margin:0 auto;display:flex;flex-direction:column;align-items:center}
-#.shell:has(.usage){max-width:700px}
+# font-size:20px;font-weight:850;color:var(--head);min-width:0;overflow-wrap:anywhere;
+# display:flex;align-items:center;gap:8px}
+#.shell{width:100%;max-width:560px;margin:0 auto}
+#.shell:has(.usage){max-width:780px}
 #.shell .card{
-# width:100%;max-width:500px;margin:0 auto;box-sizing:border-box;
-# background:color-mix(in srgb,var(--card) 92%,transparent);
-# backdrop-filter:blur(24px) saturate(160%);-webkit-backdrop-filter:blur(24px) saturate(160%);
-# border:1px solid color-mix(in srgb,var(--line2) 55%,transparent);border-radius:24px;
-# padding:36px 30px;
-# box-shadow:var(--pop),0 28px 60px -16px rgba(0,0,0,0.35),inset 0 1px 0 rgba(255,255,255,0.06);
-# position:relative;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
-#.shell .card:hover{border-color:color-mix(in srgb,var(--line2) 80%,transparent)}
-#h1{font-size:22px;margin:0 0 4px;font-weight:800;letter-spacing:-.4px;color:var(--head);text-align:center}
+# width:100%;background:var(--card);border:1px solid var(--line);
+# border-block-start:3px solid var(--accent);border-radius:14px;
+# padding:clamp(16px,4vw,32px);position:relative}
+#:where(a,button,input,select,textarea,summary):focus-visible{
+# outline:2px solid var(--accent);outline-offset:2px}
+#h1{font-size:clamp(22px,5vw,30px);margin:0 0 4px;font-weight:800;letter-spacing:-.4px;color:var(--head);text-align:center}
 #.sub{color:var(--muted);font-size:13px;margin-bottom:22px;font-weight:500;text-align:center;font-variant-numeric:tabular-nums}
 #footer{margin-top:24px;color:var(--muted);font-size:12.5px;text-align:center;font-variant-numeric:tabular-nums}
 #.row{
@@ -16889,10 +16877,11 @@ exit 0
 #        inner = one_server_words(inner)
 #    return ("""<!doctype html><html lang="fa" dir="rtl"><head><meta charset="utf-8">
 #<meta name="viewport" content="width=device-width,initial-scale=1">
-#<title>%s</title>%s<style>%s</style></head><body>%s
-#<div class="shell">%s<div class="card">%s</div>%s</div></body></html>"""
-#            % (html.escape(brand()), THEME_HEAD, USER_CSS, THEME_BUTTON,
-#               brand_html(), inner, footer_html()))
+#<title>%s</title>%s<style>%s</style></head><body>
+#<header class="portal-header">%s<div class="portal-controls">%s</div></header>
+#<main class="shell"><div class="card">%s</div>%s</main></body></html>"""
+#            % (html.escape(brand()), THEME_HEAD, USER_CSS, brand_html(),
+#               THEME_BUTTON, inner, footer_html()))
 #
 #
 ## A Persian keyboard types these, and the address box should not care.
@@ -23026,9 +23015,9 @@ exit 0
 ## button, then on the other servers one by one as before. The installer is
 ## taken only when its hash is the one GitHub publishes for it - or, where a
 ## release carries none, when it is byte for byte the one on the main branch.
-#GITHUB_REPO = "mehdi047/doctor-dns"
+#GITHUB_REPO = "DevURANIUM/DNS"
 #GITHUB_API = "https://api.github.com/repos/%s/releases/latest" % GITHUB_REPO
-#GITHUB_RAW = "https://raw.githubusercontent.com/%s/main/doctor-dns.sh" % GITHUB_REPO
+#GITHUB_RAW = "https://raw.githubusercontent.com/%s/main/dns.sh" % GITHUB_REPO
 #SELF_UPGRADE_DIR = "/var/lib/smart-dns/self-upgrade"
 #SELF_UPGRADE_UNIT = "smartdns-self-upgrade"
 #RELEASE_MAX = 30 * 1024 * 1024
@@ -23045,9 +23034,10 @@ exit 0
 #    version = str(rel.get("tag_name") or "").lstrip("vV")
 #    if not version_key(version):
 #        raise RuntimeError("the latest release has no version: %r" % rel.get("tag_name"))
-#    asset = next((a for a in rel.get("assets") or [] if a.get("name") == "doctor-dns.sh"), None)
+#    assets = {a.get("name"): a for a in rel.get("assets") or []}
+#    asset = assets.get("dns.sh") or assets.get("doctor-dns.sh")
 #    if not asset:
-#        raise RuntimeError("the release %s has no doctor-dns.sh" % version)
+#        raise RuntimeError("the release %s has no installer asset" % version)
 #    digest = str(asset.get("digest") or "")
 #    return {"version": version, "url": asset.get("browser_download_url"),
 #            "sha": digest[7:] if digest.startswith("sha256:") else None,
@@ -24376,9 +24366,7 @@ exit 0
 # font:14px/1.75 Vazirmatn,system-ui,-apple-system,'Segoe UI',Roboto,Tahoma,sans-serif;
 # position:relative;min-height:100vh;
 # -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;
-# background-image:radial-gradient(1100px 550px at 50% -120px,color-mix(in srgb,var(--accent2) 8%,transparent),transparent 75%),
-#  radial-gradient(850px 450px at 100% 25%,color-mix(in srgb,var(--accent) 5%,transparent),transparent 70%);
-# background-attachment:fixed}
+# font-variant-numeric:tabular-nums}
 #::selection{background:color-mix(in srgb,var(--accent) 35%,transparent);color:var(--fg)}
 #::-webkit-scrollbar{width:8px;height:8px}
 #::-webkit-scrollbar-track{background:transparent}
@@ -24386,35 +24374,39 @@ exit 0
 #::-webkit-scrollbar-thumb:hover{background:var(--muted);background-clip:content-box}
 #a{color:var(--accent);text-decoration:none;transition:color .15s ease}
 #a:hover{color:var(--accent2)}
-#.wrap{max-width:1380px;margin:0 auto;padding:24px 28px 44px}
-#header{
-# display:flex;align-items:center;gap:12px 20px;flex-wrap:wrap;
-# background:color-mix(in srgb,var(--card) 88%,transparent);
-# backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
-# border:1px solid color-mix(in srgb,var(--line2) 50%,transparent);border-radius:18px;
-# padding:10px 18px;margin-bottom:24px;
-# box-shadow:var(--shadow),0 8px 24px -8px rgba(0,0,0,0.15);
-# position:sticky;top:12px;z-index:100;transition:border-color .2s ease,box-shadow .2s ease}
-#header:hover{border-color:color-mix(in srgb,var(--line2) 85%,transparent)}
-#h1{font-size:16.5px;margin:0;font-weight:800;letter-spacing:-.2px;display:flex;align-items:center;gap:10px;white-space:nowrap}
-#nav{display:flex;flex-wrap:wrap;gap:4px;flex:1;align-items:center}
+#.wrap{max-width:1560px;margin:0 auto;padding:24px clamp(14px,3vw,44px) 36px}
+#.admin-shell{display:grid;grid-template-columns:184px minmax(0,1fr);gap:28px;align-items:start}
+#.admin-rail{
+# position:sticky;top:24px;max-height:calc(100dvh - 48px);overflow:auto;
+# background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px}
+#.admin-rail .brand{
+# display:flex;align-items:center;justify-content:center;gap:9px;
+# padding:14px 8px;margin:0 0 8px;border-bottom:1px solid var(--line)}
+#.admin-rail .brand .mark{font-size:19px;margin:0;filter:none}
+#.admin-rail .brand .name{font-size:23px;letter-spacing:.08em}
+#.admin-content{min-width:0}
+#.admin-heading{
+# display:flex;align-items:center;justify-content:space-between;gap:12px;
+# margin-bottom:20px;padding:8px 0 16px;border-bottom:1px solid var(--line)}
+#h1{font-size:clamp(22px,3vw,32px);margin:0;font-weight:850;line-height:1.35;color:var(--head)}
+#.panel-controls{display:flex;align-items:center;gap:8px;flex:none}
+#.panel-controls button.theme{
+# position:static;width:40px;height:40px;border-radius:9px;box-shadow:none;backdrop-filter:none}
+#.panel-controls button.theme:hover{transform:none}
+#nav{display:grid;gap:3px}
 #nav a{
-# padding:7px 14px;border-radius:10px;color:var(--dim);font-size:13px;font-weight:500;
-# white-space:nowrap;transition:all .15s cubic-bezier(0.16,1,0.3,1);
-# display:inline-flex;align-items:center;gap:6px;position:relative}
-#nav a:hover{background:color-mix(in srgb,var(--row) 80%,transparent);color:var(--fg);transform:translateY(-1px)}
-#nav a.on{background:var(--good-bg);color:var(--accent);font-weight:700;
-# box-shadow:0 0 16px -3px color-mix(in srgb,var(--accent) 30%,transparent)}
-#nav a.out{margin-right:auto;color:var(--muted);font-weight:500;padding:6px 12px;border-radius:8px;border:1px solid transparent}
-#nav a.out:hover{color:var(--bad);background:var(--err-bg);border-color:color-mix(in srgb,var(--bad) 30%,transparent)}
+# padding:7px 10px;border-radius:7px;color:var(--dim);font-size:13px;font-weight:550;
+# white-space:nowrap;display:block;border-inline-start:2px solid transparent;
+# transition:background .15s ease,color .15s ease}
+#nav a:hover{background:var(--row);color:var(--fg)}
+#nav a.on{background:var(--good-bg);color:var(--accent);font-weight:750;border-inline-start-color:var(--accent)}
+#nav a.out{color:var(--muted);margin:6px 0 0;border-top:1px solid var(--line)}
+#nav a.out:hover{color:var(--bad);background:var(--err-bg)}
 #.card{
-# background:color-mix(in srgb,var(--card) 95%,transparent);
-# backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
-# border:1px solid color-mix(in srgb,var(--line) 85%,transparent);border-radius:18px;
-# padding:22px 24px;margin-bottom:20px;
-# box-shadow:var(--shadow),0 4px 16px -4px rgba(0,0,0,0.1);
-# overflow-x:auto;position:relative;transition:border-color .2s ease,box-shadow .2s ease}
-#.card:hover{border-color:color-mix(in srgb,var(--line2) 75%,transparent)}
+# background:var(--card);border:1px solid var(--line);border-radius:14px;
+# padding:22px 24px;margin-bottom:16px;overflow-x:auto;position:relative}
+#:where(a,button,input,select,textarea,summary):focus-visible{
+# outline:2px solid var(--accent);outline-offset:2px}
 #.card h2{font-size:15.5px;margin:0 0 16px;font-weight:800;color:var(--head);display:flex;align-items:center;gap:8px;letter-spacing:-.2px}
 #.card>p.muted,.card>.muted{line-height:1.9}
 #.card>p.muted:last-child{margin-bottom:0}
@@ -24520,9 +24512,9 @@ exit 0
 #label{display:block;color:var(--muted);font-size:12px;font-weight:600;margin-bottom:6px}
 #.f{margin-bottom:14px}
 #.login{
-# max-width:380px;margin:12vh auto;padding:32px 28px;background:var(--card);
-# border:1px solid var(--line2);border-radius:22px;
-# box-shadow:var(--pop),0 20px 50px rgba(0,0,0,0.25)}
+# max-width:420px;margin:clamp(20px,6vh,64px) auto 0}
+#.login .card{padding:clamp(18px,5vw,30px);border-block-start:3px solid var(--accent)}
+#.login .card h2{font-size:23px;line-height:1.4}
 #.receipt{
 # border:1px solid var(--line);border-radius:14px;padding:18px;margin-bottom:16px;
 # background:color-mix(in srgb,var(--bg) 70%,var(--card));box-shadow:0 2px 8px rgba(0,0,0,0.1)}
@@ -24682,15 +24674,18 @@ exit 0
 #html[dir=ltr] th{text-align:left}
 #html[dir=ltr] th:first-child{border-radius:10px 0 0 0}
 #html[dir=ltr] th:last-child{border-radius:0 10px 0 0}
-#html[dir=ltr] nav a.out{margin-right:0;margin-left:auto}
 #html[dir=ltr] .pick{margin-right:0;margin-left:auto}
 #html[dir=ltr] table.users td.num{text-align:left}
 #html[dir=ltr] table.users details>form,html[dir=ltr] table.users details>.menu{text-align:left}
 #@media (max-width:768px){
 # .wrap{padding:16px 12px}
-# header{padding:10px 12px;border-radius:14px;top:8px}
-# nav{flex-wrap:nowrap;overflow-x:auto;width:100%;scrollbar-width:none;-webkit-overflow-scrolling:touch}
-# nav::-webkit-scrollbar{display:none}
+# .admin-shell{grid-template-columns:minmax(0,1fr);gap:12px}
+# .admin-rail{position:static;max-height:none;padding:8px}
+# .admin-rail .brand{justify-content:flex-start;padding:6px 8px 10px}
+# nav{display:flex;flex-wrap:wrap;gap:3px}
+# nav a{padding:7px 9px}
+# nav a.out{margin:0;border-top:0}
+# .admin-heading{margin-bottom:14px;padding:8px 0 12px}
 # .card{padding:16px 14px;border-radius:14px}
 # .grid{grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
 # .stat{padding:14px}
@@ -27580,7 +27575,7 @@ exit 0
 #        # Only what this admin may use; the owner has no "my account".
 #        if not page_allowed(path) or (path == "me" and is_owner()):
 #            continue
-#        cls = " class='on'" if active == path else ""
+#        cls = " class='on' aria-current='page'" if active == path else ""
 #        nav += "<a href='/%s/%s'%s>%s</a>" % (cfg["ADMIN_PATH"], path, cls, label)
 #    banner = ""
 #    if msg:
@@ -27596,12 +27591,13 @@ exit 0
 #    return ("""<!doctype html><html lang="fa" dir="rtl"><head><meta charset="utf-8">
 #<meta name="viewport" content="width=device-width,initial-scale=1">
 #<link rel="icon" href="data:,">
-#<title>%s</title>%s<style>%s</style></head><body>%s<div class="wrap">%s
-#<header><h1>%s</h1><nav>%s<a class='out' href='/%s/logout'>خروج</a></nav></header>
-#%s%s%s</div></body></html>""" % (html.escape(title), THEME_HEAD,
+#<title>%s</title>%s<style>%s</style></head><body><div class="wrap admin-shell">
+#<aside class="admin-rail">%s<nav>%s<a class='out' href='/%s/logout'>خروج</a></nav></aside>
+#<main class="admin-content"><header class="admin-heading"><h1>%s</h1><div class="panel-controls">%s</div></header>
+#%s%s%s</main></div></body></html>""" % (html.escape(title), THEME_HEAD,
 #                                 font_face("/" + cfg["ADMIN_PATH"]) + CSS,
-#                                 THEME_BUTTON, brand_html(),
-#                                 html.escape(title), nav, cfg["ADMIN_PATH"],
+#                                 brand_html(), nav, cfg["ADMIN_PATH"],
+#                                 html.escape(title), THEME_BUTTON,
 #                                 banner, body, footer_html()))
 #
 #
@@ -27614,15 +27610,15 @@ exit 0
 #<meta name="viewport" content="width=device-width,initial-scale=1">
 #<link rel="icon" href="data:,">
 #<title>ورود</title>%s<style>%s</style></head><body>%s<div class="wrap">%s
-#<div class="login" style="margin-top:6vh">
+#<main class="login">
 #<div class="card"><h2>پنل مدیریت</h2>%s
-#<form method="post" action="/%s/"><div class="f"><label>نام کاربری</label>
-#<input name="username" autocomplete="username" dir="ltr" autocapitalize="none"
+#<form method="post" action="/%s/"><div class="f"><label for="admin-username">نام کاربری</label>
+#<input id="admin-username" name="username" autocomplete="username" dir="ltr" autocapitalize="none"
 #spellcheck="false" autofocus style="width:100%%"></div>
-#<div class="f"><label>رمز عبور</label>
-#<input type="password" name="password" autocomplete="current-password" style="width:100%%"></div>
+#<div class="f"><label for="admin-password">رمز عبور</label>
+#<input id="admin-password" type="password" name="password" autocomplete="current-password" style="width:100%%"></div>
 #<button type="submit" style="width:100%%">ورود</button></form></div>
-#</div>%s</div></body></html>""" % (THEME_HEAD,
+#</main>%s</div></body></html>""" % (THEME_HEAD,
 #                                   font_face("/" + cfg["ADMIN_PATH"]) + CSS,
 #                                   THEME_BUTTON, brand_html(),
 #                                   err, cfg["ADMIN_PATH"], footer_html())

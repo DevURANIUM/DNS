@@ -2555,9 +2555,9 @@ def version_key(v):
 # button, then on the other servers one by one as before. The installer is
 # taken only when its hash is the one GitHub publishes for it - or, where a
 # release carries none, when it is byte for byte the one on the main branch.
-GITHUB_REPO = "mehdi047/doctor-dns"
+GITHUB_REPO = "DevURANIUM/DNS"
 GITHUB_API = "https://api.github.com/repos/%s/releases/latest" % GITHUB_REPO
-GITHUB_RAW = "https://raw.githubusercontent.com/%s/main/doctor-dns.sh" % GITHUB_REPO
+GITHUB_RAW = "https://raw.githubusercontent.com/%s/main/dns.sh" % GITHUB_REPO
 SELF_UPGRADE_DIR = "/var/lib/smart-dns/self-upgrade"
 SELF_UPGRADE_UNIT = "smartdns-self-upgrade"
 RELEASE_MAX = 30 * 1024 * 1024
@@ -2574,9 +2574,10 @@ def github_latest(opener=None):
     version = str(rel.get("tag_name") or "").lstrip("vV")
     if not version_key(version):
         raise RuntimeError("the latest release has no version: %r" % rel.get("tag_name"))
-    asset = next((a for a in rel.get("assets") or [] if a.get("name") == "doctor-dns.sh"), None)
+    assets = {a.get("name"): a for a in rel.get("assets") or []}
+    asset = assets.get("dns.sh") or assets.get("doctor-dns.sh")
     if not asset:
-        raise RuntimeError("the release %s has no doctor-dns.sh" % version)
+        raise RuntimeError("the release %s has no installer asset" % version)
     digest = str(asset.get("digest") or "")
     return {"version": version, "url": asset.get("browser_download_url"),
             "sha": digest[7:] if digest.startswith("sha256:") else None,
