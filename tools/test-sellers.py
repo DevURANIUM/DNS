@@ -19,6 +19,8 @@ import os
 import re
 import shutil
 import sys
+
+import flashmsg
 import tempfile
 import threading
 import urllib.parse
@@ -86,7 +88,7 @@ class Browser:
         m = re.search(r"sdns=([^;]*)", r.getheader("Set-Cookie") or "")
         if m:
             self.cookie = "sdns=" + m.group(1)
-        loc = urllib.parse.unquote(r.getheader("Location") or "")
+        loc = urllib.parse.unquote(flashmsg.where(r))
         c.close()
         return r.status, loc, body
 
@@ -309,7 +311,8 @@ _, _, body = owner.get("admins?stats=%d" % staff)
 check("  a staff member's page says they have no customers of their own",
       "کارمند است" in body and "admin-reset-usage" not in body)
 status, loc, _ = owner.post("admin-reset-usage", id=str(sara["id"]), back="stats")
-check("  a button pressed there comes back there", "admins?stats=%d" % sara["id"] in loc)
+check("  a button pressed there comes back there",
+      loc.startswith("/%s/admins?" % SECRET) and "stats=%d" % sara["id"] in loc, loc)
 status, loc, _ = owner.post("admin-reset-usage", id=str(sara["id"]), back="list")
 check("  and one pressed in the list, to the list", loc.split("/")[-1].startswith("admins?m="))
 check("  not for the seller to see", b.get("admins?stats=%d" % sara["id"])[0] == 403)

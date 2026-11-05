@@ -19,6 +19,8 @@ import json
 import os
 import shutil
 import sys
+
+import flashmsg
 import tempfile
 import time
 import urllib.parse
@@ -105,7 +107,7 @@ Rec.one = staticmethod(admin.Admin.one)
 def act(rest, **form):
     r = Rec()
     r.action(rest, {k: v if isinstance(v, list) else [v] for k, v in form.items()})
-    return urllib.parse.unquote(r.sent.get("Location", ""))
+    return urllib.parse.unquote(flashmsg.where(r.sent))
 
 
 HOSTS = """# StevenBlack-style hosts

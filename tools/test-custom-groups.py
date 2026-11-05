@@ -25,6 +25,8 @@ import re
 import shutil
 import struct
 import sys
+
+import flashmsg
 import tempfile
 import urllib.parse
 
@@ -143,7 +145,7 @@ def act(rest, **form):
     admin.REQ.admin = None
     r = Rec()
     r.action(rest, {k: (v if isinstance(v, list) else [v]) for k, v in form.items()})
-    return urllib.parse.unquote(r.sent.get("Location", ""))
+    return urllib.parse.unquote(flashmsg.where(r.sent))
 
 
 def act_upload(rest, fields, icon=None):
@@ -161,7 +163,7 @@ def act_upload(rest, fields, icon=None):
     r.raw_body = body
     r.headers = {"Content-Type": "multipart/form-data; boundary=%s" % b}
     r.action(rest, {})
-    return urllib.parse.unquote(r.sent.get("Location", ""))
+    return urllib.parse.unquote(flashmsg.where(r.sent))
 
 
 def png(w=16, h=16, pad=0):

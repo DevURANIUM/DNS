@@ -16,6 +16,8 @@ import json
 import os
 import shutil
 import sys
+
+import flashmsg
 import tempfile
 import threading
 import urllib.error
@@ -101,7 +103,7 @@ def act(who, rest, **form):
     admin.REQ.admin = who
     r = Rec()
     r.action(rest, {k: v if isinstance(v, list) else [v] for k, v in form.items()})
-    return urllib.parse.unquote(r.sent.get("Location", ""))
+    return urllib.parse.unquote(flashmsg.where(r.sent))
 
 
 did = store.one("SELECT id FROM templates WHERE is_default = 1")["id"]

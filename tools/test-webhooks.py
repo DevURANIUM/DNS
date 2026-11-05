@@ -17,6 +17,8 @@ import os
 import re
 import shutil
 import sys
+
+import flashmsg
 import tempfile
 import threading
 import urllib.parse
@@ -136,10 +138,10 @@ HOOK = "http://127.0.0.1:%d/hook" % bot.server_address[1]
 print("setting the bot's address")
 r = act("api-webhook-save", id="1", url="http://example.com/hook")
 check("plain http to somewhere else is refused",
-      "m=!" in urllib.parse.unquote(r.sent.get("Location", "")))
+      "m=!" in urllib.parse.unquote(flashmsg.where(r.sent)))
 r = act("api-webhook-save", id="1", url="https://user:pw@example.com/hook")
 check("so is an address with a password in it",
-      "m=!" in urllib.parse.unquote(r.sent.get("Location", "")))
+      "m=!" in urllib.parse.unquote(flashmsg.where(r.sent)))
 r = act("api-webhook-save", id="1", url=HOOK)
 found = re.findall(r"whsec_[A-Za-z0-9_-]+", r.written.decode("utf-8"))
 check("an address on this machine is taken, and its secret shown once", bool(found))

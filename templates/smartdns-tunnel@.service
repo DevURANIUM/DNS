@@ -1,5 +1,5 @@
 [Unit]
-Description=doctor dns tunnel to %i (BackPack)
+Description=DNS tunnel to %i (BackPack)
 After=network-online.target
 Wants=network-online.target
 

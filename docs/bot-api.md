@@ -164,7 +164,7 @@ curl -s -H "Authorization: Bearer $KEY" $API/users/123456789/usage
 - `GET /users/{telegram_id}/wg` — `{"wg": {"on", "self", "bind", "room", "relays": [{"ip", "label", "note"}], "devices": [{"id", "address", "name", "relay", "server", "note", "file", "last", "online", "blocked"}]}}`. `self` یعنی ادمین گذاشته مشتری خودش بسازد و حذف کند؛ `relays` سرورهایی که هنوز کانفیگ ندارد و `room` تعدادشان؛ `server` اسم سرور («سرور 1»، همان شماره‌ای که کنار DNS دارد) و `note` توضیحی که ادمین برای آن سرور نوشته.
 - `POST /users/{telegram_id}/wg` — بدون بدنه برای همهٔ سرورهایی که کانفیگ ندارد یک‌جا کانفیگ می‌سازد؛ با `{"relay": "IP"}` فقط برای همان سرور. `201` با `device_ids` و `configs` (کانفیگ‌های تازه، هر کدام مثل `GET .../wg/{id}`). وقتی برای همهٔ سرورها کانفیگ دارد `409` با `wg_have`؛ وقتی ادمین ساختن را به مشتری نداده `403` با `wg_admin_only`؛ پلنی که وایرگارد ندارد `400` با `wg_plan`.
 - `GET /users/{telegram_id}/wg/all` — `{"configs": [...]}`: همهٔ کانفیگ‌های مشتری به ترتیب سرورها، هر کدام با `server` و `note` و آنچه `GET .../wg/{id}` می‌دهد؛ برای اینکه همه را پشت سر هم بفرستید، هر کدام با اسم و توضیح سرورش بالای QR.
-- `GET /users/{telegram_id}/wg/{id}` — `{"config": متن کانفیگ, "file": "doctor-dns-12.conf", "qr": PNG به base64 یا ""}`؛ عکس QR را بفرستید تا در برنامه اسکن شود و متن را به شکل فایل با همان `file`.
+- `GET /users/{telegram_id}/wg/{id}` — `{"config": متن کانفیگ, "file": "DNS-12.conf", "qr": PNG به base64 یا ""}`؛ عکس QR را بفرستید تا در برنامه اسکن شود و متن را به شکل فایل با همان `file`.
 - `DELETE /users/{telegram_id}/wg/{id}` — حذف؛ بعد می‌شود برای همان سرور دوباره ساخت.
 
 ### `POST /users/{telegram_id}/ips` — ثبت آی‌پی

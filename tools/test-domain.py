@@ -16,6 +16,8 @@ import json
 import os
 import shutil
 import sys
+
+import flashmsg
 import tempfile
 import urllib.parse
 
@@ -91,7 +93,7 @@ def act(rest, **form):
     admin.REQ.admin = None
     r = Rec()
     r.action(rest, {k: [v] for k, v in form.items()})
-    return urllib.parse.unquote(r.sent.get("Location", ""))
+    return urllib.parse.unquote(flashmsg.where(r.sent))
 
 
 print("the admin panel")

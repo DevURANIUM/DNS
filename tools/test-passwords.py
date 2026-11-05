@@ -11,6 +11,8 @@ import importlib.util
 import os
 import shutil
 import sys
+
+import flashmsg
 import tempfile
 import threading
 import urllib.parse
@@ -178,7 +180,7 @@ Rec.one = staticmethod(admin.Admin.one)
 
 
 def where(r):
-    return urllib.parse.unquote(r.sent.get("Location", ""))
+    return urllib.parse.unquote(flashmsg.where(r.sent))
 
 
 def conf_value(key):
@@ -281,7 +283,7 @@ admin.STORE.run(
 r = Stray("/", cookie="sdns=live")
 r.do_GET()
 check("somebody signed in is sent to the panel",
-      r.sent.get("code") == 303 and admin.CFG["ADMIN_PATH"] in r.sent.get("Location", ""),
+      r.sent.get("code") == 303 and admin.CFG["ADMIN_PATH"] in flashmsg.where(r.sent),
       str(r.sent))
 r = Stray("/%s/a-page-that-moved" % admin.CFG["ADMIN_PATH"], cookie="sdns=live")
 r.do_GET()

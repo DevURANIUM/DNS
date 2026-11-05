@@ -1,11 +1,11 @@
-"""Assemble doctor-dns.sh from the templates in this repo.
+"""Assemble dns.sh from the templates in this repo.
 
 The installer has to be one self-contained file: someone who clones nothing and
-downloads only doctor-dns.sh should get a working relay or exit. So every config
+downloads only dns.sh should get a working relay or exit. So every config
 lives inside it, below `exit 0`, between markers that awk copies out.
 
 Each payload line is prefixed with '#'. That is what keeps the whole file valid
-bash, so `bash -n doctor-dns.sh` genuinely checks it - without the prefix, nginx
+bash, so `bash -n dns.sh` genuinely checks it - without the prefix, nginx
 braces and dnsmasq syntax make the parser choke even though the data sits after
 exit 0 and would never run. The alternative, base64, would pass the check too but
 leave a reviewer unable to read the configs they are about to run as root.
@@ -14,7 +14,7 @@ The one exception is the panels' font, which is binary and goes in as base64.
 Nobody reviews a font by reading it; its hash is checked by the tests instead.
 
 This script is the single source of truth in the other direction: edit the files
-under templates/ and common/, then re-run this to regenerate doctor-dns.sh.
+under templates/ and common/, then re-run this to regenerate dns.sh.
 """
 import base64
 import io

@@ -1,5 +1,5 @@
 #!/bin/bash
-# smartdns-restart - restart every part of doctor dns on this machine at once.
+# smartdns-restart - restart every part of DNS on this machine at once.
 #
 # usage: smartdns-restart      restart them all, then say which came back up
 #        smartdns-restart -h   this help
@@ -36,7 +36,7 @@ if [ -f "$ETC/sync.env" ]; then
     units="$units smartdns-sync smartdns-doh$resolvers dnsmasq coturn"
 fi
 if [ -z "$role" ]; then
-    echo "doctor dns is not installed on this machine" >&2
+    echo "DNS is not installed on this machine" >&2
     exit 1
 fi
 units="${units# } smartdns-tunnel nginx"
@@ -50,7 +50,7 @@ restart() {
     systemctl restart "$@" 2>&1 | sed 's/^/    /'
 }
 
-echo "restarting doctor dns - $role"
+echo "restarting DNS - $role"
 [ "$role" != exit ] && echo "customers' open connections drop for a moment and come straight back"
 echo
 

@@ -24,7 +24,7 @@ from datetime import datetime, timezone
 
 OUT = "/var/lib/smart-dns/operators.json"
 URL = ("https://stat.ripe.net/data/announced-prefixes/data.json"
-       "?resource=AS%d&sourceapp=doctor-dns")
+       "?resource=AS%d&sourceapp=dns")
 
 # AS number and the name the operator is known by here. Each was checked
 # against RIPE's own holder name, which is the comment beside it.
@@ -54,7 +54,7 @@ def now():
 def fetch(asn):
     """The address blocks one AS announces, as strings. Raises on failure."""
     req = urllib.request.Request(URL % asn,
-                                 headers={"User-Agent": "doctor-dns"})
+                                 headers={"User-Agent": "DNS"})
     with urllib.request.urlopen(req, timeout=30) as r:
         data = json.load(r)
     if data.get("status") != "ok":

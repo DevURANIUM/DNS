@@ -12,6 +12,8 @@ import importlib.util
 import os
 import shutil
 import sys
+
+import flashmsg
 import tempfile
 import urllib.parse
 
@@ -176,7 +178,7 @@ rec6 = Rec(); rec6.wfile = Rec._W(rec6)
 rec6.action("receipt-decide", {"id": [str(tid)], "to": ["something"]})
 # The message is percent-encoded into the Location, so decode before looking
 # for the leading '!' that marks an error message.
-where = urllib.parse.unquote(rec6.sent.get("Location", ""))
+where = urllib.parse.unquote(flashmsg.where(rec6.sent))
 check("an invalid decision is refused", "m=!" in where, where)
 
 print("zero days means no time limit")

@@ -14,6 +14,8 @@ import json
 import os
 import shutil
 import sys
+
+import flashmsg
 import tempfile
 import threading
 import time
@@ -100,7 +102,7 @@ Rec.one = staticmethod(admin.Admin.one)
 def act(rest, **form):
     r = Rec()
     r.action(rest, {k: [v] for k, v in form.items()})
-    return urllib.parse.unquote(r.sent.get("Location", ""))
+    return urllib.parse.unquote(flashmsg.where(r.sent))
 
 
 print("who gets it")
@@ -177,7 +179,7 @@ def act_upload(fields, *media, empty=0):
     r.headers = {"Content-Type": "multipart/form-data; boundary=" + boundary}
     r.raw_body = b"".join(parts)
     r.action("broadcast-send", {})
-    return urllib.parse.unquote(r.sent.get("Location", ""))
+    return urllib.parse.unquote(flashmsg.where(r.sent))
 
 
 def latest():

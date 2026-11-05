@@ -14,6 +14,8 @@ import importlib.util
 import os
 import shutil
 import sys
+
+import flashmsg
 import tempfile
 import urllib.parse
 from datetime import datetime, timedelta, timezone
@@ -88,7 +90,7 @@ def act(rest, **form):
     admin.REQ.admin = None
     r = Rec()
     r.action(rest, {k: v if isinstance(v, list) else [v] for k, v in form.items()})
-    return urllib.parse.unquote(r.sent.get("Location", ""))
+    return urllib.parse.unquote(flashmsg.where(r.sent))
 
 
 def ts(**kw):

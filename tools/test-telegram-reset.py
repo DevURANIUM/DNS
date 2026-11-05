@@ -18,6 +18,8 @@ import os
 import re
 import shutil
 import sys
+
+import flashmsg
 import tempfile
 import threading
 import urllib.error
@@ -304,7 +306,7 @@ check("the users page offers to unlink a web account",
       "user-unlink-telegram" in page and page.count("user-unlink-telegram") == 1)
 r = Rec()
 r.action("user-unlink-telegram", {"id": [str(bot_only["id"])]})
-check("but refuses for a bot-only account", "m=!" in urllib.parse.unquote(r.sent["Location"])
+check("but refuses for a bot-only account", "m=!" in urllib.parse.unquote(flashmsg.where(r.sent))
       and user(bot_only["id"])["telegram_id"] == 555)
 r = Rec()
 r.action("user-unlink-telegram", {"id": [str(sara["id"])]})
@@ -323,7 +325,7 @@ check("and off", store.setting("require_telegram") == "")
 
 r = Rec()
 r.action("bot-link-save", {"link": ["https://evil.example.com/x"]})
-check("only a t.me address is taken", "m=!" in urllib.parse.unquote(r.sent["Location"]))
+check("only a t.me address is taken", "m=!" in urllib.parse.unquote(flashmsg.where(r.sent)))
 r = Rec()
 r.action("bot-link-save", {"link": ["https://t.me/Another_Bot"]})
 check("a t.me address is", store.setting("bot_link") == "https://t.me/Another_Bot")

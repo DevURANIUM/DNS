@@ -1,5 +1,5 @@
 [Unit]
-Description=doctor dns node - another exit joined to the panel: relays and resolvers in, health and logs out
+Description=DNS node - another exit joined to the panel: relays and resolvers in, health and logs out
 After=network-online.target nginx.service
 Wants=network-online.target
 

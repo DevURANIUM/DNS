@@ -1320,7 +1320,7 @@ def tls_probe(host, address=None, timeout=6.0):
         return done("fail", "unreachable")
     try:
         with ssl.create_default_context().wrap_socket(raw, server_hostname=host) as s:
-            s.sendall(("HEAD / HTTP/1.1\r\nHost: %s\r\nUser-Agent: doctor-dns-check\r\n"
+            s.sendall(("HEAD / HTTP/1.1\r\nHost: %s\r\nUser-Agent: dns-check\r\n"
                        "Connection: close\r\n\r\n" % host).encode())
             line = s.recv(128).split(b"\r\n", 1)[0].decode("latin-1")
     except ssl.SSLCertVerificationError as e:
@@ -1357,7 +1357,7 @@ def http_probe(host, address=None, timeout=6.0):
         if not address and not ipaddress.ip_address(where).is_global:
             return None
         with socket.create_connection((where, 80), timeout=timeout) as s:
-            s.sendall(("HEAD / HTTP/1.1\r\nHost: %s\r\nUser-Agent: doctor-dns-check\r\n"
+            s.sendall(("HEAD / HTTP/1.1\r\nHost: %s\r\nUser-Agent: dns-check\r\n"
                        "Connection: close\r\n\r\n" % host).encode())
             head = s.recv(2048).decode("latin-1")
     except (OSError, UnicodeError):
@@ -2092,7 +2092,7 @@ def exit_conf_text(exit_ip, tunnel, order=None, down=(), nodes=None):
     exit; the first of them all is the way, the rest are only fallbacks.
     With more than one exit, each also gets upstreams of its own that put it
     first, for the customers the admin sent through it."""
-    out = ["# The way to the exit - written by doctor dns: the installer, and\n"
+    out = ["# The way to the exit - written by DNS: the installer, and\n"
            "# smartdns-sync when the admin panel turns this relay's tunnel on or off.\n"]
     order = order or [exit_ip]
     groups = [("to_exit", order)]
@@ -2118,7 +2118,7 @@ def exit_conf_text(exit_ip, tunnel, order=None, down=(), nodes=None):
 
 
 def tunnel_nft_text(port, peer):
-    return ("# written by doctor dns: the tunnel's port answers %(peer)s only\n"
+    return ("# written by DNS: the tunnel's port answers %(peer)s only\n"
             "table inet smartdns_tunnel\n"
             "delete table inet smartdns_tunnel\n"
             "table inet smartdns_tunnel {\n"
@@ -2241,7 +2241,7 @@ def tunnel_toml_text(spec, exit_ip, secret, carried=None):
     if carried is None:
         carried = list(TUNNEL_PORTS[:2]) + [("api", API_TUNNEL_PORT, API_PORT)] + list(TUNNEL_PORTS[2:])
     ports = ", ".join('"127.0.0.1:%d=%d"' % (local, port) for _, local, port in carried)
-    out = ["# written by doctor dns: the installer, or the admin panel's relays card\n"]
+    out = ["# written by DNS: the installer, or the admin panel's relays card\n"]
     me = (CFG or {}).get("SELF_IP") or ""
     token = tunnel_token(secret, spec, me, exit_ip)
     if spec["direction"] == "l3":
@@ -2713,7 +2713,7 @@ def run_instance(peer, text, listen):
     changed = write_if_changed(os.path.join(where, "tunnel.toml"), text, 0o600)
     path, table = instance_nft(peer)
     if listen:
-        rules = ("# written by doctor dns: the tunnel's port answers %s only\n"
+        rules = ("# written by DNS: the tunnel's port answers %s only\n"
                  "table inet %s\ndelete table inet %s\ntable inet %s {\n    chain input {\n"
                  "        type filter hook input priority -5 ; policy accept ;\n"
                  "        tcp dport %d ip saddr != %s drop\n"
@@ -2790,7 +2790,7 @@ def apply_node_tunnels(raw):
 
 def exit_side_toml(relay, spec, secret, where):
     """A node's end of a relay's tunnel - the exit's, word for word."""
-    out = ["# written by doctor dns: the admin panel's relays card\n"]
+    out = ["# written by DNS: the admin panel's relays card\n"]
     me = (CFG or {}).get("SELF_IP") or ""
     token = tunnel_token(secret, spec, relay, me)
     if spec["direction"] == "l3":
@@ -5731,6 +5731,46 @@ def usage_page(view):
     return "".join(out)
 
 
+# What an action did, carried to the page it sends the browser to. It used to
+# ride in the address as ?m=..., which put a long run of %D8%A8... in the
+# address bar, kept it in history, showed it again on every reload, and let
+# anybody hand a customer a link that printed words of their choosing on
+# this panel. A cookie read once has none of that. A leading ! marks a refusal.
+USER_FLASH = "sdu_msg"
+
+
+def squeezed(handler, blob, ctype):
+    """`blob` gzipped for a browser that takes it, with the headers saying so.
+
+    Pages here are heavy - the users table runs to hundreds of kilobytes, and
+    the stylesheet rides inside every page - and they are opened over Iranian
+    lines. Text shrinks to a fifteenth; a file that is already packed (an
+    image, a backup) and a page too small to matter go as they are.
+    """
+    accept = ((getattr(handler, "headers", None) or {}).get("Accept-Encoding", "") or "").lower()
+    if (len(blob) < 1400 or "gzip" not in accept
+            or not ctype.startswith(("text/", "application/json"))):
+        return blob, {}
+    return gzip.compress(blob, 6), {"Content-Encoding": "gzip", "Vary": "Accept-Encoding"}
+
+
+def flash_cookie(message):
+    """The Set-Cookie value carrying `message` to the next page; "" clears it."""
+    if not message:
+        return "%s=; Path=/; Max-Age=0; HttpOnly; Secure; SameSite=Lax" % USER_FLASH
+    return ("%s=%s; Path=/; Max-Age=120; HttpOnly; Secure; SameSite=Lax"
+            % (USER_FLASH, urllib.parse.quote(message[:400], safe="")))
+
+
+def flash_read(headers):
+    """The message a flash cookie carries, or ""."""
+    for part in ((headers or {}).get("Cookie", "") or "").split(";"):
+        key, _, value = part.strip().partition("=")
+        if key == USER_FLASH and value:
+            return urllib.parse.unquote(value)[:400]
+    return ""
+
+
 class UserPanel(http.server.BaseHTTPRequestHandler):
     """The page a customer sees.
 
@@ -5767,13 +5807,18 @@ class UserPanel(http.server.BaseHTTPRequestHandler):
         page = user_page(body)
         if wants_english(getattr(self, "headers", None)):
             page = english_page(page)
-        blob = page.encode("utf-8")
+        blob, packed = squeezed(self, page.encode("utf-8"), "text/html")
         # See send(): a clean buffer, so a failed attempt cannot leave half a
         # status line in front of this one.
         self._headers_buffer = []
         self.send_response(code)
         self.send_header("Content-Type", "text/html; charset=utf-8")
         self.send_header("Content-Length", str(len(blob)))
+        for k, v in packed.items():
+            self.send_header(k, v)
+        flash = self.__dict__.pop("_flash", None)
+        if flash:
+            self.send_header("Set-Cookie", flash)
         self.send_header("Cache-Control", "no-store")
         self.send_header("X-Frame-Options", "DENY")
         self.send_header("X-Content-Type-Options", "nosniff")
@@ -5848,17 +5893,19 @@ class UserPanel(http.server.BaseHTTPRequestHandler):
 
     def redirect(self, where, message="", bad=False):
         if message:
-            where += ("&" if "?" in where else "?") + "m=" + \
-                urllib.parse.quote(message) + ("&e=1" if bad else "")
+            # To the next page in a cookie, never in the address.
+            self._flash = flash_cookie(("!" if bad else "") + message)
         return self.send("", 303, {"Location": where})
 
     def banner(self):
-        q = urllib.parse.parse_qs(urllib.parse.urlparse(self.path).query)
-        msg = (q.get("m") or [""])[0]
+        msg = flash_read(self.headers)
         if not msg:
             return ""
+        # Shown once: the page that shows it also clears it.
+        self._flash = flash_cookie("")
         return "<div class='msg %s'>%s</div>" % (
-            "err" if q.get("e") else "good", html.escape(msg[:200]))
+            "err" if msg.startswith("!") else "good",
+            html.escape(msg.lstrip("!")[:200]))
 
     def send_font(self):
         """The one thing this panel lets a browser keep: the same file for
@@ -6001,6 +6048,8 @@ class UserPanel(http.server.BaseHTTPRequestHandler):
 
     def send(self, body, code, headers):
         blob = body.encode() if isinstance(body, str) else body
+        blob, packed = squeezed(self, blob, headers.get("Content-Type", ""))
+        headers = dict(headers, **packed)
         # Nothing reaches the socket until end_headers(), so a send() that
         # raised part-way through leaves a half-written status line behind.
         # Clearing the buffer keeps the next response from being appended to
@@ -6010,6 +6059,9 @@ class UserPanel(http.server.BaseHTTPRequestHandler):
         self.send_header("Content-Length", str(len(blob)))
         for k, v in headers.items():
             self.send_header(k, v)
+        flash = self.__dict__.pop("_flash", None)
+        if flash:
+            self.send_header("Set-Cookie", flash)
         self.end_headers()
         self.wfile.write(blob)
 
@@ -6091,8 +6143,9 @@ class UserPanel(http.server.BaseHTTPRequestHandler):
                 return self.redirect(back, "الان نشد، چند دقیقه دیگر", bad=True)
             if not res.get("ok"):
                 return self.redirect(back, res.get("message", ""), bad=True)
+            self._flash = flash_cookie(res.get("message", ""))
             return self.send("", 303, {
-                "Location": "/?m=" + urllib.parse.quote(res.get("message", "")),
+                "Location": "/",
                 "Set-Cookie": self.cookie_for(res["session"])})
 
         if path == "/telegram-link":
@@ -6468,7 +6521,7 @@ class UserPanel(http.server.BaseHTTPRequestHandler):
         if profile:
             return self.send(mobileconfig(info), 200, {
                 "Content-Type": "application/x-apple-aspen-config",
-                "Content-Disposition": "attachment; filename=doctor-dns.mobileconfig",
+                "Content-Disposition": "attachment; filename=DNS.mobileconfig",
                 "Cache-Control": "no-store"})
         return self.send_html(
             "<h1><svg class='ui-icon' aria-hidden='true'><use href='#ui-lock'/></svg> DNS امن</h1><div class='sub'>%s</div>" % html.escape(brand())
@@ -6492,7 +6545,7 @@ class UserPanel(http.server.BaseHTTPRequestHandler):
             return self.redirect("/")
         return self.send(mobileconfig(info, server), 200, {
             "Content-Type": "application/x-apple-aspen-config",
-            "Content-Disposition": "attachment; filename=doctor-dns.mobileconfig",
+            "Content-Disposition": "attachment; filename=DNS.mobileconfig",
             "Cache-Control": "no-store"})
 
     def dashboard(self):

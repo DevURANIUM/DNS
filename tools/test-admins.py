@@ -17,6 +17,8 @@ import os
 import re
 import shutil
 import sys
+
+import flashmsg
 import tempfile
 import threading
 import urllib.parse
@@ -85,7 +87,7 @@ class Browser:
         m = re.search(r"sdns=([^;]*)", r.getheader("Set-Cookie") or "")
         if m:
             self.cookie = "sdns=" + m.group(1)
-        loc = urllib.parse.unquote(r.getheader("Location") or "")
+        loc = urllib.parse.unquote(flashmsg.where(r))
         c.close()
         return r.status, loc, body
 

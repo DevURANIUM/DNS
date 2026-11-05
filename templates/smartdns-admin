@@ -24,6 +24,7 @@ font and stylesheet host worth using is either blocked or slow.
 
 import base64
 import glob
+import gzip
 import hashlib
 import hmac
 import html
@@ -761,7 +762,7 @@ def run_backup():
             raise RuntimeError("رمز بکاپ تعیین نشده")
         blob = make_bundle(password)
         why = telegram_send_document(
-            blob, "doctor-dns-backup-%s.enc" % stamp,
+            blob, "dns-backup-%s.enc" % stamp,
             "🗄 بکاپ پنل — %s (%s). با رمز بکاپ باز می‌شود؛ برای بازگردانی در صفحهٔ "
             "«تنظیمات» بفرستیدش." % (stamp, human(len(blob))))
         result = {"at": now(), "ok": not why, "error": why, "size": len(blob)}
@@ -2064,7 +2065,7 @@ tunnelPick(document.currentScript.previousElementSibling);
 
 
 def exit_tunnel_toml(ip, spec, secret, where):
-    out = ["# written by the doctor dns admin panel - its relays card changes it\n"]
+    out = ["# written by the DNS admin panel - its relays card changes it\n"]
     token = tunnel_token(secret, spec, ip, exit_address())
     if spec["direction"] == "l3":
         theirs, mine, iface = l3_block(ip)
@@ -2138,7 +2139,7 @@ def apply_exit_tunnel(ip):
     if spec["direction"] != "reverse":
         # This end listens: its port answers that relay and nobody else.
         port = spec["port"]
-        rules = ("# written by the doctor dns admin panel: the tunnel's port answers %s only\n"
+        rules = ("# written by the DNS admin panel: the tunnel's port answers %s only\n"
                  "table inet %s\ndelete table inet %s\ntable inet %s {\n    chain input {\n"
                  "        type filter hook input priority -5 ; policy accept ;\n"
                  "        tcp dport %d ip saddr != %s drop\n"
@@ -2568,7 +2569,7 @@ def github_latest(opener=None):
     """The latest release: {"version", "url", "sha", "page"}, or raises."""
     opener = opener or urllib.request.urlopen
     req = urllib.request.Request(GITHUB_API, headers={
-        "Accept": "application/vnd.github+json", "User-Agent": "doctor-dns"})
+        "Accept": "application/vnd.github+json", "User-Agent": "DNS"})
     with opener(req, timeout=30) as r:
         rel = json.loads(r.read(2 * 1024 * 1024))
     version = str(rel.get("tag_name") or "").lstrip("vV")
@@ -2589,7 +2590,7 @@ def fetch_release(rel, opener=None):
     opener = opener or urllib.request.urlopen
 
     def get(url):
-        req = urllib.request.Request(url, headers={"User-Agent": "doctor-dns"})
+        req = urllib.request.Request(url, headers={"User-Agent": "DNS"})
         with opener(req, timeout=120) as r:
             blob = r.read(RELEASE_MAX + 1)
         if len(blob) > RELEASE_MAX:
@@ -2906,7 +2907,7 @@ def github_card(p):
     out.append(table)
     out.append("<form method='post' action='/%s/update-check' style='margin-top:8px'>"
                "<button class='ghost'>بررسی دوباره</button></form>"
-               "<p class='muted'>پنل هر %d ساعت یک بار گیت‌هاب doctor-dns را چک می‌کند. با زدن "
+               "<p class='muted'>پنل هر %d ساعت یک بار گیت‌هاب DNS را چک می‌کند. با زدن "
                "دکمه، نصب‌کننده از خود ریلیز دانلود می‌شود و فقط وقتی نصب می‌شود که هشش با هشی "
                "که گیت‌هاب منتشر کرده یکی باشد. اول همین سرور آپدیت می‌شود و بعد بقیهٔ سرورها "
                "یکی‌یکی. نسخهٔ قدیمی‌تر هیچ‌وقت نصب نمی‌شود.</p></div>"
@@ -3366,7 +3367,7 @@ def nodes_card(p):
             "<ol class='muted'><li>آی‌پی سرور تازه را این بالا اضافه کنید.</li>"
             "<li>روی آن سرور، با فایل نصب‌کنندهٔ همین نسخه، این را اجرا کنید:</li></ol>"
             "<pre dir='ltr' style='white-space:pre-wrap;word-break:break-all'>"
-            "sudo env ROLE=node PANEL_IP=%s SYNC_TOKEN=%s bash doctor-dns.sh</pre>"
+            "sudo env ROLE=node PANEL_IP=%s SYNC_TOKEN=%s bash dns.sh</pre>"
             "<p class='muted'>وقتی در این جدول «وصل» شد، از ستون «سرور خارج» جدول رله‌ها "
             "رله‌هایی را که باید از آن بروند انتخاب کنید. توکن را فقط به خودتان بدهید.</p>"
             "</details>" % (html.escape(here or "آی‌پی-همین-سرور"), html.escape(token)))
@@ -3402,7 +3403,7 @@ def singles_card(p):
             "<ol class='muted'><li>آی‌پی آن را این بالا اضافه کنید.</li>"
             "<li>روی آن سرور، با فایل نصب‌کنندهٔ همین نسخه، این را اجرا کنید:</li></ol>"
             "<pre dir='ltr' style='white-space:pre-wrap;word-break:break-all'>sudo env ROLE=single "
-            "PANEL_IP=%s SYNC_TOKEN=%s bash doctor-dns.sh</pre>"
+            "PANEL_IP=%s SYNC_TOKEN=%s bash dns.sh</pre>"
             "<p class='muted'>توکن را فقط به خودتان بدهید.</p></details>"
             % (html.escape(here or "آی‌پی-همین-سرور"), html.escape(token)))
     out.append("<p class='muted'>تک‌سرور یک سرور در کشوری دیگر است که هم ورودی است و هم "
@@ -4786,7 +4787,7 @@ def wg_list(key):
 
 def wg_name():
     raw = wg_setting("wg_name").strip()
-    return raw if WG_NAME_RE.fullmatch(raw) else "doctor-dns"
+    return raw if WG_NAME_RE.fullmatch(raw) else "DNS"
 
 
 def wg_file_name(device_id):
@@ -5638,7 +5639,7 @@ def tls_probe(host, address=None, timeout=6.0):
         return done("fail", "unreachable")
     try:
         with ssl.create_default_context().wrap_socket(raw, server_hostname=host) as s:
-            s.sendall(("HEAD / HTTP/1.1\r\nHost: %s\r\nUser-Agent: doctor-dns-check\r\n"
+            s.sendall(("HEAD / HTTP/1.1\r\nHost: %s\r\nUser-Agent: dns-check\r\n"
                        "Connection: close\r\n\r\n" % host).encode())
             line = s.recv(128).split(b"\r\n", 1)[0].decode("latin-1")
     except ssl.SSLCertVerificationError as e:
@@ -5675,7 +5676,7 @@ def http_probe(host, address=None, timeout=6.0):
         if not address and not ipaddress.ip_address(where).is_global:
             return None
         with socket.create_connection((where, 80), timeout=timeout) as s:
-            s.sendall(("HEAD / HTTP/1.1\r\nHost: %s\r\nUser-Agent: doctor-dns-check\r\n"
+            s.sendall(("HEAD / HTTP/1.1\r\nHost: %s\r\nUser-Agent: dns-check\r\n"
                        "Connection: close\r\n\r\n" % host).encode())
             head = s.recv(2048).decode("latin-1")
     except (OSError, UnicodeError):
@@ -7335,6 +7336,45 @@ def nav_icon(path):
             "stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'>"
             "<path d='%s'/></svg>" % NAV_PATHS.get(path, NAV_PATHS['me']))
 
+# What an action did, carried to the page it sends the browser to. It used to
+# ride in the address as ?m=..., which put a long run of %D8%A8... in the
+# address bar after every save, kept it in history and bookmarks, showed it
+# again on every reload, and let anybody hand out a link that printed words
+# of their choosing inside the panel. A cookie read once has none of that.
+ADMIN_FLASH = "sdns_msg"
+
+
+def squeezed(handler, blob, ctype):
+    """`blob` gzipped for a browser that takes it, with the headers saying so.
+
+    Pages here are heavy - the users table runs to hundreds of kilobytes, and
+    the stylesheet rides inside every page - and they are opened over Iranian
+    lines. Text shrinks to a fifteenth; a file that is already packed (an
+    image, a backup) and a page too small to matter go as they are.
+    """
+    accept = ((getattr(handler, "headers", None) or {}).get("Accept-Encoding", "") or "").lower()
+    if (len(blob) < 1400 or "gzip" not in accept
+            or not ctype.startswith(("text/", "application/json"))):
+        return blob, {}
+    return gzip.compress(blob, 6), {"Content-Encoding": "gzip", "Vary": "Accept-Encoding"}
+
+
+def flash_cookie(name, message, same_site="Lax"):
+    """The Set-Cookie value carrying `message` to the next page; "" clears it."""
+    if not message:
+        return "%s=; Path=/; Max-Age=0; HttpOnly; Secure; SameSite=%s" % (name, same_site)
+    return ("%s=%s; Path=/; Max-Age=120; HttpOnly; Secure; SameSite=%s"
+            % (name, urllib.parse.quote(message[:400], safe=""), same_site))
+
+
+def flash_read(headers, name):
+    """The message a flash cookie carries, or ""."""
+    for part in ((headers or {}).get("Cookie", "") or "").split(";"):
+        key, _, value = part.strip().partition("=")
+        if key == name and value:
+            return urllib.parse.unquote(value)[:400]
+    return ""
+
 
 def page(title, body, cfg, active="", msg=None, msg_kind="good"):
     nav = ""
@@ -7773,7 +7813,10 @@ class Admin(http.server.BaseHTTPRequestHandler):
         # a phone's browser took the first - a page - and nosniff held it to
         # that, so a receipt, a backup or a WireGuard config would not save.
         headers = dict(headers or {})
-        self.send_header("Content-Type", headers.pop("Content-Type", "text/html; charset=utf-8"))
+        ctype = headers.pop("Content-Type", "text/html; charset=utf-8")
+        blob, packed = squeezed(self, blob, ctype)
+        headers.update(packed)
+        self.send_header("Content-Type", ctype)
         self.send_header("Content-Length", str(len(blob)))
         # This panel is only ever reached over TLS, and none of it should sit
         # in a cache or be framed by anything.
@@ -7783,6 +7826,9 @@ class Admin(http.server.BaseHTTPRequestHandler):
         self.send_header("Referrer-Policy", "no-referrer")
         for k, v in headers.items():
             self.send_header(k, v)
+        flash = self.__dict__.pop("_flash", None)
+        if flash:
+            self.send_header("Set-Cookie", flash)
         self.end_headers()
         self.wfile.write(blob)
 
@@ -7818,14 +7864,18 @@ class Admin(http.server.BaseHTTPRequestHandler):
             fields = []
             for item in query.split("&"):
                 key, _, value = item.partition("=")
-                # A message starting with ! is a refusal - a bad number, a
-                # name already taken. The request line cannot say which; this
-                # can.
-                if key == "m" and value.startswith("!"):
-                    log(WARN, "admin %s refused: %s"
-                        % (getattr(self, "_action", "-"), value[1:]))
+                if key == "m":
+                    # A message starting with ! is a refusal - a bad number, a
+                    # name already taken. The request line cannot say which;
+                    # this can.
+                    if value.startswith("!"):
+                        log(WARN, "admin %s refused: %s"
+                            % (getattr(self, "_action", "-"), value[1:]))
+                    # To the next page in a cookie, not in the address.
+                    self._flash = flash_cookie(ADMIN_FLASH, value, "Strict")
+                    continue
                 fields.append("%s=%s" % (key, urllib.parse.quote(value, safe="")))
-            query = "?" + "&".join(fields)
+            query = "?" + "&".join(fields) if fields else ""
         h = {"Location": "/%s/%s%s" % (CFG["ADMIN_PATH"], base, query)}
         h.update(headers or {})
         self.send("", 303, h)
@@ -8384,8 +8434,10 @@ class Admin(http.server.BaseHTTPRequestHandler):
 
     # -- views ------------------------------------------------------------
     def view(self, rest):
-        msg = urllib.parse.parse_qs(urllib.parse.urlparse(self.path).query).get("m")
-        msg = msg[0] if msg else None
+        msg = flash_read(self.headers, ADMIN_FLASH) or None
+        if msg:
+            # Shown once: a reload does not show it again.
+            self._flash = flash_cookie(ADMIN_FLASH, "", "Strict")
         kind = "err" if (msg or "").startswith("!") else "good"
         msg = msg.lstrip("!") if msg else None
         pages = {"": ("پنل مدیریت", self.home), "index": ("پنل مدیریت", self.home),
@@ -9191,7 +9243,7 @@ class Admin(http.server.BaseHTTPRequestHandler):
                "می‌مانند.</p>"
                "<p>آدرس: <code>%s</code></p>"
                "<p class='muted'>راهنمای کامل دستورها: "
-               "<a href='https://github.com/mehdi047/doctor-dns/blob/main/docs/bot-api.md'"
+               "<a href='https://github.com/DevURANIUM/DNS/blob/main/docs/bot-api.md'"
                " target='_blank' rel='noopener'>docs/bot-api.md</a>. "
                "پورت ۸۴۴۵ را اگر فایروال سرور یا دیتاسنتر دارد باز کنید.</p></div>"
                % html.escape(bot_api_url())]
@@ -9238,7 +9290,7 @@ class Admin(http.server.BaseHTTPRequestHandler):
                     "<tr><td>%s</td><td><form id='w%d' method='post'"
                     " action='/%s/api-webhook-save'><input type='hidden' name='id'"
                     " value='%d'></form><input form='w%d' name='url' value='%s' dir='ltr'"
-                    " size='34' placeholder='https://bot.example.com/doctor-dns'></td>"
+                    " size='34' placeholder='https://bot.example.com/dns'></td>"
                     "<td class='acts'><button form='w%d'>ذخیره</button>%s</td></tr>"
                     % (html.escape(r["name"]), r["id"], p, r["id"], r["id"],
                        html.escape(r["webhook_url"] or "", quote=True), r["id"],
@@ -10628,7 +10680,7 @@ class Admin(http.server.BaseHTTPRequestHandler):
                       " next_at) VALUES (?, 'ping', ?, ?, ?)",
                       (kid, json.dumps({"event": "ping", "created_at": stamp,
                                         "telegram_id": None, "user_id": None,
-                                        "data": {"text": "آزمایش از پنل doctor-dns"}},
+                                        "data": {"text": "آزمایش از پنل DNS"}},
                                        ensure_ascii=False), stamp, stamp))
             return self.redirect("api?m=خبر آزمایشی در صف است؛ چند ثانیه دیگر وضعیتش "
                                  "پایین همین صفحه دیده می‌شود")

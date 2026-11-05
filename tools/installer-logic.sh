@@ -709,7 +709,7 @@ exit_upstreams() {
     local line name here there tmp
     tmp="$(mktemp)"
     {
-        printf '# The way to the exit - written by doctor dns: the installer, and\n'
+        printf '# The way to the exit - written by DNS: the installer, and\n'
         printf "# smartdns-sync when the admin panel turns this relay's tunnel on or off.\n"
         for line in "https $TUNNEL_LOCAL_HTTPS 443" "http $TUNNEL_LOCAL_HTTP 80" \
                     "spotify $TUNNEL_LOCAL_SPOTIFY 4070" "blizzard $TUNNEL_LOCAL_BLIZZARD 1119"; do
@@ -752,7 +752,7 @@ tunnel_toml() {
                 -subj "/CN=${PANEL_DOMAIN:-localhost}" -keyout "$k" -out "$c" >/dev/null 2>&1 || true
         fi ;;
     esac
-    printf "# written by doctor dns: the installer, or the admin panel's relays card\n"
+    printf "# written by DNS: the installer, or the admin panel's relays card\n"
     if [ "$TUNNEL_DIRECTION" = l3 ]; then
         # The relay dials and keeps the same five ports on its loopback as
         # every other tunnel, each going to the exit's own port at the far
@@ -843,7 +843,7 @@ apply_tunnel() {
         mkdir -p /etc/nftables.d
         note_file "$TUNNEL_NFT"
         cat > "$TUNNEL_NFT" <<EOF
-# written by doctor dns: the tunnel's port answers $peer only
+# written by DNS: the tunnel's port answers $peer only
 table inet smartdns_tunnel
 delete table inet smartdns_tunnel
 table inet smartdns_tunnel {
@@ -905,7 +905,7 @@ note_file() {
 case "${1:-}" in
     --version|-V) printf '%s\n' "$VERSION"; exit 0 ;;
     --help|-h)
-        printf 'doctor dns %s\n\n' "$VERSION"
+        printf 'DNS %s\n\n' "$VERSION"
         printf 'usage: sudo bash %s [--uninstall | --tunnel]\n\n' "$0"
         printf '  no arguments   install or update this machine\n'
         printf '  --uninstall    put it back as it was\n'

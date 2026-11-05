@@ -19,6 +19,8 @@ import os
 import queue
 import shutil
 import sys
+
+import flashmsg
 import tempfile
 import threading
 import urllib.parse
@@ -109,7 +111,7 @@ Rec.one = staticmethod(admin.Admin.one)
 def act(rest, **form):
     r = Rec()
     r.action(rest, {k: [v] for k, v in form.items()})
-    return urllib.parse.unquote(r.sent.get("Location", ""))
+    return urllib.parse.unquote(flashmsg.where(r.sent))
 
 
 def user(uid):

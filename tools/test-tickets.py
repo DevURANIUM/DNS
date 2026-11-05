@@ -13,6 +13,8 @@ import json
 import os
 import shutil
 import sys
+
+import flashmsg
 import tempfile
 import threading
 import urllib.error
@@ -178,13 +180,13 @@ r.action("ticket-reply", {})
 last = store.one("SELECT * FROM ticket_messages WHERE ticket_id = ? ORDER BY id DESC", (tid,))
 check("the operator can send a picture", last["body"] == "عکس راهنما"
       and bytes(last["image_blob"]) == PNG and last["image_type"] == "image/png",
-      urllib.parse.unquote(r.sent.get("Location", "")))
+      urllib.parse.unquote(flashmsg.where(r.sent)))
 r = Rec()
 r.raw_body = raw.replace(PNG, b"<script>alert(1)</script>")
 r.headers = {"Content-Type": "multipart/form-data; boundary=" + boundary}
 r.action("ticket-reply", {})
 check("but not something pretending to be one",
-      "m=!" in urllib.parse.unquote(r.sent.get("Location", "")))
+      "m=!" in urllib.parse.unquote(flashmsg.where(r.sent)))
 
 print("whose turn it is")
 t("/user-ticket-reply", ali, id=tid, body="درست شد ممنون")

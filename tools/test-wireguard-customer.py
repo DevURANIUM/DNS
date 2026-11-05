@@ -95,7 +95,7 @@ dev = r["device_id"]
 view = panel.wg_view(store, ali(), relays)
 check("  listed, the relay's one config taken, not yet connected",
       view["room"] == 0 and view["relays"] == [] and len(view["devices"]) == 1
-      and view["devices"][0]["file"] == "doctor-dns-%d.conf" % dev
+      and view["devices"][0]["file"] == "DNS-%d.conf" % dev
       and view["devices"][0]["online"] is False and view["devices"][0]["last"] == "")
 r = panel.wg_customer_new(store, ali(), relays)
 check("  a second for the same relay: refused, whatever the devices",
@@ -240,7 +240,7 @@ check("its list: all configs in one button, each to delete, and the way to insta
       and any(x["callback_data"] == "wgdel:%d" % dev for x in flat) and "WireGuard" in text)
 bot.Bot.send_wg(b, 5, panel.wg_handout(store, 1, dev))
 check("a config sent: its QR as a photo, its text as a file under its name",
-      photos and photos[-1][0] == PNG and docs[-1][0] == "doctor-dns-%d.conf" % dev
+      photos and photos[-1][0] == PNG and docs[-1][0] == "DNS-%d.conf" % dev
       and docs[-1][1].startswith(b"[Interface]"))
 check("the DNS buttons: two in a row, each after on its own",
       bot.Bot.dns_rows([1, 2, 3, 4]) == [[1, 2], [3], [4]] and bot.Bot.dns_rows([1, 2]) == [[1, 2]])

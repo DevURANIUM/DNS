@@ -2926,7 +2926,7 @@ def wg_plan_allows(store, user):
 
 def wg_name(store):
     raw = (store.setting("wg_name") or "").strip()
-    return raw if WG_NAME_RE.fullmatch(raw) else "doctor-dns"
+    return raw if WG_NAME_RE.fullmatch(raw) else "DNS"
 
 
 def wg_file_name(name, device_id):
@@ -4542,7 +4542,7 @@ def deliver_one(store, row, key, opener=None):
     body = json.dumps(event, ensure_ascii=False).encode("utf-8")
     req = urllib.request.Request(key["webhook_url"], data=body, method="POST")
     req.add_header("Content-Type", "application/json; charset=utf-8")
-    req.add_header("User-Agent", "doctor-dns")
+    req.add_header("User-Agent", "DNS")
     req.add_header("X-DoctorDNS-Event", row["event"])
     req.add_header("X-DoctorDNS-Delivery", str(row["id"]))
     req.add_header("X-DoctorDNS-Signature",
@@ -7984,7 +7984,7 @@ def download_blocklist(name, opener=None):
     opener = opener or urllib.request.urlopen
     names = set()
     for url in BLOCKLISTS[name]["urls"]:
-        req = urllib.request.Request(url, headers={"User-Agent": "doctor-dns"})
+        req = urllib.request.Request(url, headers={"User-Agent": "DNS"})
         with opener(req, timeout=120) as r:
             blob = r.read(BLOCKLIST_MAX_BYTES + 1)
         if len(blob) > BLOCKLIST_MAX_BYTES:

@@ -17,6 +17,8 @@ import re
 import shutil
 import stat
 import sys
+
+import flashmsg
 import tempfile
 import urllib.parse
 
@@ -94,7 +96,7 @@ Rec.one = staticmethod(admin.Admin.one)
 def act(rest, **form):
     r = Rec()
     r.action(rest, {k: [v] for k, v in form.items()})
-    return urllib.parse.unquote(r.sent.get("Location", ""))
+    return urllib.parse.unquote(flashmsg.where(r.sent))
 
 
 print("before the installer has put the bot here")

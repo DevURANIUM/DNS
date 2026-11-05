@@ -13,6 +13,8 @@ import importlib.util
 import os
 import shutil
 import sys
+
+import flashmsg
 import tempfile
 
 try:
@@ -158,8 +160,9 @@ rec.action("template-save", {
     "d": ["scdn.co", "spotify.com", "gs2.ww.prod.dl.playstation.net"],
 })
 check("save redirected back to this template",
-      "templates?t=%d" % tid2 in rec.sent.get("Location", ""),
-      rec.sent.get("Location", ""))
+      "/templates?" in flashmsg.where(rec.sent)
+      and "t=%d" % tid2 in flashmsg.where(rec.sent).split("?", 1)[1].split("&"),
+      flashmsg.where(rec.sent))
 groups = store.template_groups(tid2)
 check("both ticked groups stored",
       groups == {("spotify", "main"), ("playstation", "download")}, str(groups))

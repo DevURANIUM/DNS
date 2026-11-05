@@ -16,6 +16,8 @@ import os
 import re
 import shutil
 import sys
+
+import flashmsg
 import tempfile
 import urllib.parse
 
@@ -171,7 +173,8 @@ class Act:
         self.headers = {"Cookie": cookie}
 
     def send(self, body, code, headers):
-        raise Sent(headers["Location"])
+        # The message rides in a cookie the real send() would set.
+        raise Sent(flashmsg.where(dict(headers, **{"Set-Cookie": getattr(self, "_flash", "")})))
 
 
 Act.redirect = admin.Admin.redirect

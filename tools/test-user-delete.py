@@ -16,6 +16,8 @@ import os
 import re
 import shutil
 import sys
+
+import flashmsg
 import tempfile
 
 try:
@@ -116,7 +118,7 @@ check("the relays are told about both accounts' addresses",
 print("deleting one account")
 r = Rec()
 r.action("user-delete", {"id": [str(gone)]})
-where = r.sent.get("Location", "")
+where = flashmsg.where(r.sent)
 check("the panel says it is done", r.sent.get("code") == 303 and "m=" in where
       and "%21" not in where.split("m=", 1)[1][:3], where)
 check("the account is gone",
@@ -150,8 +152,8 @@ print("an account that is not there")
 before = count("SELECT count(*) FROM users")
 r = Rec()
 r.action("user-delete", {"id": ["99999"]})
-check("is reported as not found", "m=%21" in r.sent.get("Location", ""),
-      r.sent.get("Location", ""))
+check("is reported as not found", "m=%21" in flashmsg.where(r.sent),
+      flashmsg.where(r.sent))
 check("and nothing is deleted", count("SELECT count(*) FROM users") == before)
 r = Rec()
 r.action("user-delete", {"id": [""]})

@@ -16,6 +16,8 @@ import os
 import re
 import shutil
 import sys
+
+import flashmsg
 import tempfile
 import time
 
@@ -138,13 +140,13 @@ before = store.one("SELECT password_hash FROM users WHERE id = ?", (phone_only,)
 r = Rec()
 r.action("user-password-reset", {"id": [str(phone_only)]})
 check("an account with no username is refused",
-      "m=%21" in r.sent.get("Location", ""), str(r.sent))
+      "m=%21" in flashmsg.where(r.sent), str(r.sent))
 check("and left as it was",
       store.one("SELECT password_hash FROM users WHERE id = ?", (phone_only,))
       ["password_hash"] == before["password_hash"])
 r = Rec()
 r.action("user-password-reset", {"id": ["99999"]})
-check("nor one that is not there", "m=%21" in r.sent.get("Location", ""))
+check("nor one that is not there", "m=%21" in flashmsg.where(r.sent))
 
 
 class Api:
