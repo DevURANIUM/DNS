@@ -7,7 +7,3 @@ build/
 
 __pycache__/
 *.pyc
-
-# Generated local UI previews and screenshots.
-docs/preview/
-docs/screenshots/
