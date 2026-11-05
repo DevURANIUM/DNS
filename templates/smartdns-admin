@@ -3905,9 +3905,7 @@ body{
  font:14px/1.75 Vazirmatn,system-ui,-apple-system,'Segoe UI',Roboto,Tahoma,sans-serif;
  position:relative;min-height:100vh;
  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;
- background-image:radial-gradient(1100px 550px at 50% -120px,color-mix(in srgb,var(--accent2) 8%,transparent),transparent 75%),
-  radial-gradient(850px 450px at 100% 25%,color-mix(in srgb,var(--accent) 5%,transparent),transparent 70%);
- background-attachment:fixed}
+ font-variant-numeric:tabular-nums}
 ::selection{background:color-mix(in srgb,var(--accent) 35%,transparent);color:var(--fg)}
 ::-webkit-scrollbar{width:8px;height:8px}
 ::-webkit-scrollbar-track{background:transparent}
@@ -3915,35 +3913,39 @@ body{
 ::-webkit-scrollbar-thumb:hover{background:var(--muted);background-clip:content-box}
 a{color:var(--accent);text-decoration:none;transition:color .15s ease}
 a:hover{color:var(--accent2)}
-.wrap{max-width:1380px;margin:0 auto;padding:24px 28px 44px}
-header{
- display:flex;align-items:center;gap:12px 20px;flex-wrap:wrap;
- background:color-mix(in srgb,var(--card) 88%,transparent);
- backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
- border:1px solid color-mix(in srgb,var(--line2) 50%,transparent);border-radius:18px;
- padding:10px 18px;margin-bottom:24px;
- box-shadow:var(--shadow),0 8px 24px -8px rgba(0,0,0,0.15);
- position:sticky;top:12px;z-index:100;transition:border-color .2s ease,box-shadow .2s ease}
-header:hover{border-color:color-mix(in srgb,var(--line2) 85%,transparent)}
-h1{font-size:16.5px;margin:0;font-weight:800;letter-spacing:-.2px;display:flex;align-items:center;gap:10px;white-space:nowrap}
-nav{display:flex;flex-wrap:wrap;gap:4px;flex:1;align-items:center}
+.wrap{max-width:1560px;margin:0 auto;padding:24px clamp(14px,3vw,44px) 36px}
+.admin-shell{display:grid;grid-template-columns:184px minmax(0,1fr);gap:28px;align-items:start}
+.admin-rail{
+ position:sticky;top:24px;max-height:calc(100dvh - 48px);overflow:auto;
+ background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px}
+.admin-rail .brand{
+ display:flex;align-items:center;justify-content:center;gap:9px;
+ padding:14px 8px;margin:0 0 8px;border-bottom:1px solid var(--line)}
+.admin-rail .brand .mark{font-size:19px;margin:0;filter:none}
+.admin-rail .brand .name{font-size:23px;letter-spacing:.08em}
+.admin-content{min-width:0}
+.admin-heading{
+ display:flex;align-items:center;justify-content:space-between;gap:12px;
+ margin-bottom:20px;padding:8px 0 16px;border-bottom:1px solid var(--line)}
+h1{font-size:clamp(22px,3vw,32px);margin:0;font-weight:850;line-height:1.35;color:var(--head)}
+.panel-controls{display:flex;align-items:center;gap:8px;flex:none}
+.panel-controls button.theme{
+ position:static;width:40px;height:40px;border-radius:9px;box-shadow:none;backdrop-filter:none}
+.panel-controls button.theme:hover{transform:none}
+nav{display:grid;gap:3px}
 nav a{
- padding:7px 14px;border-radius:10px;color:var(--dim);font-size:13px;font-weight:500;
- white-space:nowrap;transition:all .15s cubic-bezier(0.16,1,0.3,1);
- display:inline-flex;align-items:center;gap:6px;position:relative}
-nav a:hover{background:color-mix(in srgb,var(--row) 80%,transparent);color:var(--fg);transform:translateY(-1px)}
-nav a.on{background:var(--good-bg);color:var(--accent);font-weight:700;
- box-shadow:0 0 16px -3px color-mix(in srgb,var(--accent) 30%,transparent)}
-nav a.out{margin-right:auto;color:var(--muted);font-weight:500;padding:6px 12px;border-radius:8px;border:1px solid transparent}
-nav a.out:hover{color:var(--bad);background:var(--err-bg);border-color:color-mix(in srgb,var(--bad) 30%,transparent)}
+ padding:7px 10px;border-radius:7px;color:var(--dim);font-size:13px;font-weight:550;
+ white-space:nowrap;display:block;border-inline-start:2px solid transparent;
+ transition:background .15s ease,color .15s ease}
+nav a:hover{background:var(--row);color:var(--fg)}
+nav a.on{background:var(--good-bg);color:var(--accent);font-weight:750;border-inline-start-color:var(--accent)}
+nav a.out{color:var(--muted);margin:6px 0 0;border-top:1px solid var(--line)}
+nav a.out:hover{color:var(--bad);background:var(--err-bg)}
 .card{
- background:color-mix(in srgb,var(--card) 95%,transparent);
- backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
- border:1px solid color-mix(in srgb,var(--line) 85%,transparent);border-radius:18px;
- padding:22px 24px;margin-bottom:20px;
- box-shadow:var(--shadow),0 4px 16px -4px rgba(0,0,0,0.1);
- overflow-x:auto;position:relative;transition:border-color .2s ease,box-shadow .2s ease}
-.card:hover{border-color:color-mix(in srgb,var(--line2) 75%,transparent)}
+ background:var(--card);border:1px solid var(--line);border-radius:14px;
+ padding:22px 24px;margin-bottom:16px;overflow-x:auto;position:relative}
+:where(a,button,input,select,textarea,summary):focus-visible{
+ outline:2px solid var(--accent);outline-offset:2px}
 .card h2{font-size:15.5px;margin:0 0 16px;font-weight:800;color:var(--head);display:flex;align-items:center;gap:8px;letter-spacing:-.2px}
 .card>p.muted,.card>.muted{line-height:1.9}
 .card>p.muted:last-child{margin-bottom:0}
@@ -4049,9 +4051,9 @@ svg.chart .axis{fill:var(--muted);font-size:12px;font-family:inherit}
 label{display:block;color:var(--muted);font-size:12px;font-weight:600;margin-bottom:6px}
 .f{margin-bottom:14px}
 .login{
- max-width:380px;margin:12vh auto;padding:32px 28px;background:var(--card);
- border:1px solid var(--line2);border-radius:22px;
- box-shadow:var(--pop),0 20px 50px rgba(0,0,0,0.25)}
+ max-width:420px;margin:clamp(20px,6vh,64px) auto 0}
+.login .card{padding:clamp(18px,5vw,30px);border-block-start:3px solid var(--accent)}
+.login .card h2{font-size:23px;line-height:1.4}
 .receipt{
  border:1px solid var(--line);border-radius:14px;padding:18px;margin-bottom:16px;
  background:color-mix(in srgb,var(--bg) 70%,var(--card));box-shadow:0 2px 8px rgba(0,0,0,0.1)}
@@ -4211,15 +4213,18 @@ html[lang=en] .fa-only,html:not([lang=en]) .en-only{display:none}
 html[dir=ltr] th{text-align:left}
 html[dir=ltr] th:first-child{border-radius:10px 0 0 0}
 html[dir=ltr] th:last-child{border-radius:0 10px 0 0}
-html[dir=ltr] nav a.out{margin-right:0;margin-left:auto}
 html[dir=ltr] .pick{margin-right:0;margin-left:auto}
 html[dir=ltr] table.users td.num{text-align:left}
 html[dir=ltr] table.users details>form,html[dir=ltr] table.users details>.menu{text-align:left}
 @media (max-width:768px){
  .wrap{padding:16px 12px}
- header{padding:10px 12px;border-radius:14px;top:8px}
- nav{flex-wrap:nowrap;overflow-x:auto;width:100%;scrollbar-width:none;-webkit-overflow-scrolling:touch}
- nav::-webkit-scrollbar{display:none}
+ .admin-shell{grid-template-columns:minmax(0,1fr);gap:12px}
+ .admin-rail{position:static;max-height:none;padding:8px}
+ .admin-rail .brand{justify-content:flex-start;padding:6px 8px 10px}
+ nav{display:flex;flex-wrap:wrap;gap:3px}
+ nav a{padding:7px 9px}
+ nav a.out{margin:0;border-top:0}
+ .admin-heading{margin-bottom:14px;padding:8px 0 12px}
  .card{padding:16px 14px;border-radius:14px}
  .grid{grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
  .stat{padding:14px}
@@ -7109,7 +7114,7 @@ def page(title, body, cfg, active="", msg=None, msg_kind="good"):
         # Only what this admin may use; the owner has no "my account".
         if not page_allowed(path) or (path == "me" and is_owner()):
             continue
-        cls = " class='on'" if active == path else ""
+        cls = " class='on' aria-current='page'" if active == path else ""
         nav += "<a href='/%s/%s'%s>%s</a>" % (cfg["ADMIN_PATH"], path, cls, label)
     banner = ""
     if msg:
@@ -7125,12 +7130,13 @@ def page(title, body, cfg, active="", msg=None, msg_kind="good"):
     return ("""<!doctype html><html lang="fa" dir="rtl"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="icon" href="data:,">
-<title>%s</title>%s<style>%s</style></head><body>%s<div class="wrap">%s
-<header><h1>%s</h1><nav>%s<a class='out' href='/%s/logout'>خروج</a></nav></header>
-%s%s%s</div></body></html>""" % (html.escape(title), THEME_HEAD,
+<title>%s</title>%s<style>%s</style></head><body><div class="wrap admin-shell">
+<aside class="admin-rail">%s<nav>%s<a class='out' href='/%s/logout'>خروج</a></nav></aside>
+<main class="admin-content"><header class="admin-heading"><h1>%s</h1><div class="panel-controls">%s</div></header>
+%s%s%s</main></div></body></html>""" % (html.escape(title), THEME_HEAD,
                                  font_face("/" + cfg["ADMIN_PATH"]) + CSS,
-                                 THEME_BUTTON, brand_html(),
-                                 html.escape(title), nav, cfg["ADMIN_PATH"],
+                                 brand_html(), nav, cfg["ADMIN_PATH"],
+                                 html.escape(title), THEME_BUTTON,
                                  banner, body, footer_html()))
 
 
@@ -7143,15 +7149,15 @@ def login_page(cfg, error=None):
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="icon" href="data:,">
 <title>ورود</title>%s<style>%s</style></head><body>%s<div class="wrap">%s
-<div class="login" style="margin-top:6vh">
+<main class="login">
 <div class="card"><h2>پنل مدیریت</h2>%s
-<form method="post" action="/%s/"><div class="f"><label>نام کاربری</label>
-<input name="username" autocomplete="username" dir="ltr" autocapitalize="none"
+<form method="post" action="/%s/"><div class="f"><label for="admin-username">نام کاربری</label>
+<input id="admin-username" name="username" autocomplete="username" dir="ltr" autocapitalize="none"
 spellcheck="false" autofocus style="width:100%%"></div>
-<div class="f"><label>رمز عبور</label>
-<input type="password" name="password" autocomplete="current-password" style="width:100%%"></div>
+<div class="f"><label for="admin-password">رمز عبور</label>
+<input id="admin-password" type="password" name="password" autocomplete="current-password" style="width:100%%"></div>
 <button type="submit" style="width:100%%">ورود</button></form></div>
-</div>%s</div></body></html>""" % (THEME_HEAD,
+</main>%s</div></body></html>""" % (THEME_HEAD,
                                    font_face("/" + cfg["ADMIN_PATH"]) + CSS,
                                    THEME_BUTTON, brand_html(),
                                    err, cfg["ADMIN_PATH"], footer_html())
