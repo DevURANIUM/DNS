@@ -3598,22 +3598,21 @@ def sync_loop():
 # be left dark in one of them. Until the customer picks, their browser's own
 # setting decides; the button in the corner overrides it for that browser.
 DARK = """color-scheme:dark;
- --bg:#0f1115;--card:#171a21;--line:#262b36;--line2:#30363d;--row:#1c2029;
- --track:#0f1115;--fg:#e6e8eb;--head:#c9d1d9;--muted:#8b949e;--dim:#9aa4b2;
- --faint:#6e7681;--accent:#7dd3a0;--accent2:#58a6ff;--btn:#238636;
- --btn-hover:#2ea043;--on-btn:#ffffff;--danger:#6e2c2c;--warn:#e3b341;
- --bad:#f85149;--good-bg:#12261a;--err-bg:#2b1416;--warn-bg:#2b2411;
- --warn-line:#6e5a2c;--sun:inline;--moon:none;
- --shadow:0 1px 2px rgba(0,0,0,.35);--pop:0 10px 30px rgba(0,0,0,.45)"""
+ --bg:#101526;--card:#182137;--line:#2a3650;--line2:#465675;--row:#202d46;
+ --track:#101526;--fg:#edf2fc;--head:#ffffff;--muted:#a5b3cc;--dim:#bac7de;
+ --faint:#a5b3cc;--accent:#adc9ff;--accent2:#adc9ff;--btn:#adc9ff;
+ --btn-hover:#c8dcff;--on-btn:#15223d;--danger:#622f43;--warn:#f3cd85;
+ --bad:#ffabb8;--good-bg:#203653;--err-bg:#3b263b;--warn-bg:#392f24;
+ --warn-line:#77613c;--sun:inline;--moon:none;
+ --shadow:0 5px 20px rgba(5,12,28,.12);--pop:0 18px 48px rgba(5,12,28,.3)"""
 LIGHT = """color-scheme:light;
- --bg:#f6f8fa;--card:#ffffff;--line:#d0d7de;--line2:#afb8c1;--row:#eaeef2;
- --track:#eaeef2;--fg:#1f2328;--head:#24292f;--muted:#59636e;--dim:#57606a;
- --faint:#6e7781;--accent:#1a7f37;--accent2:#0969da;--btn:#1f883d;
- --btn-hover:#1a7f37;--on-btn:#ffffff;--danger:#cf222e;--warn:#9a6700;
- --bad:#cf222e;--good-bg:#dafbe1;--err-bg:#ffebe9;--warn-bg:#fff8c5;
- --warn-line:#d4a72c;--sun:none;--moon:inline;
- --shadow:0 1px 2px rgba(31,35,40,.04),0 4px 14px rgba(31,35,40,.05);
- --pop:0 10px 30px rgba(31,35,40,.15)"""
+ --bg:#eff3fa;--card:#ffffff;--line:#dce4f0;--line2:#a9b8cf;--row:#f1f5fb;
+ --track:#e3ebf6;--fg:#25344e;--head:#13233e;--muted:#52637f;--dim:#465976;
+ --faint:#52637f;--accent:#315da6;--accent2:#315da6;--btn:#315da6;
+ --btn-hover:#244980;--on-btn:#ffffff;--danger:#a72c49;--warn:#805717;
+ --bad:#b52b4a;--good-bg:#e6eefc;--err-bg:#fff0f3;--warn-bg:#fff4dc;
+ --warn-line:#c6a05b;--sun:none;--moon:inline;
+ --shadow:0 5px 20px rgba(33,57,97,.04);--pop:0 18px 48px rgba(33,57,97,.16)"""
 THEME_CSS = (":root{%s}\n"
              "@media (prefers-color-scheme: light){:root:not([data-theme=dark]){%s}}\n"
              ":root[data-theme=light]{%s}\n" % (DARK, LIGHT, LIGHT))
@@ -3672,7 +3671,7 @@ body{
 ::-webkit-scrollbar-thumb{background:color-mix(in srgb,var(--line2) 70%,transparent);border-radius:999px}
 ::-webkit-scrollbar-thumb:hover{background:var(--muted)}
 .portal-header{
- max-width:1000px;margin:0 auto clamp(20px,5vw,48px);padding:10px 14px;
+ max-width:1000px;margin:0 auto clamp(20px,5vw,48px);padding:16px 20px;
  display:flex;justify-content:space-between;align-items:center;gap:12px;
  background:var(--card);border:1px solid var(--line);border-radius:12px}
 .portal-controls{display:flex;gap:6px;flex:none}
@@ -3685,7 +3684,7 @@ body{
 .theme .sun{display:var(--sun)}.theme .moon{display:var(--moon)}
 html[lang=en] .fa-only,html:not([lang=en]) .en-only{display:none}
 .brand{
- font-size:20px;font-weight:850;color:var(--head);min-width:0;overflow-wrap:anywhere;
+ font-size:22px;font-weight:850;color:var(--head);min-width:0;overflow-wrap:anywhere;
  display:flex;align-items:center;gap:8px}
 .shell{width:100%;max-width:560px;margin:0 auto}
 .shell:has(.usage){max-width:780px}
@@ -3694,7 +3693,7 @@ html[lang=en] .fa-only,html:not([lang=en]) .en-only{display:none}
  background:transparent;border:0;padding:0}
 .account-head{
  padding:clamp(20px,4vw,34px);margin-bottom:16px;border:1px solid var(--line);
- border-radius:18px;background:linear-gradient(120deg,var(--card),color-mix(in srgb,var(--accent) 12%,var(--card)))}
+ border-radius:18px;background:var(--good-bg)}
 .account-head h1,.account-head .sub{text-align:start}
 .account-head h1{font-size:clamp(24px,5vw,36px);overflow-wrap:anywhere}
 .account-head .sub{margin:4px 0 0;overflow-wrap:anywhere}
@@ -3716,7 +3715,7 @@ html[lang=en] .fa-only,html:not([lang=en]) .en-only{display:none}
 @media (max-width:700px){.account-grid{grid-template-columns:minmax(0,1fr)}}
 .shell .card{
  width:100%;background:var(--card);border:1px solid var(--line);
- border-block-start:3px solid var(--accent);border-radius:14px;
+ border-radius:18px;
  padding:clamp(16px,4vw,32px);position:relative}
 :where(a,button,input,select,textarea,summary):focus-visible{
  outline:2px solid var(--accent);outline-offset:2px}

@@ -1,4 +1,7 @@
 {
+"کل کاربران": "All users",
+"وضعیت کاربران": "User status",
+"مدیریت DNS": "DNS administration",
 "(با": "(with",
 "(بعد از تمام شدن پلن فعلی خودکار فعال می‌شود)": "(starts by itself when the current plan ends)",
 "(خالی = همین بماند)": "(empty = keep it)",

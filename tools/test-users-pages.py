@@ -114,6 +114,11 @@ body = page("/p/users")
 check("it opens with a hundred rows, not all of them", len(names(body)) == 100,
       str(len(names(body))))
 check("  the heading counts everybody", "<h2>کاربران (255)</h2>" in body)
+check("  the overview uses the same visible users",
+      body.count("class='directory-metric'") == 4 and "<strong>255</strong>" in body)
+check("  editable cells carry labels for the mobile cards",
+      "data-label='سهمیه GB'" in body and "data-label='سرعت Mb'" in body
+      and "data-label='قالب'" in body)
 check("  the newest first, as before", names(body)[0] == "shop4")
 check("  each row is one to come back to", "<tr id='r255'><td class='who' title='shop4'" in body)
 check("  the end of the table says how many of how many, and where the rest is",

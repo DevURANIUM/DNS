@@ -16445,22 +16445,21 @@ exit 0
 ## be left dark in one of them. Until the customer picks, their browser's own
 ## setting decides; the button in the corner overrides it for that browser.
 #DARK = """color-scheme:dark;
-# --bg:#0f1115;--card:#171a21;--line:#262b36;--line2:#30363d;--row:#1c2029;
-# --track:#0f1115;--fg:#e6e8eb;--head:#c9d1d9;--muted:#8b949e;--dim:#9aa4b2;
-# --faint:#6e7681;--accent:#7dd3a0;--accent2:#58a6ff;--btn:#238636;
-# --btn-hover:#2ea043;--on-btn:#ffffff;--danger:#6e2c2c;--warn:#e3b341;
-# --bad:#f85149;--good-bg:#12261a;--err-bg:#2b1416;--warn-bg:#2b2411;
-# --warn-line:#6e5a2c;--sun:inline;--moon:none;
-# --shadow:0 1px 2px rgba(0,0,0,.35);--pop:0 10px 30px rgba(0,0,0,.45)"""
+# --bg:#101526;--card:#182137;--line:#2a3650;--line2:#465675;--row:#202d46;
+# --track:#101526;--fg:#edf2fc;--head:#ffffff;--muted:#a5b3cc;--dim:#bac7de;
+# --faint:#a5b3cc;--accent:#adc9ff;--accent2:#adc9ff;--btn:#adc9ff;
+# --btn-hover:#c8dcff;--on-btn:#15223d;--danger:#622f43;--warn:#f3cd85;
+# --bad:#ffabb8;--good-bg:#203653;--err-bg:#3b263b;--warn-bg:#392f24;
+# --warn-line:#77613c;--sun:inline;--moon:none;
+# --shadow:0 5px 20px rgba(5,12,28,.12);--pop:0 18px 48px rgba(5,12,28,.3)"""
 #LIGHT = """color-scheme:light;
-# --bg:#f6f8fa;--card:#ffffff;--line:#d0d7de;--line2:#afb8c1;--row:#eaeef2;
-# --track:#eaeef2;--fg:#1f2328;--head:#24292f;--muted:#59636e;--dim:#57606a;
-# --faint:#6e7781;--accent:#1a7f37;--accent2:#0969da;--btn:#1f883d;
-# --btn-hover:#1a7f37;--on-btn:#ffffff;--danger:#cf222e;--warn:#9a6700;
-# --bad:#cf222e;--good-bg:#dafbe1;--err-bg:#ffebe9;--warn-bg:#fff8c5;
-# --warn-line:#d4a72c;--sun:none;--moon:inline;
-# --shadow:0 1px 2px rgba(31,35,40,.04),0 4px 14px rgba(31,35,40,.05);
-# --pop:0 10px 30px rgba(31,35,40,.15)"""
+# --bg:#eff3fa;--card:#ffffff;--line:#dce4f0;--line2:#a9b8cf;--row:#f1f5fb;
+# --track:#e3ebf6;--fg:#25344e;--head:#13233e;--muted:#52637f;--dim:#465976;
+# --faint:#52637f;--accent:#315da6;--accent2:#315da6;--btn:#315da6;
+# --btn-hover:#244980;--on-btn:#ffffff;--danger:#a72c49;--warn:#805717;
+# --bad:#b52b4a;--good-bg:#e6eefc;--err-bg:#fff0f3;--warn-bg:#fff4dc;
+# --warn-line:#c6a05b;--sun:none;--moon:inline;
+# --shadow:0 5px 20px rgba(33,57,97,.04);--pop:0 18px 48px rgba(33,57,97,.16)"""
 #THEME_CSS = (":root{%s}\n"
 #             "@media (prefers-color-scheme: light){:root:not([data-theme=dark]){%s}}\n"
 #             ":root[data-theme=light]{%s}\n" % (DARK, LIGHT, LIGHT))
@@ -16519,7 +16518,7 @@ exit 0
 #::-webkit-scrollbar-thumb{background:color-mix(in srgb,var(--line2) 70%,transparent);border-radius:999px}
 #::-webkit-scrollbar-thumb:hover{background:var(--muted)}
 #.portal-header{
-# max-width:1000px;margin:0 auto clamp(20px,5vw,48px);padding:10px 14px;
+# max-width:1000px;margin:0 auto clamp(20px,5vw,48px);padding:16px 20px;
 # display:flex;justify-content:space-between;align-items:center;gap:12px;
 # background:var(--card);border:1px solid var(--line);border-radius:12px}
 #.portal-controls{display:flex;gap:6px;flex:none}
@@ -16532,7 +16531,7 @@ exit 0
 #.theme .sun{display:var(--sun)}.theme .moon{display:var(--moon)}
 #html[lang=en] .fa-only,html:not([lang=en]) .en-only{display:none}
 #.brand{
-# font-size:20px;font-weight:850;color:var(--head);min-width:0;overflow-wrap:anywhere;
+# font-size:22px;font-weight:850;color:var(--head);min-width:0;overflow-wrap:anywhere;
 # display:flex;align-items:center;gap:8px}
 #.shell{width:100%;max-width:560px;margin:0 auto}
 #.shell:has(.usage){max-width:780px}
@@ -16541,7 +16540,7 @@ exit 0
 # background:transparent;border:0;padding:0}
 #.account-head{
 # padding:clamp(20px,4vw,34px);margin-bottom:16px;border:1px solid var(--line);
-# border-radius:18px;background:linear-gradient(120deg,var(--card),color-mix(in srgb,var(--accent) 12%,var(--card)))}
+# border-radius:18px;background:var(--good-bg)}
 #.account-head h1,.account-head .sub{text-align:start}
 #.account-head h1{font-size:clamp(24px,5vw,36px);overflow-wrap:anywhere}
 #.account-head .sub{margin:4px 0 0;overflow-wrap:anywhere}
@@ -16563,7 +16562,7 @@ exit 0
 #@media (max-width:700px){.account-grid{grid-template-columns:minmax(0,1fr)}}
 #.shell .card{
 # width:100%;background:var(--card);border:1px solid var(--line);
-# border-block-start:3px solid var(--accent);border-radius:14px;
+# border-radius:18px;
 # padding:clamp(16px,4vw,32px);position:relative}
 #:where(a,button,input,select,textarea,summary):focus-visible{
 # outline:2px solid var(--accent);outline-offset:2px}
@@ -24358,22 +24357,21 @@ exit 0
 ## somebody picks, the browser's own setting decides; the button in the corner
 ## overrides it, and the choice is kept in that browser.
 #DARK = """color-scheme:dark;
-# --bg:#0f1115;--card:#171a21;--line:#262b36;--line2:#30363d;--row:#1c2029;
-# --track:#0f1115;--fg:#e6e8eb;--head:#c9d1d9;--muted:#8b949e;--dim:#9aa4b2;
-# --faint:#6e7681;--accent:#7dd3a0;--accent2:#58a6ff;--btn:#238636;
-# --btn-hover:#2ea043;--on-btn:#ffffff;--danger:#6e2c2c;--warn:#e3b341;
-# --bad:#f85149;--good-bg:#12261a;--err-bg:#2b1416;--warn-bg:#2b2411;
-# --warn-line:#6e5a2c;--sun:inline;--moon:none;
-# --shadow:0 1px 2px rgba(0,0,0,.35);--pop:0 10px 30px rgba(0,0,0,.45)"""
+# --bg:#101526;--card:#182137;--line:#2a3650;--line2:#465675;--row:#202d46;
+# --track:#101526;--fg:#edf2fc;--head:#ffffff;--muted:#a5b3cc;--dim:#bac7de;
+# --faint:#a5b3cc;--accent:#adc9ff;--accent2:#adc9ff;--btn:#adc9ff;
+# --btn-hover:#c8dcff;--on-btn:#15223d;--danger:#622f43;--warn:#f3cd85;
+# --bad:#ffabb8;--good-bg:#203653;--err-bg:#3b263b;--warn-bg:#392f24;
+# --warn-line:#77613c;--sun:inline;--moon:none;
+# --shadow:0 5px 20px rgba(5,12,28,.12);--pop:0 18px 48px rgba(5,12,28,.3)"""
 #LIGHT = """color-scheme:light;
-# --bg:#f6f8fa;--card:#ffffff;--line:#d0d7de;--line2:#afb8c1;--row:#eaeef2;
-# --track:#eaeef2;--fg:#1f2328;--head:#24292f;--muted:#59636e;--dim:#57606a;
-# --faint:#6e7781;--accent:#1a7f37;--accent2:#0969da;--btn:#1f883d;
-# --btn-hover:#1a7f37;--on-btn:#ffffff;--danger:#cf222e;--warn:#9a6700;
-# --bad:#cf222e;--good-bg:#dafbe1;--err-bg:#ffebe9;--warn-bg:#fff8c5;
-# --warn-line:#d4a72c;--sun:none;--moon:inline;
-# --shadow:0 1px 2px rgba(31,35,40,.04),0 4px 14px rgba(31,35,40,.05);
-# --pop:0 10px 30px rgba(31,35,40,.15)"""
+# --bg:#eff3fa;--card:#ffffff;--line:#dce4f0;--line2:#a9b8cf;--row:#f1f5fb;
+# --track:#e3ebf6;--fg:#25344e;--head:#13233e;--muted:#52637f;--dim:#465976;
+# --faint:#52637f;--accent:#315da6;--accent2:#315da6;--btn:#315da6;
+# --btn-hover:#244980;--on-btn:#ffffff;--danger:#a72c49;--warn:#805717;
+# --bad:#b52b4a;--good-bg:#e6eefc;--err-bg:#fff0f3;--warn-bg:#fff4dc;
+# --warn-line:#c6a05b;--sun:none;--moon:inline;
+# --shadow:0 5px 20px rgba(33,57,97,.04);--pop:0 18px 48px rgba(33,57,97,.16)"""
 #THEME_CSS = (":root{%s}\n"
 #             "@media (prefers-color-scheme: light){:root:not([data-theme=dark]){%s}}\n"
 #             ":root[data-theme=light]{%s}\n" % (DARK, LIGHT, LIGHT))
@@ -24400,7 +24398,7 @@ exit 0
 #html{scroll-behavior:smooth}
 #body{
 # margin:0;background:var(--bg);color:var(--fg);
-# font:14px/1.75 Vazirmatn,system-ui,-apple-system,'Segoe UI',Roboto,Tahoma,sans-serif;
+# font:14.5px/1.85 Vazirmatn,system-ui,-apple-system,'Segoe UI',Roboto,Tahoma,sans-serif;
 # position:relative;min-height:100vh;
 # -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;
 # font-variant-numeric:tabular-nums}
@@ -24411,41 +24409,46 @@ exit 0
 #::-webkit-scrollbar-thumb:hover{background:var(--muted);background-clip:content-box}
 #a{color:var(--accent);text-decoration:none;transition:color .15s ease}
 #a:hover{color:var(--accent2)}
-#.wrap{max-width:1720px;margin:0 auto;padding:24px clamp(14px,3vw,44px) 36px}
-#.admin-shell{display:grid;grid-template-columns:184px minmax(0,1fr);gap:28px;align-items:start}
+#.wrap{max-width:1800px;margin:0 auto;padding:28px clamp(16px,3vw,48px) 40px}
+#.admin-shell{display:grid;grid-template-columns:220px minmax(0,1fr);gap:36px;align-items:start}
 #.admin-rail{
-# position:sticky;top:24px;max-height:calc(100dvh - 48px);overflow:auto;
-# background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px}
+# position:sticky;top:28px;max-height:calc(100dvh - 56px);overflow:auto;
+# padding:18px 12px;background:var(--card);border:1px solid var(--line);border-radius:20px}
 #.admin-rail .brand{
-# display:flex;align-items:center;justify-content:center;gap:9px;
-# padding:14px 8px;margin:0 0 8px;border-bottom:1px solid var(--line)}
-#.admin-rail .brand .mark{font-size:19px;margin:0;filter:none}
-#.admin-rail .brand .name{font-size:23px;letter-spacing:.08em}
+# display:flex;align-items:center;justify-content:flex-start;gap:12px;
+# padding:6px 12px 24px;margin:0 0 12px;border-bottom:1px solid var(--line)}
+#.admin-rail .brand .mark{width:36px;height:36px;margin:0;filter:none}
+#.brand-symbol{display:block;width:100%;height:100%;color:var(--accent)}
+#.admin-rail .brand .name{
+# font-size:26px;letter-spacing:.06em;color:var(--head);background:none;-webkit-text-fill-color:currentColor}
 #.admin-content{min-width:0}
 #.admin-heading{
-# display:flex;align-items:center;justify-content:space-between;gap:12px;
-# margin-bottom:20px;padding:18px clamp(14px,3vw,28px);
-# border:1px solid var(--line);border-radius:16px;
-# background:linear-gradient(120deg,var(--card),color-mix(in srgb,var(--accent) 10%,var(--card)))}
-#h1{font-size:clamp(22px,3vw,32px);margin:0;font-weight:850;line-height:1.35;color:var(--head)}
+# display:flex;align-items:center;justify-content:space-between;gap:16px;
+# padding:4px 0 24px;margin:0 0 24px;border-bottom:1px solid var(--line)}
+#.heading-copy{display:grid;gap:4px}
+#.heading-copy>span{color:var(--muted);font-size:12px;font-weight:600}
+#h1{font-size:clamp(26px,3vw,36px);margin:0;font-weight:850;line-height:1.4;color:var(--head)}
 #.panel-controls{display:flex;align-items:center;gap:8px;flex:none}
 #.panel-controls button.theme{
-# position:static;width:40px;height:40px;border-radius:9px;box-shadow:none;backdrop-filter:none}
-#.panel-controls button.theme:hover{transform:none}
-#nav{display:grid;gap:3px}
+# position:static;width:42px;height:42px;border-radius:12px;background:var(--card);
+# box-shadow:none;backdrop-filter:none;border-color:var(--line)}
+#.panel-controls button.theme:hover{transform:none;background:var(--row)}
+#nav{display:grid;gap:5px}
 #nav a{
-# padding:7px 10px;border-radius:7px;color:var(--dim);font-size:13px;font-weight:550;
-# white-space:nowrap;display:block;border-inline-start:2px solid transparent;
-# transition:background .15s ease,color .15s ease}
+# padding:10px 12px;border-radius:10px;color:var(--muted);font-size:13px;font-weight:600;
+# white-space:nowrap;display:flex;align-items:center;gap:12px;border:1px solid transparent;
+# transition:background .18s ease,color .18s ease}
+#.nav-icon{width:19px;height:19px;flex:none;opacity:.8}
 #nav a:hover{background:var(--row);color:var(--fg)}
-#nav a.on{background:var(--good-bg);color:var(--accent);font-weight:750;border-inline-start-color:var(--accent)}
-#nav a.out{color:var(--muted);margin:6px 0 0;border-top:1px solid var(--line)}
-#nav a.out:hover{color:var(--bad);background:var(--err-bg)}
+#nav a.on{background:var(--good-bg);color:var(--accent);font-weight:800;border-color:var(--line)}
+#nav a.on::after{content:'';width:5px;height:5px;border-radius:50%;background:var(--accent);margin-inline-start:auto}
+#nav a.out{color:var(--muted);margin-top:14px;border-top:1px solid var(--line);border-radius:0;padding-top:18px}
+#nav a.out:hover{color:var(--bad)}
 #.card{
-# background:var(--card);border:1px solid var(--line);border-radius:14px;
-# padding:22px 24px;margin-bottom:16px;overflow-x:auto;position:relative}
+# background:var(--card);border:1px solid var(--line);border-radius:16px;
+# padding:24px;margin-bottom:24px;overflow-x:auto;position:relative;box-shadow:var(--shadow)}
 #:where(a,button,input,select,textarea,summary,[tabindex]):focus-visible{
-# outline:2px solid var(--accent);outline-offset:2px}
+# outline:2px solid var(--accent);outline-offset:3px}
 #.card h2{font-size:17px;margin:0 0 16px;font-weight:800;color:var(--head);display:flex;align-items:center;gap:8px;letter-spacing:-.2px}
 #.card>p.muted,.card>.muted{line-height:1.9}
 #.card>p.muted:last-child{margin-bottom:0}
@@ -24469,15 +24472,17 @@ exit 0
 # direction:ltr;display:inline-block}
 #.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px}
 #.stat{
-# background:color-mix(in srgb,var(--bg) 75%,var(--card));
-# border:1px solid color-mix(in srgb,var(--line) 90%,transparent);
-# border-radius:14px;padding:18px 20px;position:relative;overflow:hidden;
-# transition:all .2s cubic-bezier(0.16,1,0.3,1)}
-#.stat:hover{
-# transform:translateY(-2px);border-color:color-mix(in srgb,var(--accent2) 40%,var(--line));
-# box-shadow:0 8px 24px -6px rgba(0,0,0,0.18)}
-#.stat .n{font-size:24px;font-weight:800;letter-spacing:-.5px;font-variant-numeric:tabular-nums;line-height:1.2}
-#.stat .l{color:var(--muted);font-size:12px;font-weight:600;margin-top:6px;letter-spacing:.2px}
+# padding:22px;background:var(--row);border:1px solid var(--line);border-radius:12px;
+# position:relative;overflow:hidden}
+#.stat .n{font-size:32px;font-weight:850;letter-spacing:-1px;line-height:1.4;font-variant-numeric:tabular-nums}
+#.stat .l{color:var(--muted);font-size:13px;font-weight:600;margin-top:4px}
+#.directory-overview{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:24px}
+#.directory-metric{padding:20px 22px;background:var(--card);border:1px solid var(--line);border-radius:14px}
+#.directory-metric:first-child{background:var(--good-bg);border-color:var(--line2)}
+#.metric-label{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:13px}
+#.metric-label::before{content:'';width:7px;height:7px;background:var(--accent);border-radius:2px}
+#.directory-metric strong{display:block;font-size:34px;font-weight:850;color:var(--head);margin-top:10px;line-height:1.2;font-variant-numeric:tabular-nums}
+#.directory-metric small{font-size:12px;color:var(--muted)}
 #.bar{
 # height:7px;background:color-mix(in srgb,var(--track) 85%,var(--line2));
 # border-radius:999px;overflow:hidden;margin-top:10px;
@@ -24489,7 +24494,7 @@ exit 0
 #.bar i.hot{background:var(--bad);box-shadow:0 0 10px color-mix(in srgb,var(--bad) 50%,transparent)}
 #select{
 # appearance:none;-webkit-appearance:none;-moz-appearance:none;
-# background:color-mix(in srgb,var(--bg) 85%,var(--card));
+# background:var(--bg);
 # color:var(--fg);border:1px solid var(--line2);border-radius:10px;
 # padding:8px 12px 8px 30px;font:inherit;font-size:13px;cursor:pointer;
 # background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
@@ -24498,21 +24503,21 @@ exit 0
 #select:focus{outline:0;border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 22%,transparent);background:var(--card)}
 #select option{background-color:var(--card);color:var(--fg);padding:8px 12px}
 #input,select,button,textarea{
-# font:inherit;background:color-mix(in srgb,var(--bg) 85%,var(--card));
+# font:inherit;background:var(--bg);
 # color:var(--fg);border:1px solid var(--line2);border-radius:10px;
-# padding:9px 12px;transition:all .15s cubic-bezier(0.16,1,0.3,1)}
+# padding:10px 13px;transition:all .15s cubic-bezier(0.16,1,0.3,1)}
 #input:focus,select:focus,textarea:focus{
 # outline:0;border-color:var(--accent2);
 # box-shadow:0 0 0 3px color-mix(in srgb,var(--accent2) 22%,transparent);background:var(--card)}
 #button{
 # background:var(--btn);border-color:var(--btn);color:var(--on-btn);cursor:pointer;
 # font-weight:700;padding:9px 16px;border-radius:10px;
-# box-shadow:0 2px 8px color-mix(in srgb,var(--btn) 30%,transparent);
+# box-shadow:none;
 # display:inline-flex;align-items:center;justify-content:center;gap:6px;
 # transition:background .15s,border-color .15s,transform .15s,box-shadow .15s}
 #button:hover{
 # background:var(--btn-hover);border-color:var(--btn-hover);
-# transform:translateY(-1px);box-shadow:0 4px 14px color-mix(in srgb,var(--btn) 45%,transparent)}
+# transform:translateY(-1px);box-shadow:none}
 #button:active{transform:translateY(0)}
 #button.danger{
 # background:var(--err-bg);border-color:color-mix(in srgb,var(--bad) 45%,transparent);
@@ -24649,10 +24654,11 @@ exit 0
 #.logo.plain{color:var(--muted)}
 #.user-tools{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 16px}
 #.user-tools>details{
-# flex:1 1 220px;min-width:0;border:1px solid var(--line);border-radius:10px;
-# background:var(--bg)}
-#.user-tools summary{padding:9px 14px;cursor:pointer;color:var(--dim);font-weight:650}
+# flex:0 1 auto;min-width:0;border:0;border-radius:8px;
+# background:transparent}
+#.user-tools summary{padding:6px 10px;cursor:pointer;color:var(--dim);font-weight:650}
 #.user-tools summary:hover{color:var(--fg)}
+#.user-tools details[open]{flex-basis:100%;background:var(--bg);border:1px solid var(--line)}
 #.user-tools details>p{padding:0 14px;margin:0 0 12px;max-width:72ch}
 #.purge{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:0 14px 12px}
 #.purge form{margin:0}
@@ -24660,25 +24666,41 @@ exit 0
 #.purge button:disabled{
 # background:var(--card);border-color:var(--line);color:var(--muted);
 # cursor:default;box-shadow:none;transform:none}
-#.user-directory{padding:0}
-#.user-directory>.directory-tools{padding:clamp(14px,2vw,24px)}
-#.directory-tools h2{font-size:clamp(18px,2vw,24px)}
-#.user-directory .directory-table{overflow-x:auto}
-#@media (min-width:1300px){
-# .user-directory table.users details>form,.user-directory table.users details>.menu{position:static}
-#}
-#.user-directory table.users{min-width:960px}
-#.user-directory table.users th{background:var(--row);border-radius:0}
-#.user-directory table.users :is(td,th){padding:12px 8px}
-#.user-directory table.users :is(td,th):first-child{padding-inline-start:16px}
-#.user-directory table.users :is(td,th):last-child{padding-inline-end:16px}
-#.user-directory table.users tr:nth-child(odd)>td{
-# background:color-mix(in srgb,var(--row) 40%,var(--card))}
+#.card.user-directory{padding:0;border-radius:16px}
+#.user-directory>.directory-tools{padding:24px 24px 18px}
+#.directory-tools h2{font-size:19px;margin-bottom:20px}
+#.user-directory .directory-table{overflow-x:auto;border-top:1px solid var(--line)}
+#.user-directory table.users{min-width:1000px;font-size:13px}
+#.user-directory table.users th{
+# background:var(--row);color:var(--dim);font-size:11.5px;font-weight:650;
+# border-radius:0;padding:13px 12px}
+#.user-directory table.users td{padding:20px 12px;border-bottom:1px solid var(--line)}
+#.user-directory table.users tr:last-child td{border-bottom:0}
 #.user-directory table.users tr:is(:hover,:focus-within)>td{background:var(--row)}
+#.user-directory table.users :is(td,th):first-child{padding-inline-start:24px}
+#.user-directory table.users :is(td,th):last-child{padding-inline-end:24px}
+#.user-directory table.users td.who{min-width:155px}
+#.user-directory table.users td.who>code{
+# color:var(--head);font-family:inherit;font-size:15px;font-weight:800;background:none;padding:0;border:0}
+#.user-directory table.users td.who small{font-size:11px;line-height:1.9}
+#.user-directory table.users input{
+# background:var(--bg);border:1px solid var(--line);border-radius:8px;
+# min-height:38px;text-align:center;font-size:13px}
+#.user-directory table.users input:hover{border-color:var(--line2)}
+#.user-directory table.users :is(select,details>summary){min-height:38px;border-radius:8px}
+#.user-directory table.users details>form,.user-directory table.users details>.menu{position:static}
+#.user-directory table.users .pill{border-radius:7px;padding:4px 10px;font-size:11px}
+#.user-directory table.users td.acts>form{display:inline}
+#.user-directory table.users td.acts button{min-height:36px;border-radius:8px;box-shadow:none}
+#.user-directory table.users td.acts button.del{border-color:var(--line);color:var(--muted)}
+#.user-directory table.users td.acts button.del:hover{border-color:var(--bad);color:var(--bad)}
 #.reserved{color:var(--accent);font-size:11.5px;font-weight:600}
 #form.reserve{display:flex;align-items:center;gap:8px;margin:8px 0;font-size:12px}
 #.usearch{
-# margin:0 0 12px;padding:10px;border:1px solid var(--line);border-radius:12px;background:var(--bg)}
+# margin:0 0 14px;padding:0;border:0;border-radius:0;background:transparent}
+#.usearch input[type=search]{padding-inline:16px}
+#.usearch button{background:var(--btn);color:var(--on-btn);border-color:var(--btn)}
+#.usearch .usort select{background:var(--bg)}
 #.usearch .usort{margin:0;display:flex;flex-wrap:wrap;align-items:center;gap:8px}
 #.usearch button,.usearch select,.usearch input{min-height:42px}
 #.umore{padding:16px;text-align:center;color:var(--muted)}
@@ -24747,13 +24769,50 @@ exit 0
 #html[dir=ltr] table.users details>form,html[dir=ltr] table.users details>.menu{text-align:left}
 #@media (max-width:768px){
 # .wrap{padding:16px 12px}
+# .admin-shell{gap:20px}
 # .admin-shell{grid-template-columns:minmax(0,1fr);gap:12px}
-# .admin-rail{position:static;max-height:none;padding:8px}
+# .admin-rail{position:static;max-height:none;padding:10px;border-radius:14px}
 # .admin-rail .brand{justify-content:flex-start;padding:6px 8px 10px}
-# nav{display:flex;flex-wrap:wrap;gap:3px}
+# nav{display:flex;flex-wrap:nowrap;overflow-x:auto;gap:5px;padding-bottom:5px}
+# .nav-icon{width:16px;height:16px}
+# nav a{flex:none}
+# nav a.on::after{display:none}
 # nav a{padding:7px 9px}
 # nav a.out{margin:0;border-top:0}
-# .admin-heading{margin-bottom:14px;padding:8px 0 12px}
+# .admin-heading{margin-bottom:18px;padding:6px 0 18px}
+# .directory-overview{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:18px}
+# .directory-metric{padding:16px}
+# .directory-metric strong{font-size:28px}
+# .user-directory{padding:0}
+# .user-directory>.directory-tools{padding:18px 14px}
+# .usearch .usort{flex-basis:100%}
+# .usearch .usort select{flex:1}
+# .user-tools{margin-bottom:0}
+# .user-directory .directory-table{border:0;padding:0 14px 14px;overflow:visible}
+# .user-directory table.users{display:block;min-width:0;width:100%}
+# .user-directory table.users tbody{display:grid;gap:14px}
+# .user-directory table.users tr:first-child:not([id]){display:none}
+# .user-directory table.users tr[id]{
+#  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 14px;
+#  background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:14px}
+# .user-directory table.users tr[id]>td{
+#  min-width:0;padding:10px 0;background:transparent;border-bottom:1px solid var(--line);
+#  text-align:start;direction:inherit;display:flex;flex-direction:column;gap:6px}
+# .user-directory table.users td[data-label]::before{
+#  content:attr(data-label);font-size:11px;color:var(--muted);font-family:Vazirmatn,system-ui}
+# .user-directory table.users tr[id]>td.who{
+#  grid-column:1/-1;max-width:none;padding:0 0 12px;gap:0}
+# .user-directory table.users td.who small{display:block}
+# .user-directory table.users tr[id]>td.acts{
+#  grid-column:1/-1;display:flex;flex-direction:row;flex-wrap:wrap;align-items:start;
+#  gap:6px;padding-top:14px;border:0}
+# .user-directory table.users td.acts details.more{margin-inline-start:auto}
+# .user-directory table.users td.acts details[open]{flex-basis:100%;margin:0}
+# .user-directory table.users tr[id]>td input,
+# .user-directory table.users tr[id]>td select{width:100%;max-width:100%}
+# .user-directory table.users td .pill{align-self:flex-start}
+# .user-directory table.users td code{align-self:flex-start;max-width:100%;overflow-wrap:anywhere}
+#
 # .card{padding:16px 14px;border-radius:14px}
 # .grid{grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
 # .stat{padding:14px}
@@ -24761,6 +24820,7 @@ exit 0
 # button.theme{top:10px;left:10px;width:36px;height:36px}
 # button.theme.lang{right:10px}
 #}
+#@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important}}
 #"""
 #
 ## Where the installer writes the version it installed. Read per page rather
@@ -24777,7 +24837,7 @@ exit 0
 #
 #
 #def brand_html():
-#    return ("<div class='brand'><span class='mark'>🛡️</span>"
+#    return ("<div class='brand'><span class='mark'><svg class='brand-symbol' viewBox='0 0 32 32' fill='none' aria-hidden='true'><rect x='1' y='1' width='30' height='30' rx='9' fill='currentColor'/><path d='M10 9h5a7 7 0 0 1 0 14h-5V9Z' stroke='var(--bg)' stroke-width='3'/></svg></span>"
 #            "<span class='name'>DNS</span></div>")
 #
 #
@@ -27627,6 +27687,31 @@ exit 0
 #                               or "—"), p))
 #
 #
+#NAV_PATHS = {
+#    "": "M3 10 12 3l9 7v10H3Z M9 20v-7h6v7",
+#    "users": "M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2 M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8 M22 21v-2a4 4 0 0 0-3-4 M16 3a4 4 0 0 1 0 8",
+#    "tickets": "M4 4h16v12H9l-5 4Z M8 8h8 M8 12h5",
+#    "plans": "M4 5h16v16H4Z M8 2v6 M16 2v6 M4 11h16",
+#    "templates": "M3 3h7v7H3Z M14 3h7v7h-7Z M3 14h7v7H3Z M14 14h7v7h-7Z",
+#    "domains": "M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0 M3 12h18 M12 3c5 5 5 13 0 18-5-5-5-13 0-18",
+#    "bot": "M5 7h14v13H5Z M12 3v4 M8 12h1 M15 12h1 M9 16h6",
+#    "api": "m8 6-6 6 6 6 M16 6l6 6-6 6 M14 3l-4 18",
+#    "nodes": "M4 3h16v7H4Z M4 14h16v7H4Z M7 6h1 M7 17h1 M12 6h5 M12 17h5",
+#    "wireguard": "M12 2 3 6v6c0 5 9 10 9 10s9-5 9-10V6Z M8 12l3 3 5-6",
+#    "settings": "M4 6h16 M4 12h16 M4 18h16 M8 3v6 M16 9v6 M10 15v6",
+#    "logs": "M5 3h14v18H5Z M8 7h8 M8 12h8 M8 17h5",
+#    "diagnose": "M3 12h4l3-8 4 16 3-8h4",
+#    "admins": "M12 3 3 7v6c0 5 9 8 9 8s9-3 9-8V7Z M8 12h8 M12 8v8",
+#    "me": "M20 21a8 8 0 0 0-16 0 M16 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0"
+#}
+#
+#
+#def nav_icon(path):
+#    return ("<svg class='nav-icon' viewBox='0 0 24 24' fill='none' stroke='currentColor' "
+#            "stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'>"
+#            "<path d='%s'/></svg>" % NAV_PATHS.get(path, NAV_PATHS['me']))
+#
+#
 #def page(title, body, cfg, active="", msg=None, msg_kind="good"):
 #    nav = ""
 #    waiting = tickets_waiting()
@@ -27644,7 +27729,7 @@ exit 0
 #        if not page_allowed(path) or (path == "me" and is_owner()):
 #            continue
 #        cls = " class='on' aria-current='page'" if active == path else ""
-#        nav += "<a href='/%s/%s'%s>%s</a>" % (cfg["ADMIN_PATH"], path, cls, label)
+#        nav += "<a href='/%s/%s'%s>%s<span>%s</span></a>" % (cfg["ADMIN_PATH"], path, cls, nav_icon(path), label)
 #    banner = ""
 #    if msg:
 #        banner = "<div class='msg %s'>%s</div>" % (msg_kind, html.escape(msg))
@@ -27661,7 +27746,7 @@ exit 0
 #<link rel="icon" href="data:,">
 #<title>%s</title>%s<style>%s</style></head><body><div class="wrap admin-shell">
 #<aside class="admin-rail">%s<nav>%s<a class='out' href='/%s/logout'>خروج</a></nav></aside>
-#<main class="admin-content"><header class="admin-heading"><h1>%s</h1><div class="panel-controls">%s</div></header>
+#<main class="admin-content"><header class="admin-heading"><div class="heading-copy"><span>مدیریت DNS</span><h1>%s</h1></div><div class="panel-controls">%s</div></header>
 #%s%s%s</main></div></body></html>""" % (html.escape(title), THEME_HEAD,
 #                                 font_face("/" + cfg["ADMIN_PATH"]) + CSS,
 #                                 brand_html(), nav, cfg["ADMIN_PATH"],
@@ -28913,6 +28998,17 @@ exit 0
 #                       args + find_args + (count, start))
 #        out = []
 #        if not rows_only:
+#            status_counts = {r["status"]: r["c"] for r in STORE.q(
+#                "SELECT u.status, count(*) c FROM users u WHERE 1 = 1" + extra
+#                + " GROUP BY u.status", args)}
+#            out.append("<section class='directory-overview' aria-label='وضعیت کاربران'>")
+#            for label, amount in (("کل کاربران", total),
+#                                  ("فعال", status_counts.get("active", 0)),
+#                                  ("در انتظار پلن", status_counts.get("pending", 0)),
+#                                  ("منقضی", status_counts.get("expired", 0))):
+#                out.append("<div class='directory-metric'><span class='metric-label'>%s</span>"
+#                           "<strong>%d</strong></div>" % (label, amount))
+#            out.append("</section>")
 #            out.append("<div class='card wide user-directory'><div class='directory-tools'><h2>کاربران (%s)</h2>"
 #                       % ("%d از %d" % (found, total) if q else total))
 #            if not total:
@@ -28993,20 +29089,20 @@ exit 0
 #            out.append(
 #                "<tr id='r%d'><td class='who' title='%s'>%s<code>%s</code><small>%s</small>"
 #                "<small class='seen'>%s</small><small class='seen'>%s</small></td>"
-#                "<td><code>%s</code>%s</td><td class='num'>%s</td><td class='num'>%s</td>"
-#                "<td><form id='u%d' method='post' action='/%s/user-save'></form>"
+#                "<td data-label='آی‌پی'><code>%s</code>%s</td><td class='num' data-label='مصرف'>%s</td><td class='num' data-label='کیف پول'>%s</td>"
+#                "<td data-label='سهمیه GB'><form id='u%d' method='post' action='/%s/user-save'></form>"
 #                "<input form='u%d' type='hidden' name='id' value='%d'>"
 #                "<input form='u%d' name='quota_gb' value='%s' size='3'"
 #                " title='گیگابایت، ۰=نامحدود'></td>"
-#                "<td><input form='u%d' name='speed_mb' value='%s' size='3'"
+#                "<td data-label='سرعت Mb'><input form='u%d' name='speed_mb' value='%s' size='3'"
 #                " title='مگابیت بر ثانیه، ۰=بی‌حد'></td>"
-#                "<td><input form='u%d' name='days' size='5' placeholder='%s'"
+#                "<td data-label='روز'><input form='u%d' name='days' size='5' placeholder='%s'"
 #                " title='از امروز چند روز دیگر'></td>"
-#                "<td><form method='post' action='/%s/user-template'>"
+#                "<td data-label='قالب'><form method='post' action='/%s/user-template'>"
 #                "<input type='hidden' name='id' value='%d'>"
-#                "<select name='template_id' onchange='this.form.submit()'>%s</select>"
-#                "</form></td><td>%s</td>%s"
-#                "<td><span class='pill %s'>%s</span></td>"
+#                "<select aria-label='قالب' name='template_id' onchange='this.form.submit()'>%s</select>"
+#                "</form></td><td data-label='پلن'>%s</td>%s"
+#                "<td data-label='وضعیت'><span class='pill %s'>%s</span></td>"
 #                "<td class='acts'><button form='u%d' title='ذخیره'>ثبت</button>"
 #                "<form method='post' action='/%s/user-status'>"
 #                "<input type='hidden' name='id' value='%d'>"
@@ -51664,6 +51760,9 @@ exit 0
 
 #__BEGIN_I18N_EN__
 #{
+#"کل کاربران": "All users",
+#"وضعیت کاربران": "User status",
+#"مدیریت DNS": "DNS administration",
 #"(با": "(with",
 #"(بعد از تمام شدن پلن فعلی خودکار فعال می‌شود)": "(starts by itself when the current plan ends)",
 #"(خالی = همین بماند)": "(empty = keep it)",

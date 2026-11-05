@@ -82,9 +82,9 @@ for name, pal in (("dark", dark), ("light", light)):
     for a, b in PAIRS:
         c = contrast(pal[a], pal[b])
         check("%s: %s on %s is readable (%.1f)" % (name, a, b, c), c >= 4.5)
-check("the dark theme is the one it always was",
-      dark["bg"] == "#0f1115" and dark["card"] == "#171a21" and
-      dark["accent"] == "#7dd3a0")
+check("the dark theme uses the redesigned product palette",
+      dark["bg"] == "#101526" and dark["card"] == "#182137" and
+      dark["accent"] == "#adc9ff")
 
 print("without a choice the browser decides, and a choice beats it")
 t = admin.THEME_CSS
