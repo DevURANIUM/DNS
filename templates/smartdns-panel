@@ -1172,6 +1172,43 @@ def io_open(path):
     return open(path, encoding="utf-8")
 
 
+# Domains that a later catalogue moved from one group into another of a
+# different service: (from service, from group, to service, to group).
+CATALOGUE_MOVES = [
+    # The Linux distributions' mirrors, out of the DynX list into a service
+    # of their own (0.11.1).
+    ("dynx", "domains", "linux", "mirrors"),
+    # Counter-Strike 2's own site, out of Steam's store into its game's row.
+    ("steam", "main", "shooters", "cs2"),
+]
+
+
+def follow_catalogue_moves(store, catalogue):
+    """Keep templates routing domains that moved to another service.
+
+    A template that ticked the group the domains left was routing them, and
+    would stop the day they moved - its customers losing, say, Ubuntu's
+    mirrors with no change anybody made. So such a template gets the group
+    they went to, once: an admin who unticks it afterwards is not overruled
+    on the next start. A switched-off domain stays off - those are kept by
+    the domain alone. Returns how many templates were given a group.
+    """
+    have = {(s["key"], g["key"]) for s in catalogue for g in s["groups"]}
+    given = 0
+    for src_s, src_g, dst_s, dst_g in CATALOGUE_MOVES:
+        flag = "catalogue_move:%s/%s:%s/%s" % (src_s, src_g, dst_s, dst_g)
+        if (dst_s, dst_g) not in have or store.setting(flag):
+            continue
+        for row in store.q("SELECT template_id FROM template_services"
+                           " WHERE service_key = ? AND group_key = ?", (src_s, src_g)):
+            store.run("INSERT OR IGNORE INTO template_services"
+                      " (template_id, service_key, group_key) VALUES (?, ?, ?)",
+                      (row["template_id"], dst_s, dst_g))
+            given += 1
+        store.set_setting(flag, "1")
+    return given
+
+
 def follow_catalogue_split(store, catalogue):
     """Keep templates pointing at groups after a group is split in two.
 
@@ -8102,6 +8139,7 @@ def main():
     GAMES[:] = load_games()
     BLOCKS[:] = load_blocks()
     follow_catalogue_split(store, CATALOGUE)
+    follow_catalogue_moves(store, CATALOGUE)
     DEFAULT_TEMPLATE[0] = store.ensure_default_template(CATALOGUE)["id"]
     print("catalogue: %d services, default template #%d"
           % (len(CATALOGUE), DEFAULT_TEMPLATE[0]), flush=True)

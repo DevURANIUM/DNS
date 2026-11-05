@@ -38,7 +38,7 @@ STAMP="$(date +%Y%m%d-%H%M%S)"
 # What this file is. Written to the machine once an install finishes, so the
 # next run can tell whether it is an upgrade, a re-run, or somebody about to
 # put an older version over a newer one by accident.
-VERSION="0.11.0"
+VERSION="0.11.1"
 
 # What this install did, so uninstall can undo exactly that and nothing more.
 # Without it, removal would be guesswork: whether dnsmasq was ours or already
@@ -5850,6 +5850,43 @@ exit 0
 #
 #def io_open(path):
 #    return open(path, encoding="utf-8")
+#
+#
+## Domains that a later catalogue moved from one group into another of a
+## different service: (from service, from group, to service, to group).
+#CATALOGUE_MOVES = [
+#    # The Linux distributions' mirrors, out of the DynX list into a service
+#    # of their own (0.11.1).
+#    ("dynx", "domains", "linux", "mirrors"),
+#    # Counter-Strike 2's own site, out of Steam's store into its game's row.
+#    ("steam", "main", "shooters", "cs2"),
+#]
+#
+#
+#def follow_catalogue_moves(store, catalogue):
+#    """Keep templates routing domains that moved to another service.
+#
+#    A template that ticked the group the domains left was routing them, and
+#    would stop the day they moved - its customers losing, say, Ubuntu's
+#    mirrors with no change anybody made. So such a template gets the group
+#    they went to, once: an admin who unticks it afterwards is not overruled
+#    on the next start. A switched-off domain stays off - those are kept by
+#    the domain alone. Returns how many templates were given a group.
+#    """
+#    have = {(s["key"], g["key"]) for s in catalogue for g in s["groups"]}
+#    given = 0
+#    for src_s, src_g, dst_s, dst_g in CATALOGUE_MOVES:
+#        flag = "catalogue_move:%s/%s:%s/%s" % (src_s, src_g, dst_s, dst_g)
+#        if (dst_s, dst_g) not in have or store.setting(flag):
+#            continue
+#        for row in store.q("SELECT template_id FROM template_services"
+#                           " WHERE service_key = ? AND group_key = ?", (src_s, src_g)):
+#            store.run("INSERT OR IGNORE INTO template_services"
+#                      " (template_id, service_key, group_key) VALUES (?, ?, ?)",
+#                      (row["template_id"], dst_s, dst_g))
+#            given += 1
+#        store.set_setting(flag, "1")
+#    return given
 #
 #
 #def follow_catalogue_split(store, catalogue):
@@ -12782,6 +12819,7 @@ exit 0
 #    GAMES[:] = load_games()
 #    BLOCKS[:] = load_blocks()
 #    follow_catalogue_split(store, CATALOGUE)
+#    follow_catalogue_moves(store, CATALOGUE)
 #    DEFAULT_TEMPLATE[0] = store.ensure_default_template(CATALOGUE)["id"]
 #    print("catalogue: %d services, default template #%d"
 #          % (len(CATALOGUE), DEFAULT_TEMPLATE[0]), flush=True)
@@ -37954,6 +37992,7 @@ exit 0
 #archdpdx.org
 #archive.mariadb.org
 #archive.ubuntu.com
+#archlinux.org
 #arcraiders.com
 #arcsystemworks.com
 #arcticgardens.ca
@@ -38414,6 +38453,7 @@ exit 0
 #canary.xccs.xboxlive.com
 #cancersupportcommunity.org
 #cannaraycbd.com
+#canonical.com
 #canterburytales.org
 #canva.com
 #canvas4everyone.com
@@ -38896,6 +38936,7 @@ exit 0
 #deadbydaylight.com
 #deb.etcher.io
 #deb.nodesource.com
+#debian.net
 #debian.org
 #decathlon.it
 #dedicatedpanel.com
@@ -39411,6 +39452,7 @@ exit 0
 #federale.be
 #fedora-epel.koyanet.lv
 #fedoramagazine.org
+#fedorapeople.org
 #fedoraproject.org
 #feedbacklogin.xbox.com
 #feedburner.com
@@ -39461,8 +39503,10 @@ exit 0
 #fiverrcdn.com
 #fjallraven.com.au
 #flag-icon-css.lip.is
+#flathub.org
 #flaticon.com
 #flatmatefinders.com.au
+#flatpak.org
 #flexdog.com
 #flexibleshipping.com
 #flexperks.com
@@ -39665,6 +39709,7 @@ exit 0
 #generativeai.google
 #geniusdexchange.com
 #genspark.ai
+#gentoo.org
 #genymotion.com
 #georgetownma.gov
 #germany2006.tv
@@ -40475,6 +40520,7 @@ exit 0
 #linode.com
 #linor.com
 #linuxhostsupport.com
+#linuxmint.com
 #linuxquestions.org
 #linuxserver2.dedidata.com
 #lioncountrysafari.com
@@ -40572,6 +40618,7 @@ exit 0
 #manifest-ssl.xboxlive.com
 #manifest.xboxlive.com
 #manitobah.ca
+#manjaro.org
 #manningcartell.com.au
 #mapgenie.io
 #maps.google.com
@@ -41099,6 +41146,7 @@ exit 0
 #openshift.com
 #openssl.org
 #openstreetmap.org
+#opensuse.org
 #openvpn.net
 #openwrt.org
 #openx.net
@@ -41325,6 +41373,7 @@ exit 0
 #pkg.dev
 #pkg.go.dev
 #pkg.jenkins.io
+#pkgbuild.com
 #pkgs.k8s.io
 #pki.goog
 #pkkb.ac.id
@@ -42092,6 +42141,8 @@ exit 0
 #smtp.pepipost.com
 #smtp2go.com
 #smushpro.wpmudev.org
+#snapcraft.io
+#snapcraftcontent.com
 #snconnect-origin.xboxlive.com
 #snconnect.xboxlive.com
 #sndcdn.com
@@ -42218,18 +42269,22 @@ exit 0
 #steam-api.com
 #steam-chat.com
 #steam.tv
+#steamcdn-a.akamaihd.net
 #steamcommunity-a.akamaihd.net
 #steamcommunity.com
 #steamcontent.com
 #steamdeck.com
 #steamgames.com
+#steampipe.akamaized.net
 #steampowered.com
 #steamserver.net
 #steamstat.us
 #steamstatic.com
+#steamstore-a.akamaihd.net
 #steamunlocked.net
 #steamusercontent-a.akamaihd.net
 #steamusercontent.com
+#steamuserimages-a.akamaihd.net
 #steroidesafe.com
 #sthb.ac.id
 #stjosephmuseum.org
@@ -43398,10 +43453,10 @@ exit 0
 #          "key": "main",
 #          "label": "فروشگاه و انجمن",
 #          "domains": [
-#            "counter-strike.net",
 #            "dota2.com",
 #            "playartifact.com",
 #            "steam-chat.com",
+#            "steamcdn-a.akamaihd.net",
 #            "steamcommunity-a.akamaihd.net",
 #            "steamcommunity.com",
 #            "steamdeck.com",
@@ -43409,6 +43464,8 @@ exit 0
 #            "steampowered.com",
 #            "steamstat.us",
 #            "steamstatic.com",
+#            "steamstore-a.akamaihd.net",
+#            "steamuserimages-a.akamaihd.net",
 #            "underlords.com",
 #            "valvesoftware.com"
 #          ]
@@ -43418,6 +43475,7 @@ exit 0
 #          "label": "دانلود بازی",
 #          "domains": [
 #            "steamcontent.com",
+#            "steampipe.akamaized.net",
 #            "steamusercontent-a.akamaihd.net"
 #          ],
 #          "section": "downloads"
@@ -43836,6 +43894,13 @@ exit 0
 #          "domains": [
 #            "crytek.com",
 #            "huntshowdown.com"
+#          ]
+#        },
+#        {
+#          "key": "cs2",
+#          "label": "Counter-Strike 2",
+#          "domains": [
+#            "counter-strike.net"
 #          ]
 #        },
 #        {
@@ -45348,6 +45413,45 @@ exit 0
 #      "section": "bypass"
 #    },
 #    {
+#      "key": "linux",
+#      "label": "Linux mirrors",
+#      "section": "dev",
+#      "groups": [
+#        {
+#          "key": "mirrors",
+#          "label": "مخزن و میرور توزیع‌های لینوکس",
+#          "domains": [
+#            "almalinux.org",
+#            "alpinelinux.org",
+#            "archlinux.org",
+#            "canonical.com",
+#            "debian.net",
+#            "debian.org",
+#            "fedorapeople.org",
+#            "fedoraproject.org",
+#            "flathub.org",
+#            "flatpak.org",
+#            "gentoo.org",
+#            "kali.download",
+#            "kali.org",
+#            "kernel.org",
+#            "launchpadcontent.net",
+#            "linuxmint.com",
+#            "manjaro.org",
+#            "nodesource.com",
+#            "opensuse.org",
+#            "packagecloud.io",
+#            "pkgbuild.com",
+#            "rockylinux.org",
+#            "snapcraft.io",
+#            "snapcraftcontent.com",
+#            "ubuntu.com"
+#          ],
+#          "section": "downloads"
+#        }
+#      ]
+#    },
+#    {
 #      "key": "dynx",
 #      "label": "DynX AntiBan",
 #      "groups": [
@@ -45589,9 +45693,7 @@ exit 0
 #            "alltheanime.com",
 #            "almalinux.mirror.liteserver.nl",
 #            "almalinux.mirror.wearetriple.com",
-#            "almalinux.org",
 #            "alpakagear.com",
-#            "alpinelinux.org",
 #            "alrugaibfurniture.com",
 #            "alt-keys-accessory.auth.dnet.xboxlive.com",
 #            "alt8-mtalk.google.com",
@@ -46608,7 +46710,6 @@ exit 0
 #            "de.ign.com",
 #            "deb.etcher.io",
 #            "deb.nodesource.com",
-#            "debian.org",
 #            "decathlon.it",
 #            "dedicatedpanel.com",
 #            "deepinfra.com",
@@ -47023,7 +47124,6 @@ exit 0
 #            "federale.be",
 #            "fedora-epel.koyanet.lv",
 #            "fedoramagazine.org",
-#            "fedoraproject.org",
 #            "feedbacklogin.xbox.com",
 #            "feedburner.com",
 #            "feedly.com",
@@ -47762,8 +47862,6 @@ exit 0
 #            "kaidan136.com",
 #            "kairfashion.com",
 #            "kaleidoscopeapp.com",
-#            "kali.download",
-#            "kali.org",
 #            "kaplanpathways.com",
 #            "kappit.com",
 #            "karlkani.com",
@@ -47778,7 +47876,6 @@ exit 0
 #            "kentcasino-slots.ru",
 #            "ker.com",
 #            "kerberos.io",
-#            "kernel.org",
 #            "kero.yachay.pe",
 #            "keypowersports.my",
 #            "keys-accessory.auth.dnet.xboxlive.com",
@@ -47854,7 +47951,6 @@ exit 0
 #            "launcher.hogwartslegacy.com",
 #            "launcher.rockstargames.com",
 #            "launcher.rockstargames.net",
-#            "launchpadcontent.net",
 #            "laurageller.com",
 #            "lauriebelles.com",
 #            "lavender-staging.xboxservices.com",
@@ -48367,7 +48463,6 @@ exit 0
 #            "noc4.wordfence.com",
 #            "node-binaries.s3.amazonaws.com",
 #            "node.aapanel.com",
-#            "nodesource.com",
 #            "noirfootwear.com",
 #            "nomanssky.com",
 #            "nonprod.corematch-test.xboxlive.com",
@@ -48530,7 +48625,6 @@ exit 0
 #            "ozelkartepetuanakizyurdu.com",
 #            "ozstraps.com.au",
 #            "p3campus.com",
-#            "packagecloud.io",
 #            "packages-eu.bigbluebutton.org",
 #            "packages-next.xboxlive.com",
 #            "packages-origin.xboxlive.com",
@@ -49066,7 +49160,6 @@ exit 0
 #            "rockstar.com",
 #            "rockstaronline.com",
 #            "rocktape.com",
-#            "rockylinux.org",
 #            "rollbar.com",
 #            "romanlabel.com",
 #            "rompetrol.ro",
@@ -49791,7 +49884,6 @@ exit 0
 #            "ubisoft.connect.com",
 #            "ubisoft.xboxservices.com",
 #            "ubuntu.bigbluebutton.org",
-#            "ubuntu.com",
 #            "ucha.se",
 #            "uk.gear.xbox.com",
 #            "uk.ign.com",
@@ -50406,7 +50498,8 @@ exit 0
 #            "zzhrx.com"
 #          ]
 #        }
-#      ]
+#      ],
+#      "section": "other"
 #    }
 #  ],
 #  "sections": [
@@ -50643,6 +50736,18 @@ exit 0
 #      "needs": [
 #        "othergames/misc"
 #      ]
+#    },
+#    {
+#      "key": "cs2",
+#      "name": "کانتر استرایک ۲",
+#      "en": "Counter-Strike 2",
+#      "kind": "game",
+#      "needs": [
+#        "shooters/cs2",
+#        "steam/main",
+#        "steam/download"
+#      ],
+#      "note": "سرور مسابقه‌ها روی شبکهٔ رلهٔ خود Valve است و مستقیم می‌ماند"
 #    },
 #    {
 #      "key": "valorant",
@@ -52230,6 +52335,7 @@ exit 0
 #  "cloud": "cloudflare",
 #  "discord": "discord",
 #  "docker": "docker",
+#  "dynx": "globe",
 #  "ea": "ea",
 #  "education": "graduation-cap",
 #  "epic": "epicgames",
@@ -52243,6 +52349,7 @@ exit 0
 #  "hardware": "cpu",
 #  "jetbrains": "jetbrains",
 #  "kick": "kick",
+#  "linux": "download",
 #  "microsoft": "microsoft",
 #  "minecraft": "pickaxe",
 #  "netflix": "netflix",
@@ -54679,7 +54786,10 @@ exit 0
 #"اتصال‌ها": "Integrations",
 #"در انتظار پاسخ": "Waiting for a reply",
 #"بخش‌های پنل": "Panel sections",
-#"منو": "Menu"
+#"منو": "Menu",
+#"سرور مسابقه‌ها روی شبکهٔ رلهٔ خود Valve است و مستقیم می‌ماند": "Match servers run on Valve's own relay network and stay direct",
+#"کانتر استرایک ۲": "Counter-Strike 2",
+#"مخزن و میرور توزیع‌های لینوکس": "Linux distribution repositories and mirrors"
 #}
 #__END_I18N_EN__
 

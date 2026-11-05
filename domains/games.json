@@ -196,6 +196,18 @@
       ]
     },
     {
+      "key": "cs2",
+      "name": "کانتر استرایک ۲",
+      "en": "Counter-Strike 2",
+      "kind": "game",
+      "needs": [
+        "shooters/cs2",
+        "steam/main",
+        "steam/download"
+      ],
+      "note": "سرور مسابقه‌ها روی شبکهٔ رلهٔ خود Valve است و مستقیم می‌ماند"
+    },
+    {
       "key": "valorant",
       "name": "والورانت",
       "en": "Valorant",

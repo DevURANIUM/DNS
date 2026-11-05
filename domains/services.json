@@ -96,10 +96,10 @@
           "key": "main",
           "label": "فروشگاه و انجمن",
           "domains": [
-            "counter-strike.net",
             "dota2.com",
             "playartifact.com",
             "steam-chat.com",
+            "steamcdn-a.akamaihd.net",
             "steamcommunity-a.akamaihd.net",
             "steamcommunity.com",
             "steamdeck.com",
@@ -107,6 +107,8 @@
             "steampowered.com",
             "steamstat.us",
             "steamstatic.com",
+            "steamstore-a.akamaihd.net",
+            "steamuserimages-a.akamaihd.net",
             "underlords.com",
             "valvesoftware.com"
           ]
@@ -116,6 +118,7 @@
           "label": "دانلود بازی",
           "domains": [
             "steamcontent.com",
+            "steampipe.akamaized.net",
             "steamusercontent-a.akamaihd.net"
           ],
           "section": "downloads"
@@ -534,6 +537,13 @@
           "domains": [
             "crytek.com",
             "huntshowdown.com"
+          ]
+        },
+        {
+          "key": "cs2",
+          "label": "Counter-Strike 2",
+          "domains": [
+            "counter-strike.net"
           ]
         },
         {
@@ -2046,6 +2056,45 @@
       "section": "bypass"
     },
     {
+      "key": "linux",
+      "label": "Linux mirrors",
+      "section": "dev",
+      "groups": [
+        {
+          "key": "mirrors",
+          "label": "مخزن و میرور توزیع‌های لینوکس",
+          "domains": [
+            "almalinux.org",
+            "alpinelinux.org",
+            "archlinux.org",
+            "canonical.com",
+            "debian.net",
+            "debian.org",
+            "fedorapeople.org",
+            "fedoraproject.org",
+            "flathub.org",
+            "flatpak.org",
+            "gentoo.org",
+            "kali.download",
+            "kali.org",
+            "kernel.org",
+            "launchpadcontent.net",
+            "linuxmint.com",
+            "manjaro.org",
+            "nodesource.com",
+            "opensuse.org",
+            "packagecloud.io",
+            "pkgbuild.com",
+            "rockylinux.org",
+            "snapcraft.io",
+            "snapcraftcontent.com",
+            "ubuntu.com"
+          ],
+          "section": "downloads"
+        }
+      ]
+    },
+    {
       "key": "dynx",
       "label": "DynX AntiBan",
       "groups": [
@@ -2287,9 +2336,7 @@
             "alltheanime.com",
             "almalinux.mirror.liteserver.nl",
             "almalinux.mirror.wearetriple.com",
-            "almalinux.org",
             "alpakagear.com",
-            "alpinelinux.org",
             "alrugaibfurniture.com",
             "alt-keys-accessory.auth.dnet.xboxlive.com",
             "alt8-mtalk.google.com",
@@ -3306,7 +3353,6 @@
             "de.ign.com",
             "deb.etcher.io",
             "deb.nodesource.com",
-            "debian.org",
             "decathlon.it",
             "dedicatedpanel.com",
             "deepinfra.com",
@@ -3721,7 +3767,6 @@
             "federale.be",
             "fedora-epel.koyanet.lv",
             "fedoramagazine.org",
-            "fedoraproject.org",
             "feedbacklogin.xbox.com",
             "feedburner.com",
             "feedly.com",
@@ -4460,8 +4505,6 @@
             "kaidan136.com",
             "kairfashion.com",
             "kaleidoscopeapp.com",
-            "kali.download",
-            "kali.org",
             "kaplanpathways.com",
             "kappit.com",
             "karlkani.com",
@@ -4476,7 +4519,6 @@
             "kentcasino-slots.ru",
             "ker.com",
             "kerberos.io",
-            "kernel.org",
             "kero.yachay.pe",
             "keypowersports.my",
             "keys-accessory.auth.dnet.xboxlive.com",
@@ -4552,7 +4594,6 @@
             "launcher.hogwartslegacy.com",
             "launcher.rockstargames.com",
             "launcher.rockstargames.net",
-            "launchpadcontent.net",
             "laurageller.com",
             "lauriebelles.com",
             "lavender-staging.xboxservices.com",
@@ -5065,7 +5106,6 @@
             "noc4.wordfence.com",
             "node-binaries.s3.amazonaws.com",
             "node.aapanel.com",
-            "nodesource.com",
             "noirfootwear.com",
             "nomanssky.com",
             "nonprod.corematch-test.xboxlive.com",
@@ -5228,7 +5268,6 @@
             "ozelkartepetuanakizyurdu.com",
             "ozstraps.com.au",
             "p3campus.com",
-            "packagecloud.io",
             "packages-eu.bigbluebutton.org",
             "packages-next.xboxlive.com",
             "packages-origin.xboxlive.com",
@@ -5764,7 +5803,6 @@
             "rockstar.com",
             "rockstaronline.com",
             "rocktape.com",
-            "rockylinux.org",
             "rollbar.com",
             "romanlabel.com",
             "rompetrol.ro",
@@ -6489,7 +6527,6 @@
             "ubisoft.connect.com",
             "ubisoft.xboxservices.com",
             "ubuntu.bigbluebutton.org",
-            "ubuntu.com",
             "ucha.se",
             "uk.gear.xbox.com",
             "uk.ign.com",
@@ -7104,7 +7141,8 @@
             "zzhrx.com"
           ]
         }
-      ]
+      ],
+      "section": "other"
     }
   ],
   "sections": [

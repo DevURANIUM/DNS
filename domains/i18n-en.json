@@ -2390,5 +2390,8 @@
 "اتصال‌ها": "Integrations",
 "در انتظار پاسخ": "Waiting for a reply",
 "بخش‌های پنل": "Panel sections",
-"منو": "Menu"
+"منو": "Menu",
+"سرور مسابقه‌ها روی شبکهٔ رلهٔ خود Valve است و مستقیم می‌ماند": "Match servers run on Valve's own relay network and stay direct",
+"کانتر استرایک ۲": "Counter-Strike 2",
+"مخزن و میرور توزیع‌های لینوکس": "Linux distribution repositories and mirrors"
 }

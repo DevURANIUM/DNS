@@ -476,6 +476,7 @@ arcgisonline.com
 archdpdx.org
 archive.mariadb.org
 archive.ubuntu.com
+archlinux.org
 arcraiders.com
 arcsystemworks.com
 arcticgardens.ca
@@ -936,6 +937,7 @@ canadiensboutique.com
 canary.xccs.xboxlive.com
 cancersupportcommunity.org
 cannaraycbd.com
+canonical.com
 canterburytales.org
 canva.com
 canvas4everyone.com
@@ -1418,6 +1420,7 @@ de.ign.com
 deadbydaylight.com
 deb.etcher.io
 deb.nodesource.com
+debian.net
 debian.org
 decathlon.it
 dedicatedpanel.com
@@ -1933,6 +1936,7 @@ fcmobile.com
 federale.be
 fedora-epel.koyanet.lv
 fedoramagazine.org
+fedorapeople.org
 fedoraproject.org
 feedbacklogin.xbox.com
 feedburner.com
@@ -1983,8 +1987,10 @@ fiverr.com
 fiverrcdn.com
 fjallraven.com.au
 flag-icon-css.lip.is
+flathub.org
 flaticon.com
 flatmatefinders.com.au
+flatpak.org
 flexdog.com
 flexibleshipping.com
 flexperks.com
@@ -2187,6 +2193,7 @@ gemini.google.com
 generativeai.google
 geniusdexchange.com
 genspark.ai
+gentoo.org
 genymotion.com
 georgetownma.gov
 germany2006.tv
@@ -2997,6 +3004,7 @@ links.xboxlive.com
 linode.com
 linor.com
 linuxhostsupport.com
+linuxmint.com
 linuxquestions.org
 linuxserver2.dedidata.com
 lioncountrysafari.com
@@ -3094,6 +3102,7 @@ manifest-origin.xboxlive.com
 manifest-ssl.xboxlive.com
 manifest.xboxlive.com
 manitobah.ca
+manjaro.org
 manningcartell.com.au
 mapgenie.io
 maps.google.com
@@ -3621,6 +3630,7 @@ opensea.io
 openshift.com
 openssl.org
 openstreetmap.org
+opensuse.org
 openvpn.net
 openwrt.org
 openx.net
@@ -3847,6 +3857,7 @@ pivotcycles.com.au
 pkg.dev
 pkg.go.dev
 pkg.jenkins.io
+pkgbuild.com
 pkgs.k8s.io
 pki.goog
 pkkb.ac.id
@@ -4614,6 +4625,8 @@ smtp-relay-xdf.xboxlive.com
 smtp.pepipost.com
 smtp2go.com
 smushpro.wpmudev.org
+snapcraft.io
+snapcraftcontent.com
 snconnect-origin.xboxlive.com
 snconnect.xboxlive.com
 sndcdn.com
@@ -4740,18 +4753,22 @@ stealth.com
 steam-api.com
 steam-chat.com
 steam.tv
+steamcdn-a.akamaihd.net
 steamcommunity-a.akamaihd.net
 steamcommunity.com
 steamcontent.com
 steamdeck.com
 steamgames.com
+steampipe.akamaized.net
 steampowered.com
 steamserver.net
 steamstat.us
 steamstatic.com
+steamstore-a.akamaihd.net
 steamunlocked.net
 steamusercontent-a.akamaihd.net
 steamusercontent.com
+steamuserimages-a.akamaihd.net
 steroidesafe.com
 sthb.ac.id
 stjosephmuseum.org

@@ -168,6 +168,35 @@ panel.follow_catalogue_split(store, services)
 check("a split never turns on a group that is off by default",
       ("pubgmobile", "main") not in store.template_groups(part))
 
+print("\nthe Linux mirrors and Counter-Strike 2")
+by_key = {s["key"]: s for s in services}
+mirrors = {d for g in by_key["linux"]["groups"] for d in g["domains"]}
+check("the distributions' mirrors are a service of their own",
+      {"ubuntu.com", "debian.org", "archlinux.org", "fedoraproject.org",
+       "alpinelinux.org", "kernel.org"} <= mirrors, str(sorted(mirrors)))
+check("  and no longer in the DynX list",
+      not mirrors & set(by_key["dynx"]["groups"][0]["domains"]))
+cs2 = [g for g in games if g["key"] == "cs2"]
+check("Counter-Strike 2 is a game with a row of its own, on Steam's store and downloads",
+      cs2 and set(cs2[0]["needs"]) == {"shooters/cs2", "steam/main", "steam/download"})
+check("  and Steam's own CDN names are in its groups",
+      "steamcdn-a.akamaihd.net" in {d for g in by_key["steam"]["groups"] for d in g["domains"]})
+shared = set(open(os.path.join(HERE, "..", "domains", "domains.txt"), encoding="utf-8").read().split())
+check("the new domains are on the shared list", mirrors | {"steampipe.akamaized.net"} <= shared)
+
+print("\nfollowing domains that moved to another service")
+store.run("DELETE FROM template_services WHERE template_id = ?", (part,))
+store.run("INSERT INTO template_services (template_id, service_key, group_key)"
+          " VALUES (?, 'dynx', 'domains')", (part,))
+check("a template that routed DynX is given the Linux mirrors",
+      panel.follow_catalogue_moves(store, services) == 1
+      and ("linux", "mirrors") in store.template_groups(part))
+store.run("DELETE FROM template_services WHERE template_id = ? AND service_key = 'linux'",
+          (part,))
+check("  once: unticked afterwards, it stays unticked",
+      panel.follow_catalogue_moves(store, services) == 0
+      and ("linux", "mirrors") not in store.template_groups(part))
+
 print("\nthe editor")
 admin = load("smartdns-admin", "admin")
 admin.GAMES[:] = games
