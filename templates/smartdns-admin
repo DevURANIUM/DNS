@@ -2566,12 +2566,20 @@ UPDATE_CHECK_HOURS = 12
 
 
 def github_latest(opener=None):
-    """The latest release: {"version", "url", "sha", "page"}, or raises."""
+    """The latest release: {"version", "url", "sha", "page"}, or raises.
+
+    A repository with no release published yet answers 404; then the
+    installer on the main branch is the latest - see github_main."""
     opener = opener or urllib.request.urlopen
     req = urllib.request.Request(GITHUB_API, headers={
         "Accept": "application/vnd.github+json", "User-Agent": "DNS"})
-    with opener(req, timeout=30) as r:
-        rel = json.loads(r.read(2 * 1024 * 1024))
+    try:
+        with opener(req, timeout=30) as r:
+            rel = json.loads(r.read(2 * 1024 * 1024))
+    except urllib.error.HTTPError as e:
+        if e.code != 404:
+            raise
+        return github_main(opener)
     version = str(rel.get("tag_name") or "").lstrip("vV")
     if not version_key(version):
         raise RuntimeError("the latest release has no version: %r" % rel.get("tag_name"))
@@ -2583,6 +2591,24 @@ def github_latest(opener=None):
     return {"version": version, "url": asset.get("browser_download_url"),
             "sha": digest[7:] if digest.startswith("sha256:") else None,
             "page": rel.get("html_url") or ""}
+
+
+def github_main(opener):
+    """The installer on the main branch, as a release: the version it says,
+    and its own hash - so what is installed is byte for byte what was seen
+    here, and a change pushed in between is refused until the next check.
+    The notes are the branch's history."""
+    req = urllib.request.Request(GITHUB_RAW, headers={"User-Agent": "DNS"})
+    with opener(req, timeout=120) as r:
+        blob = r.read(RELEASE_MAX + 1)
+    if len(blob) > RELEASE_MAX:
+        raise RuntimeError("the installer is too large")
+    m = re.search(rb'^VERSION="([0-9][0-9.]*)"', blob, re.M)
+    if not m or not version_key(m.group(1).decode()):
+        raise RuntimeError("the installer on the main branch says no version")
+    return {"version": m.group(1).decode(), "url": GITHUB_RAW,
+            "sha": hashlib.sha256(blob).hexdigest(),
+            "page": "https://github.com/%s/commits/main" % GITHUB_REPO}
 
 
 def fetch_release(rel, opener=None):
@@ -2613,7 +2639,7 @@ def fetch_release(rel, opener=None):
 
 def check_github(opener=None):
     """Look for a new release and note what was found, for the nodes page."""
-    state = {"checked_at": now()}
+    state = {"checked_at": now(), "repo": GITHUB_REPO}
     try:
         state.update(github_latest(opener))
     except Exception as e:
@@ -2623,10 +2649,14 @@ def check_github(opener=None):
 
 
 def github_state():
+    """What the last check found - only if it asked this project's own
+    repository: an answer kept from another (the panel was installed from
+    elsewhere before) is no answer, and the next look asks again at once."""
     try:
-        return json.loads(setting("github_latest") or "{}")
+        state = json.loads(setting("github_latest") or "{}")
     except ValueError:
         return {}
+    return state if state.get("repo") == GITHUB_REPO else {}
 
 
 def update_check_loop():
@@ -4219,29 +4249,11 @@ table.users details>form,table.users details>.menu{
 table.users details>form label{display:flex;align-items:center;gap:8px;margin:0 0 8px;color:var(--fg);font-size:12.5px;white-space:nowrap}
 table.users details>form label select{margin-right:auto}
 table.users details>form button{margin-top:6px}
-table.users td.acts details.more{display:inline-block;vertical-align:middle}
-table.users td.acts details.more>summary{padding:5px 12px;margin-inline-end:4px}
 table.users td.acts details.more>summary::after{display:none}
-table.users td.acts .menu{display:flex;flex-direction:column;gap:6px;min-width:170px}
-table.users td.acts .menu form{display:block}
-table.users td.acts .menu button{width:100%;margin:0;justify-content:flex-start}
-table.users td.acts .menu a.menu-link{
- display:flex;align-items:center;gap:7px;min-height:36px;padding:7px 12px;border-radius:9px;
- border:1px solid var(--line2);color:var(--fg);font-size:12.5px;font-weight:600;text-decoration:none}
-table.users td.acts .menu a.menu-link:hover{background:var(--row);border-color:var(--muted)}
-table.users td.acts .menu a.menu-link .ui-icon{color:var(--accent)}
-table.users td.acts .menu form.resetdays{
- display:flex;flex-wrap:wrap;align-items:center;gap:6px;max-width:170px;
- font-size:12px;border-top:1px solid var(--line);padding-top:8px}
-table.users td.acts .menu form.resetdays label{flex-basis:100%;margin:0;font-size:12px}
-table.users td.acts .menu form.resetdays input{width:52px;padding:4px 8px}
-table.users td.acts .menu form.resetdays button{width:auto;flex:1}
-table.users td.acts .menu form.resetdays small{flex-basis:100%}
 @media (min-width:1300px){
  .card.wide{overflow:visible}
  table.users details{position:relative}
  table.users details>form,table.users details>.menu{position:absolute;z-index:30;top:calc(100% + 6px);right:0}
- table.users td.acts details>.menu{right:auto;left:0}
 }
 .pill{
  display:inline-flex;align-items:center;gap:5px;padding:2px 10px;
@@ -4347,8 +4359,8 @@ label.fulllist{
 .user-directory table.users details>form,.user-directory table.users details>.menu{position:static}
 .user-directory table.users .pill{border-radius:8px;padding:3px 10px}
 .user-directory table.users td.acts button{height:38px;border-radius:9px}
-.user-directory table.users td.acts button.del{border-color:var(--line2);color:var(--muted)}
-.user-directory table.users td.acts button.del:hover{border-color:var(--bad);color:var(--bad);background:var(--err-bg)}
+.user-directory table.users td.acts>form>button.del{border-color:var(--line2);color:var(--muted)}
+.user-directory table.users td.acts>form>button.del:hover{border-color:var(--bad);color:var(--bad);background:var(--err-bg)}
 .reserved{color:var(--accent);font-size:11.5px;font-weight:650}
 form.reserve{display:flex;align-items:center;gap:8px;margin:8px 0;font-size:12px}
 .usearch{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 14px}
@@ -4445,7 +4457,55 @@ html[dir=ltr] .user-directory table.users td.acts>*{margin:0 6px 0 0}
  height:36px;min-height:36px;padding:0 14px;border-radius:9px;font-size:12.5px}
 .user-directory table.users td.acts details.more>summary{
  width:36px;min-width:36px;padding:0;justify-content:center;font-size:16px;line-height:1;border-radius:9px}
-.user-directory table.users td.acts .menu button{height:auto;min-height:36px;padding:7px 12px}
+/* ---- a row's ⋯ menu: a list that floats beside the button */
+table.users td.acts details.more{display:inline-block;vertical-align:middle;position:relative}
+table.users td.acts details.more>summary::after{display:none}
+.user-directory table.users td.acts details.more>.menu{
+ display:flex;flex-direction:column;gap:2px;width:250px;margin:6px 0 0;padding:6px;
+ position:static;text-align:start;white-space:normal;
+ background:var(--card);border:1px solid var(--line2);border-radius:14px;box-shadow:var(--pop)}
+.user-directory table.users td.acts .menu form{display:block;margin:0}
+.user-directory table.users td.acts .menu>form>button,
+.user-directory table.users td.acts .menu>a.menu-link{
+ display:flex;align-items:center;gap:8px;width:100%;height:auto;min-height:38px;margin:0;
+ padding:8px 12px;border:0;border-radius:9px;background:transparent;box-shadow:none;
+ color:var(--fg);font-size:13px;font-weight:600;text-align:start;justify-content:flex-start;
+ text-decoration:none}
+.user-directory table.users td.acts .menu>form>button:hover,
+.user-directory table.users td.acts .menu>a.menu-link:hover{background:var(--row);color:var(--head)}
+.user-directory table.users td.acts .menu .ui-icon{color:var(--accent)}
+.user-directory table.users td.acts .menu>form>button.del{color:var(--bad)}
+.user-directory table.users td.acts .menu>form>button.del:hover{background:var(--err-bg);color:var(--bad)}
+.user-directory table.users td.acts .menu>form:last-child{margin-top:4px;padding-top:4px;border-top:1px solid var(--line)}
+.user-directory table.users td.acts .menu form.resetdays{
+ display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 8px;align-items:center;
+ margin:4px 0;padding:10px 12px;border-block:1px solid var(--line)}
+.user-directory table.users td.acts .menu form.resetdays label{
+ grid-column:1/-1;margin:0;color:var(--muted);font-size:12px;font-weight:650}
+.days-field{
+ display:flex;align-items:center;height:36px;padding-inline:4px 12px;
+ background:var(--field);border:1px solid var(--line2);border-radius:9px;color:var(--muted);font-size:12.5px}
+.days-field:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 22%,transparent)}
+.user-directory table.users td.acts .menu .days-field input{
+ flex:1;min-width:0;width:auto;height:32px;min-height:32px;padding:0 8px;
+ border:0;background:transparent;box-shadow:none;text-align:center}
+.user-directory table.users td.acts .menu form.resetdays button{
+ height:36px;min-height:36px;padding:0 14px;border-radius:9px;
+ background:var(--good-bg);border:1px solid color-mix(in srgb,var(--accent) 35%,transparent);
+ color:var(--accent);font-weight:750}
+.user-directory table.users td.acts .menu form.resetdays button:hover{background:var(--btn);border-color:var(--btn);color:var(--on-btn)}
+.user-directory table.users td.acts .menu form.resetdays small{grid-column:1/-1}
+@media (min-width:769px){
+ @supports (anchor-name:--a){
+  table.users td.acts details.more{anchor-scope:--more}
+  table.users td.acts details.more>summary{anchor-name:--more}
+  .user-directory table.users td.acts details.more>.menu{
+   position:fixed;z-index:40;margin:0;position-anchor:--more;
+   top:calc(anchor(bottom) + 6px);left:anchor(left);right:auto;bottom:auto;
+   position-try-fallbacks:--menu-above}
+ }
+}
+@position-try --menu-above{top:auto;bottom:calc(anchor(top) + 6px)}
 /* ---- tablet and phone: the rail becomes a drawer */
 @media (max-width:960px){
  .wrap.admin-shell{display:block}
@@ -6717,8 +6777,10 @@ q=new URLSearchParams(location.search).get('q')||'';
 document.cookie='uview='+encodeURIComponent('q='+q+'&upto='+rows())+'; path=/; SameSite=Strict';
 try{sessionStorage.setItem('urow',tr?tr.id:'')}catch(x){}},true);
 try{var r=sessionStorage.getItem('urow');sessionStorage.removeItem('urow');
-if(r&&/[?&]m=/.test(location.search)){var el=document.getElementById(r);
+if(r){var el=document.getElementById(r);
 if(el)el.scrollIntoView({block:'center'})}}catch(x){}
+document.addEventListener('click',function(e){document.querySelectorAll('table.users details.more[open]').forEach(function(d){if(!d.contains(e.target))d.open=false})});
+document.addEventListener('keydown',function(e){if(e.key=='Escape')document.querySelectorAll('table.users details.more[open]').forEach(function(d){d.open=false;d.querySelector('summary').focus()})});
 var more=document.getElementById('umore');if(!more)return;
 var body=document.querySelector('table.users tbody'),busy=false,
 total=+more.dataset.total,base=more.dataset.next;
@@ -7165,8 +7227,9 @@ def reset_days_form(p, user):
     return ("<form method='post' action='/%s/user-reset-days' class='resetdays'>"
             "<input type='hidden' name='id' value='%d'>"
             "<label>ریست خودکار مصرف هر</label>"
-            "<input name='days' size='3' dir='ltr' inputmode='numeric' value='%s' "
-            "placeholder='—'> روز <button class='ghost'>ذخیره</button>%s</form>"
+            "<span class='days-field'><input name='days' size='3' dir='ltr'"
+            " inputmode='numeric' value='%s' placeholder='—' aria-label='روز'> روز</span>"
+            "<button class='ghost'>ذخیره</button>%s</form>"
             % (p, user["id"], days or "",
                "<small class='muted'>بعدی: %s</small>" % nxt if nxt else ""))
 

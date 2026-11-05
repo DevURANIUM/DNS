@@ -16,6 +16,7 @@ import json
 import os
 import shutil
 import sys
+import urllib.error
 import tempfile
 import urllib.parse
 
@@ -113,6 +114,46 @@ try:
 except RuntimeError:
     ok = True
 check("not one that says another version", ok)
+
+print("a repository with no release yet")
+
+
+def no_release(req, timeout=0):
+    if req.full_url == admin.GITHUB_API:
+        raise urllib.error.HTTPError(req.full_url, 404, "Not Found", {}, None)
+    return Resp(files[req.full_url])
+
+
+main = admin.github_latest(no_release)
+check("the main branch's installer is the latest, by the version it says",
+      main["version"] == "0.9.1" and main["url"] == admin.GITHUB_RAW
+      and main["sha"] == SHA and main["page"].endswith("/commits/main"), str(main))
+check("  and installed only as it was seen", admin.fetch_release(main, no_release) == NEW)
+files[admin.GITHUB_RAW] = NEW + b"# pushed since\n"
+try:
+    admin.fetch_release(main, no_release)
+    ok = False
+except RuntimeError:
+    ok = True
+check("  a change pushed in between is refused", ok)
+files[admin.GITHUB_RAW] = NEW
+
+
+def server_down(req, timeout=0):
+    raise urllib.error.HTTPError(req.full_url, 502, "Bad Gateway", {}, None)
+
+
+try:
+    admin.github_latest(server_down)
+    ok = False
+except urllib.error.HTTPError:
+    ok = True
+check("any other answer is an error, not the main branch", ok)
+check("the repository is this project's own", admin.GITHUB_REPO == "DevURANIUM/DNS")
+admin.put_setting("github_latest", json.dumps({"checked_at": admin.now(), "version": "0.10.7",
+                                               "page": "https://github.com/other/x"}))
+check("an answer kept from another repository is ignored, so it is asked again",
+      admin.github_state() == {})
 
 print("the nodes page")
 admin.check_github(opener)
