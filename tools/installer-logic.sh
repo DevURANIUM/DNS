@@ -931,40 +931,31 @@ case "${1:-}" in
 esac
 
 # ---------------------------------------------------------------- the name
-# The first thing anybody running this sees: the name, large. On one line
-# where the terminal is wide enough (90 columns), on two where it is not; in
-# colour on a terminal, plain in a log.
+# The first thing anybody running this sees: the name, large - narrow enough
+# for any terminal, so one drawing serves all of them. On a terminal each row
+# takes the next shade from turquoise down to lapis, the panels' two colours;
+# in a log it is plain.
 banner() {
-    local cols="${COLUMNS:-}" c="" n=""
-    case "$cols" in ""|*[!0-9]*) cols="$(tput cols 2>/dev/null || echo 80)" ;; esac
-    if [ -t 1 ]; then c=$'\033[1;36m'; n=$'\033[0m'; fi
-    printf '\n%s' "$c"
-    if [ "$cols" -ge 90 ] 2>/dev/null; then
-        printf '%s\n' \
-        '  ██████╗   ██████╗   ██████╗ ████████╗  ██████╗  ██████╗     ██████╗  ███╗   ██╗ ███████╗' \
-        '  ██╔══██╗ ██╔═══██╗ ██╔════╝ ╚══██╔══╝ ██╔═══██╗ ██╔══██╗    ██╔══██╗ ████╗  ██║ ██╔════╝' \
-        '  ██║  ██║ ██║   ██║ ██║         ██║    ██║   ██║ ██████╔╝    ██║  ██║ ██╔██╗ ██║ ███████╗' \
-        '  ██║  ██║ ██║   ██║ ██║         ██║    ██║   ██║ ██╔══██╗    ██║  ██║ ██║╚██╗██║ ╚════██║' \
-        '  ██████╔╝ ╚██████╔╝ ╚██████╗    ██║    ╚██████╔╝ ██║  ██║    ██████╔╝ ██║ ╚████║ ███████║' \
-        '  ╚═════╝   ╚═════╝   ╚═════╝    ╚═╝     ╚═════╝  ╚═╝  ╚═╝    ╚═════╝  ╚═╝  ╚═══╝ ╚══════╝'
-    else
-        printf '%s\n' \
-        '  ██████╗   ██████╗   ██████╗ ████████╗  ██████╗  ██████╗ ' \
-        '  ██╔══██╗ ██╔═══██╗ ██╔════╝ ╚══██╔══╝ ██╔═══██╗ ██╔══██╗' \
-        '  ██║  ██║ ██║   ██║ ██║         ██║    ██║   ██║ ██████╔╝' \
-        '  ██║  ██║ ██║   ██║ ██║         ██║    ██║   ██║ ██╔══██╗' \
-        '  ██████╔╝ ╚██████╔╝ ╚██████╗    ██║    ╚██████╔╝ ██║  ██║' \
-        '  ╚═════╝   ╚═════╝   ╚═════╝    ╚═╝     ╚═════╝  ╚═╝  ╚═╝'
-        printf '\n'
-        printf '%s\n' \
-        '                ██████╗  ███╗   ██╗ ███████╗' \
-        '                ██╔══██╗ ████╗  ██║ ██╔════╝' \
-        '                ██║  ██║ ██╔██╗ ██║ ███████╗' \
-        '                ██║  ██║ ██║╚██╗██║ ╚════██║' \
-        '                ██████╔╝ ██║ ╚████║ ███████║' \
-        '                ╚═════╝  ╚═╝  ╚═══╝ ╚══════╝'
-    fi
-    printf '%s\n  %ssmart DNS for Iran, version %s%s\n' "$n" "${B:-}" "$VERSION" "$n"
+    local rows=(
+        '  ██████╗  ███╗   ██╗ ███████╗'
+        '  ██╔══██╗ ████╗  ██║ ██╔════╝'
+        '  ██║  ██║ ██╔██╗ ██║ ███████╗'
+        '  ██║  ██║ ██║╚██╗██║ ╚════██║'
+        '  ██████╔╝ ██║ ╚████║ ███████║'
+        '  ╚═════╝  ╚═╝  ╚═══╝ ╚══════╝'
+    )
+    local tint=(87 80 44 38 32 25) i=0 n="" d=""
+    if [ -t 1 ]; then n=$'\033[0m'; d=$'\033[38;5;110m'; fi
+    printf '\n'
+    for row in "${rows[@]}"; do
+        if [ -n "$n" ]; then
+            printf '\033[1;38;5;%sm%s%s\n' "${tint[$i]}" "$row" "$n"
+        else
+            printf '%s\n' "$row"
+        fi
+        i=$((i + 1))
+    done
+    printf '\n  %ssmart DNS for Iran, version %s%s\n' "$d" "$VERSION" "$n"
 }
 # Not for -V and -h, answered above: a script asking wants only the answer.
 case "${1:-}" in -V|--version|-h|--help) ;; *) banner ;; esac

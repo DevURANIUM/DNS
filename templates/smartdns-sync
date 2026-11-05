@@ -3903,6 +3903,23 @@ input[type=checkbox],input[type=radio]{width:auto;accent-color:var(--btn)}
 .msg.err{background:var(--err-bg);border-color:color-mix(in srgb,var(--bad) 40%,transparent);border-inline-start-color:var(--bad)}
 .msg.warnbox{background:var(--warn-bg);border-color:var(--warn-line);border-inline-start-color:var(--warn)}
 .msg .ui-icon{color:var(--accent)}
+/* ---- the open list of a select, where the browser lets the page draw it */
+@supports (appearance:base-select){
+ select,select::picker(select){appearance:base-select}
+ select{display:inline-flex;align-items:center;gap:8px}
+ select::picker-icon{display:none}
+ select::picker(select){
+  margin-block:6px;padding:6px;min-width:anchor-size(width);max-height:min(360px,60vh);overflow:auto;
+  background:var(--card);color:var(--fg);border:1px solid var(--line2);border-radius:12px;
+  box-shadow:var(--pop)}
+ select option{
+  display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;
+  background:transparent;color:var(--fg);font-size:13.5px;cursor:pointer;white-space:nowrap}
+ select option::checkmark{order:2;margin-inline-start:auto;color:var(--accent)}
+ select option:hover,select option:focus-visible{background:var(--row);outline:0}
+ select option:checked{background:var(--good-bg);color:var(--accent);font-weight:700}
+ select:open{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 22%,transparent)}
+}
 
 /* ---- the address to type: a tile */
 .dns{
@@ -3927,7 +3944,17 @@ input[type=checkbox],input[type=radio]{width:auto;accent-color:var(--btn)}
 .dns .row .v.big::before{display:none}
 .dns .note{margin-top:12px}
 .dns>label{margin-top:12px}
-.dns input[type=file]{padding:10px;font-size:13px;border-style:dashed;background:transparent;margin-bottom:6px}
+.dns input[type=file]{margin-bottom:6px}
+input[type=file]{
+ min-height:40px;padding:5px;max-width:100%;cursor:pointer;
+ background:var(--field);color:var(--muted);font-size:13px;
+ border:1px dashed var(--line2);border-radius:10px}
+input[type=file]:hover{border-color:var(--accent)}
+input[type=file]::file-selector-button{
+ margin-inline-end:10px;padding:6px 14px;cursor:pointer;
+ font:inherit;font-weight:700;color:var(--accent);
+ background:var(--good-bg);border:1px solid color-mix(in srgb,var(--accent) 35%,transparent);border-radius:8px}
+input[type=file]::file-selector-button:hover{background:var(--btn);color:var(--on-btn);border-color:var(--btn)}
 .dns>.copy{margin:0 0 12px}
 .pay{
  white-space:pre-wrap;margin:12px 0;padding:12px 14px;border:1px dashed var(--accent);

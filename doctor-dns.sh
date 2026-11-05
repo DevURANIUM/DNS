@@ -931,40 +931,31 @@ case "${1:-}" in
 esac
 
 # ---------------------------------------------------------------- the name
-# The first thing anybody running this sees: the name, large. On one line
-# where the terminal is wide enough (90 columns), on two where it is not; in
-# colour on a terminal, plain in a log.
+# The first thing anybody running this sees: the name, large - narrow enough
+# for any terminal, so one drawing serves all of them. On a terminal each row
+# takes the next shade from turquoise down to lapis, the panels' two colours;
+# in a log it is plain.
 banner() {
-    local cols="${COLUMNS:-}" c="" n=""
-    case "$cols" in ""|*[!0-9]*) cols="$(tput cols 2>/dev/null || echo 80)" ;; esac
-    if [ -t 1 ]; then c=$'\033[1;36m'; n=$'\033[0m'; fi
-    printf '\n%s' "$c"
-    if [ "$cols" -ge 90 ] 2>/dev/null; then
-        printf '%s\n' \
-        '  ██████╗   ██████╗   ██████╗ ████████╗  ██████╗  ██████╗     ██████╗  ███╗   ██╗ ███████╗' \
-        '  ██╔══██╗ ██╔═══██╗ ██╔════╝ ╚══██╔══╝ ██╔═══██╗ ██╔══██╗    ██╔══██╗ ████╗  ██║ ██╔════╝' \
-        '  ██║  ██║ ██║   ██║ ██║         ██║    ██║   ██║ ██████╔╝    ██║  ██║ ██╔██╗ ██║ ███████╗' \
-        '  ██║  ██║ ██║   ██║ ██║         ██║    ██║   ██║ ██╔══██╗    ██║  ██║ ██║╚██╗██║ ╚════██║' \
-        '  ██████╔╝ ╚██████╔╝ ╚██████╗    ██║    ╚██████╔╝ ██║  ██║    ██████╔╝ ██║ ╚████║ ███████║' \
-        '  ╚═════╝   ╚═════╝   ╚═════╝    ╚═╝     ╚═════╝  ╚═╝  ╚═╝    ╚═════╝  ╚═╝  ╚═══╝ ╚══════╝'
-    else
-        printf '%s\n' \
-        '  ██████╗   ██████╗   ██████╗ ████████╗  ██████╗  ██████╗ ' \
-        '  ██╔══██╗ ██╔═══██╗ ██╔════╝ ╚══██╔══╝ ██╔═══██╗ ██╔══██╗' \
-        '  ██║  ██║ ██║   ██║ ██║         ██║    ██║   ██║ ██████╔╝' \
-        '  ██║  ██║ ██║   ██║ ██║         ██║    ██║   ██║ ██╔══██╗' \
-        '  ██████╔╝ ╚██████╔╝ ╚██████╗    ██║    ╚██████╔╝ ██║  ██║' \
-        '  ╚═════╝   ╚═════╝   ╚═════╝    ╚═╝     ╚═════╝  ╚═╝  ╚═╝'
-        printf '\n'
-        printf '%s\n' \
-        '                ██████╗  ███╗   ██╗ ███████╗' \
-        '                ██╔══██╗ ████╗  ██║ ██╔════╝' \
-        '                ██║  ██║ ██╔██╗ ██║ ███████╗' \
-        '                ██║  ██║ ██║╚██╗██║ ╚════██║' \
-        '                ██████╔╝ ██║ ╚████║ ███████║' \
-        '                ╚═════╝  ╚═╝  ╚═══╝ ╚══════╝'
-    fi
-    printf '%s\n  %ssmart DNS for Iran, version %s%s\n' "$n" "${B:-}" "$VERSION" "$n"
+    local rows=(
+        '  ██████╗  ███╗   ██╗ ███████╗'
+        '  ██╔══██╗ ████╗  ██║ ██╔════╝'
+        '  ██║  ██║ ██╔██╗ ██║ ███████╗'
+        '  ██║  ██║ ██║╚██╗██║ ╚════██║'
+        '  ██████╔╝ ██║ ╚████║ ███████║'
+        '  ╚═════╝  ╚═╝  ╚═══╝ ╚══════╝'
+    )
+    local tint=(87 80 44 38 32 25) i=0 n="" d=""
+    if [ -t 1 ]; then n=$'\033[0m'; d=$'\033[38;5;110m'; fi
+    printf '\n'
+    for row in "${rows[@]}"; do
+        if [ -n "$n" ]; then
+            printf '\033[1;38;5;%sm%s%s\n' "${tint[$i]}" "$row" "$n"
+        else
+            printf '%s\n' "$row"
+        fi
+        i=$((i + 1))
+    done
+    printf '\n  %ssmart DNS for Iran, version %s%s\n' "$d" "$VERSION" "$n"
 }
 # Not for -V and -h, answered above: a script asking wants only the answer.
 case "${1:-}" in -V|--version|-h|--help) ;; *) banner ;; esac
@@ -16750,6 +16741,23 @@ exit 0
 #.msg.err{background:var(--err-bg);border-color:color-mix(in srgb,var(--bad) 40%,transparent);border-inline-start-color:var(--bad)}
 #.msg.warnbox{background:var(--warn-bg);border-color:var(--warn-line);border-inline-start-color:var(--warn)}
 #.msg .ui-icon{color:var(--accent)}
+#/* ---- the open list of a select, where the browser lets the page draw it */
+#@supports (appearance:base-select){
+# select,select::picker(select){appearance:base-select}
+# select{display:inline-flex;align-items:center;gap:8px}
+# select::picker-icon{display:none}
+# select::picker(select){
+#  margin-block:6px;padding:6px;min-width:anchor-size(width);max-height:min(360px,60vh);overflow:auto;
+#  background:var(--card);color:var(--fg);border:1px solid var(--line2);border-radius:12px;
+#  box-shadow:var(--pop)}
+# select option{
+#  display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;
+#  background:transparent;color:var(--fg);font-size:13.5px;cursor:pointer;white-space:nowrap}
+# select option::checkmark{order:2;margin-inline-start:auto;color:var(--accent)}
+# select option:hover,select option:focus-visible{background:var(--row);outline:0}
+# select option:checked{background:var(--good-bg);color:var(--accent);font-weight:700}
+# select:open{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 22%,transparent)}
+#}
 #
 #/* ---- the address to type: a tile */
 #.dns{
@@ -16774,7 +16782,17 @@ exit 0
 #.dns .row .v.big::before{display:none}
 #.dns .note{margin-top:12px}
 #.dns>label{margin-top:12px}
-#.dns input[type=file]{padding:10px;font-size:13px;border-style:dashed;background:transparent;margin-bottom:6px}
+#.dns input[type=file]{margin-bottom:6px}
+#input[type=file]{
+# min-height:40px;padding:5px;max-width:100%;cursor:pointer;
+# background:var(--field);color:var(--muted);font-size:13px;
+# border:1px dashed var(--line2);border-radius:10px}
+#input[type=file]:hover{border-color:var(--accent)}
+#input[type=file]::file-selector-button{
+# margin-inline-end:10px;padding:6px 14px;cursor:pointer;
+# font:inherit;font-weight:700;color:var(--accent);
+# background:var(--good-bg);border:1px solid color-mix(in srgb,var(--accent) 35%,transparent);border-radius:8px}
+#input[type=file]::file-selector-button:hover{background:var(--btn);color:var(--on-btn);border-color:var(--btn)}
 #.dns>.copy{margin:0 0 12px}
 #.pay{
 # white-space:pre-wrap;margin:12px 0;padding:12px 14px;border:1px dashed var(--accent);
@@ -24852,7 +24870,16 @@ exit 0
 #div.row>form{display:inline-flex;gap:8px;align-items:center;margin:0}
 #input[type=checkbox],input[type=radio]{
 # padding:0;width:17px;height:17px;accent-color:var(--btn);vertical-align:middle;cursor:pointer;box-shadow:none}
-#input[type=file]{padding:8px;border-style:dashed;max-width:100%}
+#input[type=file]{
+# min-height:40px;padding:5px;max-width:100%;cursor:pointer;
+# background:var(--field);color:var(--muted);font-size:13px;
+# border:1px dashed var(--line2);border-radius:10px}
+#input[type=file]:hover{border-color:var(--accent)}
+#input[type=file]::file-selector-button{
+# margin-inline-end:10px;padding:6px 14px;cursor:pointer;
+# font:inherit;font-weight:700;color:var(--accent);
+# background:var(--good-bg);border:1px solid color-mix(in srgb,var(--accent) 35%,transparent);border-radius:8px}
+#input[type=file]::file-selector-button:hover{background:var(--btn);color:var(--on-btn);border-color:var(--btn)}
 #label{display:block;color:var(--dim);font-size:12.5px;font-weight:650;margin-bottom:6px}
 #td label{display:inline-flex;align-items:center;gap:6px;margin:4px 0 0;white-space:nowrap;color:var(--dim)}
 #.f{margin-bottom:14px}
@@ -25083,6 +25110,64 @@ exit 0
 #html[dir=ltr] table.users td.num{text-align:left}
 #html[dir=ltr] table.users details>form,html[dir=ltr] table.users details>.menu{text-align:left}
 #
+#/* ---- the open list of a select, where the browser lets the page draw it */
+#@supports (appearance:base-select){
+# select,select::picker(select){appearance:base-select}
+# select{display:inline-flex;align-items:center;gap:8px}
+# select::picker-icon{display:none}
+# select::picker(select){
+#  margin-block:6px;padding:6px;min-width:anchor-size(width);max-height:min(360px,60vh);overflow:auto;
+#  background:var(--card);color:var(--fg);border:1px solid var(--line2);border-radius:12px;
+#  box-shadow:var(--pop)}
+# select option{
+#  display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;
+#  background:transparent;color:var(--fg);font-size:13.5px;cursor:pointer;white-space:nowrap}
+# select option::checkmark{order:2;margin-inline-start:auto;color:var(--accent)}
+# select option:hover,select option:focus-visible{background:var(--row);outline:0}
+# select option:checked{background:var(--good-bg);color:var(--accent);font-weight:700}
+# select:open{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 22%,transparent)}
+#}
+#
+#/* ---- one size for every control, so a row of them lines up */
+#:where(input:not([type=checkbox],[type=radio],[type=file],[type=hidden]),select,button){
+# min-height:40px;line-height:1.5}
+#:where(td) :where(input:not([type=checkbox],[type=radio],[type=file]),select,button){min-height:36px}
+#input[type=number]{-moz-appearance:textfield}
+#input::-webkit-outer-spin-button,input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+#.card form.row>:is(input,select,button),.card div.row>form>:is(input,select,button){margin:0}
+#details>summary{transition:background .15s ease,border-color .15s ease}
+#
+#/* ---- users table: every editable column centred under its heading */
+#.user-directory table.users th{text-align:center}
+#.user-directory table.users :is(th,td):is(:first-child,:nth-child(2)){text-align:start}
+#.user-directory table.users td{text-align:center}
+#.user-directory table.users td.num{direction:ltr;text-align:center}
+#.user-directory table.users td.num a{color:var(--fg);font-weight:650}
+#.user-directory table.users td.num a:hover{color:var(--accent)}
+#.user-directory table.users td:empty::after{content:'—';color:var(--muted)}
+#.user-directory table.users td>form{display:inline-flex;margin:0}
+#.user-directory table.users td:nth-child(2)>code{font-size:12.5px;white-space:nowrap}
+#.user-directory table.users td:nth-child(2){min-width:150px}
+#.user-directory table.users select{block-size:36px}
+#.user-directory table.users td:nth-child(2)>details{display:block;width:max-content}
+#.user-directory table.users input{height:36px;min-height:36px;border-radius:9px}
+#.user-directory table.users input:placeholder-shown{font-size:12.5px}
+#.user-directory table.users input[name=quota_gb],
+#.user-directory table.users input[name=speed_mb]{width:72px}
+#.user-directory table.users input[name=days]{width:88px}
+#.user-directory table.users select{height:36px;min-height:36px;min-width:112px;max-width:150px;border-radius:9px;font-size:13px}
+#.user-directory table.users td.acts{text-align:end;white-space:nowrap}
+#.user-directory table.users td.acts>*{vertical-align:middle;margin:0 0 0 6px}
+#html[dir=ltr] .user-directory table.users td.acts>*{margin:0 6px 0 0}
+#.user-directory table.users td.acts>:last-child{margin:0}
+#.user-directory table.users td.acts button,
+#.user-directory table.users td.acts details.more>summary{
+# height:36px;min-height:36px;padding:0 14px;border-radius:9px;font-size:12.5px}
+#.user-directory table.users td.acts details.more>summary{
+# width:36px;min-width:36px;padding:0;justify-content:center;font-size:16px;line-height:1;border-radius:9px}
+#.user-directory table.users td.acts .menu button{height:auto;min-height:36px;padding:7px 12px}
+#.user-directory table.users td:nth-child(2)>details>summary{
+# height:32px;min-height:32px;padding:0 10px;border-radius:9px;margin-top:8px}
 #/* ---- tablet and phone: the rail becomes a drawer */
 #@media (max-width:960px){
 # .wrap.admin-shell{display:block}
@@ -25132,6 +25217,8 @@ exit 0
 #  grid-column:1/-1;display:flex;flex-direction:row;flex-wrap:wrap;align-items:start;
 #  gap:6px;padding-top:12px;border:0}
 # .user-directory table.users td.acts details.more{margin-inline-start:auto}
+# .user-directory table.users td.acts>*,html[dir=ltr] .user-directory table.users td.acts>*{margin:0}
+# .user-directory table.users td:empty{display:none}
 # .user-directory table.users td.acts details[open]{flex-basis:100%;margin:0}
 # .user-directory table.users tr[id]>td input,
 # .user-directory table.users tr[id]>td select{width:100%;max-width:100%}

@@ -2,9 +2,9 @@
 """The installer opens with its name, large.
 
 What has to hold: before anything else - root or not - an install, an
-upgrade or an uninstall shows DOCTOR DNS in block letters and the version,
-on one line in a wide terminal and on two in a narrow one, never wider than
-it says; --version and --help print only what a script asking wants.
+upgrade or an uninstall shows DNS in block letters and the version, narrow
+enough for any terminal, shaded on a terminal and plain in a log; --version
+and --help print only what a script asking wants.
 """
 import os
 import re
@@ -33,13 +33,12 @@ with open(os.path.join(ROOT, "tools", "installer-logic.sh"), encoding="utf-8") a
     logic = fh.read()
 body = logic[logic.index("banner() {"):logic.index("\n}\n", logic.index("banner() {"))]
 rows = re.findall(r"^\s+'(  [^']*)'", body, re.M)
-wide, narrow = rows[:6], rows[6:]
-limit = int(re.search(r'\[ "\$cols" -ge (\d+) \]', body).group(1))
-check("one line of six rows where the terminal is wide, never wider than it asks",
-      len(wide) == 6 and max(len(r) for r in wide) <= limit, (len(wide), max(map(len, wide)), limit))
-check("two words of six rows each where it is narrow, inside 80 columns",
-      len(narrow) == 12 and max(len(r) for r in narrow) <= 80, max(map(len, narrow)))
-check("in block letters", all("█" in r or "╚" in r for r in wide) and sum("█" in r for r in wide) == 5)
+check("six rows of block letters, inside 80 columns",
+      len(rows) == 6 and max(len(r) for r in rows) <= 80, rows)
+check("in block letters", all("█" in r or "╚" in r for r in rows) and sum("█" in r for r in rows) == 5)
+check("the name is DNS alone", "DOCTOR" not in body.upper().replace("DNS", ""))
+check("shaded on a terminal, row by row, and plain in a log",
+      "[ -t 1 ]" in body and "38;5;%sm" in body and len(re.findall(r"\d+", body[body.index("tint=("):body.index(")", body.index("tint=("))])) == 6)
 check("the version beneath", '"$VERSION"' in body and "smart DNS for Iran" in body)
 check("before the preflight, so even a run without root shows it",
       logic.index('case "${1:-}" in -V|--version|-h|--help) ;; *) banner ;; esac')
@@ -52,7 +51,7 @@ check("  and after --version and --help are answered, which print only themselve
 bash = shutil.which("bash")
 if bash:
     script = "VERSION=9.9.9\nB=\n" + body + "\n}\nbanner\n"
-    for cols, lines in (("120", 6), ("80", 12)):
+    for cols, lines in (("120", 6), ("80", 6)):
         r = subprocess.run([bash, "-c", script], capture_output=True, text=True, encoding="utf-8",
                            env=dict(os.environ, COLUMNS=cols))
         drawn = [l for l in r.stdout.splitlines() if "█" in l or "╚" in l]
