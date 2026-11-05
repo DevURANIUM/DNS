@@ -16527,6 +16527,31 @@ exit 0
 # display:flex;align-items:center;gap:8px}
 #.shell{width:100%;max-width:560px;margin:0 auto}
 #.shell:has(.usage){max-width:780px}
+#.shell:has(.account-head){max-width:1000px}
+#.shell .card:has(.account-head){
+# background:transparent;border:0;padding:0}
+#.account-head{
+# padding:clamp(20px,4vw,34px);margin-bottom:16px;border:1px solid var(--line);
+# border-radius:18px;background:linear-gradient(120deg,var(--card),color-mix(in srgb,var(--accent) 12%,var(--card)))}
+#.account-head h1,.account-head .sub{text-align:start}
+#.account-head h1{font-size:clamp(24px,5vw,36px);overflow-wrap:anywhere}
+#.account-head .sub{margin:4px 0 0;overflow-wrap:anywhere}
+#.account-grid{
+# display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:16px;align-items:start}
+#.account-grid>section{
+# min-width:0;padding:clamp(14px,2.5vw,24px);border:1px solid var(--line);
+# border-radius:16px;background:var(--card)}
+#.account-grid h2{margin:0 0 14px;font-size:18px}
+#.account-grid .row{gap:10px;align-items:flex-start}
+#.account-grid .v{text-align:end;min-width:0;overflow-wrap:anywhere}
+#.account-grid .v code{max-width:100%}
+#.account-grid .dns{box-shadow:none;border-radius:12px}
+#.account-connect>h2+.dns{
+# margin-top:0;background:color-mix(in srgb,var(--accent) 8%,var(--card));border-color:var(--line2)}
+#.account-connect>h2+.dns .big{box-shadow:none}
+#.account-connect .note{font-size:13px}
+#.account-connect .alt:last-child{margin-bottom:0}
+#@media (max-width:700px){.account-grid{grid-template-columns:minmax(0,1fr)}}
 #.shell .card{
 # width:100%;background:var(--card);border:1px solid var(--line);
 # border-block-start:3px solid var(--accent);border-radius:14px;
@@ -19246,14 +19271,16 @@ exit 0
 #            gauge = ("<div class='bar'><i class='%s' style='width:%d%%'></i></div>"
 #                     % (cls, pct))
 #
-#        body = ["<h1>%s</h1>" % html.escape(info.get("name") or "حساب شما"),
-#                "<div class='sub'>%s</div>" % html.escape(brand()),
-#                banner, account_notice(info)]
+#        body = ["<header class='account-head'><h1>%s</h1>" % html.escape(info.get("name") or "حساب شما"),
+#                "<div class='sub'>%s</div></header>" % html.escape(brand()),
+#                banner, account_notice(info),
+#                "<div class='account-grid'><section><h2>وضعیت حساب</h2>"]
 #        for k, v in rows:
 #            body.append("<div class='row'><span class='k'>%s</span>"
 #                        "<span class='v'>%s</span></div>" % (k, v))
 #        body.append(gauge)
-#        body.append("<a class='btn ghost' href='/usage'>📊 نمودار مصرف و سرعت</a>")
+#        body.append("<a class='btn ghost' href='/usage'>📊 نمودار مصرف و سرعت</a>"
+#                    "</section><section class='account-connect'><h2>تنظیمات اتصال</h2>")
 #        body.append(dns_box(info))
 #        body.append(qlog_box(info))
 #
@@ -19296,7 +19323,7 @@ exit 0
 #            "<button class='ghost'>تغییر رمز</button></form>"
 #            "<p class='note'>اگر جای دیگری وارد حسابتان باشید، با تغییر رمز "
 #            "از آنجا خارج می‌شوید.</p></details>")
-#        body.append("<p class='alt'><a href='/logout'>خروج از حساب</a></p>")
+#        body.append("<p class='alt'><a href='/logout'>خروج از حساب</a></p></section></div>")
 #        return self.send_html("".join(body))
 #
 #
@@ -24374,7 +24401,7 @@ exit 0
 #::-webkit-scrollbar-thumb:hover{background:var(--muted);background-clip:content-box}
 #a{color:var(--accent);text-decoration:none;transition:color .15s ease}
 #a:hover{color:var(--accent2)}
-#.wrap{max-width:1560px;margin:0 auto;padding:24px clamp(14px,3vw,44px) 36px}
+#.wrap{max-width:1720px;margin:0 auto;padding:24px clamp(14px,3vw,44px) 36px}
 #.admin-shell{display:grid;grid-template-columns:184px minmax(0,1fr);gap:28px;align-items:start}
 #.admin-rail{
 # position:sticky;top:24px;max-height:calc(100dvh - 48px);overflow:auto;
@@ -24387,7 +24414,9 @@ exit 0
 #.admin-content{min-width:0}
 #.admin-heading{
 # display:flex;align-items:center;justify-content:space-between;gap:12px;
-# margin-bottom:20px;padding:8px 0 16px;border-bottom:1px solid var(--line)}
+# margin-bottom:20px;padding:18px clamp(14px,3vw,28px);
+# border:1px solid var(--line);border-radius:16px;
+# background:linear-gradient(120deg,var(--card),color-mix(in srgb,var(--accent) 10%,var(--card)))}
 #h1{font-size:clamp(22px,3vw,32px);margin:0;font-weight:850;line-height:1.35;color:var(--head)}
 #.panel-controls{display:flex;align-items:center;gap:8px;flex:none}
 #.panel-controls button.theme{
@@ -24405,9 +24434,9 @@ exit 0
 #.card{
 # background:var(--card);border:1px solid var(--line);border-radius:14px;
 # padding:22px 24px;margin-bottom:16px;overflow-x:auto;position:relative}
-#:where(a,button,input,select,textarea,summary):focus-visible{
+#:where(a,button,input,select,textarea,summary,[tabindex]):focus-visible{
 # outline:2px solid var(--accent);outline-offset:2px}
-#.card h2{font-size:15.5px;margin:0 0 16px;font-weight:800;color:var(--head);display:flex;align-items:center;gap:8px;letter-spacing:-.2px}
+#.card h2{font-size:17px;margin:0 0 16px;font-weight:800;color:var(--head);display:flex;align-items:center;gap:8px;letter-spacing:-.2px}
 #.card>p.muted,.card>.muted{line-height:1.9}
 #.card>p.muted:last-child{margin-bottom:0}
 #table{width:100%;border-collapse:separate;border-spacing:0;font-size:13px}
@@ -24608,13 +24637,42 @@ exit 0
 # font-weight:700;vertical-align:-3px;line-height:1;width:20px;height:20px}
 #td .logo{margin-inline-end:6px}
 #.logo.plain{color:var(--muted)}
-#.purge{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:0 0 16px}
+#.user-tools{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 16px}
+#.user-tools>details{
+# flex:1 1 220px;min-width:0;border:1px solid var(--line);border-radius:10px;
+# background:var(--bg)}
+#.user-tools summary{padding:9px 14px;cursor:pointer;color:var(--dim);font-weight:650}
+#.user-tools summary:hover{color:var(--fg)}
+#.user-tools details>p{padding:0 14px;margin:0 0 12px;max-width:72ch}
+#.purge{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:0 14px 12px}
 #.purge form{margin:0}
+#.purge>span{flex-basis:100%}
+#.purge button:disabled{
+# background:var(--card);border-color:var(--line);color:var(--muted);
+# cursor:default;box-shadow:none;transform:none}
+#.user-directory{padding:0}
+#.user-directory>.directory-tools{padding:clamp(14px,2vw,24px)}
+#.directory-tools h2{font-size:clamp(18px,2vw,24px)}
+#.user-directory .directory-table{overflow-x:auto}
+#@media (min-width:1300px){
+# .user-directory table.users details>form,.user-directory table.users details>.menu{position:static}
+#}
+#.user-directory table.users{min-width:960px}
+#.user-directory table.users th{background:var(--row);border-radius:0}
+#.user-directory table.users :is(td,th){padding:12px 8px}
+#.user-directory table.users :is(td,th):first-child{padding-inline-start:16px}
+#.user-directory table.users :is(td,th):last-child{padding-inline-end:16px}
+#.user-directory table.users tr:nth-child(odd)>td{
+# background:color-mix(in srgb,var(--row) 40%,var(--card))}
+#.user-directory table.users tr:is(:hover,:focus-within)>td{background:var(--row)}
 #.reserved{color:var(--accent);font-size:11.5px;font-weight:600}
 #form.reserve{display:flex;align-items:center;gap:8px;margin:8px 0;font-size:12px}
-#.usearch{margin:0 0 16px}
+#.usearch{
+# margin:0 0 12px;padding:10px;border:1px solid var(--line);border-radius:12px;background:var(--bg)}
+#.usearch .usort{margin:0;display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+#.usearch button,.usearch select,.usearch input{min-height:42px}
 #.umore{padding:16px;text-align:center;color:var(--muted)}
-#.usearch input[type=search]{min-width:280px;flex:1;max-width:480px}
+#.usearch input[type=search]{min-width:0;flex:1 1 185px;max-width:none}
 #.usort{display:inline-flex;align-items:center;gap:8px;margin:0;color:var(--muted);font-size:13px;white-space:nowrap}
 #.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-inline-end:7px;vertical-align:1px;position:relative}
 #.dot.on{background:var(--accent);box-shadow:0 0 0 3px var(--good-bg),0 0 10px var(--accent)}
@@ -26810,7 +26868,7 @@ exit 0
 #
 #def purge_card(p):
 #    """The three buttons, each with how many it would delete."""
-#    out = ["<div class='purge'><span class='muted'>پاک کردن دسته‌جمعی:</span>"]
+#    out = ["<details><summary>پاک کردن دسته‌جمعی:</summary><div class='purge'>"]
 #    kept = 0
 #    for key, statuses, label, what in PURGE_KINDS:
 #        gone, keep = purge_ids(statuses)
@@ -26824,7 +26882,7 @@ exit 0
 #                "برنمی‌گردد." % len(gone), ensure_ascii=False), quote=True),
 #               key, html.escape(what), "" if gone else " disabled", label, len(gone)))
 #    out.append("<span class='muted'>کسی که در کیف پولش پول دارد یا رسیدش منتظر تأیید است "
-#               "پاک نمی‌شود%s.</span></div>"
+#               "پاک نمی‌شود%s.</span></div></details>"
 #               % (" (%d نفر)" % kept if kept else ""))
 #    return "".join(out)
 #
@@ -26957,7 +27015,7 @@ exit 0
 #                   for k, label, _ in USER_SORTS)
 #    return ("<form method='get' action='/%s/users' class='row usearch'>"
 #            "<input type='search' name='q' value='%s' autocomplete='off' "
-#            "placeholder='جستجو: اسم، نام کاربری، شماره، آیدی تلگرام یا آی‌پی'>"
+#            "aria-label='جستجو' placeholder='جستجو: اسم، نام کاربری، شماره، آیدی تلگرام یا آی‌پی'>"
 #            "<button class='ghost'>جستجو</button>%s"
 #            "<label class='usort'>مرتب‌سازی: <select name='sort' onchange=\"document.cookie="
 #            "'usort='+this.value+'; path=/; max-age=31536000; SameSite=Strict';"
@@ -28845,23 +28903,25 @@ exit 0
 #                       args + find_args + (count, start))
 #        out = []
 #        if not rows_only:
-#            out.append("<div class='card wide'><h2>کاربران (%s)</h2>"
+#            out.append("<div class='card wide user-directory'><div class='directory-tools'><h2>کاربران (%s)</h2>"
 #                       % ("%d از %d" % (found, total) if q else total))
 #            if not total:
-#                return "".join(out) + "<p class='muted'>هنوز کسی ثبت‌نام نکرده.</p></div>"
-#            out.append(purge_card(CFG["ADMIN_PATH"]))
+#                return "".join(out) + "<p class='muted'>هنوز کسی ثبت‌نام نکرده.</p></div></div>"
 #            out.append(user_search_box(CFG["ADMIN_PATH"], q, sort))
 #            if not rows:
-#                return "".join(out) + ("<p class='muted'>کسی با «%s» پیدا نشد.</p></div>"
+#                return "".join(out) + ("<p class='muted'>کسی با «%s» پیدا نشد.</p></div></div>"
 #                                       % html.escape(q))
 #            # Above the table: below it is wherever the last rows fetched end.
-#            out.append(USERS_HELP)
+#            out.extend(("<div class='user-tools'><details><summary>راهنما</summary>",
+#                        USERS_HELP, "</details>"))
+#            out.append(purge_card(CFG["ADMIN_PATH"]))
+#            out.append("</div></div>")
 #        # Where a customer goes out is the owner's to choose, or a
 #        # reseller's when the owner let them.
 #        route = s is None or bool(s["can_route"])
 #        relays = relay_list() if route else []
 #        if not rows_only:
-#            out.append("<table class='users'><tr><th>نام کاربری</th><th>آی‌پی</th><th>مصرف</th>"
+#            out.append("<div class='directory-table' tabindex='0' aria-label='کاربران'><table class='users'><tr><th>نام کاربری</th><th>آی‌پی</th><th>مصرف</th>"
 #                       "<th>کیف پول</th>"
 #                       "<th title='گیگابایت'>سهمیه GB</th><th title='مگابیت بر ثانیه'>سرعت Mb</th>"
 #                       "<th title='از امروز چند روز دیگر'>روز</th>"
@@ -28986,7 +29046,7 @@ exit 0
 #                   p, ask, r["id"]))
 #        if rows_only:
 #            return "".join(out)
-#        out.append("</table>")
+#        out.append("</table></div>")
 #        if len(rows) < found:
 #            out.append("<div id='umore' class='umore' data-total='%d' data-next='%s'>%d از %d"
 #                       "</div>" % (found, html.escape(
@@ -42167,6 +42227,7 @@ exit 0
 #"تمدید گواهی HTTPS — سرور خارج": "HTTPS certificate renewal — exit server",
 #"تنظیم تونل از پنل خوانا نبود": "The tunnel setting from the panel could not be read",
 #"تنظیمات": "Settings",
+#"تنظیمات اتصال": "Connection settings",
 #"تنظیمات ذخیره شد ولی ربات روشن نشد؛ پیام‌های پایین صفحه را ببینید": "Settings saved but the bot did not start; see the messages below",
 #"تنظیمات ربات": "Bot settings",
 #"تنظیمات وایرگارد ذخیره شد؛ تا یک دقیقه دیگر روی رله‌ها اعمال می‌شود": "WireGuard settings saved; the relays take them within a minute",
@@ -42538,6 +42599,7 @@ exit 0
 #"راه": "Path",
 #"راه نیفتاد:": "did not come up:",
 #"راه گوگل روی IPv6": "Google’s path over IPv6",
+#"راهنما": "Help",
 #"راهنمای کامل دستورها:": "Full guide to the commands:",
 #"راه‌اندازی": "Set up",
 #"راه‌اندازی ربات": "Set up the bot",
@@ -43342,6 +43404,7 @@ exit 0
 #"وصل کردن تلگرام دیگر اجباری نیست": "Linking Telegram is no longer required",
 #"وصل —": "Connected —",
 #"وضعیت": "Status",
+#"وضعیت حساب": "Account status",
 #"وضعیت نامعتبر": "Invalid status",
 #"وضعیت:": "Status:",
 #"وقتی به سقف رسید:": "When the cap is reached:",
