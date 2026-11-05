@@ -24947,6 +24947,11 @@ exit 0
 #table.users td.acts .menu{display:flex;flex-direction:column;gap:6px;min-width:170px}
 #table.users td.acts .menu form{display:block}
 #table.users td.acts .menu button{width:100%;margin:0;justify-content:flex-start}
+#table.users td.acts .menu a.menu-link{
+# display:flex;align-items:center;gap:7px;min-height:36px;padding:7px 12px;border-radius:9px;
+# border:1px solid var(--line2);color:var(--fg);font-size:12.5px;font-weight:600;text-decoration:none}
+#table.users td.acts .menu a.menu-link:hover{background:var(--row);border-color:var(--muted)}
+#table.users td.acts .menu a.menu-link .ui-icon{color:var(--accent)}
 #table.users td.acts .menu form.resetdays{
 # display:flex;flex-wrap:wrap;align-items:center;gap:6px;max-width:170px;
 # font-size:12px;border-top:1px solid var(--line);padding-top:8px}
@@ -25061,8 +25066,6 @@ exit 0
 #.user-directory table.users select{min-width:92px}
 #.user-directory table.users td.acts>form,.user-directory table.users td.acts details.more{vertical-align:middle}
 #.user-directory table.users td.acts details.more>summary{min-width:38px;padding:6px 10px}
-#.user-directory table.users td:nth-child(2)>details{margin-top:7px}
-#.user-directory table.users td:nth-child(2)>details>summary{min-width:80px;font-variant-numeric:tabular-nums}
 #.user-directory table.users details>form,.user-directory table.users details>.menu{position:static}
 #.user-directory table.users .pill{border-radius:8px;padding:3px 10px}
 #.user-directory table.users td.acts button{height:38px;border-radius:9px}
@@ -25149,7 +25152,6 @@ exit 0
 #.user-directory table.users td:nth-child(2)>code{font-size:12.5px;white-space:nowrap}
 #.user-directory table.users td:nth-child(2){min-width:150px}
 #.user-directory table.users select{block-size:36px}
-#.user-directory table.users td:nth-child(2)>details{display:block;width:max-content}
 #.user-directory table.users input{height:36px;min-height:36px;border-radius:9px}
 #.user-directory table.users input:placeholder-shown{font-size:12.5px}
 #.user-directory table.users input[name=quota_gb],
@@ -25166,8 +25168,6 @@ exit 0
 #.user-directory table.users td.acts details.more>summary{
 # width:36px;min-width:36px;padding:0;justify-content:center;font-size:16px;line-height:1;border-radius:9px}
 #.user-directory table.users td.acts .menu button{height:auto;min-height:36px;padding:7px 12px}
-#.user-directory table.users td:nth-child(2)>details>summary{
-# height:32px;min-height:32px;padding:0 10px;border-radius:9px;margin-top:8px}
 #/* ---- tablet and phone: the rail becomes a drawer */
 #@media (max-width:960px){
 # .wrap.admin-shell{display:block}
@@ -25479,29 +25479,16 @@ exit 0
 #        % (p, html.escape(price, quote=True), html.escape(limit, quote=True), MAX_DEVICES))
 #
 #
-#def devices_cell(p, r):
-#    """The users table's address, with the account's devices: how many of
-#    them it holds, every address, and a way to change the number."""
-#    ips = [x["ip"] for x in STORE.q("SELECT ip FROM ips WHERE user_id = ? AND wg = 0"
-#                                    " ORDER BY added_at", (r["id"],))]
+#def wg_menu_link(p, r):
+#    """A customer's WireGuard configs, from the users table's menu: the page
+#    where they are made, downloaded and deleted. Only where WireGuard is on,
+#    or the account already holds a config."""
 #    configs = STORE.one("SELECT count(*) c FROM wg_devices WHERE user_id = ?", (r["id"],))["c"]
-#    total = r["max_ips"] or 1
-#    # A WireGuard config takes a device as an address does; it is listed on
-#    # its own page, where it is made and deleted.
-#    wg = ("<label><a href='/%s/wg?u=%d'><svg class='ui-icon' aria-hidden='true'><use href='#ui-shield'/></svg> کانفیگ وایرگارد: %d از %d</a></label>"
-#          % (p, r["id"], configs, max(len(wg_ready_relays()), configs))
-#          if configs or wg_on() else "")
-#    # A device has an address for the DNS and a WireGuard config both: the
-#    # count beside it is the addresses'.
-#    return ("<details><summary title='دستگاه\u200cها'><svg class='ui-icon' aria-hidden='true'><use href='#ui-device'/></svg> %d/%d</summary>"
-#            "<form method='post' action='/%s/user-devices'>"
-#            "<input type='hidden' name='id' value='%d'>%s%s"
-#            "<label>تعداد دستگاه <input name='devices' value='%d' size='2' dir='ltr'></label>"
-#            "<button class='ghost'>ذخیره</button></form></details>"
-#            % (len(ips), total, p, r["id"],
-#               "".join("<label><code dir='ltr'>%s</code></label>" % html.escape(x)
-#                       for x in ips) or "<label class='muted'>آی‌پی ثبت نشده</label>",
-#               wg, total))
+#    if not configs and not wg_on():
+#        return ""
+#    return ("<a class='menu-link' href='/%s/wg?u=%d'><svg class='ui-icon' aria-hidden='true'>"
+#            "<use href='#ui-shield'/></svg> کانفیگ وایرگارد: %d از %d</a>"
+#            % (p, r["id"], configs, max(len(wg_ready_relays()), configs)))
 #
 #
 ## ---------------------------------------------------------------- WireGuard
@@ -29607,7 +29594,7 @@ exit 0
 #                   html.escape(r["first_name"] or ""),
 #                   *[html.escape(x) for x in joined_and_seen(r).split(" · ", 1)
 #                     + ([""] if " · " not in joined_and_seen(r) else [])],
-#                   html.escape(r["ip"] or "-"), operator_label(r["ip"]) + devices_cell(p, r),
+#                   html.escape(r["ip"] or "-"), operator_label(r["ip"]),
 #                   "<a href='/%s/usage?u=%d' title='نمودار مصرف'>%s</a>"
 #                   % (p, r["id"], human(r["used_bytes"])),
 #                   "<a href='/%s/wallet?u=%d' title='کیف پول و دعوت'>%s</a>"
@@ -29626,7 +29613,7 @@ exit 0
 #                   "برگرداندن" if r["status"] == "suspended" else "مسدود کردن",
 #                   "فعال" if r["status"] == "suspended" else "مسدود کن",
 #                   p, r["id"],
-#                   reset_days_form(p, r) + reset,
+#                   reset_days_form(p, r) + wg_menu_link(p, r) + reset,
 #                   p, ask, r["id"]))
 #        if rows_only:
 #            return "".join(out)
@@ -52495,7 +52482,6 @@ exit 0
 #"آی‌پی اینترنت شما با آنچه ثبت شده فرق دارد. این دکمه آی‌پی فعلی را جایگزین می‌کند.": "Your internet IP is different from the registered one. This button replaces it with your current IP.",
 #"آی‌پی اینترنتی را که می‌خواهید سرویس رویش کار کند بفرستید.": "Send the IP of the internet connection you want the service to work on.",
 #"آی‌پی تک‌سرور تازه": "New single server’s IP",
-#"آی‌پی ثبت نشده": "No IP registered",
 #"آی‌پی ثبت کردن لازم نیست و روی هر اینترنتی کار می‌کند.": "No address to register; it works on any connection.",
 #"آی‌پی ثبت‌شده": "Registered IP",
 #"آی‌پی خانگی معمولاً ثابت نیست. اگر مودم را ریست کردید و سرویس قطع شد، دوباره به همین صفحه بیایید و ثبت کنید.": "A home IP is usually not fixed. If you reset your router and the service stops, come back to this page and register again.",
@@ -52937,7 +52923,6 @@ exit 0
 #"تصمیم نامعتبر": "Invalid decision",
 #"تصمیم‌های قبلی": "Earlier decisions",
 #"تعداد ثبت‌نام از این اینترنت زیاد بوده.": "Too many sign-ups from this internet connection.",
-#"تعداد دستگاه": "Number of devices",
 #"تعداد دستگاه باید از ۱ تا": "The number of devices must be from 1 to",
 #"تعداد دستگاه باید از ۱ تا ۵ باشد": "The number of devices must be from 1 to 5",
 #"تعداد دستگاه ذخیره شد؛ تا ۳۰ ثانیه دیگر روی رله‌ها": "Number of devices saved; on the relays within 30 seconds",
@@ -53267,7 +53252,6 @@ exit 0
 #"دستگاه نمی‌شود": "devices is not possible",
 #"دستگاه. تعداد دستگاه هر کاربر را در صفحهٔ کاربران (روی آی‌پی‌اش) دستی هم می‌توانید عوض کنید. سقف آی‌پی تازه فقط برای خود مشتری است؛ آی‌پی‌هایی که شما ثبت می‌کنید شمرده نمی‌شوند.": "devices. You can also change a customer’s devices by hand on the users page (on their IP). The new-IP limit is only for the customer; IPs you register are not counted.",
 #"دستگاه:": "Devices:",
-#"دستگاه‌ها": "Devices",
 #"دست‌کم یک DNS لازم است": "At least one DNS server is needed",
 #"دست‌کم یک سرور باید پنل مشتری داشته باشد؛ مشتری‌ها از آن ثبت‌نام می‌کنند و آی‌پی ثبت می‌کنند": "At least one server must keep the customer panel; customers sign up and register their address there",
 #"دست‌کم ۸ نویسه": "At least 8 characters",

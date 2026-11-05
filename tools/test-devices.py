@@ -178,8 +178,8 @@ print("by hand")
 act("user-devices", id=str(ali), devices="2")
 check("the admin sets the number", user(ali)["max_ips"] == 2)
 check("  within 1 to 10", "!" in act("user-devices", id=str(ali), devices="11"))
-check("the users page shows the devices on the address",
-      "📱" in Rec("/p/users").users() and "user-devices" in Rec("/p/users").users())
+check("the users table has no devices box beside the address",
+      "user-devices" not in Rec("/p/users").users())
 
 print("new addresses a day")
 act("devices-settings", price="50000", limit="2")

@@ -393,10 +393,9 @@ page = admin.wg_page("/p/wg?u=3")
 check("its page: the config to copy and download, and delete",
       "Address = %s/32" % made["address"] in page and "Endpoint = %s:443" % RELAY in page
       and "/p/wg-conf/%d" % made["id"] in page and "user-wg-del" in page)
-cell = admin.devices_cell("p", store.one("SELECT * FROM users WHERE id = 1"))
-check("the users table: addresses counted against devices, configs apart on their page",
-      "📱 1/2" in cell and "203.0.113.7" in cell and "10.66.0.2" not in cell
-      and "/p/wg?u=1" in cell and "🛡 کانفیگ وایرگارد: 1 از 1" in cell, cell)
+cell = admin.wg_menu_link("p", store.one("SELECT * FROM users WHERE id = 1"))
+check("the users table's menu leads to a customer's configs, counted",
+      "/p/wg?u=1" in cell and "کانفیگ وایرگارد: 1 از 1" in cell, cell)
 
 
 class Wire:
