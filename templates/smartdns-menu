@@ -2,7 +2,7 @@
 # smartdns-menu - every DNS command in one place, for when you do not
 # remember the name of the one you want.
 #
-# usage: sudo smartdns-menu
+# usage: sudo smartdns-menu [--update]
 #
 # Each choice shows the command it runs before running it, so the next time you
 # can type it yourself. Ctrl-C stops that command and comes back here.
@@ -19,7 +19,7 @@ B=$'\e[1m'; D=$'\e[2m'; G=$'\e[32m'; Y=$'\e[33m'; N=$'\e[0m'
 
 case "${1:-}" in
     -h|--help) sed -n '2,8p' "$0" | sed 's/^# \{0,1\}//'; exit 0 ;;
-    "") ;;
+    ""|--update) ;;
     *) echo "unknown option: $1  (try -h)" >&2; exit 1 ;;
 esac
 [ "$(id -u)" = 0 ] || { echo "run as root:  sudo smartdns-menu" >&2; exit 1; }
@@ -117,13 +117,24 @@ installer() {
 }
 
 update() {
-    local f latest
-    f="$(mktemp)"
+    local f latest rc=0
+    f="$(mktemp)" || return 1
     printf '\n  fetching the latest installer...\n'
     if ! curl -fsSL -m 120 -o "$f" "https://raw.githubusercontent.com/DevURANIUM/DNS/main/dns.sh"; then
-        echo "  the download failed"; rm -f "$f"; pause; return 0
+        echo "  the download failed" >&2; rm -f "$f"; return 1
     fi
-    latest="$(bash "$f" --version 2>/dev/null || echo '?')"
+    if [ "$(tail -n 1 "$f")" != "#__DOCTOR_DNS_""COMPLETE__" ] || ! bash -n "$f"; then
+        echo "  the downloaded installer is incomplete or invalid" >&2
+        rm -f "$f"; return 1
+    fi
+    if ! latest="$(bash "$f" --version)"; then
+        rm -f "$f"; return 1
+    fi
+    if [ "${1:-}" = --update ]; then
+        bash "$f" || rc=$?
+        rm -f "$f"
+        return "$rc"
+    fi
     printf '  installed: %s    latest: %s\n' "$VERSION" "$latest"
     if [ "$latest" = "$VERSION" ]; then
         sure "the same version - run it anyway, to check and repair?" || { rm -f "$f"; return 0; }
@@ -256,4 +267,8 @@ main() {
     BACK=quit choose "DNS $VERSION - $role" "${items[@]}"
 }
 
-main
+if [ "${1:-}" = --update ]; then
+    update --update
+else
+    main
+fi

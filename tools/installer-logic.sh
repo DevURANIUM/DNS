@@ -231,10 +231,18 @@ relay_doh() {
 }
 
 install_payload() {
-    local name="$1" dest="$2" tmp solo=1
+    local name="$1" dest="$2" tmp solo=1 http2_edit="" nginx_version
     # A single machine's own blocks, and its dropping of the "only the relay"
     # lines, happen on a single machine only (ROLE=single sets SINGLE).
     [ -n "${SINGLE:-}" ] && solo=""
+    case "$name" in
+        EXIT_NGINX|RELAY_NGINX)
+            nginx_version="$(nginx -v 2>&1 | sed -n 's#.*nginx/\([0-9.]*\).*#\1#p')"
+            if [ -n "$nginx_version" ] && dpkg --compare-versions "$nginx_version" ge 1.25.1; then
+                http2_edit='s/^\( *\)listen \(.*\) ssl http2\([^;]*\);$/\1listen \2 ssl\3;\n\1http2 on;/'
+            fi
+            ;;
+    esac
     tmp="$(mktemp)"
     # MODULE_PATH is filled in here, not with a sed -i afterwards, so that what
     # we compare against the installed file is the finished article. Doing it
@@ -243,7 +251,7 @@ install_payload() {
     # empty for the payloads written before it is discovered, and none of those
     # contain the placeholder.
     payload "$name" \
-        | sed -e "${SINGLE:+/smartdns-relays\\.conf;\$/d}" \
+        | sed -e "$http2_edit" -e "${SINGLE:+/smartdns-relays\\.conf;\$/d}" \
               -e "${SINGLE:+/^ *allow 127\.0\.0\.1;\$/d}" \
               -e "${SINGLE:+/^ *deny all;\$/d}" \
               -e "${solo:+/# single begin/,/# single end/d}" \

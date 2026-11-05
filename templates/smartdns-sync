@@ -3683,6 +3683,7 @@ body{
 .portal-controls button.theme:hover{background:var(--row);border-color:var(--accent)}
 .portal-controls button.theme.lang{width:auto;padding-inline:12px;font-size:13px;font-weight:750}
 .theme .sun{display:var(--sun)}.theme .moon{display:var(--moon)}
+html[lang=en] .fa-only,html:not([lang=en]) .en-only{display:none}
 .brand{
  font-size:20px;font-weight:850;color:var(--head);min-width:0;overflow-wrap:anywhere;
  display:flex;align-items:center;gap:8px}
@@ -4063,6 +4064,7 @@ def user_page(inner):
         inner = one_server_words(inner)
     return ("""<!doctype html><html lang="fa" dir="rtl"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="data:,">
 <title>%s</title>%s<style>%s</style></head><body>
 <header class="portal-header">%s<div class="portal-controls">%s</div></header>
 <main class="shell"><div class="card">%s</div>%s</main></body></html>"""
