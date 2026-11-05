@@ -16468,13 +16468,44 @@ exit 0
 #THEME_HEAD = ("<script>try{var t=localStorage.getItem('theme');"
 #              "if(t=='light'||t=='dark')document.documentElement"
 #              ".setAttribute('data-theme',t)}catch(e){}</script>")
-#THEME_BUTTON = (
+#ICON_SPRITE = (
+#    "<svg xmlns='http://www.w3.org/2000/svg' class='icon-definitions' aria-hidden='true'><defs>"
+#    "<symbol id='ui-sun' viewBox='0 0 24 24'><path d='M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8 M12 2v2 M12 20v2 M2 12h2 M20 12h2 M5 5l1 1 M18 18l1 1 M5 19l1-1 M18 6l1-1'/></symbol>"
+#    "<symbol id='ui-moon' viewBox='0 0 24 24'><path d='M21 13a9 9 0 0 1-10-10A9 9 0 1 0 21 13Z'/></symbol>"
+#    "<symbol id='ui-device' viewBox='0 0 24 24'><path d='M7 2h10v20H7Z M11 18h2'/></symbol>"
+#    "<symbol id='ui-shield' viewBox='0 0 24 24'><path d='M12 2 3 6v6c0 5 9 10 9 10s9-5 9-10V6Z M8 12l3 3 5-6'/></symbol>"
+#    "<symbol id='ui-globe' viewBox='0 0 24 24'><path d='M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0 M3 12h18 M12 3c5 5 5 13 0 18-5-5-5-13 0-18'/></symbol>"
+#    "<symbol id='ui-gift' viewBox='0 0 24 24'><path d='M3 8h18v4H3Z M5 12v9h14v-9 M12 8v13 M12 8C4 8 5 1 9 3l3 5c8 0 7-7 3-5Z'/></symbol>"
+#    "<symbol id='ui-link' viewBox='0 0 24 24'><path d='m10 13 4-4 M8 16l-1 1a4 4 0 0 1-6-6l5-5a4 4 0 0 1 6 0 M16 8l1-1a4 4 0 0 1 6 6l-5 5a4 4 0 0 1-6 0'/></symbol>"
+#    "<symbol id='ui-key' viewBox='0 0 24 24'><path d='M15 2a7 7 0 1 1-6 10L2 19v3h4v-3h3v-3l2-2 M16 6h1'/></symbol>"
+#    "<symbol id='ui-mail' viewBox='0 0 24 24'><path d='M3 4h18v16H3Z m0 1 9 8 9-8'/></symbol>"
+#    "<symbol id='ui-check' viewBox='0 0 24 24'><path d='m5 12 4 4L19 6'/></symbol>"
+#    "<symbol id='ui-pin' viewBox='0 0 24 24'><path d='M19 9c0 6-7 13-7 13S5 15 5 9a7 7 0 0 1 14 0 M15 9a3 3 0 1 1-6 0 3 3 0 0 1 6 0'/></symbol>"
+#    "<symbol id='ui-alert' viewBox='0 0 24 24'><path d='m12 3 10 18H2Z M12 9v5 M12 17v1'/></symbol>"
+#    "<symbol id='ui-card' viewBox='0 0 24 24'><path d='M2 4h20v16H2Z M2 9h20 M6 15h4'/></symbol>"
+#    "<symbol id='ui-wallet' viewBox='0 0 24 24'><path d='M3 5h16v4H3V5Zm0 4h19v12H3V9Zm14 5h5v3h-5v-3Z'/></symbol>"
+#    "<symbol id='ui-search' viewBox='0 0 24 24'><path d='M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0 m-2 6 6 6'/></symbol>"
+#    "<symbol id='ui-lock' viewBox='0 0 24 24'><path d='M5 10h14v12H5Z M8 10V6a4 4 0 0 1 8 0v4 M12 15v3'/></symbol>"
+#    "<symbol id='ui-download' viewBox='0 0 24 24'><path d='M12 2v13 m-5-5 5 5 5-5 M3 16v6h18v-6'/></symbol>"
+#    "<symbol id='ui-help' viewBox='0 0 24 24'><path d='M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0 M9 8a3 3 0 0 1 6 0c0 3-3 3-3 6 M12 17v1'/></symbol>"
+#    "<symbol id='ui-chart' viewBox='0 0 24 24'><path d='M3 3v18h18 M7 16v-5 M12 16V6 M17 16V9'/></symbol>"
+#    "<symbol id='ui-tag' viewBox='0 0 24 24'><path d='M2 2h8l12 12-8 8L2 10Z M6 6h1'/></symbol>"
+#    "<symbol id='ui-announce' viewBox='0 0 24 24'><path d='M3 9h5l12-6v18L8 15H3Z M7 15v6h4l-2-5'/></symbol>"
+#    "<symbol id='ui-eye' viewBox='0 0 24 24'><path d='M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12 M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0'/></symbol>"
+#    "<symbol id='ui-ban' viewBox='0 0 24 24'><path d='M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0 M6 6l12 12'/></symbol>"
+#    "<symbol id='ui-close' viewBox='0 0 24 24'><path d='m6 6 12 12 M6 18 18 6'/></symbol>"
+#    "<symbol id='ui-plus' viewBox='0 0 24 24'><path d='M12 4v16 M4 12h16'/></symbol>"
+#    "<symbol id='ui-status' viewBox='0 0 24 24'><path d='M20 12a8 8 0 1 1-16 0 8 8 0 0 1 16 0'/></symbol>"
+#    '</defs></svg>'
+#)
+#
+#THEME_BUTTON = ICON_SPRITE + (
 #    "<button type='button' class='theme' title='روشن / تیره' aria-label='روشن / تیره'"
 #    " onclick=\"(function(r){var c=r.getAttribute('data-theme')||"
 #    "(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'),"
 #    "n=c=='light'?'dark':'light';r.setAttribute('data-theme',n);"
 #    "try{localStorage.setItem('theme',n)}catch(e){}})(document.documentElement)\">"
-#    "<span class='sun'>☀️</span><span class='moon'>🌙</span></button>"
+#    "<span class='sun'><svg class='ui-icon' aria-hidden='true'><use href='#ui-sun'/></svg></span><span class='moon'><svg class='ui-icon' aria-hidden='true'><use href='#ui-moon'/></svg></span></button>"
 #    "<button type='button' class='theme lang' title='English / فارسی'"
 #    " aria-label='English / فارسی' onclick=\"document.cookie='lang='+"
 #    "(document.documentElement.lang=='en'?'fa':'en')+"
@@ -16505,6 +16536,13 @@ exit 0
 #
 #
 #USER_CSS = THEME_CSS + FONT_FACE + """
+#.icon-definitions{position:absolute;width:0;height:0;overflow:hidden;pointer-events:none}
+#.ui-icon{display:inline-block;width:18px;height:18px;flex:none;vertical-align:-4px;
+# fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+#.theme .ui-icon{width:19px;height:19px;vertical-align:middle}
+#.icon .ui-icon{width:40px;height:40px}
+#.brand .mark .ui-icon{width:28px;height:28px}
+#
 #*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 #html{scroll-behavior:smooth}
 #body{
@@ -16768,7 +16806,7 @@ exit 0
 #
 #
 #def brand_html():
-#    return ("<div class='brand'><span class='mark'>🛡️</span>"
+#    return ("<div class='brand'><span class='mark'><svg class='ui-icon' aria-hidden='true'><use href='#ui-shield'/></svg></span>"
 #            "<span class='name'>DNS</span></div>")
 #
 #
@@ -16944,7 +16982,7 @@ exit 0
 #
 #def landing(banner=""):
 #    return (banner +
-#            "<div class='icon'>🌐</div><h1>%s</h1>"
+#            "<div class='icon'><svg class='ui-icon' aria-hidden='true'><use href='#ui-globe'/></svg></div><h1>%s</h1>"
 #            "<p class='sub'>برای دیدن حساب و ثبت آی‌پی وارد شوید.</p>"
 #            "<a class='btn' href='/login'>ورود</a>"
 #            "<a class='btn ghost' href='/signup'>ثبت‌نام</a>"
@@ -16961,7 +16999,7 @@ exit 0
 #    # characters, so it goes into the page as it is.
 #    ref = ref if REF_RE.fullmatch(ref or "") else ""
 #    return (banner +
-#            ("<div class='msg good'>🎁 با لینک دعوت یکی از دوستانتان آمده‌اید.</div>"
+#            ("<div class='msg good'><svg class='ui-icon' aria-hidden='true'><use href='#ui-gift'/></svg> با لینک دعوت یکی از دوستانتان آمده\u200cاید.</div>"
 #             if ref else "") +
 #            "<h1>ثبت‌نام</h1><p class='sub'>%s</p>"
 #            "<form method='post' action='/signup'>%s"
@@ -17010,7 +17048,7 @@ exit 0
 #
 #def go_page(token):
 #    """The one-time link's page: it hands the link back by POST."""
-#    return ("<div class='icon'>🔗</div><h1>ورود به حساب</h1>"
+#    return ("<div class='icon'><svg class='ui-icon' aria-hidden='true'><use href='#ui-link'/></svg></div><h1>ورود به حساب</h1>"
 #            "<form method='post' action='/go' id='go'>"
 #            "<input type='hidden' name='token' value='%s'>"
 #            "<button>ورود و ثبت آی‌پی</button></form>"
@@ -17023,7 +17061,7 @@ exit 0
 #def forgot_page(banner=""):
 #    """Step one of a forgotten password: which account."""
 #    return (banner +
-#            "<div class='icon'>🔑</div><h1>بازیابی رمز</h1>"
+#            "<div class='icon'><svg class='ui-icon' aria-hidden='true'><use href='#ui-key'/></svg></div><h1>بازیابی رمز</h1>"
 #            "<p class='sub'>اگر حسابتان به تلگرام وصل باشد، یک کد شش‌رقمی به تلگرامتان "
 #            "می‌فرستیم.</p>"
 #            "<form method='post' action='/forgot'>"
@@ -17037,7 +17075,7 @@ exit 0
 #def forgot_code_page(username, banner=""):
 #    """Step two: the six digits from Telegram, and the new password."""
 #    return (banner +
-#            "<div class='icon'>✉️</div><h1>کد را وارد کنید</h1>"
+#            "<div class='icon'><svg class='ui-icon' aria-hidden='true'><use href='#ui-mail'/></svg></div><h1>کد را وارد کنید</h1>"
 #            "<p class='sub'>کد شش‌رقمی‌ای که در تلگرام گرفتید، و رمز تازه.</p>"
 #            "<form method='post' action='/forgot-code'>"
 #            "<input type='hidden' name='username' value='%s'>"
@@ -17061,7 +17099,7 @@ exit 0
 #    ask = ("<label>رمز فعلی حساب</label><input name='password' type='password' "
 #           "required autocomplete='current-password'>")
 #    if info.get("telegram_linked"):
-#        return ("<p class='note'>✅ حساب شما به تلگرام وصل است؛ اگر رمز را فراموش "
+#        return ("<p class='note'><svg class='ui-icon' aria-hidden='true'><use href='#ui-check'/></svg> حساب شما به تلگرام وصل است؛ اگر رمز را فراموش "
 #                "کنید، از صفحهٔ ورود با کد تلگرام بازیابی‌اش می‌کنید.</p>"
 #                "<details class='pw'><summary>تلگرامتان عوض شده؟ جدا کردن تلگرام"
 #                "</summary><form method='post' action='/telegram-unlink'>%s"
@@ -17086,7 +17124,7 @@ exit 0
 #        deep = ("<a class='btn' href='%s?start=link_%s' target='_blank' rel='noopener'>"
 #                "باز کردن ربات و اتصال</a>" % (html.escape(bot, quote=True),
 #                                                html.escape(code)))
-#    return ("<div class='icon'>🔗</div><h1>اتصال به تلگرام</h1>"
+#    return ("<div class='icon'><svg class='ui-icon' aria-hidden='true'><use href='#ui-link'/></svg></div><h1>اتصال به تلگرام</h1>"
 #            "<p class='sub'>این کد را برای ربات ما بفرستید. %d دقیقه اعتبار دارد.</p>"
 #            "<div class='big'>%s</div>%s"
 #            "<p class='note'>ربات جواب می‌دهد که حساب وصل شد. بعد از آن اگر رمز را "
@@ -17099,7 +17137,7 @@ exit 0
 #    """All an account on a temporary password is shown: somewhere to choose
 #    its own. The panel refuses everything else until then."""
 #    return (banner +
-#            "<div class='icon'>🔑</div><h1>رمز خودتان را انتخاب کنید</h1>"
+#            "<div class='icon'><svg class='ui-icon' aria-hidden='true'><use href='#ui-key'/></svg></div><h1>رمز خودتان را انتخاب کنید</h1>"
 #            "<p class='sub'>با رمز موقت وارد شده‌اید. برای ادامه یک رمز تازه "
 #            "بگذارید؛ بعد از آن رمز موقت دیگر کار نمی‌کند.</p>"
 #            "<form method='post' action='/password-first'>"
@@ -17123,7 +17161,7 @@ exit 0
 #    to notice.
 #    """
 #    return (banner +
-#            "<div class='icon'>📍</div><h1>ثبت آی‌پی</h1>"
+#            "<div class='icon'><svg class='ui-icon' aria-hidden='true'><use href='#ui-pin'/></svg></div><h1>ثبت آی\u200cپی</h1>"
 #            "<p class='sub'>سرویس روی همین آی‌پی باز می‌شود.</p>"
 #            "<div class='big'>%s</div>"
 #            "<form method='post' action='/register-ip'>"
@@ -17192,7 +17230,7 @@ exit 0
 #    # The plan they bought ahead has just taken over: said for a few days.
 #    done = info.get("reserve_done") or {}
 #    if done.get("plan"):
-#        return ("<div class='msg good'>✅ <b>پلن رزرو «%s» فعال شد.</b> پلن قبلی‌تان تمام "
+#        return ("<div class='msg good'><svg class='ui-icon' aria-hidden='true'><use href='#ui-check'/></svg> <b>پلن رزرو «%s» فعال شد.</b> پلن قبلی\u200cتان تمام "
 #                "شده بود و این یکی خودکار جایش را گرفت.</div>" % html.escape(done["plan"]))
 #
 #    quota, used = info.get("quota") or 0, info.get("used") or 0
@@ -17222,7 +17260,7 @@ exit 0
 #                 "answered": ("جواب آمده", "ok"),
 #                 "closed": ("بسته", "")}
 #TICKET_IMAGE_TYPES = ("image/jpeg", "image/png", "image/webp")
-#NOT_NOW = ("<div class='icon'>⚠️</div><h1>الان نشد</h1>"
+#NOT_NOW = ("<div class='icon'><svg class='ui-icon' aria-hidden='true'><use href='#ui-alert'/></svg></div><h1>الان نشد</h1>"
 #           "<p class='sub'>چند دقیقه دیگر دوباره.</p>")
 #
 #
@@ -17284,7 +17322,7 @@ exit 0
 #    text = (info.get("pay_text") or "").strip()
 #    if not text:
 #        return ""
-#    return "<div class='pay'>💳 %s</div>" % html.escape(text)
+#    return "<div class='pay'><svg class='ui-icon' aria-hidden='true'><use href='#ui-card'/></svg> %s</div>" % html.escape(text)
 #
 #
 #def trial_box(info):
@@ -17298,11 +17336,11 @@ exit 0
 #    what = "%s — %s، %d روز%s" % (html.escape(p["name"]), size, p["days"],
 #                                  "، " + html.escape(p["note"]) if p.get("note") else "")
 #    if trial.get("available"):
-#        return ("<div class='dns'><div class='k'>🎁 تست رایگان</div>"
+#        return ("<div class='dns'><div class='k'><svg class='ui-icon' aria-hidden='true'><use href='#ui-gift'/></svg> تست رایگان</div>"
 #                "<p class='note' style='margin-top:0'>%s. یک بار، با یک کلیک، بدون رسید.</p>"
 #                "<form method='post' action='/trial'><button>دریافت تست رایگان</button>"
 #                "</form></div>" % what)
-#    return ("<div class='dns'><div class='k'>🎁 تست رایگان</div>"
+#    return ("<div class='dns'><div class='k'><svg class='ui-icon' aria-hidden='true'><use href='#ui-gift'/></svg> تست رایگان</div>"
 #            "<p class='note' style='margin-top:0'>%s.<br>%s</p></div>"
 #            % (what, html.escape(trial.get("why") or "")))
 #
@@ -17372,7 +17410,7 @@ exit 0
 #    wallet = info.get("wallet") or 0
 #    if plans and wallet > 0:
 #        # The same form, the plan chosen above - without the slip.
-#        out.append("<button formaction='/wallet-buy' formnovalidate>💰 پرداخت از کیف پول "
+#        out.append("<button formaction='/wallet-buy' formnovalidate><svg class='ui-icon' aria-hidden='true'><use href='#ui-wallet'/></svg> پرداخت از کیف پول "
 #                   "(موجودی %s تومان)</button><p class='note'>پلن انتخاب‌شده فوراً فعال "
 #                   "می‌شود و قیمتش از کیف پول کم می‌شود؛ رسید لازم نیست.</p>"
 #                   % format(wallet, ","))
@@ -17390,7 +17428,7 @@ exit 0
 #    moves = info.get("wallet_moves") or []
 #    if not info.get("wallet_on") and not info.get("wallet") and not moves:
 #        return ""
-#    out = ["<div class='dns'><div class='k'>💰 کیف پول</div>"
+#    out = ["<div class='dns'><div class='k'><svg class='ui-icon' aria-hidden='true'><use href='#ui-wallet'/></svg> کیف پول</div>"
 #           "<p class='note' style='margin-top:0'>موجودی: <b>%s تومان</b>. با موجودی "
 #           "کیف پول، پلن را از بخش «خرید یا تمدید» بدون رسید و فوری بخرید.</p>"
 #           % money(info.get("wallet"))]
@@ -17427,7 +17465,7 @@ exit 0
 #    offer = info.get("device_offer")
 #    if not offer:
 #        return ""
-#    out = ["<div class='dns'><div class='k'>📱 دستگاه اضافه</div>"
+#    out = ["<div class='dns'><div class='k'><svg class='ui-icon' aria-hidden='true'><use href='#ui-device'/></svg> دستگاه اضافه</div>"
 #           "<p class='note' style='margin-top:0'>الان %d دستگاه دارید — یعنی %d آی‌پی "
 #           "هم‌زمان. هر دستگاه اضافه %s تومان؛ تا وقتی همین پلن را تمدید کنید می‌ماند.</p>"
 #           % (offer["devices"], offer["devices"], money(offer["price"]))]
@@ -17435,7 +17473,7 @@ exit 0
 #        out.append("<p class='note'>%s</p></div>" % html.escape(offer.get("why") or ""))
 #        return "".join(out)
 #    if (info.get("wallet") or 0) >= offer["price"]:
-#        out.append("<form method='post' action='/device-wallet'><button>💰 خرید از کیف پول "
+#        out.append("<form method='post' action='/device-wallet'><button><svg class='ui-icon' aria-hidden='true'><use href='#ui-wallet'/></svg> خرید از کیف پول "
 #                   "(موجودی %s تومان)</button></form>" % money(info.get("wallet")))
 #    out.append("<details class='pw'><summary>خرید با رسید</summary>"
 #               "<form method='post' action='/device-receipt' enctype='multipart/form-data'>%s"
@@ -17457,7 +17495,7 @@ exit 0
 #    web = ref.get("web_link") or (
 #        "https://%s/signup?ref=%s" % (host, ref["code"])
 #        if re.fullmatch(r"[A-Za-z0-9.-]{1,253}(:\d{1,5})?", host or "") else "")
-#    out = ["<div class='dns'><div class='k'>🎁 دعوت از دوستان</div>"
+#    out = ["<div class='dns'><div class='k'><svg class='ui-icon' aria-hidden='true'><use href='#ui-gift'/></svg> دعوت از دوستان</div>"
 #           "<p class='note' style='margin-top:0'>هر کس با لینک شما حساب بسازد و پلن بخرد، "
 #           "<b>%d٪</b> مبلغ %s به کیف پول شما اضافه می‌شود.</p>"
 #           % (ref["percent"], "اولین خریدش" if ref.get("mode") == "first"
@@ -17567,8 +17605,8 @@ exit 0
 #
 #
 ## How the report says where a name went, and why.
-#QLOG_VERDICT = {"via relay": "✅ از رله", "no such name": "چنین اسمی نیست",
-#                "filtered in Iran": "⛔ فیلتر داخل ایران", "no answer": "جوابی نیامد",
+#QLOG_VERDICT = {"via relay": "از رله", "no such name": "چنین اسمی نیست",
+#                "filtered in Iran": "فیلتر داخل ایران", "no answer": "جوابی نیامد",
 #                "no address": "بدون آدرس"}
 #QLOG_REASON = {"blocked": "در سرویس مسدود شده",
 #               "forward": "از DNS مخصوص این دامنه پرسیده می‌شود",
@@ -17617,7 +17655,7 @@ exit 0
 #    if on:
 #        until = (datetime.fromisoformat(info["qlog_until"]) - datetime.now(timezone.utc))
 #        left = " — %d دقیقهٔ دیگر خودش خاموش می‌شود" % max(1, int(until.total_seconds() // 60))
-#    body = ["<details class='pw'%s><summary>🔎 گزارش DNS برای پشتیبانی%s</summary>"
+#    body = ["<details class='pw'%s><summary><svg class='ui-icon' aria-hidden='true'><use href='#ui-search'/></svg> گزارش DNS برای پشتیبانی%s</summary>"
 #            % (" open" if on else "", " (روشن)" if on else ""),
 #            "<p class='note'>وقتی سرویسی باز نمی‌شود، این را روشن کنید و همان سرویس را "
 #            "دوباره باز کنید: این‌جا می‌بینید دستگاه‌هایتان چه اسم‌هایی پرسیدند، هر کدام "
@@ -17863,7 +17901,7 @@ exit 0
 #    """Every server of the customer's with DoH on: each one's DoH, DoT, iPhone
 #    profile and Windows command, side by side - when one name is filtered,
 #    the next is right there."""
-#    out = ["<details class='pw doh'><summary>🔒 DNS رمزگذاری‌شده</summary>"
+#    out = ["<details class='pw doh'><summary><svg class='ui-icon' aria-hidden='true'><use href='#ui-lock'/></svg> DNS رمزگذاری\u200cشده</summary>"
 #           "<p class='note'>همین سرویس، ولی رمزگذاری‌شده. مثل DNS معمولی، فقط روی اینترنتی کار "
 #           "می‌کند که آی‌پی‌اش را ثبت کرده‌اید. هر سرور آدرس‌های خودش را دارد؛ اگر یکی فیلتر "
 #           "شد، سراغ دیگری بروید. آدرس‌های DoH مخصوص حساب شماست.</p>"
@@ -17918,7 +17956,7 @@ exit 0
 #    if not wg.get("on"):
 #        return ""
 #    devices = wg.get("devices") or []
-#    out = ["<details class='pw' id='wg' open><summary>🛡 وایرگارد</summary>",
+#    out = ["<details class='pw' id='wg' open><summary><svg class='ui-icon' aria-hidden='true'><use href='#ui-shield'/></svg> وایرگارد</summary>",
 #           "<p class='note'>یک راه دیگر برای استفاده از سرویس، کنار DNS: برنامهٔ "
 #           "وایرگارد را روی گوشی نصب می‌کنید و کانفیگ را به آن می‌دهید. جایی که DNS "
 #           "کار نمی‌کند، این کار می‌کند. %s</p>"
@@ -17931,9 +17969,9 @@ exit 0
 #    if wg.get("self") and wg.get("room"):
 #        # Every server still without one gets its config in the same go.
 #        out.append("<form method='post' action='/wg-new'><button>%s</button></form>"
-#                   % "📥 دریافت کانفیگ وایرگارد")
+#                   % "<svg class='ui-icon' aria-hidden='true'><use href='#ui-download'/></svg> دریافت کانفیگ وایرگارد")
 #    elif devices:
-#        out.append("<a class='btn' href='/wg'>📥 کانفیگ‌ها و QR کدها</a>")
+#        out.append("<a class='btn' href='/wg'><svg class='ui-icon' aria-hidden='true'><use href='#ui-download'/></svg> کانفیگ\u200cها و QR کدها</a>")
 #    elif not wg.get("self"):
 #        out.append("<p class='note'>برای گرفتن کانفیگ وایرگارد به پشتیبانی پیام بدهید.</p>")
 #    out.append(WG_HELP + "</details>")
@@ -17944,7 +17982,7 @@ exit 0
 #    """One server's config: its name and the admin's words about it, its QR,
 #    its file, its text to copy."""
 #    qr = res.get("qr") or ""
-#    return ("<div class='dns'><h3 style='margin:0 0 4px'>🛡 %s</h3>%s"
+#    return ("<div class='dns'><h3 style='margin:0 0 4px'><svg class='ui-icon' aria-hidden='true'><use href='#ui-shield'/></svg> %s</h3>%s"
 #            % (html.escape(res.get("server") or "کانفیگ وایرگارد"),
 #               "<p class='note' style='margin-top:0'>%s</p>" % html.escape(res["note"])
 #               if res.get("note") else "")
@@ -17965,7 +18003,7 @@ exit 0
 #
 #def wg_config_page(res):
 #    """One config, to import."""
-#    return ("<div class='icon'>🛡</div><h1>کانفیگ وایرگارد</h1>" + wg_one(res)
+#    return ("<div class='icon'><svg class='ui-icon' aria-hidden='true'><use href='#ui-shield'/></svg></div><h1>کانفیگ وایرگارد</h1>" + wg_one(res)
 #            + "<p class='note' style='text-align:center'>در برنامهٔ WireGuard: + ← Scan from "
 #            "QR code</p>" + WG_HELP + "<a class='btn ghost' href='/#wg'>برگشت</a>")
 #
@@ -17974,7 +18012,7 @@ exit 0
 #    """Every config of the customer's on one page, one under another, each
 #    under its server's name and the admin's words about it."""
 #    configs = res.get("configs") or []
-#    return ("<div class='icon'>🛡</div><h1>کانفیگ‌های وایرگارد</h1>"
+#    return ("<div class='icon'><svg class='ui-icon' aria-hidden='true'><use href='#ui-shield'/></svg></div><h1>کانفیگ\u200cهای وایرگارد</h1>"
 #            + ("<p class='note' style='text-align:center'>برای هر سرور یک کانفیگ. در برنامهٔ "
 #               "WireGuard هر کدام را جدا اضافه کنید: + ← Scan from QR code، یا فایلش را "
 #               "باز کنید. اگر یکی کار نکرد، دیگری را روشن کنید.</p>" if len(configs) > 1 else
@@ -17983,7 +18021,7 @@ exit 0
 #               "<p class='note' style='text-align:center'>هنوز کانفیگی ندارید.</p>")
 #            + "".join(wg_one(c, res.get("self")) for c in configs)
 #            + ("<form method='post' action='/wg-new'><button>%s</button></form>"
-#               % ("📥 کانفیگ سرورهای تازه" if configs else "📥 دریافت کانفیگ وایرگارد")
+#               % ("<svg class='ui-icon' aria-hidden='true'><use href='#ui-download'/></svg> کانفیگ سرورهای تازه" if configs else "<svg class='ui-icon' aria-hidden='true'><use href='#ui-download'/></svg> دریافت کانفیگ وایرگارد")
 #               if res.get("self") and res.get("room") else "")
 #            + WG_HELP + "<a class='btn ghost' href='/#wg'>برگشت</a>")
 #
@@ -17999,7 +18037,7 @@ exit 0
 #        return ""
 #    host = doh_public_name()
 #    return (
-#        "<details class='pw doh'%s><summary>🔒 DNS رمزگذاری‌شده</summary>"
+#        "<details class='pw doh'%s><summary><svg class='ui-icon' aria-hidden='true'><use href='#ui-lock'/></svg> DNS رمزگذاری\u200cشده</summary>"
 #        % (" open" if setup else "") +
 #        "<p class='note'>همین سرویس، ولی رمزگذاری‌شده. مثل DNS معمولی، فقط روی اینترنتی کار "
 #        "می‌کند که آی‌پی‌اش را ثبت کرده‌اید. این آدرس مخصوص حساب شماست و به رله می‌گوید "
@@ -18581,7 +18619,7 @@ exit 0
 #        everybody, and a new version comes at a new address."""
 #        blob = font_bytes()
 #        if blob is None:
-#            return self.send_html("<div class='icon'>❔</div><h1>صفحه پیدا نشد</h1>", 404)
+#            return self.send_html("<div class='icon'><svg class='ui-icon' aria-hidden='true'><use href='#ui-help'/></svg></div><h1>صفحه پیدا نشد</h1>", 404)
 #        self._headers_buffer = []
 #        self.send_response(200)
 #        self.send_header("Content-Type", "font/woff2")
@@ -18712,7 +18750,7 @@ exit 0
 #            return self.ticket_image()
 #
 #        if path != "/":
-#            return self.send_html("<div class='icon'>❔</div><h1>صفحه پیدا نشد</h1>", 404)
+#            return self.send_html("<div class='icon'><svg class='ui-icon' aria-hidden='true'><use href='#ui-help'/></svg></div><h1>صفحه پیدا نشد</h1>", 404)
 #        return self.dashboard()
 #
 #    def send(self, body, code, headers):
@@ -19107,11 +19145,11 @@ exit 0
 #    def ticket_image(self):
 #        res = self.ask_panel("/user-ticket-image", {"message_id": self.ticket_id("img")})
 #        if not res or not res.get("ok") or res.get("image_type") not in TICKET_IMAGE_TYPES:
-#            return self.send_html("<div class='icon'>❔</div><h1>عکس پیدا نشد</h1>", 404)
+#            return self.send_html("<div class='icon'><svg class='ui-icon' aria-hidden='true'><use href='#ui-help'/></svg></div><h1>عکس پیدا نشد</h1>", 404)
 #        try:
 #            blob = base64.b64decode(res["image_data"])
 #        except Exception:
-#            return self.send_html("<div class='icon'>❔</div><h1>عکس پیدا نشد</h1>", 404)
+#            return self.send_html("<div class='icon'><svg class='ui-icon' aria-hidden='true'><use href='#ui-help'/></svg></div><h1>عکس پیدا نشد</h1>", 404)
 #        return self.send(blob, 200, {"Content-Type": res["image_type"],
 #                                     "Cache-Control": "private, max-age=3600",
 #                                     "X-Content-Type-Options": "nosniff"})
@@ -19179,7 +19217,7 @@ exit 0
 #        if not re.fullmatch(r"[A-Za-z0-9_-]{8,64}", token) or not doh_token_known(token) \
 #                or not doh_url(info):
 #            return self.send_html(
-#                "<div class='icon'>🔒</div><h1>این آدرس معتبر نیست</h1>"
+#                "<div class='icon'><svg class='ui-icon' aria-hidden='true'><use href='#ui-lock'/></svg></div><h1>این آدرس معتبر نیست</h1>"
 #                "<p class='sub'>آدرس تازه را از <a href='/'>حساب خود</a> بگیرید.</p>", 404)
 #        if profile:
 #            return self.send(mobileconfig(info), 200, {
@@ -19187,7 +19225,7 @@ exit 0
 #                "Content-Disposition": "attachment; filename=doctor-dns.mobileconfig",
 #                "Cache-Control": "no-store"})
 #        return self.send_html(
-#            "<h1>🔒 DNS امن</h1><div class='sub'>%s</div>" % html.escape(brand())
+#            "<h1><svg class='ui-icon' aria-hidden='true'><use href='#ui-lock'/></svg> DNS امن</h1><div class='sub'>%s</div>" % html.escape(brand())
 #            + doh_box(info, profile="/doh-setup/%s.mobileconfig" % token, setup=True)
 #            + "<p class='alt'><a href='/'>ورود به حساب</a></p>")
 #
@@ -19222,11 +19260,11 @@ exit 0
 #                                       "code": code})
 #        except Exception as e:
 #            log(ERROR, "panel: user-info failed: %s" % e)
-#            return self.send_html("<div class='icon'>⚠️</div><h1>الان نشد</h1>"
+#            return self.send_html("<div class='icon'><svg class='ui-icon' aria-hidden='true'><use href='#ui-alert'/></svg></div><h1>الان نشد</h1>"
 #                                  "<p class='sub'>چند دقیقه دیگر دوباره.</p>", 502)
 #        if not info.get("ok"):
 #            return self.send_html(
-#                "<div class='icon'>🔑</div><h1>نشست منقضی شده</h1>"
+#                "<div class='icon'><svg class='ui-icon' aria-hidden='true'><use href='#ui-key'/></svg></div><h1>نشست منقضی شده</h1>"
 #                "<p class='sub'>دوباره <a href='/login'>وارد شوید</a>.</p>",
 #                200, {"Set-Cookie": "sdu=; Path=/; Max-Age=0"})
 #        if info.get("must_change"):
@@ -19288,7 +19326,7 @@ exit 0
 #            body.append("<div class='row'><span class='k'>%s</span>"
 #                        "<span class='v'>%s</span></div>" % (k, v))
 #        body.append(gauge)
-#        body.append("<a class='btn ghost' href='/usage'>📊 نمودار مصرف و سرعت</a>"
+#        body.append("<a class='btn ghost' href='/usage'><svg class='ui-icon' aria-hidden='true'><use href='#ui-chart'/></svg> نمودار مصرف و سرعت</a>"
 #                    "</section><section class='account-connect'><h2>تنظیمات اتصال</h2>")
 #        body.append(dns_box(info))
 #        body.append(qlog_box(info))
@@ -21577,8 +21615,8 @@ exit 0
 #
 #
 #
-#QLOG_VERDICT = {"via relay": "✅ از رله", "no such name": "چنین اسمی نیست",
-#                "filtered in Iran": "⛔ فیلتر داخل ایران", "no answer": "جوابی نیامد",
+#QLOG_VERDICT = {"via relay": "از رله", "no such name": "چنین اسمی نیست",
+#                "filtered in Iran": "فیلتر داخل ایران", "no answer": "جوابی نیامد",
 #                "no address": "بدون آدرس"}
 #QLOG_REASON = {"blocked": "ادمین مسدودش کرده",
 #               "forward": "از DNS تعیین‌شدهٔ ادمین پرسیده می‌شود",
@@ -21687,7 +21725,7 @@ exit 0
 #            except ValueError:
 #                continue
 #            if st.get("active") == want:
-#                what = "<span class='ok'>✓ روی %s</span>" % html.escape(want)
+#                what = "<span class='ok'><svg class='ui-icon' aria-hidden='true'><use href='#ui-check'/></svg> روی %s</span>" % html.escape(want)
 #            elif st.get("working"):
 #                what = "در حال گرفتن گواهی…"
 #            elif st.get("error"):
@@ -23292,7 +23330,7 @@ exit 0
 #    except ValueError:
 #        state = {}
 #    if want and (have == want or state.get("ok") and state.get("name") == want):
-#        note = "<span class='ok'>✓ DoH و DoT روشن</span>"
+#        note = "<span class='ok'><svg class='ui-icon' aria-hidden='true'><use href='#ui-check'/></svg> DoH و DoT روشن</span>"
 #    elif want and state.get("name") == want and not state.get("ok"):
 #        note = ("<span class='bad'>نشد: %s</span>%s" % (
 #            html.escape(state.get("error") or ""),
@@ -23302,7 +23340,7 @@ exit 0
 #    elif want:
 #        note = "<span class='warn'>در حال گرفتن گواهی…</span>"
 #    elif have:
-#        note = "<span class='ok'>✓ DoH و DoT روشن</span>"
+#        note = "<span class='ok'><svg class='ui-icon' aria-hidden='true'><use href='#ui-check'/></svg> DoH و DoT روشن</span>"
 #    else:
 #        note = "<span class='muted'>بدون دامنه: فقط DNS معمولی</span>"
 #    return ("<td><input form='srvlist' name='domain_%s' value='%s' dir='ltr' "
@@ -23339,7 +23377,7 @@ exit 0
 #    if on:
 #        form = ("<form method='post' action='/%s/public-dns'><input type='hidden' name='to' "
 #                "value='0'><button>خاموش کردن DNS عمومی</button></form>" % p)
-#        state = ("<p class='warn'>🌍 DNS عمومی روشن است: هر کسی آدرس رله را بگذارد، بدون "
+#        state = ("<p class='warn'><svg class='ui-icon' aria-hidden='true'><use href='#ui-globe'/></svg> DNS عمومی روشن است: هر کسی آدرس رله را بگذارد، بدون "
 #                 "ثبت‌نام و ثبت آی‌پی سرویس می‌گیرد.</p>")
 #    else:
 #        ask = ("DNS عمومی روشن شود؟ هر کسی آدرس رله را بگذارد، بدون ثبت‌نام و بدون هیچ "
@@ -23364,7 +23402,7 @@ exit 0
 #    mine = app_version()
 #    rc, text = self_upgrade_state()
 #    waiting = setting("upgrade_others_after")
-#    out = ["<div class='card'><h2>🆕 نسخهٔ تازه از گیت‌هاب</h2>"
+#    out = ["<div class='card'><h2><svg class='ui-icon' aria-hidden='true'><use href='#ui-plus'/></svg> نسخهٔ تازه از گیت\u200cهاب</h2>"
 #           "<p>این سرور: <b dir='ltr'>%s</b>" % html.escape(mine or "?")]
 #    if state.get("version"):
 #        out.append(" · آخرین نسخه در گیت‌هاب: <b dir='ltr'>%s</b>%s"
@@ -23618,7 +23656,7 @@ exit 0
 #
 #def online_card(p, rows, show_seller=False, most=100):
 #    """The home page's customers online now."""
-#    out = ["<div class='card' id='online'><h2>🟢 آنلاین الان (%d)</h2>" % len(rows)]
+#    out = ["<div class='card' id='online'><h2><svg class='ui-icon' aria-hidden='true'><use href='#ui-status'/></svg> آنلاین الان (%d)</h2>" % len(rows)]
 #    if not rows:
 #        out.append("<p class='muted'>الان کسی آنلاین نیست.</p>")
 #    else:
@@ -24045,7 +24083,7 @@ exit 0
 #            v = ms.get(ip)
 #            text = ms_text(v) if ip in ms else "-"
 #            if isinstance(v, int) and v == fastest:
-#                cells.append("<td><b class='ok'>%s ✓</b></td>" % text)
+#                cells.append("<td><b class='ok'>%s <svg class='ui-icon' aria-hidden='true'><use href='#ui-check'/></svg></b></td>" % text)
 #            elif ip in ms and v is None:
 #                cells.append("<td class='warn'>%s</td>" % text)
 #            else:
@@ -24054,7 +24092,7 @@ exit 0
 #        out.append("<tr><td>%s%s</td><td><code>%s</code></td>%s</tr>"
 #                   % (html.escape(prov), mark, ip, "".join(cells)))
 #    ages = [int(time.time() - at) // 60 for _, _, at in cols if at]
-#    out.append("</table><p class='muted'>میانهٔ سه سؤال واقعی DNS، به میلی‌ثانیه؛ ✓ سریع‌ترین هر "
+#    out.append("</table><p class='muted'>میانهٔ سه سؤال واقعی DNS، به میلی\u200cثانیه؛ <svg class='ui-icon' aria-hidden='true'><use href='#ui-check'/></svg> سریع\u200cترین هر "
 #               "ستون و ● آن‌هایی که الان انتخاب شده‌اند. آنچه برای مشتری‌ها مهم است ستون رله‌هاست: "
 #               "سؤال‌هایشان از آن‌جا پرسیده می‌شود. ستون هر نود زمانی است که nginx همان نود "
 #               "برای پیدا کردن آدرس سرویس‌ها منتظر می‌ماند. آخرین اندازه‌گیری: %s.</p>"
@@ -24088,7 +24126,7 @@ exit 0
 #
 #    bad = [ip for ip in picks if ip in ECS_RESOLVERS]
 #    out = ["<div class='card'><h2>DNS بالادستی</h2>",
-#           "<div class='msg err'>⚠️ %s زیرشبکهٔ ایرانی رله را به سرویس‌ها می‌گوید: PUBG "
+#           "<div class='msg err'><svg class='ui-icon' aria-hidden='true'><use href='#ui-alert'/></svg> %s زیرشبکهٔ ایرانی رله را به سرویس\u200cها می\u200cگوید: PUBG "
 #           "Mobile و بقیهٔ بازی‌های Tencent برای مشتری‌ها باز نمی‌شوند. Cloudflare یا "
 #           "Quad9 را بگذارید.</div>" % html.escape("، ".join(bad)) if bad else "",
 #           "<p class='muted'>هر اسمی که رله‌ها مسیریابی نمی‌کنند از این‌ها پرسیده "
@@ -24380,13 +24418,44 @@ exit 0
 #THEME_HEAD = ("<script>try{var t=localStorage.getItem('theme');"
 #              "if(t=='light'||t=='dark')document.documentElement"
 #              ".setAttribute('data-theme',t)}catch(e){}</script>")
-#THEME_BUTTON = (
+#ICON_SPRITE = (
+#    "<svg xmlns='http://www.w3.org/2000/svg' class='icon-definitions' aria-hidden='true'><defs>"
+#    "<symbol id='ui-sun' viewBox='0 0 24 24'><path d='M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8 M12 2v2 M12 20v2 M2 12h2 M20 12h2 M5 5l1 1 M18 18l1 1 M5 19l1-1 M18 6l1-1'/></symbol>"
+#    "<symbol id='ui-moon' viewBox='0 0 24 24'><path d='M21 13a9 9 0 0 1-10-10A9 9 0 1 0 21 13Z'/></symbol>"
+#    "<symbol id='ui-device' viewBox='0 0 24 24'><path d='M7 2h10v20H7Z M11 18h2'/></symbol>"
+#    "<symbol id='ui-shield' viewBox='0 0 24 24'><path d='M12 2 3 6v6c0 5 9 10 9 10s9-5 9-10V6Z M8 12l3 3 5-6'/></symbol>"
+#    "<symbol id='ui-globe' viewBox='0 0 24 24'><path d='M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0 M3 12h18 M12 3c5 5 5 13 0 18-5-5-5-13 0-18'/></symbol>"
+#    "<symbol id='ui-gift' viewBox='0 0 24 24'><path d='M3 8h18v4H3Z M5 12v9h14v-9 M12 8v13 M12 8C4 8 5 1 9 3l3 5c8 0 7-7 3-5Z'/></symbol>"
+#    "<symbol id='ui-link' viewBox='0 0 24 24'><path d='m10 13 4-4 M8 16l-1 1a4 4 0 0 1-6-6l5-5a4 4 0 0 1 6 0 M16 8l1-1a4 4 0 0 1 6 6l-5 5a4 4 0 0 1-6 0'/></symbol>"
+#    "<symbol id='ui-key' viewBox='0 0 24 24'><path d='M15 2a7 7 0 1 1-6 10L2 19v3h4v-3h3v-3l2-2 M16 6h1'/></symbol>"
+#    "<symbol id='ui-mail' viewBox='0 0 24 24'><path d='M3 4h18v16H3Z m0 1 9 8 9-8'/></symbol>"
+#    "<symbol id='ui-check' viewBox='0 0 24 24'><path d='m5 12 4 4L19 6'/></symbol>"
+#    "<symbol id='ui-pin' viewBox='0 0 24 24'><path d='M19 9c0 6-7 13-7 13S5 15 5 9a7 7 0 0 1 14 0 M15 9a3 3 0 1 1-6 0 3 3 0 0 1 6 0'/></symbol>"
+#    "<symbol id='ui-alert' viewBox='0 0 24 24'><path d='m12 3 10 18H2Z M12 9v5 M12 17v1'/></symbol>"
+#    "<symbol id='ui-card' viewBox='0 0 24 24'><path d='M2 4h20v16H2Z M2 9h20 M6 15h4'/></symbol>"
+#    "<symbol id='ui-wallet' viewBox='0 0 24 24'><path d='M3 5h16v4H3V5Zm0 4h19v12H3V9Zm14 5h5v3h-5v-3Z'/></symbol>"
+#    "<symbol id='ui-search' viewBox='0 0 24 24'><path d='M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0 m-2 6 6 6'/></symbol>"
+#    "<symbol id='ui-lock' viewBox='0 0 24 24'><path d='M5 10h14v12H5Z M8 10V6a4 4 0 0 1 8 0v4 M12 15v3'/></symbol>"
+#    "<symbol id='ui-download' viewBox='0 0 24 24'><path d='M12 2v13 m-5-5 5 5 5-5 M3 16v6h18v-6'/></symbol>"
+#    "<symbol id='ui-help' viewBox='0 0 24 24'><path d='M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0 M9 8a3 3 0 0 1 6 0c0 3-3 3-3 6 M12 17v1'/></symbol>"
+#    "<symbol id='ui-chart' viewBox='0 0 24 24'><path d='M3 3v18h18 M7 16v-5 M12 16V6 M17 16V9'/></symbol>"
+#    "<symbol id='ui-tag' viewBox='0 0 24 24'><path d='M2 2h8l12 12-8 8L2 10Z M6 6h1'/></symbol>"
+#    "<symbol id='ui-announce' viewBox='0 0 24 24'><path d='M3 9h5l12-6v18L8 15H3Z M7 15v6h4l-2-5'/></symbol>"
+#    "<symbol id='ui-eye' viewBox='0 0 24 24'><path d='M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12 M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0'/></symbol>"
+#    "<symbol id='ui-ban' viewBox='0 0 24 24'><path d='M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0 M6 6l12 12'/></symbol>"
+#    "<symbol id='ui-close' viewBox='0 0 24 24'><path d='m6 6 12 12 M6 18 18 6'/></symbol>"
+#    "<symbol id='ui-plus' viewBox='0 0 24 24'><path d='M12 4v16 M4 12h16'/></symbol>"
+#    "<symbol id='ui-status' viewBox='0 0 24 24'><path d='M20 12a8 8 0 1 1-16 0 8 8 0 0 1 16 0'/></symbol>"
+#    '</defs></svg>'
+#)
+#
+#THEME_BUTTON = ICON_SPRITE + (
 #    "<button type='button' class='theme' title='روشن / تیره' aria-label='روشن / تیره'"
 #    " onclick=\"(function(r){var c=r.getAttribute('data-theme')||"
 #    "(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'),"
 #    "n=c=='light'?'dark':'light';r.setAttribute('data-theme',n);"
 #    "try{localStorage.setItem('theme',n)}catch(e){}})(document.documentElement)\">"
-#    "<span class='sun'>☀️</span><span class='moon'>🌙</span></button>"
+#    "<span class='sun'><svg class='ui-icon' aria-hidden='true'><use href='#ui-sun'/></svg></span><span class='moon'><svg class='ui-icon' aria-hidden='true'><use href='#ui-moon'/></svg></span></button>"
 #    "<button type='button' class='theme lang' title='English / فارسی'"
 #    " aria-label='English / فارسی' onclick=\"document.cookie='lang='+"
 #    "(document.documentElement.lang=='en'?'fa':'en')+"
@@ -24394,6 +24463,13 @@ exit 0
 #    "<span class='fa-only'>EN</span><span class='en-only'>فا</span></button>")
 #
 #CSS = THEME_CSS + """
+#.icon-definitions{position:absolute;width:0;height:0;overflow:hidden;pointer-events:none}
+#.ui-icon{display:inline-block;width:18px;height:18px;flex:none;vertical-align:-4px;
+# fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+#.theme .ui-icon{width:19px;height:19px;vertical-align:middle}
+#.icon .ui-icon{width:40px;height:40px}
+#.brand .mark .ui-icon{width:28px;height:28px}
+#
 #*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 #html{scroll-behavior:smooth}
 #body{
@@ -24674,7 +24750,7 @@ exit 0
 #.user-directory table.users th{
 # background:var(--row);color:var(--dim);font-size:11.5px;font-weight:650;
 # border-radius:0;padding:13px 12px}
-#.user-directory table.users td{padding:20px 12px;border-bottom:1px solid var(--line)}
+#.user-directory table.users td{padding:16px 12px;border-bottom:1px solid var(--line)}
 #.user-directory table.users tr:last-child td{border-bottom:0}
 #.user-directory table.users tr:is(:hover,:focus-within)>td{background:var(--row)}
 #.user-directory table.users :is(td,th):first-child{padding-inline-start:24px}
@@ -24685,13 +24761,25 @@ exit 0
 #.user-directory table.users td.who small{font-size:11px;line-height:1.9}
 #.user-directory table.users input{
 # background:var(--bg);border:1px solid var(--line);border-radius:8px;
-# min-height:38px;text-align:center;font-size:13px}
+# height:40px;min-height:40px;text-align:center;font-size:13px;padding:8px 10px}
 #.user-directory table.users input:hover{border-color:var(--line2)}
-#.user-directory table.users :is(select,details>summary){min-height:38px;border-radius:8px}
+#.user-directory table.users :is(select,details>summary){
+# min-height:40px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;gap:6px}
+#.user-directory table.users input[name=quota_gb],
+#.user-directory table.users input[name=speed_mb]{width:74px}
+#.user-directory table.users input[name=days]{width:92px}
+#.user-directory table.users select{min-width:90px}
+#.user-directory table.users td.acts{white-space:nowrap}
+#.user-directory table.users td.acts>form{vertical-align:middle}
+#.user-directory table.users td.acts details.more{vertical-align:middle}
+#.user-directory table.users td.acts details.more>summary{min-width:40px;padding:6px 10px}
+#.user-directory table.users td:nth-child(2)>details{margin-top:7px}
+#.user-directory table.users td:nth-child(2)>details>summary{min-width:80px;font-variant-numeric:tabular-nums}
+#
 #.user-directory table.users details>form,.user-directory table.users details>.menu{position:static}
 #.user-directory table.users .pill{border-radius:7px;padding:4px 10px;font-size:11px}
 #.user-directory table.users td.acts>form{display:inline}
-#.user-directory table.users td.acts button{min-height:36px;border-radius:8px;box-shadow:none}
+#.user-directory table.users td.acts button{height:40px;min-height:40px;border-radius:8px;box-shadow:none}
 #.user-directory table.users td.acts button.del{border-color:var(--line);color:var(--muted)}
 #.user-directory table.users td.acts button.del:hover{border-color:var(--bad);color:var(--bad)}
 #.reserved{color:var(--accent);font-size:11.5px;font-weight:600}
@@ -25046,7 +25134,7 @@ exit 0
 #    price = setting("device_price")
 #    limit = setting("ip_changes_per_day")
 #    return (
-#        "<div class='card'><h2>📱 دستگاه‌ها و تغییر آی‌پی</h2>"
+#        "<div class='card'><h2><svg class='ui-icon' aria-hidden='true'><use href='#ui-device'/></svg> دستگاه\u200cها و تغییر آی\u200cپی</h2>"
 #        "<form method='post' action='/%s/devices-settings'><div class='row'>"
 #        "<div class='f'><label>قیمت هر دستگاه اضافه (تومان)</label>"
 #        "<input name='price' value='%s' size='10' dir='ltr' placeholder='خالی = فروخته نمی‌شود'>"
@@ -25072,12 +25160,12 @@ exit 0
 #    total = r["max_ips"] or 1
 #    # A WireGuard config takes a device as an address does; it is listed on
 #    # its own page, where it is made and deleted.
-#    wg = ("<label><a href='/%s/wg?u=%d'>🛡 کانفیگ وایرگارد: %d از %d</a></label>"
+#    wg = ("<label><a href='/%s/wg?u=%d'><svg class='ui-icon' aria-hidden='true'><use href='#ui-shield'/></svg> کانفیگ وایرگارد: %d از %d</a></label>"
 #          % (p, r["id"], configs, max(len(wg_ready_relays()), configs))
 #          if configs or wg_on() else "")
 #    # A device has an address for the DNS and a WireGuard config both: the
 #    # count beside it is the addresses'.
-#    return ("<details><summary title='دستگاه‌ها'>📱 %d/%d</summary>"
+#    return ("<details><summary title='دستگاه\u200cها'><svg class='ui-icon' aria-hidden='true'><use href='#ui-device'/></svg> %d/%d</summary>"
 #            "<form method='post' action='/%s/user-devices'>"
 #            "<input type='hidden' name='id' value='%d'>%s%s"
 #            "<label>تعداد دستگاه <input name='devices' value='%d' size='2' dir='ltr'></label>"
@@ -25274,7 +25362,7 @@ exit 0
 #    n_users = STORE.one("SELECT count(DISTINCT user_id) c FROM wg_devices")["c"]
 #    n_blocked = STORE.one("SELECT count(*) c FROM wg_devices WHERE blocked_day = ?",
 #                          (stamp.astimezone(TEHRAN).strftime("%Y-%m-%d"),))["c"]
-#    out = ["<div class='card'><h2>🛡 وایرگارد</h2><div class='grid'>%s</div></div>" % "".join(
+#    out = ["<div class='card'><h2><svg class='ui-icon' aria-hidden='true'><use href='#ui-shield'/></svg> وایرگارد</h2><div class='grid'>%s</div></div>" % "".join(
 #        "<div class='stat'><div class='n'>%s</div><div class='l'>%s</div></div>" % (v, l)
 #        for v, l in (
 #            ("روشن" if on else "خاموش", "وایرگارد"), (n_all, "کانفیگ"),
@@ -25302,7 +25390,7 @@ exit 0
 #                        for x in plans) or "<span class='muted'>هنوز پلنی نیست</span>"
 #    endpoint = wg_setting("wg_endpoint") or "ip"
 #    out.append(
-#        "<div class='card'><h2>🛡 تنظیمات وایرگارد</h2>"
+#        "<div class='card'><h2><svg class='ui-icon' aria-hidden='true'><use href='#ui-shield'/></svg> تنظیمات وایرگارد</h2>"
 #        "<form method='post' action='/%s/wg-save'>"
 #        "<label style='display:inline'><input type='checkbox' name='on' value='1'%s> "
 #        "<b>روشن</b></label> <label style='display:inline;margin-inline-start:14px'>"
@@ -25336,7 +25424,7 @@ exit 0
 #        "<p class='muted'>گوشی مشتری با وایرگارد فقط به رلهٔ ایران وصل می‌شود و از راه "
 #        "آن فقط DNS و سرویس‌هایی که این سرویس باز می‌کند؛ بقیهٔ اینترنتش مستقیم است و "
 #        "رله چیزی را فوروارد نمی‌کند، پس VPN نیست. هر مشتری برای هر رله یک کانفیگ "
-#        "می‌گیرد، مثل یک آدرس DNS برای هر رله. کانفیگ‌ها را از «کاربران ← 📱 دستگاه‌ها» "
+#        "می‌گیرد، مثل یک آدرس DNS برای هر رله. کانفیگ‌ها را از «کاربران ← دستگاه‌ها» "
 #        "بسازید.</p>"
 #        "<p class='muted'>با «دامنهٔ رله»، اگر آی‌پی رله عوض شود کانفیگ مشتری‌ها کار "
 #        "می‌کند - فقط رکورد دامنه را عوض کنید؛ رله‌ای که دامنه ندارد با آی‌پی می‌ماند. "
@@ -25400,7 +25488,7 @@ exit 0
 #        return "<div class='card'><p class='muted'>این کاربر پیدا نشد.</p></div>"
 #    who = user["username"] or user["phone"] or user["telegram_id"] or "#%d" % uid
 #    devs = STORE.q("SELECT * FROM wg_devices WHERE user_id = ? ORDER BY id", (uid,))
-#    out = ["<div class='card'><h2>🛡 کانفیگ‌های وایرگارد %s</h2>"
+#    out = ["<div class='card'><h2><svg class='ui-icon' aria-hidden='true'><use href='#ui-shield'/></svg> کانفیگ\u200cهای وایرگارد %s</h2>"
 #           "<p class='muted'><a href='/%s/users'>‹ برگشت به کاربران</a> — برای هر رله یک "
 #           "کانفیگ، مثل یک آدرس DNS برای هر رله؛ روی %d دستگاه (آی‌پی ثبت‌شده) کار می‌کند."
 #           "</p>"
@@ -25443,7 +25531,7 @@ exit 0
 #    except sqlite3.OperationalError:
 #        return ""
 #    plans = {r["id"]: r["name"] for r in STORE.q("SELECT id, name FROM plans WHERE is_trial = 0")}
-#    out = ["<div class='card'><h2>🏷 کدهای تخفیف (%d)</h2>" % len(rows)]
+#    out = ["<div class='card'><h2><svg class='ui-icon' aria-hidden='true'><use href='#ui-tag'/></svg> کدهای تخفیف (%d)</h2>" % len(rows)]
 #    if rows:
 #        out.append("<table><tr><th>کد</th><th>تخفیف</th><th>تا</th><th>استفاده</th>"
 #                   "<th>هر مشتری</th><th>پلن‌ها</th><th></th></tr>")
@@ -25601,7 +25689,7 @@ exit 0
 #    pct = setting("ref_percent") or "10"
 #    mode = setting("ref_mode") or "every"
 #    return (
-#        "<div class='card'><h2>💰 کیف پول</h2>"
+#        "<div class='card'><h2><svg class='ui-icon' aria-hidden='true'><use href='#ui-wallet'/></svg> کیف پول</h2>"
 #        "<form method='post' action='/%s/wallet-settings'>"
 #        "<label style='display:inline'><input type='checkbox' name='on' value='1'%s>"
 #        " مشتری بتواند کیف پولش را شارژ کند</label> <button class='ghost'>ذخیره</button>"
@@ -25612,7 +25700,7 @@ exit 0
 #        "موجودی کیف پول، پلن را بدون رسید و فوری می‌خرد. خرید از کیف پول همیشه باز است، حتی "
 #        "وقتی شارژ بسته باشد؛ چون پورسانت دعوت و پولی که خودتان به کیف پول کسی اضافه "
 #        "کرده‌اید هم قابل خرج است.</p></div>"
-#        "<div class='card'><h2>🎁 دعوت از دوستان</h2>"
+#        "<div class='card'><h2><svg class='ui-icon' aria-hidden='true'><use href='#ui-gift'/></svg> دعوت از دوستان</h2>"
 #        "<form method='post' action='/%s/ref-settings'>"
 #        "<p><label style='display:inline'><input type='checkbox' name='on' value='1'%s>"
 #        " هر مشتری لینک دعوت خودش را بگیرد</label></p>"
@@ -25672,7 +25760,7 @@ exit 0
 #    """"🖼 3 عکس 🎬 فیلم " for the list of those sent."""
 #    kinds = (media or "").split(",") if media else []
 #    out = ""
-#    for kind, icon, word in (("photo", "🖼", "عکس"), ("video", "🎬", "فیلم")):
+#    for kind, icon, word in (("photo", "<svg class='ui-icon' aria-hidden='true'><use href='#ui-card'/></svg>", "عکس"), ("video", "<svg class='ui-icon' aria-hidden='true'><use href='#ui-chart'/></svg>", "فیلم")):
 #        n = kinds.count(kind)
 #        if n == 1:
 #            out += "%s %s " % (icon, word)
@@ -25747,7 +25835,7 @@ exit 0
 #        options.append("<option value='%s'>%s — %d نفر%s</option>"
 #                       % (key, html.escape(label), len(reach),
 #                          " (%d نفر دیگر تلگرام ندارند)" % without if without else ""))
-#    out = ["<div class='card'><h2>📣 پیام همگانی</h2>"
+#    out = ["<div class='card'><h2><svg class='ui-icon' aria-hidden='true'><use href='#ui-announce'/></svg> پیام همگانی</h2>"
 #           "<form method='post' action='/%s/broadcast-send' enctype='multipart/form-data'"
 #           " onsubmit=\"return confirm("
 #           "'این پیام برای همه‌ی کسانی که انتخاب کرده‌اید فرستاده شود؟')\">"
@@ -26271,14 +26359,14 @@ exit 0
 #            return "<td class='muted'>-</td>"
 #        state, detail, ms = res
 #        if detail == "expired certificate":
-#            return "<td class='warn'>⚠ %s</td>" % html.escape(PROBE_WORDS[detail])
+#            return "<td class='warn'><svg class='ui-icon' aria-hidden='true'><use href='#ui-alert'/></svg> %s</td>" % html.escape(PROBE_WORDS[detail])
 #        if state == "ok":
-#            return "<td class='ok'>✓ %s · %d ms</td>" % (html.escape(detail), ms)
+#            return "<td class='ok'><svg class='ui-icon' aria-hidden='true'><use href='#ui-check'/></svg> %s · %d ms</td>" % (html.escape(detail), ms)
 #        # A relay cannot see where a name points - the exit resolves it - so
 #        # where the exit found it pointing here, that is the reason for both.
 #        if exit_res and exit_res[1] == "local address":
 #            detail = "local address"
-#        return "<td class='warn'>✗ %s</td>" % html.escape(words(detail))
+#        return "<td class='warn'><svg class='ui-icon' aria-hidden='true'><use href='#ui-close'/></svg> %s</td>" % html.escape(words(detail))
 #
 #    summary = []
 #    for (key, name), doms in services.items():
@@ -26290,9 +26378,9 @@ exit 0
 #            if not n:
 #                chips.append("<td class='muted'>سایتی ندارد</td>")
 #            elif ok == n:
-#                chips.append("<td><span class='ok'>✓ همه (%d)</span></td>" % n)
+#                chips.append("<td><span class='ok'><svg class='ui-icon' aria-hidden='true'><use href='#ui-check'/></svg> همه (%d)</span></td>" % n)
 #            elif ok == 0:
-#                chips.append("<td><b class='warn'>✗ هیچ‌کدام (%d)</b></td>" % n)
+#                chips.append("<td><b class='warn'><svg class='ui-icon' aria-hidden='true'><use href='#ui-close'/></svg> هیچ\u200cکدام (%d)</b></td>" % n)
 #                bad += 2
 #            else:
 #                chips.append("<td><span class='warn'>%d از %d</span></td>" % (ok, n))
@@ -26599,7 +26687,7 @@ exit 0
 #        " inputmode='numeric' placeholder='تومان'>"
 #        "<label style='display:block;margin-top:4px' title='رایگان، با یک کلیک، هر "
 #        "تلگرام و هر حساب یک بار'><input form='%s' type='checkbox' name='trial' value='1'%s>"
-#        " 🎁 تست رایگان</label></td>"
+#        " <svg class='ui-icon' aria-hidden='true'><use href='#ui-gift'/></svg> تست رایگان</label></td>"
 #        "<td><input form='%s' name='speed_mb' value='%s' size='3'"
 #        " inputmode='decimal' title='مگابیت بر ثانیه؛ خالی یا ۰ یعنی بی‌حد'></td>"
 #        "<td><input form='%s' name='devices' value='%s' size='2' inputmode='numeric'"
@@ -26667,7 +26755,7 @@ exit 0
 #    rows = STORE.q("SELECT DISTINCT COALESCE(template_id, ?) t FROM users"
 #                   " WHERE status IN ('active', 'over_quota')", (default_id,))
 #    n = sum(1 for r in rows if r["t"] != default_id)
-#    return ("<p class='muted'>⚠️ هر قالبی که مشتری دارد، روی هر رله و تک‌سرور یک DNS جدا "
+#    return ("<p class='muted'><svg class='ui-icon' aria-hidden='true'><use href='#ui-alert'/></svg> هر قالبی که مشتری دارد، روی هر رله و تک\u200cسرور یک DNS جدا "
 #            "اجرا می‌کند که حدود %d مگابایت رم می‌گیرد. الان %d قالب مشتری دارند؛ یعنی حدود "
 #            "%d مگابایت روی هر رله. قالبی که مشتری ندارد رم نمی‌گیرد.</p>"
 #            % (TEMPLATE_MB, n, n * TEMPLATE_MB))
@@ -27735,7 +27823,7 @@ exit 0
 #        banner = "<div class='msg %s'>%s</div>" % (msg_kind, html.escape(msg))
 #    viewing = getattr(REQ, "viewing", None)
 #    if viewing is not None:
-#        banner = ("<div class='msg warnbox'>👁 پنل را همان‌طور می‌بینید که <b>%s</b> می‌بیند. "
+#        banner = ("<div class='msg warnbox'><svg class='ui-icon' aria-hidden='true'><use href='#ui-eye'/></svg> پنل را همان\u200cطور می\u200cبینید که <b>%s</b> می\u200cبیند. "
 #                  "<form method='post' action='/%s/view-as-stop' style='display:inline'>"
 #                  "<button class='ghost'>برگشت به حساب خودم</button></form></div>"
 #                  % (html.escape(viewing["username"]), cfg["ADMIN_PATH"])) + banner
@@ -28283,11 +28371,11 @@ exit 0
 #                or str(r["telegram_id"] or "#%d" % r["user_id"]))
 #            topup = r["kind"] == "topup"
 #            if r["kind"] == "device":
-#                bought = ("<div class='bought'>📱 دستگاه اضافه · %s تومان<span class='muted'>"
+#                bought = ("<div class='bought'><svg class='ui-icon' aria-hidden='true'><use href='#ui-device'/></svg> دستگاه اضافه · %s تومان<span class='muted'>"
 #                          " — با تأیید، یک دستگاه به حسابش اضافه می‌شود</span></div>"
 #                          % format(r["amount"], ","))
 #            elif topup:
-#                bought = ("<div class='bought'>💰 شارژ کیف پول · مبلغی که مشتری نوشته: "
+#                bought = ("<div class='bought'><svg class='ui-icon' aria-hidden='true'><use href='#ui-wallet'/></svg> شارژ کیف پول · مبلغی که مشتری نوشته: "
 #                          "%s تومان<span class='muted'> — موجودی فعلی: %s تومان</span>"
 #                          "</div>" % (format(r["amount"], ","), format(r["wallet"] or 0, ",")))
 #            elif r["plan_name"]:
@@ -28304,7 +28392,7 @@ exit 0
 #                if r["code_id"]:
 #                    code = STORE.one("SELECT code FROM discount_codes WHERE id = ?",
 #                                     (r["code_id"],))
-#                    bought += ("<div class='bought'>🏷 با کد تخفیف <code dir='ltr'>%s</code> — "
+#                    bought += ("<div class='bought'><svg class='ui-icon' aria-hidden='true'><use href='#ui-tag'/></svg> با کد تخفیف <code dir='ltr'>%s</code> — "
 #                               "قیمت پلن %s تومان</div>"
 #                               % (html.escape(code["code"] if code else "?"),
 #                                  format(r["list_price"] or 0, ",")))
@@ -28813,7 +28901,7 @@ exit 0
 #                    "SELECT count(*) c FROM wg_devices d JOIN users u ON u.id = d.user_id"
 #                    " WHERE d.last_handshake >= ?" + extra,
 #                    ((datetime.now(timezone.utc) - timedelta(minutes=3)).isoformat(
-#                        timespec="seconds"),) + args)["c"], "🛡 وایرگارد آنلاین"))
+#                        timespec="seconds"),) + args)["c"], "وایرگارد آنلاین"))
 #        stats += [(ips["c"], "آی‌پی ثبت‌شده"), (human(u["b"]), "مجموع مصرف")]
 #        for n, l in stats:
 #            out.append("<div class='stat'><div class='n'>%s</div>"
@@ -29228,7 +29316,7 @@ exit 0
 #                   "روی باقی‌مانده اضافه می‌شوند. خرید پلن دیگر از همان لحظه از نو "
 #                   "شروع می‌شود و باقی‌ماندهٔ قبلی از بین می‌رود؛ این را پیش از "
 #                   "خرید به مشتری می‌گوییم. «نامحدود» فقط با تیک خودش؛ خانهٔ خالیِ "
-#                   "حجم پذیرفته نمی‌شود.</p>%s<p class='muted'>🎁 «تست رایگان»: فروخته "
+#                   "حجم پذیرفته نمی\u200cشود.</p>%s<p class='muted'><svg class='ui-icon' aria-hidden='true'><use href='#ui-gift'/></svg> «تست رایگان»: فروخته "
 #                   "نمی‌شود؛ مشتری با یک کلیک می‌گیردش، در پنل خودش یا ربات. شرطش "
 #                   "تلگرامِ وصل‌شده است، و هر تلگرام و هر حساب فقط یک بار. کسی که همین "
 #                   "حالا سرویس فعال دارد نمی‌گیردش، تا باقی‌ماندهٔ پلنش از بین نرود. "
@@ -29465,7 +29553,7 @@ exit 0
 #        if text:
 #            out.append("<div class='card'><h2>مشتری این را می‌بیند</h2>"
 #                       "<div style='white-space:pre-wrap;padding:10px 12px;border:1px dashed "
-#                       "var(--btn);border-radius:10px;line-height:1.9'>💳 %s</div></div>"
+#                       "var(--btn);border-radius:10px;line-height:1.9'><svg class='ui-icon' aria-hidden='true'><use href='#ui-card'/></svg> %s</div></div>"
 #                       % html.escape(text))
 #        else:
 #            out.append("<div class='card'><p class='warn'>هنوز چیزی ننوشته‌اید؛ مشتری موقع خرید "
@@ -32333,7 +32421,7 @@ exit 0
 #    services above, and under each kind its full list."""
 #    on_rows, off = block_pick(t["id"])
 #    lists = {b[0]: b for b in BLOCKLISTS}
-#    out = ["<div class='card blocks'><h2>🚫 مسدودی‌ها</h2>"
+#    out = ["<div class='card blocks'><h2><svg class='ui-icon' aria-hidden='true'><use href='#ui-ban'/></svg> مسدودی\u200cها</h2>"
 #           "<form method='post' action='/%s/template-blocklists'>"
 #           "<input type='hidden' name='id' value='%d'>"
 #           "<p class='muted'>تیک یعنی بسته: مشتری‌های این قالب نمی‌توانند آن دامنه‌ها را "
@@ -51760,6 +51848,39 @@ exit 0
 
 #__BEGIN_I18N_EN__
 #{
+#"دریافت کانفیگ وایرگارد": "Get a WireGuard config",
+#"گوشی مشتری با وایرگارد فقط به رلهٔ ایران وصل می‌شود و از راه آن فقط DNS و سرویس‌هایی که این سرویس باز می‌کند؛ بقیهٔ اینترنتش مستقیم است و رله چیزی را فوروارد نمی‌کند، پس VPN نیست. هر مشتری برای هر رله یک کانفیگ می‌گیرد، مثل یک آدرس DNS برای هر رله. کانفیگ‌ها را از «کاربران ← دستگاه‌ها» بسازید.": "With WireGuard a customer's phone reaches only the relay in Iran, and through it only DNS and the services this service opens; the rest of their internet goes direct, and the relay forwards nothing, so it is not a VPN. Each customer gets one config for each relay, as one DNS address for each relay. Make configs from Users → Devices.",
+#"فیلتر داخل ایران": "Filtered inside Iran",
+#"وایرگارد آنلاین": "WireGuard online",
+#"کانفیگ سرورهای تازه": "Configs for the new servers",
+#"نمودار مصرف و سرعت": "Usage and speed charts",
+#"DNS امن": "Secure DNS",
+#"کانفیگ‌ها و QR کدها": "Configs and QR codes",
+#"گزارش DNS برای پشتیبانی": "DNS report for support",
+#"خرید از کیف پول (موجودی": "Buy from wallet (balance",
+#"پرداخت از کیف پول (موجودی": "Pay from wallet (balance",
+#"تست رایگان": "Free trial",
+#"حساب شما به تلگرام وصل است؛ اگر رمز را فراموش کنید، از صفحهٔ ورود با کد تلگرام بازیابی‌اش می‌کنید.": "Your account is linked to Telegram; if you forget your password, you recover it from the sign-in page with a Telegram code.",
+#"با لینک دعوت یکی از دوستانتان آمده‌اید.": "You came with a friend’s invitation link.",
+#"مسدودی‌ها": "Blocks",
+#"«تست رایگان»: فروخته نمی‌شود؛ مشتری با یک کلیک می‌گیردش، در پنل خودش یا ربات. شرطش تلگرامِ وصل‌شده است، و هر تلگرام و هر حساب فقط یک بار. کسی که همین حالا سرویس فعال دارد نمی‌گیردش، تا باقی‌ماندهٔ پلنش از بین نرود. یک پلن تست در یک زمان.": "“Free trial”: not sold; the customer gets it with one click, in their own panel or the bot. It needs a linked Telegram, and each Telegram account and each account only once. Someone who has an active service right now does not get it, so what is left of their plan is not lost. One trial plan at a time.",
+#"با کد تخفیف": "With discount code",
+#"شارژ کیف پول · مبلغی که مشتری نوشته:": "Wallet top-up · amount the customer wrote:",
+#"پنل را همان‌طور می‌بینید که": "You are seeing the panel as",
+#"هر قالبی که مشتری دارد، روی هر رله و تک‌سرور یک DNS جدا اجرا می‌کند که حدود": "Every template that has customers runs its own DNS on each relay and single server, taking about",
+#"هیچ‌کدام (": "None (",
+#"پیام همگانی": "Broadcast message",
+#"دعوت از دوستان": "Invite friends",
+#"کدهای تخفیف (": "Discount codes (",
+#"تنظیمات وایرگارد": "WireGuard settings",
+#"کانفیگ وایرگارد:": "WireGuard configs:",
+#"دستگاه‌ها و تغییر آی‌پی": "Devices and IP changes",
+#"سریع‌ترین هر ستون و ● آن‌هایی که الان انتخاب شده‌اند. آنچه برای مشتری‌ها مهم است ستون رله‌هاست: سؤال‌هایشان از آن‌جا پرسیده می‌شود. ستون هر نود زمانی است که nginx همان نود برای پیدا کردن آدرس سرویس‌ها منتظر می‌ماند. آخرین اندازه‌گیری:": "Fastest in each column. Selected resolvers are marked. The relay column measures customer queries. Each node column measures the DNS lookup time used by its nginx proxy. Last measurement:",
+#"میانهٔ سه سؤال واقعی DNS، به میلی‌ثانیه؛": "Median of three real DNS queries, in milliseconds.",
+#"آنلاین الان (": "Online now (",
+#"نسخهٔ تازه از گیت‌هاب": "New version from GitHub",
+#"DNS عمومی روشن است: هر کسی آدرس رله را بگذارد، بدون ثبت‌نام و ثبت آی‌پی سرویس می‌گیرد.": "Public DNS is on: anyone who sets the relay’s address gets the service, with no sign-up and no registered IP.",
+#"DoH و DoT روشن": "DoH and DoT on",
 #"کل کاربران": "All users",
 #"وضعیت کاربران": "User status",
 #"مدیریت DNS": "DNS administration",
@@ -53427,7 +53548,6 @@ exit 0
 #"مگابیت بر ثانیه، میانگین ۵ دقیقهٔ اخیر": "Mbit/s, average of the last 5 minutes",
 #"مگابیت بر ثانیه، ۰=بی‌حد": "Mbit/s, 0 = no limit",
 #"مگابیت بر ثانیه؛ خالی یا ۰ یعنی بی‌حد": "Mbit/s; empty or 0 means no limit",
-#"میانهٔ سه سؤال واقعی DNS، به میلی‌ثانیه؛ ✓ سریع‌ترین هر ستون و ● آن‌هایی که الان انتخاب شده‌اند. آنچه برای مشتری‌ها مهم است ستون رله‌هاست: سؤال‌هایشان از آن‌جا پرسیده می‌شود. ستون هر نود زمانی است که nginx همان نود برای پیدا کردن آدرس سرویس‌ها منتظر می‌ماند. آخرین اندازه‌گیری:": "The median of three real DNS questions, in milliseconds; ✓ the fastest in each column and ● the ones chosen now. What matters to customers is the relays' columns: their questions are asked from there. A node's column is how long that node's nginx waits to find the services' addresses. Last measured:",
 #"میانگین هر ۵ دقیقه. رله هر نیم دقیقه گزارش می‌دهد، پس اوج لحظه‌ای کوتاه در این نمودار دیده نمی‌شود.": "Average of every 5 minutes. The relay reports every half minute, so a brief momentary peak does not show in this chart.",
 #"میانگین ۵ دقیقهٔ اخیر": "Average of the last 5 minutes",
 #"میلادی (2026-09-29)": "Gregorian (2026-09-29)",
@@ -53909,7 +54029,6 @@ exit 0
 #"گواهی خود سایت منقضی یا ناقص است": "The site’s own certificate is expired or incomplete",
 #"گواهی خود سایت منقضی یا ناقص است — مشکل از خود سرویس است، نه از ما": "The site’s own certificate is expired or incomplete — the problem is with the service itself, not with us",
 #"گواهی نامعتبر — جواب از جای دیگری آمد": "Invalid certificate — the answer came from somewhere else",
-#"گوشی مشتری با وایرگارد فقط به رلهٔ ایران وصل می‌شود و از راه آن فقط DNS و سرویس‌هایی که این سرویس باز می‌کند؛ بقیهٔ اینترنتش مستقیم است و رله چیزی را فوروارد نمی‌کند، پس VPN نیست. هر مشتری برای هر رله یک کانفیگ می‌گیرد، مثل یک آدرس DNS برای هر رله. کانفیگ‌ها را از «کاربران ← 📱 دستگاه‌ها» بسازید.": "With WireGuard a customer's phone reaches only the relay in Iran, and through it only DNS and the services this service opens; the rest of their internet goes direct, and the relay forwards nothing, so it is not a VPN. Each customer gets one config for each relay, as one DNS address for each relay. Make configs from Users → 📱 Devices.",
 #"گیت‌هاب جواب درستی نداد:": "GitHub did not answer properly:",
 #"گیرنده‌ها را انتخاب کنید": "Choose the recipients",
 #"گیلتی گیر": "Guilty Gear",
@@ -54011,7 +54130,6 @@ exit 0
 #"⚠️ فروشنده": "⚠️ Seller",
 #"⚠️ فقط عکس (JPG، PNG، WEBP) یا PDF تا ۴ مگابایت.": "⚠️ Only a picture (JPG, PNG, WEBP) or PDF up to 4 MB.",
 #"⚠️ مبلغ را به تومان و با عدد بنویسید، بین": "⚠️ Write the amount in Toman, as a number, between",
-#"⚠️ هر قالبی که مشتری دارد، روی هر رله و تک‌سرور یک DNS جدا اجرا می‌کند که حدود": "⚠️ Every template that has customers runs its own DNS on each relay and single server, taking about",
 #"⚠️ هنوز آی‌پی ثبت نکرده‌اید؛ اول «ثبت آی‌پی» را بزنید.": "⚠️ You have not registered an IP yet; tap “Register IP” first.",
 #"⚠️ پردازندهٔ": "⚠️ Processor of",
 #"⚠️ پروفایل فرستاده نشد؛ کمی بعد دوباره بزنید، یا از پنل وب بگیریدش.": "⚠️ The profile was not sent; press again in a little while, or get it from the web panel.",
@@ -54020,13 +54138,10 @@ exit 0
 #"⛔ تا فردا قطع (آی‌پی زیاد)": "⛔ off until tomorrow (too many addresses)",
 #"⛔ حجم فروشنده": "⛔ The traffic of seller",
 #"⛔ روزهای فروشنده": "⛔ The days of seller",
-#"⛔ فیلتر داخل ایران": "⛔ Filtered inside Iran",
-#"✅ از رله": "✅ Through the relay",
 #"✅ تأیید": "✅ Approve",
 #"✅ ترافیک": "✅ Traffic",
 #"✅ جدول اتصال‌های": "✅ Connection table of",
 #"✅ جواب تیکت #": "✅ Reply to ticket #",
-#"✅ حساب شما به تلگرام وصل است؛ اگر رمز را فراموش کنید، از صفحهٔ ورود با کد تلگرام بازیابی‌اش می‌کنید.": "✅ Your account is linked to Telegram; if you forget your password, you recover it from the sign-in page with a Telegram code.",
 #"✅ حساب پنل شما ساخته شد": "✅ Your panel account has been created",
 #"✅ دیسک": "✅ Disk",
 #"✅ ربات به پنل وصل است.": "✅ The bot is connected to the panel.",
@@ -54041,25 +54156,16 @@ exit 0
 #"✅ یک دستگاه اضافه شد؛ حالا": "✅ A device was added; now you have",
 #"✍️ جواب": "✍️ Reply",
 #"✍️ پیام تازه": "✍️ New message",
-#"✓ DoH و DoT روشن": "✓ DoH and DoT on",
-#"✓ روی": "✓ on",
-#"✓ همه (": "✓ All (",
 #"✔️ بستن": "✔️ Close",
-#"✗ هیچ‌کدام (": "✗ None (",
 #"❌ رد": "❌ Reject",
 #"❓ راهنما": "❓ Help",
 #"➕ تیکت تازه": "➕ New ticket",
 #"➕ شارژ کیف پول": "➕ Top up wallet",
-#"🆕 نسخهٔ تازه از گیت‌هاب": "🆕 New version from GitHub",
-#"🌍 DNS عمومی روشن است: هر کسی آدرس رله را بگذارد، بدون ثبت‌نام و ثبت آی‌پی سرویس می‌گیرد.": "🌍 Public DNS is on: anyone who sets the relay’s address gets the service, with no sign-up and no registered IP.",
 #"🌐 DNS معمولی — در کنسول، مودم یا گوشی، هم DNS اول و هم دوم را روی یکی از این‌ها بگذارید:": "🌐 Plain DNS — on a console, modem or phone, set both the first and the second DNS to one of these:",
 #"🌐 آدرس DNS معمولی هنوز آماده نیست؛ کمی بعد دوباره بزنید.": "🌐 The plain DNS address is not ready yet; tap again in a little while.",
 #"🌐 ثبت آی‌پی": "🌐 Register IP",
 #"🌐 ثبت آی‌پی: سرویس فقط روی آی‌پی ثبت‌شده کار می‌کند": "🌐 Register IP: the service only works on a registered IP",
 #"🌐 لینک ثبت‌نام در سایت:": "🌐 Sign-up link on the website:",
-#"🎁 «تست رایگان»: فروخته نمی‌شود؛ مشتری با یک کلیک می‌گیردش، در پنل خودش یا ربات. شرطش تلگرامِ وصل‌شده است، و هر تلگرام و هر حساب فقط یک بار. کسی که همین حالا سرویس فعال دارد نمی‌گیردش، تا باقی‌ماندهٔ پلنش از بین نرود. یک پلن تست در یک زمان.": "🎁 “Free trial”: not sold; the customer gets it with one click, in their own panel or the bot. It needs a linked Telegram, and each Telegram account and each account only once. Someone who has an active service right now does not get it, so what is left of their plan is not lost. One trial plan at a time.",
-#"🎁 با لینک دعوت یکی از دوستانتان آمده‌اید.": "🎁 You came with a friend’s invitation link.",
-#"🎁 تست رایگان": "🎁 Free trial",
 #"🎁 تست رایگان فعال شد.": "🎁 Free trial activated.",
 #"🎁 تست رایگان گرفت:": "🎁 Took the free trial:",
 #"🎁 تست رایگان:": "🎁 Free trial:",
@@ -54071,17 +54177,12 @@ exit 0
 #"🎫 پشتیبانی": "🎫 Support",
 #"🎫 پشتیبانی: تیکت و گفتگو با پشتیبانی": "🎫 Support: tickets and chat with support",
 #"🎮 شامل:": "🎮 Includes:",
-#"🏷 با کد تخفیف": "🏷 With discount code",
 #"🏷 قیمت پلن:": "🏷 Plan price:",
 #"🏷 کد تخفیف دارم": "🏷 I have a discount code",
-#"🏷 کدهای تخفیف (": "🏷 Discount codes (",
-#"👁 پنل را همان‌طور می‌بینید که": "👁 You are seeing the panel as",
 #"👛 کیف پول الان:": "👛 Wallet now:",
 #"👤 مشتری:": "👤 Customer:",
-#"💰 خرید از کیف پول (موجودی": "💰 Buy from wallet (balance",
 #"💰 خرید از کیف پول:": "💰 Bought from the wallet:",
 #"💰 دستگاه اضافه از کیف پول:": "💰 Extra device from the wallet:",
-#"💰 شارژ کیف پول · مبلغی که مشتری نوشته:": "💰 Wallet top-up · amount the customer wrote:",
 #"💰 موجودی کیف پولتان": "💰 Your wallet balance is",
 #"💰 پرداخت از کیف پول": "💰 Pay from wallet",
 #"💰 پرداخت از کیف پول (موجودی": "💰 Pay from wallet (balance",
@@ -54092,7 +54193,6 @@ exit 0
 #"💾 حجم:": "💾 Allowance:",
 #"📊 حساب من": "📊 My account",
 #"📊 حساب من: وضعیت، حجم مانده و روزهای باقی‌مانده": "📊 My account: status, what is left and the days left",
-#"📊 نمودار مصرف و سرعت": "📊 Usage and speed charts",
 #"📌 پلن فعلی:": "📌 Current plan:",
 #"📌 پلن فعلی: ندارد": "📌 Current plan: none",
 #"📝 یادداشت مشتری:": "📝 Customer's note:",
@@ -54101,17 +54201,13 @@ exit 0
 #"📡 DNSهای شما": "📡 Your DNS",
 #"📢 تبلیغات": "📢 Ads",
 #"📢 عضویت در کانال": "📢 Join the channel",
-#"📣 پیام همگانی": "📣 Broadcast message",
 #"📥 دریافت کانفیگ وایرگارد": "📥 Get a WireGuard config",
 #"📥 کانفیگ سرورهای تازه": "📥 Configs for the new servers",
-#"📥 کانفیگ‌ها و QR کدها": "📥 Configs and QR codes",
 #"📦 پلن:": "📦 Plan:",
 #"📱 اندروید — تنظیمات ← شبکه ← DNS خصوصی ← نام میزبان (DoT):": "📱 Android — Settings → Network → Private DNS → hostname (DoT):",
 #"📱 دستگاه اضافه": "📱 Extra device",
-#"📱 دستگاه اضافه ·": "📱 Extra device ·",
 #"📱 دستگاه اضافه —": "📱 Extra device —",
 #"📱 دستگاه:": "📱 Devices:",
-#"📱 دستگاه‌ها و تغییر آی‌پی": "📱 Devices and IP changes",
 #"📱 دستگاه‌های الان:": "📱 Devices now:",
 #"📲 همهٔ کانفیگ‌ها و QR کدها": "📲 All configs and QR codes",
 #"📲 پروفایل آیفون": "📲 iPhone profile",
@@ -54119,12 +54215,9 @@ exit 0
 #"🔄 آدرس تازه ساخته شد. آدرس قبلی تا یک دقیقه دیگر کار نمی‌کند؛ این را روی دستگاه‌هایتان بگذارید:": "🔄 A new address has been made. The old one stops working within a minute; put this one on your devices:",
 #"🔄 رمز تازه": "🔄 New password",
 #"🔄 رمز تازهٔ پنل:": "🔄 New panel password:",
-#"🔎 گزارش DNS برای پشتیبانی": "🔎 DNS report for support",
 #"🔑 پنل وب": "🔑 Web panel",
 #"🔑 پنل وب: نام کاربری، ورود با یک کلیک و رمز تازه": "🔑 Web panel: username, one-click sign-in and new password",
-#"🔒 DNS امن": "🔒 Secure DNS",
 #"🔒 DNS امن (رمزگذاری‌شده)": "🔒 Secure DNS (encrypted)",
-#"🔒 DNS رمزگذاری‌شده": "🔒 Encrypted DNS",
 #"🔖 پلن رزرو در صف:": "🔖 Reserved plans waiting:",
 #"🔗 ورود با یک کلیک": "🔗 One-click sign-in",
 #"🔗 ورود به پنل وب": "🔗 Sign in to the web panel",
@@ -54136,19 +54229,13 @@ exit 0
 #"🗄 بکاپ پنل —": "🗄 Panel backup —",
 #"🗑 حذف": "🗑 Delete",
 #"🚀 سرعت:": "🚀 Speed:",
-#"🚫 مسدودی‌ها": "🚫 Blocks",
 #"🛒 تمدید": "🛒 Renew",
 #"🛒 خرید / تمدید": "🛒 Buy / Renew",
 #"🛒 خرید / تمدید: انتخاب پلن و فرستادن رسید": "🛒 Buy / Renew: choose a plan and send the receipt",
 #"🛒 خرید پلن": "🛒 Buy a plan",
-#"🛡 تنظیمات وایرگارد": "🛡 WireGuard settings",
 #"🛡 وایرگارد": "🛡 WireGuard",
-#"🛡 وایرگارد آنلاین": "🛡 WireGuard online",
 #"🛡 کانفیگ وایرگارد": "🛡 WireGuard config",
-#"🛡 کانفیگ وایرگارد:": "🛡 WireGuard configs:",
-#"🛡 کانفیگ‌های وایرگارد": "🛡 WireGuard configs of",
 #"🟢 آنلاین": "🟢 online",
-#"🟢 آنلاین الان (": "🟢 Online now (",
 #"🤖 لینک ربات:": "🤖 Bot link:",
 #"🧾 رسید #": "🧾 Receipt #",
 #"🧾 پرداخت با رسید": "🧾 Pay with a receipt"

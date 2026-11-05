@@ -3621,13 +3621,44 @@ THEME_CSS = (":root{%s}\n"
 THEME_HEAD = ("<script>try{var t=localStorage.getItem('theme');"
               "if(t=='light'||t=='dark')document.documentElement"
               ".setAttribute('data-theme',t)}catch(e){}</script>")
-THEME_BUTTON = (
+ICON_SPRITE = (
+    "<svg xmlns='http://www.w3.org/2000/svg' class='icon-definitions' aria-hidden='true'><defs>"
+    "<symbol id='ui-sun' viewBox='0 0 24 24'><path d='M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8 M12 2v2 M12 20v2 M2 12h2 M20 12h2 M5 5l1 1 M18 18l1 1 M5 19l1-1 M18 6l1-1'/></symbol>"
+    "<symbol id='ui-moon' viewBox='0 0 24 24'><path d='M21 13a9 9 0 0 1-10-10A9 9 0 1 0 21 13Z'/></symbol>"
+    "<symbol id='ui-device' viewBox='0 0 24 24'><path d='M7 2h10v20H7Z M11 18h2'/></symbol>"
+    "<symbol id='ui-shield' viewBox='0 0 24 24'><path d='M12 2 3 6v6c0 5 9 10 9 10s9-5 9-10V6Z M8 12l3 3 5-6'/></symbol>"
+    "<symbol id='ui-globe' viewBox='0 0 24 24'><path d='M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0 M3 12h18 M12 3c5 5 5 13 0 18-5-5-5-13 0-18'/></symbol>"
+    "<symbol id='ui-gift' viewBox='0 0 24 24'><path d='M3 8h18v4H3Z M5 12v9h14v-9 M12 8v13 M12 8C4 8 5 1 9 3l3 5c8 0 7-7 3-5Z'/></symbol>"
+    "<symbol id='ui-link' viewBox='0 0 24 24'><path d='m10 13 4-4 M8 16l-1 1a4 4 0 0 1-6-6l5-5a4 4 0 0 1 6 0 M16 8l1-1a4 4 0 0 1 6 6l-5 5a4 4 0 0 1-6 0'/></symbol>"
+    "<symbol id='ui-key' viewBox='0 0 24 24'><path d='M15 2a7 7 0 1 1-6 10L2 19v3h4v-3h3v-3l2-2 M16 6h1'/></symbol>"
+    "<symbol id='ui-mail' viewBox='0 0 24 24'><path d='M3 4h18v16H3Z m0 1 9 8 9-8'/></symbol>"
+    "<symbol id='ui-check' viewBox='0 0 24 24'><path d='m5 12 4 4L19 6'/></symbol>"
+    "<symbol id='ui-pin' viewBox='0 0 24 24'><path d='M19 9c0 6-7 13-7 13S5 15 5 9a7 7 0 0 1 14 0 M15 9a3 3 0 1 1-6 0 3 3 0 0 1 6 0'/></symbol>"
+    "<symbol id='ui-alert' viewBox='0 0 24 24'><path d='m12 3 10 18H2Z M12 9v5 M12 17v1'/></symbol>"
+    "<symbol id='ui-card' viewBox='0 0 24 24'><path d='M2 4h20v16H2Z M2 9h20 M6 15h4'/></symbol>"
+    "<symbol id='ui-wallet' viewBox='0 0 24 24'><path d='M3 5h16v4H3V5Zm0 4h19v12H3V9Zm14 5h5v3h-5v-3Z'/></symbol>"
+    "<symbol id='ui-search' viewBox='0 0 24 24'><path d='M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0 m-2 6 6 6'/></symbol>"
+    "<symbol id='ui-lock' viewBox='0 0 24 24'><path d='M5 10h14v12H5Z M8 10V6a4 4 0 0 1 8 0v4 M12 15v3'/></symbol>"
+    "<symbol id='ui-download' viewBox='0 0 24 24'><path d='M12 2v13 m-5-5 5 5 5-5 M3 16v6h18v-6'/></symbol>"
+    "<symbol id='ui-help' viewBox='0 0 24 24'><path d='M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0 M9 8a3 3 0 0 1 6 0c0 3-3 3-3 6 M12 17v1'/></symbol>"
+    "<symbol id='ui-chart' viewBox='0 0 24 24'><path d='M3 3v18h18 M7 16v-5 M12 16V6 M17 16V9'/></symbol>"
+    "<symbol id='ui-tag' viewBox='0 0 24 24'><path d='M2 2h8l12 12-8 8L2 10Z M6 6h1'/></symbol>"
+    "<symbol id='ui-announce' viewBox='0 0 24 24'><path d='M3 9h5l12-6v18L8 15H3Z M7 15v6h4l-2-5'/></symbol>"
+    "<symbol id='ui-eye' viewBox='0 0 24 24'><path d='M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12 M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0'/></symbol>"
+    "<symbol id='ui-ban' viewBox='0 0 24 24'><path d='M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0 M6 6l12 12'/></symbol>"
+    "<symbol id='ui-close' viewBox='0 0 24 24'><path d='m6 6 12 12 M6 18 18 6'/></symbol>"
+    "<symbol id='ui-plus' viewBox='0 0 24 24'><path d='M12 4v16 M4 12h16'/></symbol>"
+    "<symbol id='ui-status' viewBox='0 0 24 24'><path d='M20 12a8 8 0 1 1-16 0 8 8 0 0 1 16 0'/></symbol>"
+    '</defs></svg>'
+)
+
+THEME_BUTTON = ICON_SPRITE + (
     "<button type='button' class='theme' title='روشن / تیره' aria-label='روشن / تیره'"
     " onclick=\"(function(r){var c=r.getAttribute('data-theme')||"
     "(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'),"
     "n=c=='light'?'dark':'light';r.setAttribute('data-theme',n);"
     "try{localStorage.setItem('theme',n)}catch(e){}})(document.documentElement)\">"
-    "<span class='sun'>☀️</span><span class='moon'>🌙</span></button>"
+    "<span class='sun'><svg class='ui-icon' aria-hidden='true'><use href='#ui-sun'/></svg></span><span class='moon'><svg class='ui-icon' aria-hidden='true'><use href='#ui-moon'/></svg></span></button>"
     "<button type='button' class='theme lang' title='English / فارسی'"
     " aria-label='English / فارسی' onclick=\"document.cookie='lang='+"
     "(document.documentElement.lang=='en'?'fa':'en')+"
@@ -3658,6 +3689,13 @@ def font_bytes():
 
 
 USER_CSS = THEME_CSS + FONT_FACE + """
+.icon-definitions{position:absolute;width:0;height:0;overflow:hidden;pointer-events:none}
+.ui-icon{display:inline-block;width:18px;height:18px;flex:none;vertical-align:-4px;
+ fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.theme .ui-icon{width:19px;height:19px;vertical-align:middle}
+.icon .ui-icon{width:40px;height:40px}
+.brand .mark .ui-icon{width:28px;height:28px}
+
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html{scroll-behavior:smooth}
 body{
@@ -3921,7 +3959,7 @@ def app_version():
 
 
 def brand_html():
-    return ("<div class='brand'><span class='mark'>🛡️</span>"
+    return ("<div class='brand'><span class='mark'><svg class='ui-icon' aria-hidden='true'><use href='#ui-shield'/></svg></span>"
             "<span class='name'>DNS</span></div>")
 
 
@@ -4097,7 +4135,7 @@ def typed_ip(text):
 
 def landing(banner=""):
     return (banner +
-            "<div class='icon'>🌐</div><h1>%s</h1>"
+            "<div class='icon'><svg class='ui-icon' aria-hidden='true'><use href='#ui-globe'/></svg></div><h1>%s</h1>"
             "<p class='sub'>برای دیدن حساب و ثبت آی‌پی وارد شوید.</p>"
             "<a class='btn' href='/login'>ورود</a>"
             "<a class='btn ghost' href='/signup'>ثبت‌نام</a>"
@@ -4114,7 +4152,7 @@ def signup_form(banner="", ref=""):
     # characters, so it goes into the page as it is.
     ref = ref if REF_RE.fullmatch(ref or "") else ""
     return (banner +
-            ("<div class='msg good'>🎁 با لینک دعوت یکی از دوستانتان آمده‌اید.</div>"
+            ("<div class='msg good'><svg class='ui-icon' aria-hidden='true'><use href='#ui-gift'/></svg> با لینک دعوت یکی از دوستانتان آمده\u200cاید.</div>"
              if ref else "") +
             "<h1>ثبت‌نام</h1><p class='sub'>%s</p>"
             "<form method='post' action='/signup'>%s"
@@ -4163,7 +4201,7 @@ def forgot_line():
 
 def go_page(token):
     """The one-time link's page: it hands the link back by POST."""
-    return ("<div class='icon'>🔗</div><h1>ورود به حساب</h1>"
+    return ("<div class='icon'><svg class='ui-icon' aria-hidden='true'><use href='#ui-link'/></svg></div><h1>ورود به حساب</h1>"
             "<form method='post' action='/go' id='go'>"
             "<input type='hidden' name='token' value='%s'>"
             "<button>ورود و ثبت آی‌پی</button></form>"
@@ -4176,7 +4214,7 @@ def go_page(token):
 def forgot_page(banner=""):
     """Step one of a forgotten password: which account."""
     return (banner +
-            "<div class='icon'>🔑</div><h1>بازیابی رمز</h1>"
+            "<div class='icon'><svg class='ui-icon' aria-hidden='true'><use href='#ui-key'/></svg></div><h1>بازیابی رمز</h1>"
             "<p class='sub'>اگر حسابتان به تلگرام وصل باشد، یک کد شش‌رقمی به تلگرامتان "
             "می‌فرستیم.</p>"
             "<form method='post' action='/forgot'>"
@@ -4190,7 +4228,7 @@ def forgot_page(banner=""):
 def forgot_code_page(username, banner=""):
     """Step two: the six digits from Telegram, and the new password."""
     return (banner +
-            "<div class='icon'>✉️</div><h1>کد را وارد کنید</h1>"
+            "<div class='icon'><svg class='ui-icon' aria-hidden='true'><use href='#ui-mail'/></svg></div><h1>کد را وارد کنید</h1>"
             "<p class='sub'>کد شش‌رقمی‌ای که در تلگرام گرفتید، و رمز تازه.</p>"
             "<form method='post' action='/forgot-code'>"
             "<input type='hidden' name='username' value='%s'>"
@@ -4214,7 +4252,7 @@ def telegram_box(info):
     ask = ("<label>رمز فعلی حساب</label><input name='password' type='password' "
            "required autocomplete='current-password'>")
     if info.get("telegram_linked"):
-        return ("<p class='note'>✅ حساب شما به تلگرام وصل است؛ اگر رمز را فراموش "
+        return ("<p class='note'><svg class='ui-icon' aria-hidden='true'><use href='#ui-check'/></svg> حساب شما به تلگرام وصل است؛ اگر رمز را فراموش "
                 "کنید، از صفحهٔ ورود با کد تلگرام بازیابی‌اش می‌کنید.</p>"
                 "<details class='pw'><summary>تلگرامتان عوض شده؟ جدا کردن تلگرام"
                 "</summary><form method='post' action='/telegram-unlink'>%s"
@@ -4239,7 +4277,7 @@ def link_code_page(res):
         deep = ("<a class='btn' href='%s?start=link_%s' target='_blank' rel='noopener'>"
                 "باز کردن ربات و اتصال</a>" % (html.escape(bot, quote=True),
                                                 html.escape(code)))
-    return ("<div class='icon'>🔗</div><h1>اتصال به تلگرام</h1>"
+    return ("<div class='icon'><svg class='ui-icon' aria-hidden='true'><use href='#ui-link'/></svg></div><h1>اتصال به تلگرام</h1>"
             "<p class='sub'>این کد را برای ربات ما بفرستید. %d دقیقه اعتبار دارد.</p>"
             "<div class='big'>%s</div>%s"
             "<p class='note'>ربات جواب می‌دهد که حساب وصل شد. بعد از آن اگر رمز را "
@@ -4252,7 +4290,7 @@ def choose_password_page(banner=""):
     """All an account on a temporary password is shown: somewhere to choose
     its own. The panel refuses everything else until then."""
     return (banner +
-            "<div class='icon'>🔑</div><h1>رمز خودتان را انتخاب کنید</h1>"
+            "<div class='icon'><svg class='ui-icon' aria-hidden='true'><use href='#ui-key'/></svg></div><h1>رمز خودتان را انتخاب کنید</h1>"
             "<p class='sub'>با رمز موقت وارد شده‌اید. برای ادامه یک رمز تازه "
             "بگذارید؛ بعد از آن رمز موقت دیگر کار نمی‌کند.</p>"
             "<form method='post' action='/password-first'>"
@@ -4276,7 +4314,7 @@ def register_ip_page(ip, banner=""):
     to notice.
     """
     return (banner +
-            "<div class='icon'>📍</div><h1>ثبت آی‌پی</h1>"
+            "<div class='icon'><svg class='ui-icon' aria-hidden='true'><use href='#ui-pin'/></svg></div><h1>ثبت آی\u200cپی</h1>"
             "<p class='sub'>سرویس روی همین آی‌پی باز می‌شود.</p>"
             "<div class='big'>%s</div>"
             "<form method='post' action='/register-ip'>"
@@ -4345,7 +4383,7 @@ def account_notice(info):
     # The plan they bought ahead has just taken over: said for a few days.
     done = info.get("reserve_done") or {}
     if done.get("plan"):
-        return ("<div class='msg good'>✅ <b>پلن رزرو «%s» فعال شد.</b> پلن قبلی‌تان تمام "
+        return ("<div class='msg good'><svg class='ui-icon' aria-hidden='true'><use href='#ui-check'/></svg> <b>پلن رزرو «%s» فعال شد.</b> پلن قبلی\u200cتان تمام "
                 "شده بود و این یکی خودکار جایش را گرفت.</div>" % html.escape(done["plan"]))
 
     quota, used = info.get("quota") or 0, info.get("used") or 0
@@ -4375,7 +4413,7 @@ TICKET_STATES = {"open": ("منتظر جواب پشتیبانی", "warn"),
                  "answered": ("جواب آمده", "ok"),
                  "closed": ("بسته", "")}
 TICKET_IMAGE_TYPES = ("image/jpeg", "image/png", "image/webp")
-NOT_NOW = ("<div class='icon'>⚠️</div><h1>الان نشد</h1>"
+NOT_NOW = ("<div class='icon'><svg class='ui-icon' aria-hidden='true'><use href='#ui-alert'/></svg></div><h1>الان نشد</h1>"
            "<p class='sub'>چند دقیقه دیگر دوباره.</p>")
 
 
@@ -4437,7 +4475,7 @@ def pay_box(info):
     text = (info.get("pay_text") or "").strip()
     if not text:
         return ""
-    return "<div class='pay'>💳 %s</div>" % html.escape(text)
+    return "<div class='pay'><svg class='ui-icon' aria-hidden='true'><use href='#ui-card'/></svg> %s</div>" % html.escape(text)
 
 
 def trial_box(info):
@@ -4451,11 +4489,11 @@ def trial_box(info):
     what = "%s — %s، %d روز%s" % (html.escape(p["name"]), size, p["days"],
                                   "، " + html.escape(p["note"]) if p.get("note") else "")
     if trial.get("available"):
-        return ("<div class='dns'><div class='k'>🎁 تست رایگان</div>"
+        return ("<div class='dns'><div class='k'><svg class='ui-icon' aria-hidden='true'><use href='#ui-gift'/></svg> تست رایگان</div>"
                 "<p class='note' style='margin-top:0'>%s. یک بار، با یک کلیک، بدون رسید.</p>"
                 "<form method='post' action='/trial'><button>دریافت تست رایگان</button>"
                 "</form></div>" % what)
-    return ("<div class='dns'><div class='k'>🎁 تست رایگان</div>"
+    return ("<div class='dns'><div class='k'><svg class='ui-icon' aria-hidden='true'><use href='#ui-gift'/></svg> تست رایگان</div>"
             "<p class='note' style='margin-top:0'>%s.<br>%s</p></div>"
             % (what, html.escape(trial.get("why") or "")))
 
@@ -4525,7 +4563,7 @@ def receipt_box(info):
     wallet = info.get("wallet") or 0
     if plans and wallet > 0:
         # The same form, the plan chosen above - without the slip.
-        out.append("<button formaction='/wallet-buy' formnovalidate>💰 پرداخت از کیف پول "
+        out.append("<button formaction='/wallet-buy' formnovalidate><svg class='ui-icon' aria-hidden='true'><use href='#ui-wallet'/></svg> پرداخت از کیف پول "
                    "(موجودی %s تومان)</button><p class='note'>پلن انتخاب‌شده فوراً فعال "
                    "می‌شود و قیمتش از کیف پول کم می‌شود؛ رسید لازم نیست.</p>"
                    % format(wallet, ","))
@@ -4543,7 +4581,7 @@ def wallet_box(info):
     moves = info.get("wallet_moves") or []
     if not info.get("wallet_on") and not info.get("wallet") and not moves:
         return ""
-    out = ["<div class='dns'><div class='k'>💰 کیف پول</div>"
+    out = ["<div class='dns'><div class='k'><svg class='ui-icon' aria-hidden='true'><use href='#ui-wallet'/></svg> کیف پول</div>"
            "<p class='note' style='margin-top:0'>موجودی: <b>%s تومان</b>. با موجودی "
            "کیف پول، پلن را از بخش «خرید یا تمدید» بدون رسید و فوری بخرید.</p>"
            % money(info.get("wallet"))]
@@ -4580,7 +4618,7 @@ def device_box(info):
     offer = info.get("device_offer")
     if not offer:
         return ""
-    out = ["<div class='dns'><div class='k'>📱 دستگاه اضافه</div>"
+    out = ["<div class='dns'><div class='k'><svg class='ui-icon' aria-hidden='true'><use href='#ui-device'/></svg> دستگاه اضافه</div>"
            "<p class='note' style='margin-top:0'>الان %d دستگاه دارید — یعنی %d آی‌پی "
            "هم‌زمان. هر دستگاه اضافه %s تومان؛ تا وقتی همین پلن را تمدید کنید می‌ماند.</p>"
            % (offer["devices"], offer["devices"], money(offer["price"]))]
@@ -4588,7 +4626,7 @@ def device_box(info):
         out.append("<p class='note'>%s</p></div>" % html.escape(offer.get("why") or ""))
         return "".join(out)
     if (info.get("wallet") or 0) >= offer["price"]:
-        out.append("<form method='post' action='/device-wallet'><button>💰 خرید از کیف پول "
+        out.append("<form method='post' action='/device-wallet'><button><svg class='ui-icon' aria-hidden='true'><use href='#ui-wallet'/></svg> خرید از کیف پول "
                    "(موجودی %s تومان)</button></form>" % money(info.get("wallet")))
     out.append("<details class='pw'><summary>خرید با رسید</summary>"
                "<form method='post' action='/device-receipt' enctype='multipart/form-data'>%s"
@@ -4610,7 +4648,7 @@ def ref_box(info, host=""):
     web = ref.get("web_link") or (
         "https://%s/signup?ref=%s" % (host, ref["code"])
         if re.fullmatch(r"[A-Za-z0-9.-]{1,253}(:\d{1,5})?", host or "") else "")
-    out = ["<div class='dns'><div class='k'>🎁 دعوت از دوستان</div>"
+    out = ["<div class='dns'><div class='k'><svg class='ui-icon' aria-hidden='true'><use href='#ui-gift'/></svg> دعوت از دوستان</div>"
            "<p class='note' style='margin-top:0'>هر کس با لینک شما حساب بسازد و پلن بخرد، "
            "<b>%d٪</b> مبلغ %s به کیف پول شما اضافه می‌شود.</p>"
            % (ref["percent"], "اولین خریدش" if ref.get("mode") == "first"
@@ -4720,8 +4758,8 @@ def ago(seconds):
 
 
 # How the report says where a name went, and why.
-QLOG_VERDICT = {"via relay": "✅ از رله", "no such name": "چنین اسمی نیست",
-                "filtered in Iran": "⛔ فیلتر داخل ایران", "no answer": "جوابی نیامد",
+QLOG_VERDICT = {"via relay": "از رله", "no such name": "چنین اسمی نیست",
+                "filtered in Iran": "فیلتر داخل ایران", "no answer": "جوابی نیامد",
                 "no address": "بدون آدرس"}
 QLOG_REASON = {"blocked": "در سرویس مسدود شده",
                "forward": "از DNS مخصوص این دامنه پرسیده می‌شود",
@@ -4770,7 +4808,7 @@ def qlog_box(info):
     if on:
         until = (datetime.fromisoformat(info["qlog_until"]) - datetime.now(timezone.utc))
         left = " — %d دقیقهٔ دیگر خودش خاموش می‌شود" % max(1, int(until.total_seconds() // 60))
-    body = ["<details class='pw'%s><summary>🔎 گزارش DNS برای پشتیبانی%s</summary>"
+    body = ["<details class='pw'%s><summary><svg class='ui-icon' aria-hidden='true'><use href='#ui-search'/></svg> گزارش DNS برای پشتیبانی%s</summary>"
             % (" open" if on else "", " (روشن)" if on else ""),
             "<p class='note'>وقتی سرویسی باز نمی‌شود، این را روشن کنید و همان سرویس را "
             "دوباره باز کنید: این‌جا می‌بینید دستگاه‌هایتان چه اسم‌هایی پرسیدند، هر کدام "
@@ -5016,7 +5054,7 @@ def servers_doh_box(info, servers):
     """Every server of the customer's with DoH on: each one's DoH, DoT, iPhone
     profile and Windows command, side by side - when one name is filtered,
     the next is right there."""
-    out = ["<details class='pw doh'><summary>🔒 DNS رمزگذاری‌شده</summary>"
+    out = ["<details class='pw doh'><summary><svg class='ui-icon' aria-hidden='true'><use href='#ui-lock'/></svg> DNS رمزگذاری\u200cشده</summary>"
            "<p class='note'>همین سرویس، ولی رمزگذاری‌شده. مثل DNS معمولی، فقط روی اینترنتی کار "
            "می‌کند که آی‌پی‌اش را ثبت کرده‌اید. هر سرور آدرس‌های خودش را دارد؛ اگر یکی فیلتر "
            "شد، سراغ دیگری بروید. آدرس‌های DoH مخصوص حساب شماست.</p>"
@@ -5071,7 +5109,7 @@ def wg_box(info):
     if not wg.get("on"):
         return ""
     devices = wg.get("devices") or []
-    out = ["<details class='pw' id='wg' open><summary>🛡 وایرگارد</summary>",
+    out = ["<details class='pw' id='wg' open><summary><svg class='ui-icon' aria-hidden='true'><use href='#ui-shield'/></svg> وایرگارد</summary>",
            "<p class='note'>یک راه دیگر برای استفاده از سرویس، کنار DNS: برنامهٔ "
            "وایرگارد را روی گوشی نصب می‌کنید و کانفیگ را به آن می‌دهید. جایی که DNS "
            "کار نمی‌کند، این کار می‌کند. %s</p>"
@@ -5084,9 +5122,9 @@ def wg_box(info):
     if wg.get("self") and wg.get("room"):
         # Every server still without one gets its config in the same go.
         out.append("<form method='post' action='/wg-new'><button>%s</button></form>"
-                   % "📥 دریافت کانفیگ وایرگارد")
+                   % "<svg class='ui-icon' aria-hidden='true'><use href='#ui-download'/></svg> دریافت کانفیگ وایرگارد")
     elif devices:
-        out.append("<a class='btn' href='/wg'>📥 کانفیگ‌ها و QR کدها</a>")
+        out.append("<a class='btn' href='/wg'><svg class='ui-icon' aria-hidden='true'><use href='#ui-download'/></svg> کانفیگ\u200cها و QR کدها</a>")
     elif not wg.get("self"):
         out.append("<p class='note'>برای گرفتن کانفیگ وایرگارد به پشتیبانی پیام بدهید.</p>")
     out.append(WG_HELP + "</details>")
@@ -5097,7 +5135,7 @@ def wg_one(res, deletable=False):
     """One server's config: its name and the admin's words about it, its QR,
     its file, its text to copy."""
     qr = res.get("qr") or ""
-    return ("<div class='dns'><h3 style='margin:0 0 4px'>🛡 %s</h3>%s"
+    return ("<div class='dns'><h3 style='margin:0 0 4px'><svg class='ui-icon' aria-hidden='true'><use href='#ui-shield'/></svg> %s</h3>%s"
             % (html.escape(res.get("server") or "کانفیگ وایرگارد"),
                "<p class='note' style='margin-top:0'>%s</p>" % html.escape(res["note"])
                if res.get("note") else "")
@@ -5118,7 +5156,7 @@ def wg_one(res, deletable=False):
 
 def wg_config_page(res):
     """One config, to import."""
-    return ("<div class='icon'>🛡</div><h1>کانفیگ وایرگارد</h1>" + wg_one(res)
+    return ("<div class='icon'><svg class='ui-icon' aria-hidden='true'><use href='#ui-shield'/></svg></div><h1>کانفیگ وایرگارد</h1>" + wg_one(res)
             + "<p class='note' style='text-align:center'>در برنامهٔ WireGuard: + ← Scan from "
             "QR code</p>" + WG_HELP + "<a class='btn ghost' href='/#wg'>برگشت</a>")
 
@@ -5127,7 +5165,7 @@ def wg_all_page(res):
     """Every config of the customer's on one page, one under another, each
     under its server's name and the admin's words about it."""
     configs = res.get("configs") or []
-    return ("<div class='icon'>🛡</div><h1>کانفیگ‌های وایرگارد</h1>"
+    return ("<div class='icon'><svg class='ui-icon' aria-hidden='true'><use href='#ui-shield'/></svg></div><h1>کانفیگ\u200cهای وایرگارد</h1>"
             + ("<p class='note' style='text-align:center'>برای هر سرور یک کانفیگ. در برنامهٔ "
                "WireGuard هر کدام را جدا اضافه کنید: + ← Scan from QR code، یا فایلش را "
                "باز کنید. اگر یکی کار نکرد، دیگری را روشن کنید.</p>" if len(configs) > 1 else
@@ -5136,7 +5174,7 @@ def wg_all_page(res):
                "<p class='note' style='text-align:center'>هنوز کانفیگی ندارید.</p>")
             + "".join(wg_one(c, res.get("self")) for c in configs)
             + ("<form method='post' action='/wg-new'><button>%s</button></form>"
-               % ("📥 کانفیگ سرورهای تازه" if configs else "📥 دریافت کانفیگ وایرگارد")
+               % ("<svg class='ui-icon' aria-hidden='true'><use href='#ui-download'/></svg> کانفیگ سرورهای تازه" if configs else "<svg class='ui-icon' aria-hidden='true'><use href='#ui-download'/></svg> دریافت کانفیگ وایرگارد")
                if res.get("self") and res.get("room") else "")
             + WG_HELP + "<a class='btn ghost' href='/#wg'>برگشت</a>")
 
@@ -5152,7 +5190,7 @@ def doh_box(info, profile="/doh.mobileconfig", setup=False):
         return ""
     host = doh_public_name()
     return (
-        "<details class='pw doh'%s><summary>🔒 DNS رمزگذاری‌شده</summary>"
+        "<details class='pw doh'%s><summary><svg class='ui-icon' aria-hidden='true'><use href='#ui-lock'/></svg> DNS رمزگذاری\u200cشده</summary>"
         % (" open" if setup else "") +
         "<p class='note'>همین سرویس، ولی رمزگذاری‌شده. مثل DNS معمولی، فقط روی اینترنتی کار "
         "می‌کند که آی‌پی‌اش را ثبت کرده‌اید. این آدرس مخصوص حساب شماست و به رله می‌گوید "
@@ -5734,7 +5772,7 @@ class UserPanel(http.server.BaseHTTPRequestHandler):
         everybody, and a new version comes at a new address."""
         blob = font_bytes()
         if blob is None:
-            return self.send_html("<div class='icon'>❔</div><h1>صفحه پیدا نشد</h1>", 404)
+            return self.send_html("<div class='icon'><svg class='ui-icon' aria-hidden='true'><use href='#ui-help'/></svg></div><h1>صفحه پیدا نشد</h1>", 404)
         self._headers_buffer = []
         self.send_response(200)
         self.send_header("Content-Type", "font/woff2")
@@ -5865,7 +5903,7 @@ class UserPanel(http.server.BaseHTTPRequestHandler):
             return self.ticket_image()
 
         if path != "/":
-            return self.send_html("<div class='icon'>❔</div><h1>صفحه پیدا نشد</h1>", 404)
+            return self.send_html("<div class='icon'><svg class='ui-icon' aria-hidden='true'><use href='#ui-help'/></svg></div><h1>صفحه پیدا نشد</h1>", 404)
         return self.dashboard()
 
     def send(self, body, code, headers):
@@ -6260,11 +6298,11 @@ class UserPanel(http.server.BaseHTTPRequestHandler):
     def ticket_image(self):
         res = self.ask_panel("/user-ticket-image", {"message_id": self.ticket_id("img")})
         if not res or not res.get("ok") or res.get("image_type") not in TICKET_IMAGE_TYPES:
-            return self.send_html("<div class='icon'>❔</div><h1>عکس پیدا نشد</h1>", 404)
+            return self.send_html("<div class='icon'><svg class='ui-icon' aria-hidden='true'><use href='#ui-help'/></svg></div><h1>عکس پیدا نشد</h1>", 404)
         try:
             blob = base64.b64decode(res["image_data"])
         except Exception:
-            return self.send_html("<div class='icon'>❔</div><h1>عکس پیدا نشد</h1>", 404)
+            return self.send_html("<div class='icon'><svg class='ui-icon' aria-hidden='true'><use href='#ui-help'/></svg></div><h1>عکس پیدا نشد</h1>", 404)
         return self.send(blob, 200, {"Content-Type": res["image_type"],
                                      "Cache-Control": "private, max-age=3600",
                                      "X-Content-Type-Options": "nosniff"})
@@ -6332,7 +6370,7 @@ class UserPanel(http.server.BaseHTTPRequestHandler):
         if not re.fullmatch(r"[A-Za-z0-9_-]{8,64}", token) or not doh_token_known(token) \
                 or not doh_url(info):
             return self.send_html(
-                "<div class='icon'>🔒</div><h1>این آدرس معتبر نیست</h1>"
+                "<div class='icon'><svg class='ui-icon' aria-hidden='true'><use href='#ui-lock'/></svg></div><h1>این آدرس معتبر نیست</h1>"
                 "<p class='sub'>آدرس تازه را از <a href='/'>حساب خود</a> بگیرید.</p>", 404)
         if profile:
             return self.send(mobileconfig(info), 200, {
@@ -6340,7 +6378,7 @@ class UserPanel(http.server.BaseHTTPRequestHandler):
                 "Content-Disposition": "attachment; filename=doctor-dns.mobileconfig",
                 "Cache-Control": "no-store"})
         return self.send_html(
-            "<h1>🔒 DNS امن</h1><div class='sub'>%s</div>" % html.escape(brand())
+            "<h1><svg class='ui-icon' aria-hidden='true'><use href='#ui-lock'/></svg> DNS امن</h1><div class='sub'>%s</div>" % html.escape(brand())
             + doh_box(info, profile="/doh-setup/%s.mobileconfig" % token, setup=True)
             + "<p class='alt'><a href='/'>ورود به حساب</a></p>")
 
@@ -6375,11 +6413,11 @@ class UserPanel(http.server.BaseHTTPRequestHandler):
                                        "code": code})
         except Exception as e:
             log(ERROR, "panel: user-info failed: %s" % e)
-            return self.send_html("<div class='icon'>⚠️</div><h1>الان نشد</h1>"
+            return self.send_html("<div class='icon'><svg class='ui-icon' aria-hidden='true'><use href='#ui-alert'/></svg></div><h1>الان نشد</h1>"
                                   "<p class='sub'>چند دقیقه دیگر دوباره.</p>", 502)
         if not info.get("ok"):
             return self.send_html(
-                "<div class='icon'>🔑</div><h1>نشست منقضی شده</h1>"
+                "<div class='icon'><svg class='ui-icon' aria-hidden='true'><use href='#ui-key'/></svg></div><h1>نشست منقضی شده</h1>"
                 "<p class='sub'>دوباره <a href='/login'>وارد شوید</a>.</p>",
                 200, {"Set-Cookie": "sdu=; Path=/; Max-Age=0"})
         if info.get("must_change"):
@@ -6441,7 +6479,7 @@ class UserPanel(http.server.BaseHTTPRequestHandler):
             body.append("<div class='row'><span class='k'>%s</span>"
                         "<span class='v'>%s</span></div>" % (k, v))
         body.append(gauge)
-        body.append("<a class='btn ghost' href='/usage'>📊 نمودار مصرف و سرعت</a>"
+        body.append("<a class='btn ghost' href='/usage'><svg class='ui-icon' aria-hidden='true'><use href='#ui-chart'/></svg> نمودار مصرف و سرعت</a>"
                     "</section><section class='account-connect'><h2>تنظیمات اتصال</h2>")
         body.append(dns_box(info))
         body.append(qlog_box(info))

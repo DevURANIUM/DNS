@@ -1081,8 +1081,8 @@ def heat_chart(hours):
 
 
 
-QLOG_VERDICT = {"via relay": "✅ از رله", "no such name": "چنین اسمی نیست",
-                "filtered in Iran": "⛔ فیلتر داخل ایران", "no answer": "جوابی نیامد",
+QLOG_VERDICT = {"via relay": "از رله", "no such name": "چنین اسمی نیست",
+                "filtered in Iran": "فیلتر داخل ایران", "no answer": "جوابی نیامد",
                 "no address": "بدون آدرس"}
 QLOG_REASON = {"blocked": "ادمین مسدودش کرده",
                "forward": "از DNS تعیین‌شدهٔ ادمین پرسیده می‌شود",
@@ -1191,7 +1191,7 @@ def doh_name_card(p):
             except ValueError:
                 continue
             if st.get("active") == want:
-                what = "<span class='ok'>✓ روی %s</span>" % html.escape(want)
+                what = "<span class='ok'><svg class='ui-icon' aria-hidden='true'><use href='#ui-check'/></svg> روی %s</span>" % html.escape(want)
             elif st.get("working"):
                 what = "در حال گرفتن گواهی…"
             elif st.get("error"):
@@ -2796,7 +2796,7 @@ def domain_cell(ip):
     except ValueError:
         state = {}
     if want and (have == want or state.get("ok") and state.get("name") == want):
-        note = "<span class='ok'>✓ DoH و DoT روشن</span>"
+        note = "<span class='ok'><svg class='ui-icon' aria-hidden='true'><use href='#ui-check'/></svg> DoH و DoT روشن</span>"
     elif want and state.get("name") == want and not state.get("ok"):
         note = ("<span class='bad'>نشد: %s</span>%s" % (
             html.escape(state.get("error") or ""),
@@ -2806,7 +2806,7 @@ def domain_cell(ip):
     elif want:
         note = "<span class='warn'>در حال گرفتن گواهی…</span>"
     elif have:
-        note = "<span class='ok'>✓ DoH و DoT روشن</span>"
+        note = "<span class='ok'><svg class='ui-icon' aria-hidden='true'><use href='#ui-check'/></svg> DoH و DoT روشن</span>"
     else:
         note = "<span class='muted'>بدون دامنه: فقط DNS معمولی</span>"
     return ("<td><input form='srvlist' name='domain_%s' value='%s' dir='ltr' "
@@ -2843,7 +2843,7 @@ def public_dns_card(p):
     if on:
         form = ("<form method='post' action='/%s/public-dns'><input type='hidden' name='to' "
                 "value='0'><button>خاموش کردن DNS عمومی</button></form>" % p)
-        state = ("<p class='warn'>🌍 DNS عمومی روشن است: هر کسی آدرس رله را بگذارد، بدون "
+        state = ("<p class='warn'><svg class='ui-icon' aria-hidden='true'><use href='#ui-globe'/></svg> DNS عمومی روشن است: هر کسی آدرس رله را بگذارد، بدون "
                  "ثبت‌نام و ثبت آی‌پی سرویس می‌گیرد.</p>")
     else:
         ask = ("DNS عمومی روشن شود؟ هر کسی آدرس رله را بگذارد، بدون ثبت‌نام و بدون هیچ "
@@ -2868,7 +2868,7 @@ def github_card(p):
     mine = app_version()
     rc, text = self_upgrade_state()
     waiting = setting("upgrade_others_after")
-    out = ["<div class='card'><h2>🆕 نسخهٔ تازه از گیت‌هاب</h2>"
+    out = ["<div class='card'><h2><svg class='ui-icon' aria-hidden='true'><use href='#ui-plus'/></svg> نسخهٔ تازه از گیت\u200cهاب</h2>"
            "<p>این سرور: <b dir='ltr'>%s</b>" % html.escape(mine or "?")]
     if state.get("version"):
         out.append(" · آخرین نسخه در گیت‌هاب: <b dir='ltr'>%s</b>%s"
@@ -3122,7 +3122,7 @@ def online_rows(extra="", args=()):
 
 def online_card(p, rows, show_seller=False, most=100):
     """The home page's customers online now."""
-    out = ["<div class='card' id='online'><h2>🟢 آنلاین الان (%d)</h2>" % len(rows)]
+    out = ["<div class='card' id='online'><h2><svg class='ui-icon' aria-hidden='true'><use href='#ui-status'/></svg> آنلاین الان (%d)</h2>" % len(rows)]
     if not rows:
         out.append("<p class='muted'>الان کسی آنلاین نیست.</p>")
     else:
@@ -3549,7 +3549,7 @@ def bench_table(picks):
             v = ms.get(ip)
             text = ms_text(v) if ip in ms else "-"
             if isinstance(v, int) and v == fastest:
-                cells.append("<td><b class='ok'>%s ✓</b></td>" % text)
+                cells.append("<td><b class='ok'>%s <svg class='ui-icon' aria-hidden='true'><use href='#ui-check'/></svg></b></td>" % text)
             elif ip in ms and v is None:
                 cells.append("<td class='warn'>%s</td>" % text)
             else:
@@ -3558,7 +3558,7 @@ def bench_table(picks):
         out.append("<tr><td>%s%s</td><td><code>%s</code></td>%s</tr>"
                    % (html.escape(prov), mark, ip, "".join(cells)))
     ages = [int(time.time() - at) // 60 for _, _, at in cols if at]
-    out.append("</table><p class='muted'>میانهٔ سه سؤال واقعی DNS، به میلی‌ثانیه؛ ✓ سریع‌ترین هر "
+    out.append("</table><p class='muted'>میانهٔ سه سؤال واقعی DNS، به میلی\u200cثانیه؛ <svg class='ui-icon' aria-hidden='true'><use href='#ui-check'/></svg> سریع\u200cترین هر "
                "ستون و ● آن‌هایی که الان انتخاب شده‌اند. آنچه برای مشتری‌ها مهم است ستون رله‌هاست: "
                "سؤال‌هایشان از آن‌جا پرسیده می‌شود. ستون هر نود زمانی است که nginx همان نود "
                "برای پیدا کردن آدرس سرویس‌ها منتظر می‌ماند. آخرین اندازه‌گیری: %s.</p>"
@@ -3592,7 +3592,7 @@ def upstream_card():
 
     bad = [ip for ip in picks if ip in ECS_RESOLVERS]
     out = ["<div class='card'><h2>DNS بالادستی</h2>",
-           "<div class='msg err'>⚠️ %s زیرشبکهٔ ایرانی رله را به سرویس‌ها می‌گوید: PUBG "
+           "<div class='msg err'><svg class='ui-icon' aria-hidden='true'><use href='#ui-alert'/></svg> %s زیرشبکهٔ ایرانی رله را به سرویس\u200cها می\u200cگوید: PUBG "
            "Mobile و بقیهٔ بازی‌های Tencent برای مشتری‌ها باز نمی‌شوند. Cloudflare یا "
            "Quad9 را بگذارید.</div>" % html.escape("، ".join(bad)) if bad else "",
            "<p class='muted'>هر اسمی که رله‌ها مسیریابی نمی‌کنند از این‌ها پرسیده "
@@ -3884,13 +3884,44 @@ THEME_CSS = (":root{%s}\n"
 THEME_HEAD = ("<script>try{var t=localStorage.getItem('theme');"
               "if(t=='light'||t=='dark')document.documentElement"
               ".setAttribute('data-theme',t)}catch(e){}</script>")
-THEME_BUTTON = (
+ICON_SPRITE = (
+    "<svg xmlns='http://www.w3.org/2000/svg' class='icon-definitions' aria-hidden='true'><defs>"
+    "<symbol id='ui-sun' viewBox='0 0 24 24'><path d='M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8 M12 2v2 M12 20v2 M2 12h2 M20 12h2 M5 5l1 1 M18 18l1 1 M5 19l1-1 M18 6l1-1'/></symbol>"
+    "<symbol id='ui-moon' viewBox='0 0 24 24'><path d='M21 13a9 9 0 0 1-10-10A9 9 0 1 0 21 13Z'/></symbol>"
+    "<symbol id='ui-device' viewBox='0 0 24 24'><path d='M7 2h10v20H7Z M11 18h2'/></symbol>"
+    "<symbol id='ui-shield' viewBox='0 0 24 24'><path d='M12 2 3 6v6c0 5 9 10 9 10s9-5 9-10V6Z M8 12l3 3 5-6'/></symbol>"
+    "<symbol id='ui-globe' viewBox='0 0 24 24'><path d='M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0 M3 12h18 M12 3c5 5 5 13 0 18-5-5-5-13 0-18'/></symbol>"
+    "<symbol id='ui-gift' viewBox='0 0 24 24'><path d='M3 8h18v4H3Z M5 12v9h14v-9 M12 8v13 M12 8C4 8 5 1 9 3l3 5c8 0 7-7 3-5Z'/></symbol>"
+    "<symbol id='ui-link' viewBox='0 0 24 24'><path d='m10 13 4-4 M8 16l-1 1a4 4 0 0 1-6-6l5-5a4 4 0 0 1 6 0 M16 8l1-1a4 4 0 0 1 6 6l-5 5a4 4 0 0 1-6 0'/></symbol>"
+    "<symbol id='ui-key' viewBox='0 0 24 24'><path d='M15 2a7 7 0 1 1-6 10L2 19v3h4v-3h3v-3l2-2 M16 6h1'/></symbol>"
+    "<symbol id='ui-mail' viewBox='0 0 24 24'><path d='M3 4h18v16H3Z m0 1 9 8 9-8'/></symbol>"
+    "<symbol id='ui-check' viewBox='0 0 24 24'><path d='m5 12 4 4L19 6'/></symbol>"
+    "<symbol id='ui-pin' viewBox='0 0 24 24'><path d='M19 9c0 6-7 13-7 13S5 15 5 9a7 7 0 0 1 14 0 M15 9a3 3 0 1 1-6 0 3 3 0 0 1 6 0'/></symbol>"
+    "<symbol id='ui-alert' viewBox='0 0 24 24'><path d='m12 3 10 18H2Z M12 9v5 M12 17v1'/></symbol>"
+    "<symbol id='ui-card' viewBox='0 0 24 24'><path d='M2 4h20v16H2Z M2 9h20 M6 15h4'/></symbol>"
+    "<symbol id='ui-wallet' viewBox='0 0 24 24'><path d='M3 5h16v4H3V5Zm0 4h19v12H3V9Zm14 5h5v3h-5v-3Z'/></symbol>"
+    "<symbol id='ui-search' viewBox='0 0 24 24'><path d='M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0 m-2 6 6 6'/></symbol>"
+    "<symbol id='ui-lock' viewBox='0 0 24 24'><path d='M5 10h14v12H5Z M8 10V6a4 4 0 0 1 8 0v4 M12 15v3'/></symbol>"
+    "<symbol id='ui-download' viewBox='0 0 24 24'><path d='M12 2v13 m-5-5 5 5 5-5 M3 16v6h18v-6'/></symbol>"
+    "<symbol id='ui-help' viewBox='0 0 24 24'><path d='M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0 M9 8a3 3 0 0 1 6 0c0 3-3 3-3 6 M12 17v1'/></symbol>"
+    "<symbol id='ui-chart' viewBox='0 0 24 24'><path d='M3 3v18h18 M7 16v-5 M12 16V6 M17 16V9'/></symbol>"
+    "<symbol id='ui-tag' viewBox='0 0 24 24'><path d='M2 2h8l12 12-8 8L2 10Z M6 6h1'/></symbol>"
+    "<symbol id='ui-announce' viewBox='0 0 24 24'><path d='M3 9h5l12-6v18L8 15H3Z M7 15v6h4l-2-5'/></symbol>"
+    "<symbol id='ui-eye' viewBox='0 0 24 24'><path d='M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12 M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0'/></symbol>"
+    "<symbol id='ui-ban' viewBox='0 0 24 24'><path d='M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0 M6 6l12 12'/></symbol>"
+    "<symbol id='ui-close' viewBox='0 0 24 24'><path d='m6 6 12 12 M6 18 18 6'/></symbol>"
+    "<symbol id='ui-plus' viewBox='0 0 24 24'><path d='M12 4v16 M4 12h16'/></symbol>"
+    "<symbol id='ui-status' viewBox='0 0 24 24'><path d='M20 12a8 8 0 1 1-16 0 8 8 0 0 1 16 0'/></symbol>"
+    '</defs></svg>'
+)
+
+THEME_BUTTON = ICON_SPRITE + (
     "<button type='button' class='theme' title='روشن / تیره' aria-label='روشن / تیره'"
     " onclick=\"(function(r){var c=r.getAttribute('data-theme')||"
     "(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'),"
     "n=c=='light'?'dark':'light';r.setAttribute('data-theme',n);"
     "try{localStorage.setItem('theme',n)}catch(e){}})(document.documentElement)\">"
-    "<span class='sun'>☀️</span><span class='moon'>🌙</span></button>"
+    "<span class='sun'><svg class='ui-icon' aria-hidden='true'><use href='#ui-sun'/></svg></span><span class='moon'><svg class='ui-icon' aria-hidden='true'><use href='#ui-moon'/></svg></span></button>"
     "<button type='button' class='theme lang' title='English / فارسی'"
     " aria-label='English / فارسی' onclick=\"document.cookie='lang='+"
     "(document.documentElement.lang=='en'?'fa':'en')+"
@@ -3898,6 +3929,13 @@ THEME_BUTTON = (
     "<span class='fa-only'>EN</span><span class='en-only'>فا</span></button>")
 
 CSS = THEME_CSS + """
+.icon-definitions{position:absolute;width:0;height:0;overflow:hidden;pointer-events:none}
+.ui-icon{display:inline-block;width:18px;height:18px;flex:none;vertical-align:-4px;
+ fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.theme .ui-icon{width:19px;height:19px;vertical-align:middle}
+.icon .ui-icon{width:40px;height:40px}
+.brand .mark .ui-icon{width:28px;height:28px}
+
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html{scroll-behavior:smooth}
 body{
@@ -4178,7 +4216,7 @@ td .logo{margin-inline-end:6px}
 .user-directory table.users th{
  background:var(--row);color:var(--dim);font-size:11.5px;font-weight:650;
  border-radius:0;padding:13px 12px}
-.user-directory table.users td{padding:20px 12px;border-bottom:1px solid var(--line)}
+.user-directory table.users td{padding:16px 12px;border-bottom:1px solid var(--line)}
 .user-directory table.users tr:last-child td{border-bottom:0}
 .user-directory table.users tr:is(:hover,:focus-within)>td{background:var(--row)}
 .user-directory table.users :is(td,th):first-child{padding-inline-start:24px}
@@ -4189,13 +4227,25 @@ td .logo{margin-inline-end:6px}
 .user-directory table.users td.who small{font-size:11px;line-height:1.9}
 .user-directory table.users input{
  background:var(--bg);border:1px solid var(--line);border-radius:8px;
- min-height:38px;text-align:center;font-size:13px}
+ height:40px;min-height:40px;text-align:center;font-size:13px;padding:8px 10px}
 .user-directory table.users input:hover{border-color:var(--line2)}
-.user-directory table.users :is(select,details>summary){min-height:38px;border-radius:8px}
+.user-directory table.users :is(select,details>summary){
+ min-height:40px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;gap:6px}
+.user-directory table.users input[name=quota_gb],
+.user-directory table.users input[name=speed_mb]{width:74px}
+.user-directory table.users input[name=days]{width:92px}
+.user-directory table.users select{min-width:90px}
+.user-directory table.users td.acts{white-space:nowrap}
+.user-directory table.users td.acts>form{vertical-align:middle}
+.user-directory table.users td.acts details.more{vertical-align:middle}
+.user-directory table.users td.acts details.more>summary{min-width:40px;padding:6px 10px}
+.user-directory table.users td:nth-child(2)>details{margin-top:7px}
+.user-directory table.users td:nth-child(2)>details>summary{min-width:80px;font-variant-numeric:tabular-nums}
+
 .user-directory table.users details>form,.user-directory table.users details>.menu{position:static}
 .user-directory table.users .pill{border-radius:7px;padding:4px 10px;font-size:11px}
 .user-directory table.users td.acts>form{display:inline}
-.user-directory table.users td.acts button{min-height:36px;border-radius:8px;box-shadow:none}
+.user-directory table.users td.acts button{height:40px;min-height:40px;border-radius:8px;box-shadow:none}
 .user-directory table.users td.acts button.del{border-color:var(--line);color:var(--muted)}
 .user-directory table.users td.acts button.del:hover{border-color:var(--bad);color:var(--bad)}
 .reserved{color:var(--accent);font-size:11.5px;font-weight:600}
@@ -4550,7 +4600,7 @@ def devices_card(p):
     price = setting("device_price")
     limit = setting("ip_changes_per_day")
     return (
-        "<div class='card'><h2>📱 دستگاه‌ها و تغییر آی‌پی</h2>"
+        "<div class='card'><h2><svg class='ui-icon' aria-hidden='true'><use href='#ui-device'/></svg> دستگاه\u200cها و تغییر آی\u200cپی</h2>"
         "<form method='post' action='/%s/devices-settings'><div class='row'>"
         "<div class='f'><label>قیمت هر دستگاه اضافه (تومان)</label>"
         "<input name='price' value='%s' size='10' dir='ltr' placeholder='خالی = فروخته نمی‌شود'>"
@@ -4576,12 +4626,12 @@ def devices_cell(p, r):
     total = r["max_ips"] or 1
     # A WireGuard config takes a device as an address does; it is listed on
     # its own page, where it is made and deleted.
-    wg = ("<label><a href='/%s/wg?u=%d'>🛡 کانفیگ وایرگارد: %d از %d</a></label>"
+    wg = ("<label><a href='/%s/wg?u=%d'><svg class='ui-icon' aria-hidden='true'><use href='#ui-shield'/></svg> کانفیگ وایرگارد: %d از %d</a></label>"
           % (p, r["id"], configs, max(len(wg_ready_relays()), configs))
           if configs or wg_on() else "")
     # A device has an address for the DNS and a WireGuard config both: the
     # count beside it is the addresses'.
-    return ("<details><summary title='دستگاه‌ها'>📱 %d/%d</summary>"
+    return ("<details><summary title='دستگاه\u200cها'><svg class='ui-icon' aria-hidden='true'><use href='#ui-device'/></svg> %d/%d</summary>"
             "<form method='post' action='/%s/user-devices'>"
             "<input type='hidden' name='id' value='%d'>%s%s"
             "<label>تعداد دستگاه <input name='devices' value='%d' size='2' dir='ltr'></label>"
@@ -4778,7 +4828,7 @@ def wg_admin_page(p):
     n_users = STORE.one("SELECT count(DISTINCT user_id) c FROM wg_devices")["c"]
     n_blocked = STORE.one("SELECT count(*) c FROM wg_devices WHERE blocked_day = ?",
                           (stamp.astimezone(TEHRAN).strftime("%Y-%m-%d"),))["c"]
-    out = ["<div class='card'><h2>🛡 وایرگارد</h2><div class='grid'>%s</div></div>" % "".join(
+    out = ["<div class='card'><h2><svg class='ui-icon' aria-hidden='true'><use href='#ui-shield'/></svg> وایرگارد</h2><div class='grid'>%s</div></div>" % "".join(
         "<div class='stat'><div class='n'>%s</div><div class='l'>%s</div></div>" % (v, l)
         for v, l in (
             ("روشن" if on else "خاموش", "وایرگارد"), (n_all, "کانفیگ"),
@@ -4806,7 +4856,7 @@ def wg_admin_page(p):
                         for x in plans) or "<span class='muted'>هنوز پلنی نیست</span>"
     endpoint = wg_setting("wg_endpoint") or "ip"
     out.append(
-        "<div class='card'><h2>🛡 تنظیمات وایرگارد</h2>"
+        "<div class='card'><h2><svg class='ui-icon' aria-hidden='true'><use href='#ui-shield'/></svg> تنظیمات وایرگارد</h2>"
         "<form method='post' action='/%s/wg-save'>"
         "<label style='display:inline'><input type='checkbox' name='on' value='1'%s> "
         "<b>روشن</b></label> <label style='display:inline;margin-inline-start:14px'>"
@@ -4840,7 +4890,7 @@ def wg_admin_page(p):
         "<p class='muted'>گوشی مشتری با وایرگارد فقط به رلهٔ ایران وصل می‌شود و از راه "
         "آن فقط DNS و سرویس‌هایی که این سرویس باز می‌کند؛ بقیهٔ اینترنتش مستقیم است و "
         "رله چیزی را فوروارد نمی‌کند، پس VPN نیست. هر مشتری برای هر رله یک کانفیگ "
-        "می‌گیرد، مثل یک آدرس DNS برای هر رله. کانفیگ‌ها را از «کاربران ← 📱 دستگاه‌ها» "
+        "می‌گیرد، مثل یک آدرس DNS برای هر رله. کانفیگ‌ها را از «کاربران ← دستگاه‌ها» "
         "بسازید.</p>"
         "<p class='muted'>با «دامنهٔ رله»، اگر آی‌پی رله عوض شود کانفیگ مشتری‌ها کار "
         "می‌کند - فقط رکورد دامنه را عوض کنید؛ رله‌ای که دامنه ندارد با آی‌پی می‌ماند. "
@@ -4904,7 +4954,7 @@ def wg_page(path):
         return "<div class='card'><p class='muted'>این کاربر پیدا نشد.</p></div>"
     who = user["username"] or user["phone"] or user["telegram_id"] or "#%d" % uid
     devs = STORE.q("SELECT * FROM wg_devices WHERE user_id = ? ORDER BY id", (uid,))
-    out = ["<div class='card'><h2>🛡 کانفیگ‌های وایرگارد %s</h2>"
+    out = ["<div class='card'><h2><svg class='ui-icon' aria-hidden='true'><use href='#ui-shield'/></svg> کانفیگ\u200cهای وایرگارد %s</h2>"
            "<p class='muted'><a href='/%s/users'>‹ برگشت به کاربران</a> — برای هر رله یک "
            "کانفیگ، مثل یک آدرس DNS برای هر رله؛ روی %d دستگاه (آی‌پی ثبت‌شده) کار می‌کند."
            "</p>"
@@ -4947,7 +4997,7 @@ def discounts_card(p):
     except sqlite3.OperationalError:
         return ""
     plans = {r["id"]: r["name"] for r in STORE.q("SELECT id, name FROM plans WHERE is_trial = 0")}
-    out = ["<div class='card'><h2>🏷 کدهای تخفیف (%d)</h2>" % len(rows)]
+    out = ["<div class='card'><h2><svg class='ui-icon' aria-hidden='true'><use href='#ui-tag'/></svg> کدهای تخفیف (%d)</h2>" % len(rows)]
     if rows:
         out.append("<table><tr><th>کد</th><th>تخفیف</th><th>تا</th><th>استفاده</th>"
                    "<th>هر مشتری</th><th>پلن‌ها</th><th></th></tr>")
@@ -5105,7 +5155,7 @@ def wallet_settings_card(p):
     pct = setting("ref_percent") or "10"
     mode = setting("ref_mode") or "every"
     return (
-        "<div class='card'><h2>💰 کیف پول</h2>"
+        "<div class='card'><h2><svg class='ui-icon' aria-hidden='true'><use href='#ui-wallet'/></svg> کیف پول</h2>"
         "<form method='post' action='/%s/wallet-settings'>"
         "<label style='display:inline'><input type='checkbox' name='on' value='1'%s>"
         " مشتری بتواند کیف پولش را شارژ کند</label> <button class='ghost'>ذخیره</button>"
@@ -5116,7 +5166,7 @@ def wallet_settings_card(p):
         "موجودی کیف پول، پلن را بدون رسید و فوری می‌خرد. خرید از کیف پول همیشه باز است، حتی "
         "وقتی شارژ بسته باشد؛ چون پورسانت دعوت و پولی که خودتان به کیف پول کسی اضافه "
         "کرده‌اید هم قابل خرج است.</p></div>"
-        "<div class='card'><h2>🎁 دعوت از دوستان</h2>"
+        "<div class='card'><h2><svg class='ui-icon' aria-hidden='true'><use href='#ui-gift'/></svg> دعوت از دوستان</h2>"
         "<form method='post' action='/%s/ref-settings'>"
         "<p><label style='display:inline'><input type='checkbox' name='on' value='1'%s>"
         " هر مشتری لینک دعوت خودش را بگیرد</label></p>"
@@ -5176,7 +5226,7 @@ def broadcast_media_label(media):
     """"🖼 3 عکس 🎬 فیلم " for the list of those sent."""
     kinds = (media or "").split(",") if media else []
     out = ""
-    for kind, icon, word in (("photo", "🖼", "عکس"), ("video", "🎬", "فیلم")):
+    for kind, icon, word in (("photo", "<svg class='ui-icon' aria-hidden='true'><use href='#ui-card'/></svg>", "عکس"), ("video", "<svg class='ui-icon' aria-hidden='true'><use href='#ui-chart'/></svg>", "فیلم")):
         n = kinds.count(kind)
         if n == 1:
             out += "%s %s " % (icon, word)
@@ -5251,7 +5301,7 @@ def broadcast_card(p):
         options.append("<option value='%s'>%s — %d نفر%s</option>"
                        % (key, html.escape(label), len(reach),
                           " (%d نفر دیگر تلگرام ندارند)" % without if without else ""))
-    out = ["<div class='card'><h2>📣 پیام همگانی</h2>"
+    out = ["<div class='card'><h2><svg class='ui-icon' aria-hidden='true'><use href='#ui-announce'/></svg> پیام همگانی</h2>"
            "<form method='post' action='/%s/broadcast-send' enctype='multipart/form-data'"
            " onsubmit=\"return confirm("
            "'این پیام برای همه‌ی کسانی که انتخاب کرده‌اید فرستاده شود؟')\">"
@@ -5775,14 +5825,14 @@ def diagnose_page():
             return "<td class='muted'>-</td>"
         state, detail, ms = res
         if detail == "expired certificate":
-            return "<td class='warn'>⚠ %s</td>" % html.escape(PROBE_WORDS[detail])
+            return "<td class='warn'><svg class='ui-icon' aria-hidden='true'><use href='#ui-alert'/></svg> %s</td>" % html.escape(PROBE_WORDS[detail])
         if state == "ok":
-            return "<td class='ok'>✓ %s · %d ms</td>" % (html.escape(detail), ms)
+            return "<td class='ok'><svg class='ui-icon' aria-hidden='true'><use href='#ui-check'/></svg> %s · %d ms</td>" % (html.escape(detail), ms)
         # A relay cannot see where a name points - the exit resolves it - so
         # where the exit found it pointing here, that is the reason for both.
         if exit_res and exit_res[1] == "local address":
             detail = "local address"
-        return "<td class='warn'>✗ %s</td>" % html.escape(words(detail))
+        return "<td class='warn'><svg class='ui-icon' aria-hidden='true'><use href='#ui-close'/></svg> %s</td>" % html.escape(words(detail))
 
     summary = []
     for (key, name), doms in services.items():
@@ -5794,9 +5844,9 @@ def diagnose_page():
             if not n:
                 chips.append("<td class='muted'>سایتی ندارد</td>")
             elif ok == n:
-                chips.append("<td><span class='ok'>✓ همه (%d)</span></td>" % n)
+                chips.append("<td><span class='ok'><svg class='ui-icon' aria-hidden='true'><use href='#ui-check'/></svg> همه (%d)</span></td>" % n)
             elif ok == 0:
-                chips.append("<td><b class='warn'>✗ هیچ‌کدام (%d)</b></td>" % n)
+                chips.append("<td><b class='warn'><svg class='ui-icon' aria-hidden='true'><use href='#ui-close'/></svg> هیچ\u200cکدام (%d)</b></td>" % n)
                 bad += 2
             else:
                 chips.append("<td><span class='warn'>%d از %d</span></td>" % (ok, n))
@@ -6103,7 +6153,7 @@ def plan_fields(form, tpls, plan=None, servers=None, exits=None):
         " inputmode='numeric' placeholder='تومان'>"
         "<label style='display:block;margin-top:4px' title='رایگان، با یک کلیک، هر "
         "تلگرام و هر حساب یک بار'><input form='%s' type='checkbox' name='trial' value='1'%s>"
-        " 🎁 تست رایگان</label></td>"
+        " <svg class='ui-icon' aria-hidden='true'><use href='#ui-gift'/></svg> تست رایگان</label></td>"
         "<td><input form='%s' name='speed_mb' value='%s' size='3'"
         " inputmode='decimal' title='مگابیت بر ثانیه؛ خالی یا ۰ یعنی بی‌حد'></td>"
         "<td><input form='%s' name='devices' value='%s' size='2' inputmode='numeric'"
@@ -6171,7 +6221,7 @@ def templates_in_use_note(default_id):
     rows = STORE.q("SELECT DISTINCT COALESCE(template_id, ?) t FROM users"
                    " WHERE status IN ('active', 'over_quota')", (default_id,))
     n = sum(1 for r in rows if r["t"] != default_id)
-    return ("<p class='muted'>⚠️ هر قالبی که مشتری دارد، روی هر رله و تک‌سرور یک DNS جدا "
+    return ("<p class='muted'><svg class='ui-icon' aria-hidden='true'><use href='#ui-alert'/></svg> هر قالبی که مشتری دارد، روی هر رله و تک\u200cسرور یک DNS جدا "
             "اجرا می‌کند که حدود %d مگابایت رم می‌گیرد. الان %d قالب مشتری دارند؛ یعنی حدود "
             "%d مگابایت روی هر رله. قالبی که مشتری ندارد رم نمی‌گیرد.</p>"
             % (TEMPLATE_MB, n, n * TEMPLATE_MB))
@@ -7239,7 +7289,7 @@ def page(title, body, cfg, active="", msg=None, msg_kind="good"):
         banner = "<div class='msg %s'>%s</div>" % (msg_kind, html.escape(msg))
     viewing = getattr(REQ, "viewing", None)
     if viewing is not None:
-        banner = ("<div class='msg warnbox'>👁 پنل را همان‌طور می‌بینید که <b>%s</b> می‌بیند. "
+        banner = ("<div class='msg warnbox'><svg class='ui-icon' aria-hidden='true'><use href='#ui-eye'/></svg> پنل را همان\u200cطور می\u200cبینید که <b>%s</b> می\u200cبیند. "
                   "<form method='post' action='/%s/view-as-stop' style='display:inline'>"
                   "<button class='ghost'>برگشت به حساب خودم</button></form></div>"
                   % (html.escape(viewing["username"]), cfg["ADMIN_PATH"])) + banner
@@ -7787,11 +7837,11 @@ class Admin(http.server.BaseHTTPRequestHandler):
                 or str(r["telegram_id"] or "#%d" % r["user_id"]))
             topup = r["kind"] == "topup"
             if r["kind"] == "device":
-                bought = ("<div class='bought'>📱 دستگاه اضافه · %s تومان<span class='muted'>"
+                bought = ("<div class='bought'><svg class='ui-icon' aria-hidden='true'><use href='#ui-device'/></svg> دستگاه اضافه · %s تومان<span class='muted'>"
                           " — با تأیید، یک دستگاه به حسابش اضافه می‌شود</span></div>"
                           % format(r["amount"], ","))
             elif topup:
-                bought = ("<div class='bought'>💰 شارژ کیف پول · مبلغی که مشتری نوشته: "
+                bought = ("<div class='bought'><svg class='ui-icon' aria-hidden='true'><use href='#ui-wallet'/></svg> شارژ کیف پول · مبلغی که مشتری نوشته: "
                           "%s تومان<span class='muted'> — موجودی فعلی: %s تومان</span>"
                           "</div>" % (format(r["amount"], ","), format(r["wallet"] or 0, ",")))
             elif r["plan_name"]:
@@ -7808,7 +7858,7 @@ class Admin(http.server.BaseHTTPRequestHandler):
                 if r["code_id"]:
                     code = STORE.one("SELECT code FROM discount_codes WHERE id = ?",
                                      (r["code_id"],))
-                    bought += ("<div class='bought'>🏷 با کد تخفیف <code dir='ltr'>%s</code> — "
+                    bought += ("<div class='bought'><svg class='ui-icon' aria-hidden='true'><use href='#ui-tag'/></svg> با کد تخفیف <code dir='ltr'>%s</code> — "
                                "قیمت پلن %s تومان</div>"
                                % (html.escape(code["code"] if code else "?"),
                                   format(r["list_price"] or 0, ",")))
@@ -8317,7 +8367,7 @@ class Admin(http.server.BaseHTTPRequestHandler):
                     "SELECT count(*) c FROM wg_devices d JOIN users u ON u.id = d.user_id"
                     " WHERE d.last_handshake >= ?" + extra,
                     ((datetime.now(timezone.utc) - timedelta(minutes=3)).isoformat(
-                        timespec="seconds"),) + args)["c"], "🛡 وایرگارد آنلاین"))
+                        timespec="seconds"),) + args)["c"], "وایرگارد آنلاین"))
         stats += [(ips["c"], "آی‌پی ثبت‌شده"), (human(u["b"]), "مجموع مصرف")]
         for n, l in stats:
             out.append("<div class='stat'><div class='n'>%s</div>"
@@ -8732,7 +8782,7 @@ class Admin(http.server.BaseHTTPRequestHandler):
                    "روی باقی‌مانده اضافه می‌شوند. خرید پلن دیگر از همان لحظه از نو "
                    "شروع می‌شود و باقی‌ماندهٔ قبلی از بین می‌رود؛ این را پیش از "
                    "خرید به مشتری می‌گوییم. «نامحدود» فقط با تیک خودش؛ خانهٔ خالیِ "
-                   "حجم پذیرفته نمی‌شود.</p>%s<p class='muted'>🎁 «تست رایگان»: فروخته "
+                   "حجم پذیرفته نمی\u200cشود.</p>%s<p class='muted'><svg class='ui-icon' aria-hidden='true'><use href='#ui-gift'/></svg> «تست رایگان»: فروخته "
                    "نمی‌شود؛ مشتری با یک کلیک می‌گیردش، در پنل خودش یا ربات. شرطش "
                    "تلگرامِ وصل‌شده است، و هر تلگرام و هر حساب فقط یک بار. کسی که همین "
                    "حالا سرویس فعال دارد نمی‌گیردش، تا باقی‌ماندهٔ پلنش از بین نرود. "
@@ -8969,7 +9019,7 @@ class Admin(http.server.BaseHTTPRequestHandler):
         if text:
             out.append("<div class='card'><h2>مشتری این را می‌بیند</h2>"
                        "<div style='white-space:pre-wrap;padding:10px 12px;border:1px dashed "
-                       "var(--btn);border-radius:10px;line-height:1.9'>💳 %s</div></div>"
+                       "var(--btn);border-radius:10px;line-height:1.9'><svg class='ui-icon' aria-hidden='true'><use href='#ui-card'/></svg> %s</div></div>"
                        % html.escape(text))
         else:
             out.append("<div class='card'><p class='warn'>هنوز چیزی ننوشته‌اید؛ مشتری موقع خرید "
@@ -11837,7 +11887,7 @@ def template_lists_card(t, p):
     services above, and under each kind its full list."""
     on_rows, off = block_pick(t["id"])
     lists = {b[0]: b for b in BLOCKLISTS}
-    out = ["<div class='card blocks'><h2>🚫 مسدودی‌ها</h2>"
+    out = ["<div class='card blocks'><h2><svg class='ui-icon' aria-hidden='true'><use href='#ui-ban'/></svg> مسدودی\u200cها</h2>"
            "<form method='post' action='/%s/template-blocklists'>"
            "<input type='hidden' name='id' value='%d'>"
            "<p class='muted'>تیک یعنی بسته: مشتری‌های این قالب نمی‌توانند آن دامنه‌ها را "
