@@ -7086,9 +7086,9 @@ def me_card(p):
 def page(title, body, cfg, active="", msg=None, msg_kind="good"):
     nav = ""
     waiting = tickets_waiting()
-    for path, label in (("", "خانه"), ("users", "کاربران"), ("receipts", "رسیدها"),
+    for path, label in (("", "خانه"), ("users", "کاربران"),
                         ("tickets", "تیکت‌ها (%d)" % waiting if waiting else "تیکت‌ها"),
-                        ("plans", "پلن‌ها"), ("pay", "پرداخت"), ("templates", "قالب‌ها"), ("domains", "دامنه‌ها"),
+                        ("plans", "پلن‌ها"), ("templates", "قالب‌ها"), ("domains", "دامنه‌ها"),
                         ("bot", "ربات"), ("api", "API"), ("nodes", "نود"),
                         ("wireguard", "وایرگارد"), ("settings", "تنظیمات"),
                         ("logs", "لاگ"), ("diagnose", "عیب‌یابی"), ("admins", "ادمین‌ها"),
@@ -8127,7 +8127,7 @@ class Admin(http.server.BaseHTTPRequestHandler):
                  "users": ("کاربران", self.users),
                  "receipts": ("رسیدها", self.receipts),
                  "plans": ("پلن‌ها", self.plans),
-                 "pay": ("اطلاعات پرداخت", self.pay_page),
+                 "pay": ("پرداخت", self.pay_page),
                  "tickets": ("تیکت‌ها", self.tickets),
                  "templates": ("قالب‌ها", self.templates),
                  "domains": ("دامنه‌ها", self.domains),
