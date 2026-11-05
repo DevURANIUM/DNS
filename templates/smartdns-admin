@@ -3957,7 +3957,7 @@ td{padding:11px 10px;border-bottom:1px solid color-mix(in srgb,var(--row) 75%,tr
  vertical-align:middle;transition:background .12s ease}
 tr:last-child td{border-bottom:0}
 tr:hover>td{background:color-mix(in srgb,var(--row) 60%,transparent)}
-td input,td select{padding:6px 9px;font-size:13px;border-radius:8px}
+td input{padding:6px 9px;font-size:13px;border-radius:8px}\ntd select{padding:6px 26px 6px 9px;font-size:13px;border-radius:8px}
 td button{padding:6px 12px;font-size:12px}
 code{
  background:color-mix(in srgb,var(--bg) 90%,var(--card));
@@ -3985,6 +3985,16 @@ code{
  transition:width .4s ease;box-shadow:0 0 10px color-mix(in srgb,var(--accent) 50%,transparent)}
 .bar i.warn{background:var(--warn);box-shadow:0 0 10px color-mix(in srgb,var(--warn) 50%,transparent)}
 .bar i.hot{background:var(--bad);box-shadow:0 0 10px color-mix(in srgb,var(--bad) 50%,transparent)}
+select{
+ appearance:none;-webkit-appearance:none;-moz-appearance:none;
+ background:color-mix(in srgb,var(--bg) 85%,var(--card));
+ color:var(--fg);border:1px solid var(--line2);border-radius:10px;
+ padding:8px 12px 8px 30px;font:inherit;font-size:13px;cursor:pointer;
+ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+ background-repeat:no-repeat;background-position:left 10px center;transition:all .15s ease}
+html[dir=ltr] select{background-position:right 10px center;padding-left:12px;padding-right:30px}
+select:focus{outline:0;border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 22%,transparent);background:var(--card)}
+select option{background-color:var(--card);color:var(--fg);padding:8px 12px}
 input,select,button,textarea{
  font:inherit;background:color-mix(in srgb,var(--bg) 85%,var(--card));
  color:var(--fg);border:1px solid var(--line2);border-radius:10px;
