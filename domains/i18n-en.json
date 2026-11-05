@@ -34,7 +34,6 @@
 "DoH و DoT روشن": "DoH and DoT on",
 "کل کاربران": "All users",
 "وضعیت کاربران": "User status",
-"مدیریت DNS": "DNS administration",
 "(با": "(with",
 "(بعد از تمام شدن پلن فعلی خودکار فعال می‌شود)": "(starts by itself when the current plan ends)",
 "(خالی = همین بماند)": "(empty = keep it)",
@@ -802,7 +801,6 @@
 "تیکت منتظر جواب:": "Tickets waiting for a reply:",
 "تیکتی نیامده. مشتری‌ها از پنل خودشان یا از ربات تیکت می‌فرستند.": "No tickets yet. Customers send tickets from their own panel or from the bot.",
 "تیکت‌ها": "Tickets",
-"تیکت‌ها (": "Tickets (",
 "تیکت‌های شما:": "Your tickets:",
 "تیکِ مسدودها و DNS جداگانه یعنی برای مشتری‌های این قالب. برداشتن تیکِ ردیفی که «همهٔ قالب‌ها» است آن را فقط برای قالب‌های دیگر نگه می‌دارد. اگر دامنه‌ای در این قالب هم مسدود باشد هم DNS جداگانه داشته باشد، مسدود بودن برنده است.": "A tick on a block or a separate DNS means it is for this template’s customers. Unticking a row that is “All templates” keeps it for the other templates only. If a domain in this template is both blocked and has a separate DNS, the block wins.",
 "ثانیه —": "seconds —",
@@ -2389,5 +2387,11 @@
 "🟢 آنلاین": "🟢 online",
 "🤖 لینک ربات:": "🤖 Bot link:",
 "🧾 رسید #": "🧾 Receipt #",
-"🧾 پرداخت با رسید": "🧾 Pay with a receipt"
+"🧾 پرداخت با رسید": "🧾 Pay with a receipt",
+"مشتریان": "Customers",
+"سیستم": "System",
+"اتصال‌ها": "Integrations",
+"در انتظار پاسخ": "Waiting for a reply",
+"بخش‌های پنل": "Panel sections",
+"منو": "Menu"
 }

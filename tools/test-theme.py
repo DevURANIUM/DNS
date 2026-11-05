@@ -60,7 +60,10 @@ def contrast(a, b):
 # Text, and what it sits on. 4.5 is the usual line for body text.
 PAIRS = [("fg", "bg"), ("fg", "card"), ("muted", "card"), ("dim", "card"),
          ("accent", "card"), ("accent", "bg"), ("warn", "card"),
-         ("bad", "card"), ("on-btn", "btn")]
+         ("bad", "card"), ("on-btn", "btn"), ("on-bad", "bad"),
+         # The side rail and the account header are lapis in both themes.
+         ("rail-fg", "rail"), ("rail-muted", "rail"), ("rail-accent", "rail"),
+         ("rail-warn", "rail"), ("rail-bad", "rail")]
 
 admin, admin_src = load("smartdns-admin", "admin")
 sync, sync_src = load("smartdns-sync", "sync")
@@ -82,9 +85,9 @@ for name, pal in (("dark", dark), ("light", light)):
     for a, b in PAIRS:
         c = contrast(pal[a], pal[b])
         check("%s: %s on %s is readable (%.1f)" % (name, a, b, c), c >= 4.5)
-check("the dark theme uses the redesigned product palette",
-      dark["bg"] == "#101526" and dark["card"] == "#182137" and
-      dark["accent"] == "#adc9ff")
+check("the palette is firuzeh on lapis",
+      dark["bg"] == "#0b1322" and dark["accent"] == "#5ed3c3" and
+      light["accent"] == "#0a756d" and light["rail"] == "#10204a")
 
 print("without a choice the browser decides, and a choice beats it")
 t = admin.THEME_CSS
