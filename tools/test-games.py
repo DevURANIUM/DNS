@@ -183,6 +183,12 @@ check("  and Steam's own CDN names are in its groups",
       "steamcdn-a.akamaihd.net" in {d for g in by_key["steam"]["groups"] for d in g["domains"]})
 shared = set(open(os.path.join(HERE, "..", "domains", "domains.txt"), encoding="utf-8").read().split())
 check("the new domains are on the shared list", mirrors | {"steampipe.akamaized.net"} <= shared)
+# The shared list is what the default plan routes, and an exact name there
+# beats the "never route" rule for the same name - so steamserver.net once
+# went through the relay, and Steam's connection with it, after a list import.
+held = sorted(d for s_ in services for g in s_["groups"]
+              if g.get("opt_in") or g.get("locked") for d in g["domains"] if d in shared)
+check("nothing that is off until asked for is on the shared list", not held, str(held))
 
 print("\nfollowing domains that moved to another service")
 store.run("DELETE FROM template_services WHERE template_id = ?", (part,))

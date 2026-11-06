@@ -38,7 +38,7 @@ STAMP="$(date +%Y%m%d-%H%M%S)"
 # What this file is. Written to the machine once an install finishes, so the
 # next run can tell whether it is an upgrade, a re-run, or somebody about to
 # put an older version over a newer one by accident.
-VERSION="0.11.1"
+VERSION="0.11.2"
 
 # What this install did, so uninstall can undo exactly that and nothing more.
 # Without it, removal would be guesswork: whether dnsmasq was ours or already
@@ -38107,6 +38107,7 @@ exit 0
 #avatarservices.xboxlive.com
 #avatarv3-ppe.xboxlive.com
 #avatarv3.xboxlive.com
+#avcdn.net
 #avec.fr
 #avendrealouer.fr
 #avery.nl
@@ -38963,7 +38964,6 @@ exit 0
 #demo.phlox.pro
 #demo.themegrill.com
 #demolay.org
-#demonware.net
 #denimheads.cz
 #deno.com
 #deno.land
@@ -39049,7 +39049,6 @@ exit 0
 #discord.com
 #discord.gg
 #discord.gift
-#discord.media
 #discord.new
 #discordapp.com
 #discordapp.net
@@ -40836,7 +40835,6 @@ exit 0
 #msn.com
 #msrgear.com
 #msufcu.org
-#mtalk.google.com
 #mtfca.com
 #mtvanhoevenberg.com
 #multi-match-origin.xboxlive.com
@@ -41556,7 +41554,6 @@ exit 0
 #pub.dev
 #pub.hostdns.top
 #pubg.com
-#pubgmobile.com
 #public.ecr.aws
 #pubmatic.com
 #puckhcky.com
@@ -41583,7 +41580,6 @@ exit 0
 #pushbikes.co.nz
 #pushbullet.com
 #pushbulletusercontent.com
-#pvp.net
 #pvz2-prd.popcap.com
 #pwc.ca
 #pwrd.com
@@ -42277,7 +42273,6 @@ exit 0
 #steamgames.com
 #steampipe.akamaized.net
 #steampowered.com
-#steamserver.net
 #steamstat.us
 #steamstatic.com
 #steamstore-a.akamaihd.net
@@ -45998,6 +45993,7 @@ exit 0
 #            "avatarservices.xboxlive.com",
 #            "avatarv3-ppe.xboxlive.com",
 #            "avatarv3.xboxlive.com",
+#            "avcdn.net",
 #            "avec.fr",
 #            "avendrealouer.fr",
 #            "avery.nl",
@@ -48310,7 +48306,6 @@ exit 0
 #            "msn.com",
 #            "msrgear.com",
 #            "msufcu.org",
-#            "mtalk.google.com",
 #            "mtfca.com",
 #            "mtvanhoevenberg.com",
 #            "multi-match-origin.xboxlive.com",

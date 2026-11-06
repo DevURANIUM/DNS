@@ -591,6 +591,7 @@ avatarservices-origin.xboxlive.com
 avatarservices.xboxlive.com
 avatarv3-ppe.xboxlive.com
 avatarv3.xboxlive.com
+avcdn.net
 avec.fr
 avendrealouer.fr
 avery.nl
@@ -1447,7 +1448,6 @@ demdex.net
 demo.phlox.pro
 demo.themegrill.com
 demolay.org
-demonware.net
 denimheads.cz
 deno.com
 deno.land
@@ -1533,7 +1533,6 @@ discord.co
 discord.com
 discord.gg
 discord.gift
-discord.media
 discord.new
 discordapp.com
 discordapp.net
@@ -3320,7 +3319,6 @@ msi.com
 msn.com
 msrgear.com
 msufcu.org
-mtalk.google.com
 mtfca.com
 mtvanhoevenberg.com
 multi-match-origin.xboxlive.com
@@ -4040,7 +4038,6 @@ psyonix.com
 pub.dev
 pub.hostdns.top
 pubg.com
-pubgmobile.com
 public.ecr.aws
 pubmatic.com
 puckhcky.com
@@ -4067,7 +4064,6 @@ purplle.com
 pushbikes.co.nz
 pushbullet.com
 pushbulletusercontent.com
-pvp.net
 pvz2-prd.popcap.com
 pwc.ca
 pwrd.com
@@ -4761,7 +4757,6 @@ steamdeck.com
 steamgames.com
 steampipe.akamaized.net
 steampowered.com
-steamserver.net
 steamstat.us
 steamstatic.com
 steamstore-a.akamaihd.net
