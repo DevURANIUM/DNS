@@ -38,7 +38,7 @@ STAMP="$(date +%Y%m%d-%H%M%S)"
 # What this file is. Written to the machine once an install finishes, so the
 # next run can tell whether it is an upgrade, a re-run, or somebody about to
 # put an older version over a newer one by accident.
-VERSION="0.11.2"
+VERSION="0.11.3"
 
 # What this install did, so uninstall can undo exactly that and nothing more.
 # Without it, removal would be guesswork: whether dnsmasq was ours or already
@@ -3110,6 +3110,14 @@ exit 0
 #server=/discord.media/#
 #server=/vivox.com/#
 #server=/steamserver.net/#
+#
+## The connectivity checks: Windows and Steam each fetch a fixed small file
+## from these to decide whether the machine is online, and compare it. They
+## are not blocked; answered with the relay, the check can come back wrong and
+## the system tray or Steam say "no internet" on a line that works.
+#server=/msftconnecttest.com/#
+#server=/msftncsi.com/#
+#server=/steamconnecttest.com/#
 #__END_BYPASS__
 
 #__BEGIN_NO_AAAA__
@@ -45403,6 +45411,18 @@ exit 0
 #          "domains": [
 #            "steamserver.net"
 #          ]
+#        },
+#        {
+#          "key": "connectivity",
+#          "label": "Windows & Steam — بررسی اتصال",
+#          "opt_in": true,
+#          "locked": true,
+#          "note": "روشن کردنش باعث می‌شود ویندوز و استیم فکر کنند اینترنت قطع است — این اسم‌ها فقط برای سنجیدن اتصال خود دستگاه‌اند و باید مستقیم بمانند",
+#          "domains": [
+#            "msftconnecttest.com",
+#            "msftncsi.com",
+#            "steamconnecttest.com"
+#          ]
 #        }
 #      ],
 #      "section": "bypass"
@@ -54784,7 +54804,9 @@ exit 0
 #"منو": "Menu",
 #"سرور مسابقه‌ها روی شبکهٔ رلهٔ خود Valve است و مستقیم می‌ماند": "Match servers run on Valve's own relay network and stay direct",
 #"کانتر استرایک ۲": "Counter-Strike 2",
-#"مخزن و میرور توزیع‌های لینوکس": "Linux distribution repositories and mirrors"
+#"مخزن و میرور توزیع‌های لینوکس": "Linux distribution repositories and mirrors",
+#"Windows & Steam — بررسی اتصال": "Windows and Steam — connectivity checks",
+#"روشن کردنش باعث می‌شود ویندوز و استیم فکر کنند اینترنت قطع است — این اسم‌ها فقط برای سنجیدن اتصال خود دستگاه‌اند و باید مستقیم بمانند": "Turning it on makes Windows and Steam think the internet is down — these names only measure the device's own connection and must stay direct"
 #}
 #__END_I18N_EN__
 

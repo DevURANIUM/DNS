@@ -2393,5 +2393,7 @@
 "منو": "Menu",
 "سرور مسابقه‌ها روی شبکهٔ رلهٔ خود Valve است و مستقیم می‌ماند": "Match servers run on Valve's own relay network and stay direct",
 "کانتر استرایک ۲": "Counter-Strike 2",
-"مخزن و میرور توزیع‌های لینوکس": "Linux distribution repositories and mirrors"
+"مخزن و میرور توزیع‌های لینوکس": "Linux distribution repositories and mirrors",
+"Windows & Steam — بررسی اتصال": "Windows and Steam — connectivity checks",
+"روشن کردنش باعث می‌شود ویندوز و استیم فکر کنند اینترنت قطع است — این اسم‌ها فقط برای سنجیدن اتصال خود دستگاه‌اند و باید مستقیم بمانند": "Turning it on makes Windows and Steam think the internet is down — these names only measure the device's own connection and must stay direct"
 }

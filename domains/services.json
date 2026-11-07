@@ -2051,6 +2051,18 @@
           "domains": [
             "steamserver.net"
           ]
+        },
+        {
+          "key": "connectivity",
+          "label": "Windows & Steam — بررسی اتصال",
+          "opt_in": true,
+          "locked": true,
+          "note": "روشن کردنش باعث می‌شود ویندوز و استیم فکر کنند اینترنت قطع است — این اسم‌ها فقط برای سنجیدن اتصال خود دستگاه‌اند و باید مستقیم بمانند",
+          "domains": [
+            "msftconnecttest.com",
+            "msftncsi.com",
+            "steamconnecttest.com"
+          ]
         }
       ],
       "section": "bypass"
