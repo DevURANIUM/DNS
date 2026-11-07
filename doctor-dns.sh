@@ -38,7 +38,7 @@ STAMP="$(date +%Y%m%d-%H%M%S)"
 # What this file is. Written to the machine once an install finishes, so the
 # next run can tell whether it is an upgrade, a re-run, or somebody about to
 # put an older version over a newer one by accident.
-VERSION="0.11.3"
+VERSION="0.11.4"
 
 # What this install did, so uninstall can undo exactly that and nothing more.
 # Without it, removal would be guesswork: whether dnsmasq was ours or already
@@ -3118,6 +3118,13 @@ exit 0
 #server=/msftconnecttest.com/#
 #server=/msftncsi.com/#
 #server=/steamconnecttest.com/#
+#
+## Microsoft's network probes: Windows, Office and Teams time a request to each
+## of these to learn which of Microsoft's front doors is nearest. Answered with
+## the relay, every one measures as the distance to the exit, and they pick a
+## front door near the exit rather than near the machine.
+#server=/footprintdns.com/#
+#server=/msedge.net/#
 #__END_BYPASS__
 
 #__BEGIN_NO_AAAA__
@@ -45423,6 +45430,17 @@ exit 0
 #            "msftncsi.com",
 #            "steamconnecttest.com"
 #          ]
+#        },
+#        {
+#          "key": "msprobes",
+#          "label": "Microsoft — سنجش شبکه",
+#          "opt_in": true,
+#          "locked": true,
+#          "note": "روشن کردنش باعث می‌شود ویندوز، آفیس و تیمز سرور دورتری از مایکروسافت انتخاب کنند — این اسم‌ها فاصلهٔ خود دستگاه تا هر سرور را می‌سنجند و باید مستقیم بمانند",
+#          "domains": [
+#            "footprintdns.com",
+#            "msedge.net"
+#          ]
 #        }
 #      ],
 #      "section": "bypass"
@@ -54806,7 +54824,9 @@ exit 0
 #"کانتر استرایک ۲": "Counter-Strike 2",
 #"مخزن و میرور توزیع‌های لینوکس": "Linux distribution repositories and mirrors",
 #"Windows & Steam — بررسی اتصال": "Windows and Steam — connectivity checks",
-#"روشن کردنش باعث می‌شود ویندوز و استیم فکر کنند اینترنت قطع است — این اسم‌ها فقط برای سنجیدن اتصال خود دستگاه‌اند و باید مستقیم بمانند": "Turning it on makes Windows and Steam think the internet is down — these names only measure the device's own connection and must stay direct"
+#"روشن کردنش باعث می‌شود ویندوز و استیم فکر کنند اینترنت قطع است — این اسم‌ها فقط برای سنجیدن اتصال خود دستگاه‌اند و باید مستقیم بمانند": "Turning it on makes Windows and Steam think the internet is down — these names only measure the device's own connection and must stay direct",
+#"Microsoft — سنجش شبکه": "Microsoft — network probes",
+#"روشن کردنش باعث می‌شود ویندوز، آفیس و تیمز سرور دورتری از مایکروسافت انتخاب کنند — این اسم‌ها فاصلهٔ خود دستگاه تا هر سرور را می‌سنجند و باید مستقیم بمانند": "Turning it on makes Windows, Office and Teams pick a Microsoft server further away — these names measure the device's own distance to each server and must stay direct"
 #}
 #__END_I18N_EN__
 

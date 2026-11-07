@@ -2063,6 +2063,17 @@
             "msftncsi.com",
             "steamconnecttest.com"
           ]
+        },
+        {
+          "key": "msprobes",
+          "label": "Microsoft — سنجش شبکه",
+          "opt_in": true,
+          "locked": true,
+          "note": "روشن کردنش باعث می‌شود ویندوز، آفیس و تیمز سرور دورتری از مایکروسافت انتخاب کنند — این اسم‌ها فاصلهٔ خود دستگاه تا هر سرور را می‌سنجند و باید مستقیم بمانند",
+          "domains": [
+            "footprintdns.com",
+            "msedge.net"
+          ]
         }
       ],
       "section": "bypass"
